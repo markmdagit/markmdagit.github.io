@@ -103,7 +103,6 @@ const Accessories = () => {
 
 const Laptops = () => {
     const [laptops, setLaptops] = React.useState([]);
-    const [searchTerm, setSearchTerm] = React.useState('');
 
     React.useEffect(() => {
         fetch('/data/laptops.json')
@@ -111,32 +110,12 @@ const Laptops = () => {
             .then(data => setLaptops(data));
     }, []);
 
-    const handleSearchChange = (event) => {
-        setSearchTerm(event.target.value);
-    };
-
-    const filteredLaptops = laptops.filter(laptop => {
-        const searchTermLower = searchTerm.toLowerCase();
-        return Object.values(laptop).some(value =>
-            String(value).toLowerCase().includes(searchTermLower)
-        );
-    });
-
-    const elitebooks = filteredLaptops.filter(laptop => laptop.Model.includes('EliteBook'));
-    const zbooks = filteredLaptops.filter(laptop => laptop.Model.includes('ZBook'));
+    const elitebooks = laptops.filter(laptop => laptop.Model.includes('EliteBook'));
+    const zbooks = laptops.filter(laptop => laptop.Model.includes('ZBook'));
 
     return (
         <React.Fragment>
             <h1 className="section-title">HP Laptops Parts List Database</h1>
-            <div className="search-container">
-                <input
-                    type="text"
-                    id="search-input"
-                    placeholder="Search for laptops..."
-                    value={searchTerm}
-                    onChange={handleSearchChange}
-                />
-            </div>
             <h3 className="section-title">HP EliteBook</h3>
             <div id="elitebook-cards" className="card-grid">
                 {elitebooks.map(laptop => <LaptopCard key={laptop.Model} laptop={laptop} />)}

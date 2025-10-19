@@ -49,6 +49,9 @@
                 </div>
 
                 <section id="laptops">
+                    <h2 class="section-title">HP Laptops Parts List Database</h2>
+                    <input type="text" id="laptop-search" placeholder="Search for laptops...">
+                    <div id="search-results"></div>
                     <div id="root"></div>
                 </section>
 
@@ -73,7 +76,14 @@
         </div>
 
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sql.js@1.10.3/dist/sql-wasm.js"></script>
+    <script>
+      const SQL_CONFIG = {
+        locateFile: file => `https://cdn.jsdelivr.net/npm/sql.js@1.10.3/dist/${file}`
+      };
+    </script>
     <script src="../js/main.js"></script>
+    <script src="../js/search.js"></script>
     <script src="../js/laptops.jsx" type="text/babel"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
