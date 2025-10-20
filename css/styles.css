@@ -298,6 +298,38 @@ footer {
     border-color: #6c757d;
 }
 
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #343a40;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 8px;
+    padding: 0.5rem;
+}
+
+.dropdown-menu button {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+.dropdown-menu button:last-child {
+    margin-bottom: 0;
+}
+
 .project-toggle button.active {
     background-color: #00aaff;
     color: #ffffff;
