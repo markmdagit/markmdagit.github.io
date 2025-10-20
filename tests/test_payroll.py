@@ -1,0 +1,64 @@
+import re
+from playwright.sync_api import Page, expect
+
+def test_payroll_report(page: Page):
+    page.goto("http://localhost:8000/pages/projects.html")
+
+    # --- SETUP ---
+    # 1. Create a user with a known wage
+    admin_btn = page.locator("#admin-btn")
+    admin_btn.click()
+    page.locator("#income-manager-btn").click()
+
+    page.locator("#user-first-name").fill("Payroll")
+    page.locator("#user-last-name").fill("Test")
+    page.locator("#user-wage").fill("20.00") # $20/hour
+    page.locator("#user-form button[type='submit']").click()
+
+    # 2. Add two calendar events for this user in the same month
+    admin_btn.click()
+    page.locator("#calendar-btn").click()
+
+    # Event 1: 8 hours (in October)
+    page.locator("#cal-user-select").select_option(label="Payroll Test")
+    page.locator("#cal-date").fill("2025-10-10")
+    page.locator("#cal-start-time").fill("09:00")
+    page.locator("#cal-end-time").fill("17:00")
+    page.locator("#calendar-form button[type='submit']").click()
+
+    # Event 2: 4.5 hours (in October)
+    page.locator("#cal-user-select").select_option(label="Payroll Test")
+    page.locator("#cal-date").fill("2025-10-12")
+    page.locator("#cal-start-time").fill("12:30")
+    page.locator("#cal-end-time").fill("17:00")
+    page.locator("#calendar-form button[type='submit']").click()
+
+    # --- VERIFICATION ---
+    # 3. Select the correct month in the CALENDAR view first
+    page.locator(".month-tab[data-month='9']").click() # October
+
+    # 4. Navigate to the Payroll Report
+    admin_btn.click()
+    page.locator("#payroll-report-btn").click()
+
+    # 5. Check the report calculations for October
+    report_row = page.locator("#payroll-table-body tr")
+    expect(report_row).to_have_count(1)
+
+    user_cell = report_row.locator("td").nth(0)
+    hours_cell = report_row.locator("td").nth(1)
+    income_cell = report_row.locator("td").nth(2)
+
+    expect(user_cell).to_have_text("Payroll Test")
+    expect(hours_cell).to_have_text("12.50")
+    expect(income_cell).to_have_text("$250.00")
+
+    # 6. Go back to calendar and check a month with no events
+    admin_btn.click()
+    page.locator("#calendar-btn").click()
+    page.locator(".month-tab[data-month='8']").click() # September
+
+    # 7. Go back to payroll and verify it's empty
+    admin_btn.click()
+    page.locator("#payroll-report-btn").click()
+    expect(page.locator("#payroll-table-body tr")).to_have_count(0)
