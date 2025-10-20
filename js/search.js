@@ -22,38 +22,44 @@ document.addEventListener('DOMContentLoaded', async () => {
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           brand TEXT,
           model TEXT,
-          screen_size TEXT,
+          screen_size REAL,
           resolution TEXT,
           processor TEXT,
-          ram TEXT,
+          ram INTEGER,
           storage TEXT,
           os TEXT,
-          part_numbers TEXT
+          part_number TEXT UNIQUE
         )
       `;
       db.run(createTableQuery);
 
       const insertStmt = db.prepare(`
-        INSERT INTO laptops (brand, model, screen_size, resolution, processor, ram, storage, os, part_numbers)
+        INSERT INTO laptops (brand, model, screen_size, resolution, processor, ram, storage, os, part_number)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
       `);
 
+      const insertedPartNumbers = new Set();
       data.forEach(laptop => {
         const screenPartNumbers = laptop["Screen Replacement Part # (Common)"].split(',').map(p => p.trim());
         const batteryPartNumber = laptop["Battery Replacement Part # (Common)"].trim();
-        const allPartNumbers = [...screenPartNumbers, batteryPartNumber].filter(p => p);
+        const allPartNumbers = [...screenPartNumbers, batteryPartNumber];
 
-        insertStmt.run([
-          "HP", // brand
-          laptop.Model,
-          laptop.Display,
-          laptop.Display,
-          laptop.Processor,
-          laptop.Memory,
-          laptop["Internal Drive"],
-          "Windows", // os
-          allPartNumbers.join(',')
-        ]);
+        allPartNumbers.forEach(partNumber => {
+          if (partNumber && !insertedPartNumbers.has(partNumber)) {
+            insertStmt.run([
+              "HP", // brand
+              laptop.Model,
+              laptop.Display,
+              laptop.Display,
+              laptop.Processor,
+              laptop.Memory, // ram
+              laptop["Internal Drive"],
+              "Windows", // os
+              partNumber
+            ]);
+            insertedPartNumbers.add(partNumber);
+          }
+        });
       });
 
       insertStmt.free();
@@ -82,13 +88,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
       console.log(`Searching for: "${searchTerm}"`);
-      const query = `
+      const stmt = db.prepare(`
         SELECT * FROM laptops
-        WHERE model LIKE ? OR processor LIKE ? OR storage LIKE ? OR part_numbers LIKE ? OR ram LIKE ? OR screen_size LIKE ?
-      `;
-      const params = [`%${searchTerm}%`, `%${searchTerm}%`, `%${searchTerm}%`, `%${searchTerm}%`, `%${searchTerm}%`, `%${searchTerm}%`];
-      const stmt = db.prepare(query);
-      stmt.bind(params);
+        WHERE brand LIKE ? OR model LIKE ? OR processor LIKE ? OR part_number LIKE ? OR storage LIKE ? OR ram LIKE ?
+      `);
+      stmt.bind([`%${searchTerm}%`, `%${searchTerm}%`, `%${searchTerm}%`, `%${searchTerm}%`, `%${searchTerm}%`, `%${searchTerm}%`]);
 
       let resultCount = 0;
       let hasResults = false;
@@ -100,9 +104,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         resultEl.className = 'search-result';
         resultEl.innerHTML = `
           <h3>${row.brand} ${row.model}</h3>
-          <p><strong>Part Numbers:</strong> ${row.part_numbers}</p>
+          <p><strong>Part Number:</strong> ${row.part_number}</p>
           <p><strong>CPU:</strong> ${row.processor}</p>
-          <p><strong>RAM:</strong> ${row.ram} GB</p>
+          <p><strong>RAM:</strong> ${row.ram}</p>
           <p><strong>Storage:</strong> ${row.storage}</p>
         `;
         resultsContainer.appendChild(resultEl);
