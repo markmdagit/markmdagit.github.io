@@ -51,6 +51,13 @@
                             <button id="w10-incompatible-btn">W10 Incompatible Solution</button>
                         </div>
                     </div>
+                    <div class="dropdown">
+                        <button id="admin-btn" class="dropdown-toggle">Admin <i class="fas fa-caret-down"></i></button>
+                        <div id="admin-options" class="dropdown-menu" style="display: none;">
+                            <button id="start-time-btn">Start Time Scheduler</button>
+                            <button id="end-time-btn">End Time Scheduler</button>
+                        </div>
+                    </div>
                 </div>
 
                 <section id="laptops">
@@ -72,6 +79,46 @@
                     <h2 class="section-title">W10 Incompatible Solutions</h2>
                     <div id="w10-incompatible-cards" class="card-grid"></div>
                 </section>
+
+                <section id="start-time-scheduler" style="display: none;">
+                    <h2 class="section-title">Start Time Scheduler</h2>
+                    <form id="start-time-form">
+                        <input type="text" id="start-first-name" placeholder="First Name" required>
+                        <input type="text" id="start-last-name" placeholder="Last Name" required>
+                        <input type="time" id="start-time" required>
+                        <button type="submit">Add Start Time</button>
+                    </form>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Start Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="start-time-table-body"></tbody>
+                    </table>
+                </section>
+
+                <section id="end-time-scheduler" style="display: none;">
+                    <h2 class="section-title">End Time Scheduler</h2>
+                    <form id="end-time-form">
+                        <input type="text" id="end-first-name" placeholder="First Name" required>
+                        <input type="text" id="end-last-name" placeholder="Last Name" required>
+                        <input type="time" id="end-time" required>
+                        <button type="submit">Add End Time</button>
+                    </form>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>End Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="end-time-table-body"></tbody>
+                    </table>
+                </section>
             </main>
 
             <footer>
@@ -89,45 +136,67 @@
     </script>
     <script src="../js/main.js"></script>
     <script src="../js/search.js"></script>
+    <script src="../js/admin.js"></script>
     <script src="../js/laptops.jsx" type="text/babel"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const computersBtn = document.getElementById('computers-btn');
             const computerOptions = document.getElementById('computer-options');
-            const buttons = [
+            const computerButtons = [
                 document.getElementById('laptops-btn'),
                 document.getElementById('supply-chain-btn'),
                 document.getElementById('w10-incompatible-btn')
             ];
-            const sections = [
+            const computerSections = [
                 document.getElementById('laptops'),
                 document.getElementById('supply-chain'),
                 document.getElementById('w10-incompatible')
             ];
 
-            computersBtn.addEventListener('click', (event) => {
-                event.stopPropagation();
-                const isDisplayed = computerOptions.style.display !== 'none';
-                computerOptions.style.display = isDisplayed ? 'none' : 'block';
-            });
+            const adminBtn = document.getElementById('admin-btn');
+            const adminOptions = document.getElementById('admin-options');
+            const adminButtons = [
+                document.getElementById('start-time-btn'),
+                document.getElementById('end-time-btn')
+            ];
+            const adminSections = [
+                document.getElementById('start-time-scheduler'),
+                document.getElementById('end-time-scheduler')
+            ];
 
-            buttons.forEach((button, index) => {
-                button.addEventListener('click', () => {
-                    // Hide all sections
-                    sections.forEach(section => section.style.display = 'none');
-                    // Show the target section
-                    sections[index].style.display = 'block';
-                    // Set active class
-                    buttons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    // Hide dropdown
-                    computerOptions.style.display = 'none';
+            function setupDropdown(btn, options) {
+                btn.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    const isDisplayed = options.style.display !== 'none';
+                    options.style.display = isDisplayed ? 'none' : 'block';
                 });
-            });
+            }
+
+            function setupMenu(buttons, sections, allSections) {
+                buttons.forEach((button, index) => {
+                    button.addEventListener('click', () => {
+                        allSections.forEach(section => section.style.display = 'none');
+                        sections[index].style.display = 'block';
+                        buttons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        button.closest('.dropdown-menu').style.display = 'none';
+                    });
+                });
+            }
+
+            const allSections = [...computerSections, ...adminSections];
+
+            setupDropdown(computersBtn, computerOptions);
+            setupDropdown(adminBtn, adminOptions);
+            setupMenu(computerButtons, computerSections, allSections);
+            setupMenu(adminButtons, adminSections, allSections);
 
             window.addEventListener('click', function(event) {
                 if (!computersBtn.contains(event.target)) {
                     computerOptions.style.display = 'none';
+                }
+                if (!adminBtn.contains(event.target)) {
+                    adminOptions.style.display = 'none';
                 }
             });
         });

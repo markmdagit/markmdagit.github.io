@@ -25,8 +25,8 @@ In-Use:
 - CSS
 - JS
 - JSON
-- Python (Automation where needed)
 
 Pending: 
 - SQL Lite (Testing Databases for Static Use)
 - Supabase (Full Live Database - Large Scale Use)
+- Python (Automation where needed)
