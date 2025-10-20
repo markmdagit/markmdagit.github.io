@@ -2,12 +2,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     const SQL_CONFIG = {
         locateFile: file => `https://cdn.jsdelivr.net/npm/sql.js@1.10.3/dist/${file}`
     };
+
+    // Calendar elements
     const calendarForm = document.getElementById('calendar-form');
     const calendarBody = document.getElementById('calendar-body');
     const monthTabs = document.querySelectorAll('.month-tab');
 
-    if (!calendarForm || !calendarBody || !monthTabs.length) {
-        console.error("Calendar elements not found!");
+    // Income Manager elements
+    const userForm = document.getElementById('user-form');
+    const userTableBody = document.getElementById('user-table-body');
+
+    if (!calendarForm || !userForm) {
+        console.error("Required forms not found!");
         return;
     }
 
@@ -21,21 +27,127 @@ document.addEventListener('DOMContentLoaded', async () => {
             const sqlPromise = initSqlJs(SQL_CONFIG);
             const [SQL] = await Promise.all([sqlPromise]);
             db = new SQL.Database();
+            db.exec("PRAGMA foreign_keys = ON;");
 
             db.run(`
-                CREATE TABLE IF NOT EXISTS calendar_events (
+                CREATE TABLE IF NOT EXISTS users (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    first_name TEXT,
-                    last_name TEXT,
-                    date TEXT,
-                    start_time TEXT,
-                    end_time TEXT
-                )
+                    first_name TEXT NOT NULL,
+                    last_name TEXT NOT NULL
+                );
+            `);
+            db.run(`
+                CREATE TABLE IF NOT EXISTS income (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    user_id INTEGER NOT NULL UNIQUE,
+                    wage REAL NOT NULL,
+                    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+                );
+            `);
+            db.run(`DROP TABLE IF EXISTS calendar_events;`);
+            db.run(`
+                CREATE TABLE calendar_events (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    user_id INTEGER NOT NULL,
+                    date TEXT NOT NULL,
+                    start_time TEXT NOT NULL,
+                    end_time TEXT NOT NULL,
+                    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+                );
             `);
 
-            renderCalendar(currentYear, currentMonth);
+            await loadAdminData();
         } catch (err) {
             console.error('Database initialization failed:', err);
+        }
+    }
+
+    async function loadAdminData() {
+        await renderCalendar(currentYear, currentMonth);
+        await populateUserDropdown();
+        await displayUsers();
+    }
+
+    // --- User Management ---
+    async function displayUsers() {
+        userTableBody.innerHTML = '';
+        const users = db.exec("SELECT u.id, u.first_name, u.last_name, i.wage FROM users u LEFT JOIN income i ON u.id = i.user_id;");
+        if (!users.length) return;
+
+        users[0].values.forEach(row => {
+            const [id, firstName, lastName, wage] = row;
+            const tr = document.createElement('tr');
+            tr.dataset.userId = id;
+            tr.innerHTML = `
+                <td>${firstName}</td>
+                <td>${lastName}</td>
+                <td>${wage !== null ? `$${wage.toFixed(2)}` : 'N/A'}</td>
+                <td>
+                    <button class="action-btn edit-btn" data-id="${id}">Edit</button>
+                    <button class="action-btn delete-btn" data-id="${id}">Delete</button>
+                </td>
+            `;
+            userTableBody.appendChild(tr);
+        });
+    }
+
+    userForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const firstName = document.getElementById('user-first-name').value;
+        const lastName = document.getElementById('user-last-name').value;
+        const wage = parseFloat(document.getElementById('user-wage').value);
+
+        db.run('INSERT INTO users (first_name, last_name) VALUES (?, ?)', [firstName, lastName]);
+        const userId = db.exec("SELECT last_insert_rowid();")[0].values[0][0];
+        db.run('INSERT INTO income (user_id, wage) VALUES (?, ?)', [userId, wage]);
+
+        userForm.reset();
+        await loadAdminData();
+    });
+
+    userTableBody.addEventListener('click', async (e) => {
+        const target = e.target;
+        const userId = target.dataset.id;
+
+        if (target.classList.contains('delete-btn')) {
+            if (confirm('Are you sure you want to delete this user? This will also remove all their calendar events.')) {
+                db.run('DELETE FROM users WHERE id = ?', [userId]);
+                await loadAdminData();
+            }
+        } else if (target.classList.contains('edit-btn')) {
+            const row = target.closest('tr');
+            const cells = row.querySelectorAll('td');
+
+            const wageCell = cells[2];
+            const currentWage = parseFloat(wageCell.textContent.replace('$', ''));
+            wageCell.innerHTML = `<input type="number" class="wage-input" value="${currentWage.toFixed(2)}" step="0.01">`;
+
+            target.textContent = 'Save';
+            target.classList.remove('edit-btn');
+            target.classList.add('save-btn');
+        } else if (target.classList.contains('save-btn')) {
+            const row = target.closest('tr');
+            const newWage = parseFloat(row.querySelector('.wage-input').value);
+
+            db.run('UPDATE income SET wage = ? WHERE user_id = ?', [newWage, userId]);
+            await displayUsers(); // Just refresh the user table
+        }
+    });
+
+    // --- Calendar Management ---
+    async function populateUserDropdown() {
+        const userSelect = document.getElementById('cal-user-select');
+        if (!userSelect) return; // The element might not exist if the form changes
+
+        userSelect.innerHTML = '<option value="">Select User</option>';
+        const users = db.exec("SELECT id, first_name, last_name FROM users;");
+        if (users.length) {
+            users[0].values.forEach(([id, firstName, lastName]) => {
+                const option = document.createElement('option');
+                option.value = id;
+                option.textContent = `${firstName} ${lastName}`;
+                userSelect.appendChild(option);
+            });
         }
     }
 
@@ -45,37 +157,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         const daysInMonth = new Date(year, month + 1, 0).getDate();
         const events = await fetchEventsForMonth(year, month);
 
-        // Create blank cells for days before the first of the month
-        for (let i = 0; i < firstDay; i++) {
-            const cell = document.createElement('div');
-            cell.classList.add('calendar-day', 'empty');
-            calendarBody.appendChild(cell);
-        }
+        for (let i = 0; i < firstDay; i++) calendarBody.appendChild(Object.assign(document.createElement('div'), { className: 'calendar-day empty' }));
 
-        // Create cells for each day of the month
         for (let day = 1; day <= daysInMonth; day++) {
             const cell = document.createElement('div');
-            cell.classList.add('calendar-day');
+            cell.className = 'calendar-day';
             const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
             cell.dataset.date = dateStr;
+            cell.innerHTML = `<div class="day-number">${day}</div>`;
 
-            const dayNumber = document.createElement('div');
-            dayNumber.classList.add('day-number');
-            dayNumber.textContent = day;
-            cell.appendChild(dayNumber);
-
-            // Add events to this day
             const dayEvents = events.filter(e => e.date === dateStr);
             dayEvents.forEach(event => {
                 const eventDiv = document.createElement('div');
                 eventDiv.className = 'calendar-event';
-                eventDiv.innerHTML = `
-                    <strong>${event.first_name} ${event.last_name}</strong><br>
-                    ${event.start_time} - ${event.end_time}
-                `;
+                eventDiv.innerHTML = `<strong>${event.first_name} ${event.last_name}</strong><br>${event.start_time} - ${event.end_time}`;
                 cell.appendChild(eventDiv);
             });
-
             calendarBody.appendChild(cell);
         }
     }
@@ -83,45 +180,34 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function fetchEventsForMonth(year, month) {
         const monthStr = String(month + 1).padStart(2, '0');
         const stmt = db.prepare(`
-            SELECT * FROM calendar_events
-            WHERE strftime('%Y-%m', date) = :year_month
+            SELECT ce.id, ce.date, ce.start_time, ce.end_time, u.first_name, u.last_name
+            FROM calendar_events ce JOIN users u ON ce.user_id = u.id
+            WHERE strftime('%Y-%m', ce.date) = :year_month
         `);
         stmt.bind({ ':year_month': `${year}-${monthStr}` });
-
         const events = [];
-        while (stmt.step()) {
-            events.push(stmt.getAsObject());
-        }
+        while (stmt.step()) events.push(stmt.getAsObject());
         stmt.free();
         return events;
     }
 
     calendarForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const firstName = document.getElementById('cal-first-name').value;
-        const lastName = document.getElementById('cal-last-name').value;
+        const userId = document.getElementById('cal-user-select').value;
         const date = document.getElementById('cal-date').value;
         const startTime = document.getElementById('cal-start-time').value;
         const endTime = document.getElementById('cal-end-time').value;
 
-        if (!date) {
-            alert('Please select a date.');
+        if (!date || !userId) {
+            alert('Please select a user and a date.');
             return;
         }
 
-        db.run('INSERT INTO calendar_events (first_name, last_name, date, start_time, end_time) VALUES (?, ?, ?, ?, ?)', [firstName, lastName, date, startTime, endTime]);
+        db.run('INSERT INTO calendar_events (user_id, date, start_time, end_time) VALUES (?, ?, ?, ?)', [userId, date, startTime, endTime]);
         calendarForm.reset();
 
-        // Refresh the calendar for the month of the new event
         const newEventDate = new Date(date);
-        currentYear = newEventDate.getFullYear();
-        currentMonth = newEventDate.getMonth();
-
-        monthTabs.forEach(tab => {
-            tab.classList.toggle('active', parseInt(tab.dataset.month) === currentMonth);
-        });
-
-        await renderCalendar(currentYear, currentMonth);
+        await renderCalendar(newEventDate.getFullYear(), newEventDate.getMonth());
     });
 
     monthTabs.forEach(tab => {
