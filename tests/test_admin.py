@@ -56,3 +56,30 @@ def test_admin_schedulers(page: Page):
     end_time_table_body = page.locator("#end-time-table-body")
     expect(end_time_table_body.locator("tr")).to_have_count(1)
     expect(end_time_table_body.locator("tr td").first).to_have_text("Jane")
+
+    # Test Calendar
+    admin_btn.click()
+    calendar_btn = page.locator("#calendar-btn")
+    expect(calendar_btn).to_be_visible()
+    calendar_btn.click()
+
+    calendar_section = page.locator("#calendar-view")
+    expect(calendar_section).to_be_visible()
+
+    cal_first_name_input = page.locator("#cal-first-name")
+    cal_last_name_input = page.locator("#cal-last-name")
+    cal_day_select = page.locator("#cal-day")
+    cal_start_time_input = page.locator("#cal-start-time")
+    cal_end_time_input = page.locator("#cal-end-time")
+    add_to_calendar_btn = page.locator("#calendar-form button[type='submit']")
+
+    cal_first_name_input.fill("Test")
+    cal_last_name_input.fill("User")
+    cal_day_select.select_option("Monday")
+    cal_start_time_input.fill("10:00")
+    cal_end_time_input.fill("11:00")
+    add_to_calendar_btn.click()
+
+    monday_cell = page.locator("#cal-day-Monday")
+    expect(monday_cell.locator(".calendar-event")).to_have_count(1)
+    expect(monday_cell.locator(".calendar-event strong")).to_have_text("Test User")
