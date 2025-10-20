@@ -6,7 +6,7 @@ const CopyToClipboard = ({ text }) => {
             setIsCopied(true);
             setTimeout(() => {
                 setIsCopied(false);
-            }, 2000); // Reset after 2 seconds
+            }, 2000);
         });
     };
 
@@ -76,7 +76,7 @@ const Accessories = () => {
     const [accessories, setAccessories] = React.useState({});
 
     React.useEffect(() => {
-        fetch('/data/accessories.json')
+        fetch('../data/accessories.json')
             .then(response => response.json())
             .then(data => setAccessories(data));
     }, []);
@@ -102,20 +102,60 @@ const Accessories = () => {
 };
 
 const Laptops = () => {
-    const [laptops, setLaptops] = React.useState([]);
+    const [allLaptops, setAllLaptops] = React.useState([]);
+    const [searchQuery, setSearchQuery] = React.useState('');
 
     React.useEffect(() => {
-        fetch('/data/laptops.json')
+        fetch('../data/laptops.json')
             .then(response => response.json())
-            .then(data => setLaptops(data));
+            .then(data => {
+                setAllLaptops(data);
+            })
+            .catch(error => console.error('Error fetching laptop data:', error));
+
+        const handleSearch = (event) => {
+            setSearchQuery(event.detail);
+        };
+
+        document.addEventListener('searchQueryChanged', handleSearch);
+
+        return () => {
+            document.removeEventListener('searchQueryChanged', handleSearch);
+        };
     }, []);
 
-    const elitebooks = laptops.filter(laptop => laptop.Model.includes('EliteBook'));
-    const zbooks = laptops.filter(laptop => laptop.Model.includes('ZBook'));
+    const filteredLaptops = React.useMemo(() => {
+        if (!searchQuery) {
+            return allLaptops;
+        }
+        return allLaptops.filter(laptop => {
+            const query = searchQuery.toLowerCase();
+            const modelMatch = laptop.Model.toLowerCase().includes(query);
+
+            const specs = {
+                "Processor": laptop.Processor,
+                "Memory": laptop.Memory,
+                "Internal Drive": laptop["Internal Drive"],
+                "Display": laptop.Display,
+                "Graphics": laptop.Graphics,
+                "Screen Part #(s)": laptop["Screen Replacement Part # (Common)"],
+                "Battery Part #(s)": laptop["Battery Replacement Part # (Common)"],
+                "RAM Part #(s)": laptop["RAM Replacement Part # (Common)"],
+                "SSD Part #(s)": laptop["SSD Replacement Part # (Common)"]
+            };
+
+            const componentMatch = Object.values(specs)
+                .some(spec => spec && spec.toLowerCase().includes(query));
+
+            return modelMatch || componentMatch;
+        });
+    }, [allLaptops, searchQuery]);
+
+    const elitebooks = filteredLaptops.filter(laptop => laptop.Model.includes('EliteBook'));
+    const zbooks = filteredLaptops.filter(laptop => laptop.Model.includes('ZBook'));
 
     return (
         <React.Fragment>
-            <h1 className="section-title">HP Laptops Parts List Database</h1>
             <h3 className="section-title">HP EliteBook</h3>
             <div id="elitebook-cards" className="card-grid">
                 {elitebooks.map(laptop => <LaptopCard key={laptop.Model} laptop={laptop} />)}
