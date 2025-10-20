@@ -56,6 +56,7 @@
                         <div id="admin-options" class="dropdown-menu" style="display: none;">
                             <button id="calendar-btn">Calendar</button>
                             <button id="income-manager-btn">Income Manager</button>
+                            <button id="payroll-report-btn">Payroll Report</button>
                         </div>
                     </div>
                 </div>
@@ -139,6 +140,21 @@
                         <tbody id="user-table-body"></tbody>
                     </table>
                 </section>
+
+                <section id="payroll-report" style="display: none;">
+                    <h2 class="section-title">Payroll Report</h2>
+                    <p>This report shows the calculated income for the currently selected month in the calendar.</p>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Total Hours</th>
+                                <th>Total Income</th>
+                            </tr>
+                        </thead>
+                        <tbody id="payroll-table-body"></tbody>
+                    </table>
+                </section>
             </main>
 
             <footer>
@@ -177,11 +193,13 @@
             const adminOptions = document.getElementById('admin-options');
             const adminButtons = [
                 document.getElementById('calendar-btn'),
-                document.getElementById('income-manager-btn')
+                document.getElementById('income-manager-btn'),
+                document.getElementById('payroll-report-btn')
             ];
             const adminSections = [
                 document.getElementById('calendar-view'),
-                document.getElementById('income-manager')
+                document.getElementById('income-manager'),
+                document.getElementById('payroll-report')
             ];
 
             function setupDropdown(btn, options, otherOptions) {

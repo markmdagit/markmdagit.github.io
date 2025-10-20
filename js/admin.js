@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         await renderCalendar(currentYear, currentMonth);
         await populateUserDropdown();
         await displayUsers();
+        await calculateAndDisplayPayroll(currentYear, currentMonth);
     }
 
     // --- User Management ---
@@ -180,7 +181,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function fetchEventsForMonth(year, month) {
         const monthStr = String(month + 1).padStart(2, '0');
         const stmt = db.prepare(`
-            SELECT ce.id, ce.date, ce.start_time, ce.end_time, u.first_name, u.last_name
+            SELECT ce.id, ce.user_id, ce.date, ce.start_time, ce.end_time, u.first_name, u.last_name
             FROM calendar_events ce JOIN users u ON ce.user_id = u.id
             WHERE strftime('%Y-%m', ce.date) = :year_month
         `);
@@ -211,13 +212,58 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     monthTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
+        tab.addEventListener('click', async () => {
             currentMonth = parseInt(tab.dataset.month);
             monthTabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
-            renderCalendar(currentYear, currentMonth);
+            await renderCalendar(currentYear, currentMonth);
+            await calculateAndDisplayPayroll(currentYear, currentMonth);
         });
     });
+
+    // --- Payroll Calculation ---
+    async function calculateAndDisplayPayroll(year, month) {
+        const payrollTableBody = document.getElementById('payroll-table-body');
+        payrollTableBody.innerHTML = '';
+
+        const events = await fetchEventsForMonth(year, month);
+        if (!events.length) return;
+
+        const payrollData = {};
+
+        const wages = db.exec("SELECT user_id, wage FROM income")[0].values.reduce((acc, [id, wage]) => {
+            acc[id] = wage;
+            return acc;
+        }, {});
+
+        events.forEach(event => {
+            const userId = event.user_id;
+            if (!payrollData[userId]) {
+                payrollData[userId] = {
+                    name: `${event.first_name} ${event.last_name}`,
+                    totalHours: 0,
+                    totalIncome: 0
+                };
+            }
+            const startTime = new Date(`1970-01-01T${event.start_time}`);
+            const endTime = new Date(`1970-01-01T${event.end_time}`);
+            const hours = (endTime - startTime) / (1000 * 60 * 60);
+
+            payrollData[userId].totalHours += hours;
+            payrollData[userId].totalIncome += hours * (wages[userId] || 0);
+        });
+
+        for (const userId in payrollData) {
+            const data = payrollData[userId];
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${data.name}</td>
+                <td>${data.totalHours.toFixed(2)}</td>
+                <td>$${data.totalIncome.toFixed(2)}</td>
+            `;
+            payrollTableBody.appendChild(tr);
+        }
+    }
 
     await initDb();
 });
