@@ -54,8 +54,6 @@
                     <div class="dropdown">
                         <button id="admin-btn" class="dropdown-toggle">Admin <i class="fas fa-caret-down"></i></button>
                         <div id="admin-options" class="dropdown-menu" style="display: none;">
-                            <button id="start-time-btn">Start Time Scheduler</button>
-                            <button id="end-time-btn">End Time Scheduler</button>
                             <button id="calendar-btn">Calendar</button>
                         </div>
                     </div>
@@ -77,46 +75,6 @@
                 <section id="w10-incompatible" style="display: none;">
                     <h2 class="section-title">W10 Incompatible Solutions</h2>
                     <div id="w10-incompatible-cards" class="card-grid"></div>
-                </section>
-
-                <section id="start-time-scheduler" style="display: none;">
-                    <h2 class="section-title">Start Time Scheduler</h2>
-                    <form id="start-time-form">
-                        <input type="text" id="start-first-name" placeholder="First Name" required>
-                        <input type="text" id="start-last-name" placeholder="Last Name" required>
-                        <input type="time" id="start-time" required>
-                        <button type="submit">Add Start Time</button>
-                    </form>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Start Time</th>
-                            </tr>
-                        </thead>
-                        <tbody id="start-time-table-body"></tbody>
-                    </table>
-                </section>
-
-                <section id="end-time-scheduler" style="display: none;">
-                    <h2 class="section-title">End Time Scheduler</h2>
-                    <form id="end-time-form">
-                        <input type="text" id="end-first-name" placeholder="First Name" required>
-                        <input type="text" id="end-last-name" placeholder="Last Name" required>
-                        <input type="time" id="end-time" required>
-                        <button type="submit">Add End Time</button>
-                    </form>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>End Time</th>
-                            </tr>
-                        </thead>
-                        <tbody id="end-time-table-body"></tbody>
-                    </table>
                 </section>
 
                 <section id="calendar-view" style="display: none;">
@@ -198,13 +156,9 @@
             const adminBtn = document.getElementById('admin-btn');
             const adminOptions = document.getElementById('admin-options');
             const adminButtons = [
-                document.getElementById('start-time-btn'),
-                document.getElementById('end-time-btn'),
                 document.getElementById('calendar-btn')
             ];
             const adminSections = [
-                document.getElementById('start-time-scheduler'),
-                document.getElementById('end-time-scheduler'),
                 document.getElementById('calendar-view')
             ];
 
