@@ -579,6 +579,34 @@ table.table tbody tr:hover {
     font-weight: 600;
 }
 
+/* --- Action Buttons in Tables --- */
+.action-btn {
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+    transition: opacity 0.3s ease;
+}
+
+.action-btn:hover {
+    opacity: 0.8;
+}
+
+.edit-btn {
+    background-color: #ffc107; /* Yellow */
+}
+
+.delete-btn {
+    background-color: #dc3545; /* Red */
+}
+
+.save-btn {
+    background-color: #28a745; /* Green */
+}
+
 /* --- Search Bar --- */
 .search-container {
     margin-bottom: 2rem;

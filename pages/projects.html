@@ -55,6 +55,7 @@
                         <button id="admin-btn" class="dropdown-toggle">Admin <i class="fas fa-caret-down"></i></button>
                         <div id="admin-options" class="dropdown-menu" style="display: none;">
                             <button id="calendar-btn">Calendar</button>
+                            <button id="income-manager-btn">Income Manager</button>
                         </div>
                     </div>
                 </div>
@@ -108,13 +109,35 @@
                         <div class="calendar-body" id="calendar-body"></div>
                     </div>
                     <form id="calendar-form">
-                        <input type="text" id="cal-first-name" placeholder="First Name" required>
-                        <input type="text" id="cal-last-name" placeholder="Last Name" required>
+                        <select id="cal-user-select" required>
+                            <option value="">Select User</option>
+                        </select>
                         <input type="date" id="cal-date" required>
                         <input type="time" id="cal-start-time" required>
                         <input type="time" id="cal-end-time" required>
                         <button type="submit">Add to Calendar</button>
                     </form>
+                </section>
+
+                <section id="income-manager" style="display: none;">
+                    <h2 class="section-title">Income Manager</h2>
+                    <form id="user-form">
+                        <input type="text" id="user-first-name" placeholder="First Name" required>
+                        <input type="text" id="user-last-name" placeholder="Last Name" required>
+                        <input type="number" id="user-wage" placeholder="Hourly Wage" step="0.01" required>
+                        <button type="submit">Add User</button>
+                    </form>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Hourly Wage</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-table-body"></tbody>
+                    </table>
                 </section>
             </main>
 
@@ -153,10 +176,12 @@
             const adminBtn = document.getElementById('admin-btn');
             const adminOptions = document.getElementById('admin-options');
             const adminButtons = [
-                document.getElementById('calendar-btn')
+                document.getElementById('calendar-btn'),
+                document.getElementById('income-manager-btn')
             ];
             const adminSections = [
-                document.getElementById('calendar-view')
+                document.getElementById('calendar-view'),
+                document.getElementById('income-manager')
             ];
 
             function setupDropdown(btn, options, otherOptions) {
