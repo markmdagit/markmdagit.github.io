@@ -313,7 +313,7 @@ form {
     flex-wrap: wrap;
 }
 
-form input, form button {
+form input, form select, form button {
     padding: 0.75rem;
     border-radius: 8px;
     border: 1px solid #4a4a4a;
@@ -486,4 +486,26 @@ table.table tbody tr:hover {
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid #4a4a4a;
+}
+
+/* --- Calendar Styles --- */
+table.calendar th,
+table.calendar td {
+    width: 14.28%; /* 100 / 7 */
+    height: 120px; /* Example height */
+    vertical-align: top;
+    padding: 0.5rem;
+}
+
+.calendar-event {
+    background-color: #007acc;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.calendar-event strong {
+    font-weight: 600;
 }

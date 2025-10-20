@@ -56,6 +56,7 @@
                         <div id="admin-options" class="dropdown-menu" style="display: none;">
                             <button id="start-time-btn">Start Time Scheduler</button>
                             <button id="end-time-btn">End Time Scheduler</button>
+                            <button id="calendar-btn">Calendar</button>
                         </div>
                     </div>
                 </div>
@@ -117,6 +118,50 @@
                         <tbody id="end-time-table-body"></tbody>
                     </table>
                 </section>
+
+                <section id="calendar-view" style="display: none;">
+                    <h2 class="section-title">Weekly Calendar</h2>
+                    <form id="calendar-form">
+                        <input type="text" id="cal-first-name" placeholder="First Name" required>
+                        <input type="text" id="cal-last-name" placeholder="Last Name" required>
+                        <select id="cal-day" required>
+                            <option value="Sunday">Sunday</option>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                        </select>
+                        <input type="time" id="cal-start-time" required>
+                        <input type="time" id="cal-end-time" required>
+                        <button type="submit">Add to Calendar</button>
+                    </form>
+                    <table class="table calendar">
+                        <thead>
+                            <tr>
+                                <th>Sunday</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                                <th>Saturday</th>
+                            </tr>
+                        </thead>
+                        <tbody id="calendar-body">
+                            <tr>
+                                <td id="cal-day-Sunday"></td>
+                                <td id="cal-day-Monday"></td>
+                                <td id="cal-day-Tuesday"></td>
+                                <td id="cal-day-Wednesday"></td>
+                                <td id="cal-day-Thursday"></td>
+                                <td id="cal-day-Friday"></td>
+                                <td id="cal-day-Saturday"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
             </main>
 
             <footer>
@@ -154,11 +199,13 @@
             const adminOptions = document.getElementById('admin-options');
             const adminButtons = [
                 document.getElementById('start-time-btn'),
-                document.getElementById('end-time-btn')
+                document.getElementById('end-time-btn'),
+                document.getElementById('calendar-btn')
             ];
             const adminSections = [
                 document.getElementById('start-time-scheduler'),
-                document.getElementById('end-time-scheduler')
+                document.getElementById('end-time-scheduler'),
+                document.getElementById('calendar-view')
             ];
 
             function setupDropdown(btn, options, otherOptions) {
