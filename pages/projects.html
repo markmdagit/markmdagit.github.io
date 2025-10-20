@@ -62,8 +62,6 @@
 
                 <section id="laptops">
                     <h2 class="section-title">HP Laptops Parts List Database</h2>
-                    <input type="text" id="laptop-search" placeholder="Search for laptops...">
-                    <div id="search-results"></div>
                     <div id="root"></div>
                 </section>
 
@@ -135,7 +133,6 @@
       };
     </script>
     <script src="../js/main.js"></script>
-    <script src="../js/search.js"></script>
     <script src="../js/admin.js"></script>
     <script src="../js/laptops.jsx" type="text/babel"></script>
     <script>
@@ -164,10 +161,11 @@
                 document.getElementById('end-time-scheduler')
             ];
 
-            function setupDropdown(btn, options) {
+            function setupDropdown(btn, options, otherOptions) {
                 btn.addEventListener('click', (event) => {
                     event.stopPropagation();
                     const isDisplayed = options.style.display !== 'none';
+                    otherOptions.style.display = 'none';
                     options.style.display = isDisplayed ? 'none' : 'block';
                 });
             }
@@ -186,8 +184,8 @@
 
             const allSections = [...computerSections, ...adminSections];
 
-            setupDropdown(computersBtn, computerOptions);
-            setupDropdown(adminBtn, adminOptions);
+            setupDropdown(computersBtn, computerOptions, adminOptions);
+            setupDropdown(adminBtn, adminOptions, computerOptions);
             setupMenu(computerButtons, computerSections, allSections);
             setupMenu(adminButtons, adminSections, allSections);
 
