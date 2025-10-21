@@ -49,12 +49,17 @@ def test_payroll_report(page: Page):
     expect(report_row).to_have_count(1)
 
     user_cell = report_row.locator("td").nth(0)
-    hours_cell = report_row.locator("td").nth(1)
-    income_cell = report_row.locator("td").nth(2)
+    scheduled_hours_cell = report_row.locator("td").nth(1)
+    paid_hours_cell = report_row.locator("td").nth(2)
+    income_cell = report_row.locator("td").nth(3)
 
     expect(user_cell).to_have_text("Payroll Test")
-    expect(hours_cell).to_have_text("12.50")
-    expect(income_cell).to_have_text("$250.00")
+    # Scheduled Hours = 8 + 4.5 = 12.5
+    expect(scheduled_hours_cell).to_have_text("12.50")
+    # Paid Hours = (8 - 0.5) + (4.5 - 0.5) = 7.5 + 4 = 11.5
+    expect(paid_hours_cell).to_have_text("11.50")
+    # Total Income = 11.5 hours * $20/hour = $230.00
+    expect(income_cell).to_have_text("$230.00")
 
     # 6. Go back to calendar and check a month with no events
     admin_btn.click()
