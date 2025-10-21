@@ -44,9 +44,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
                 );
             `);
-            db.run(`DROP TABLE IF EXISTS calendar_events;`);
             db.run(`
-                CREATE TABLE calendar_events (
+                CREATE TABLE IF NOT EXISTS calendar_events (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     user_id INTEGER NOT NULL,
                     date TEXT NOT NULL,
@@ -192,23 +191,47 @@ document.addEventListener('DOMContentLoaded', async () => {
         return events;
     }
 
+    calendarBody.addEventListener('click', (e) => {
+        const target = e.target.closest('.calendar-day');
+        if (target && !target.classList.contains('empty')) {
+            const allDays = calendarBody.querySelectorAll('.calendar-day');
+            allDays.forEach(day => day.classList.remove('selected'));
+            target.classList.add('selected');
+
+            const date = new Date(target.dataset.date);
+            const formattedDate = `${String(date.getMonth() + 1).padStart(2, '0')}/${String(date.getDate()).padStart(2, '0')}/${date.getFullYear()}`;
+            document.getElementById('cal-date').value = formattedDate;
+        }
+    });
+
     calendarForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const userId = document.getElementById('cal-user-select').value;
-        const date = document.getElementById('cal-date').value;
+        const dateStr = document.getElementById('cal-date').value;
         const startTime = document.getElementById('cal-start-time').value;
         const endTime = document.getElementById('cal-end-time').value;
 
-        if (!date || !userId) {
+        if (!dateStr || !userId) {
             alert('Please select a user and a date.');
             return;
         }
 
-        db.run('INSERT INTO calendar_events (user_id, date, start_time, end_time) VALUES (?, ?, ?, ?)', [userId, date, startTime, endTime]);
+        const [month, day, year] = dateStr.split('/');
+        const isoDate = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+
+        db.run('INSERT INTO calendar_events (user_id, date, start_time, end_time) VALUES (?, ?, ?, ?)', [userId, isoDate, startTime, endTime]);
         calendarForm.reset();
 
-        const newEventDate = new Date(date);
-        await renderCalendar(newEventDate.getFullYear(), newEventDate.getMonth());
+        const newEventDate = new Date(isoDate);
+        currentYear = newEventDate.getFullYear();
+        currentMonth = newEventDate.getMonth();
+
+        monthTabs.forEach(tab => {
+            tab.classList.toggle('active', parseInt(tab.dataset.month) === currentMonth);
+        });
+
+        await renderCalendar(currentYear, currentMonth);
+        await calculateAndDisplayPayroll(currentYear, currentMonth);
     });
 
     monthTabs.forEach(tab => {

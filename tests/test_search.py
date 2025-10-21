@@ -17,7 +17,6 @@ def test_laptop_search(page: Page):
     expect(search_bar).to_be_visible()
 
     # Wait for the initial list of laptops to be rendered
-    # We can check if at least one EliteBook and one ZBook card is present
     expect(page.locator("#elitebook-cards .laptop-card")).to_have_count(7)
     expect(page.locator("#zbook-cards .laptop-card")).to_have_count(7)
 
