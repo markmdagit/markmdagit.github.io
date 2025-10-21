@@ -76,7 +76,7 @@ const Accessories = () => {
     const [accessories, setAccessories] = React.useState({});
 
     React.useEffect(() => {
-        fetch('../data/accessories.json')
+        fetch('/data/accessories.json')
             .then(response => response.json())
             .then(data => setAccessories(data));
     }, []);
@@ -106,7 +106,7 @@ const Laptops = () => {
     const [searchQuery, setSearchQuery] = React.useState('');
 
     React.useEffect(() => {
-        fetch('../data/laptops.json')
+        fetch('/data/laptops.json')
             .then(response => response.json())
             .then(data => {
                 setAllLaptops(data);

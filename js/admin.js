@@ -264,16 +264,19 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (!payrollData[userId]) {
                 payrollData[userId] = {
                     name: `${event.first_name} ${event.last_name}`,
-                    totalHours: 0,
+                    scheduledHours: 0,
+                    paidHours: 0,
                     totalIncome: 0
                 };
             }
             const startTime = new Date(`1970-01-01T${event.start_time}`);
             const endTime = new Date(`1970-01-01T${event.end_time}`);
-            const hours = (endTime - startTime) / (1000 * 60 * 60);
+            const scheduledHours = (endTime - startTime) / (1000 * 60 * 60);
+            const paidHours = scheduledHours > 0 ? Math.max(0, scheduledHours - 0.5) : 0;
 
-            payrollData[userId].totalHours += hours;
-            payrollData[userId].totalIncome += hours * (wages[userId] || 0);
+            payrollData[userId].scheduledHours += scheduledHours;
+            payrollData[userId].paidHours += paidHours;
+            payrollData[userId].totalIncome += paidHours * (wages[userId] || 0);
         });
 
         for (const userId in payrollData) {
@@ -281,7 +284,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>${data.name}</td>
-                <td>${data.totalHours.toFixed(2)}</td>
+                <td>${data.scheduledHours.toFixed(2)}</td>
+                <td>${data.paidHours.toFixed(2)}</td>
                 <td>$${data.totalIncome.toFixed(2)}</td>
             `;
             payrollTableBody.appendChild(tr);
