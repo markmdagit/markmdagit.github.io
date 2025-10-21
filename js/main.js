@@ -268,7 +268,7 @@ function loadAccessories() {
 
 function createW10Card(item) {
     return `
-        <a href="${item.url}" target="_blank" class="project-card">
+        <a href="${item.url}" target="_blank" class="laptop-card">
             <h3>${item.name}</h3>
             <p>${item.description}</p>
         </a>
