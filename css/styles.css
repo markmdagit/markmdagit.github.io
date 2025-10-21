@@ -131,6 +131,102 @@ section:first-child {
     border-left: 4px solid #00aaff;
 }
 
+/* --- Skills Section --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-card {
+    background-color: #343a40;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.skill-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #e0e0e0;
+}
+
+.skill-card ul {
+    list-style-position: inside;
+    padding-left: 0.5rem;
+}
+
+.skill-card li, .skill-card p {
+    margin-bottom: 0.5rem;
+    color: #c0c0c0;
+}
+
+.languages .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    background-color: #007acc;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* --- Experience & Education Section --- */
+.timeline {
+    position: relative;
+}
+
+.timeline-item {
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+    border-left: 2px solid #555;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #00aaff;
+    border: 3px solid #212529;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-item h3 {
+    font-size: 1.25rem;
+    color: #f0f0f0;
+}
+
+.item-meta {
+    color: #a0a0a0;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.item-description {
+    color: #c0c0c0;
+}
+
+.item-description ul {
+    list-style: disc;
+    padding-left: 1.2rem;
+    margin-top: 0.5rem;
+}
+
 /* --- Project Toggle Buttons --- */
 .project-toggle {
     margin-bottom: 2rem;
