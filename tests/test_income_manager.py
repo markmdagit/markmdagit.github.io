@@ -36,8 +36,10 @@ def test_income_manager_crud(page: Page):
     # Add a calendar event for the user
     admin_btn.click()
     page.locator("#calendar-btn").click()
+    page.locator(".month-tab[data-month='10']").click()
+    page.locator(".calendar-day[data-date='2025-11-15']").click()
+    expect(page.locator("#cal-date")).to_have_value("11/15/2025")
     page.locator("#cal-user-select").select_option(label="John Doe")
-    page.locator("#cal-date").fill("2025-11-15")
     page.locator("#cal-start-time").fill("09:00")
     page.locator("#cal-end-time").fill("17:00")
     page.locator("#calendar-form button[type='submit']").click()
