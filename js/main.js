@@ -56,25 +56,32 @@ function setActiveNav() {
 
 document.addEventListener("DOMContentLoaded", () => {
     setActiveNav();
+});
 
+function loadSupplyChainData() {
     const elitebookSupplyChainContainer = document.getElementById("elitebook-supply-chain-cards");
     const zbookSupplyChainContainer = document.getElementById("zbook-supply-chain-cards");
-    if (elitebookSupplyChainContainer && zbookSupplyChainContainer) {
+    const loadingIndicator = document.querySelector("#supply-chain .loading-indicator");
+
+    if (elitebookSupplyChainContainer && zbookSupplyChainContainer && !elitebookSupplyChainContainer.dataset.loaded) {
+        elitebookSupplyChainContainer.dataset.loaded = "true";
+        zbookSupplyChainContainer.dataset.loaded = "true";
+        loadingIndicator.style.display = 'block';
         fetchData("/data/supply_chain.json")
             .then(data => {
+                loadingIndicator.style.display = 'none';
                 const elitebookSupplyData = data.filter(item => item["Model Series"] === "Elitebook");
                 const zbookSupplyData = data.filter(item => item["Model Series"] === "Zbook Studio");
 
                 elitebookSupplyData.forEach(item => createSupplyChainCard(elitebookSupplyChainContainer, item));
                 zbookSupplyData.forEach(item => createSupplyChainCard(zbookSupplyChainContainer, item));
             })
-            .catch(error => console.error("Error fetching or creating supply chain cards:", error));
+            .catch(error => {
+                loadingIndicator.textContent = "Error loading data.";
+                console.error("Error fetching or creating supply chain cards:", error)
+            });
     }
-
-    // Load accessories data
-    loadAccessories();
-    loadW10Incompatible();
-});
+}
 
 function createSupplyChainCard(container, item) {
     const card = document.createElement('div');
@@ -138,6 +145,7 @@ function createSupplyChainCard(container, item) {
                 const partnerLink = document.createElement('a');
                 partnerLink.href = partner.map_url;
                 partnerLink.target = '_blank';
+                partnerLink.rel = 'noopener noreferrer';
                 partnerLink.textContent = partner.name;
 
                 valueSpan.appendChild(partnerLink);
@@ -227,8 +235,9 @@ function createAccessoryCard(container, item) {
 
 function loadAccessories() {
     const accessoriesContainer = document.getElementById("accessories");
-    if (!accessoriesContainer) return;
+    if (!accessoriesContainer || accessoriesContainer.dataset.loaded) return;
 
+    accessoriesContainer.dataset.loaded = "true";
     fetchData("/data/accessories.json")
         .then(data => {
             // Clear container in case of re-population
@@ -268,7 +277,7 @@ function loadAccessories() {
 
 function createW10Card(item) {
     return `
-        <a href="${item.url}" target="_blank" class="laptop-card">
+        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="laptop-card">
             <h3>${item.name}</h3>
             <p>${item.description}</p>
         </a>
@@ -276,9 +285,15 @@ function createW10Card(item) {
 }
 
 function loadW10Incompatible() {
+    const container = document.getElementById('w10-incompatible-cards');
+    const loadingIndicator = document.querySelector("#w10-incompatible .loading-indicator");
+    if (!container || container.dataset.loaded) return;
+
+    container.dataset.loaded = "true";
+    loadingIndicator.style.display = 'block';
     fetchData('/data/w10_incompatible.json')
         .then(data => {
-            const container = document.getElementById('w10-incompatible-cards');
+            loadingIndicator.style.display = 'none';
             if (container) {
                 container.innerHTML = ''; // Clear existing content
                 for (const category in data) {
@@ -298,5 +313,8 @@ function loadW10Incompatible() {
                 }
             }
         })
-        .catch(error => console.error('Error loading W10 incompatible solutions data:', error));
+        .catch(error => {
+            loadingIndicator.textContent = "Error loading data.";
+            console.error('Error loading W10 incompatible solutions data:', error)
+        });
 }
