@@ -12,9 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <link rel="stylesheet" href="../css/styles.css">
-    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
 
@@ -25,8 +22,8 @@
             <h1>Marcos Alvarez</h1>
             <p class="job-title">IT Support Professional</p>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/marcos-alvarez-ab2ba5109/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/markmdagit" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/marcos-alvarez-ab2ba5109/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/markmdagit" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
             </div>
         </header>
 
@@ -70,6 +67,7 @@
 
                 <section id="supply-chain" style="display: none;">
                     <h2 class="section-title">Supply Chain Analysis</h2>
+                    <div class="loading-indicator">Loading...</div>
                     <h3 class="section-title">HP EliteBook</h3>
                     <div id="elitebook-supply-chain-cards" class="card-grid"></div>
                     <h3 class="section-title">HP ZBook Studio</h3>
@@ -78,6 +76,7 @@
 
                 <section id="w10-incompatible" style="display: none;">
                     <h2 class="section-title">W10 Incompatible Solutions</h2>
+                    <div class="loading-indicator">Loading...</div>
                     <div id="w10-incompatible-cards" class="card-grid"></div>
                 </section>
 
@@ -174,7 +173,7 @@
     <script src="../js/main.js"></script>
     <script src="../js/admin.js"></script>
     <script src="../js/search.js"></script>
-    <script src="../js/laptops.jsx" type="text/babel"></script>
+    <script src="../js/bundle.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const computersBtn = document.getElementById('computers-btn');
@@ -220,6 +219,14 @@
                         buttons.forEach(btn => btn.classList.remove('active'));
                         button.classList.add('active');
                         button.closest('.dropdown-menu').style.display = 'none';
+
+                        if (button.id === 'laptops-btn') {
+                            loadAccessories();
+                        } else if (button.id === 'supply-chain-btn') {
+                            loadSupplyChainData();
+                        } else if (button.id === 'w10-incompatible-btn') {
+                            loadW10Incompatible();
+                        }
                     });
                 });
             }

@@ -1,3 +1,6 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
 const CopyToClipboard = ({ text }) => {
     const [isCopied, setIsCopied] = React.useState(false);
 
@@ -169,4 +172,6 @@ const Laptops = () => {
     );
 };
 
-ReactDOM.render(<Laptops />, document.getElementById('root'));
+const container = document.getElementById('root');
+const root = ReactDOM.createRoot(container);
+root.render(<Laptops />);
