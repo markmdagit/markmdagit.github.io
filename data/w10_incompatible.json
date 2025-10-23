@@ -51,16 +51,16 @@
       "description": "A lightweight and flexible Linux distribution for proficient users who value simplicity and a do-it-yourself approach."
     }
   ],
-  "Refurbished Laptops to Consider": [
+  "Laptops to Consider": [
     {
-      "name": "MacBook Pro (Refurbished)",
-      "url": "https://www.backmarket.com/en-us/p/macbook-pro-retina-16-inch-2019-core-i9-16gb-ssd-1000-gb/aefda162-f641-4448-ae6c-e97f56ccc388?l=12#",
-      "description": "A refurbished Apple MacBook Pro, offering high performance and a premium design as an alternative to Windows-based laptops."
+      "name": "MacBook Pro 14-inch",
+      "url": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch",
+      "description": "The latest 14-inch MacBook Pro from Apple, offering high performance and a premium design."
     },
     {
-      "name": "HP EliteBook (Renewed)",
-      "url": "https://www.amazon.com/s?k=elitebook+g9+amd+renewed",
-      "description": "A renewed HP EliteBook, offering a business-class experience with potential cost savings."
+      "name": "HP Laptops (Ready to Ship)",
+      "url": "https://www.hp.com/us-en/shop/slp/readytoship-special/laptops",
+      "description": "A selection of HP laptops that are in stock and ready to ship."
     }
   ]
 }
