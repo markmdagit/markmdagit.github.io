@@ -68,13 +68,13 @@
       "name": "Google Chromebook",
       "url": "https://www.google.com/chromebook/",
       "description": "A series of laptops running ChromeOS, designed for web-based tasks.",
-      "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Chromebook-logo.svg"
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/36/Chromebook-logo.svg"
     },
     {
       "name": "Framework Laptop",
       "url": "https://frame.work/",
       "description": "A modular and repairable laptop designed for longevity and customization.",
-      "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/98/Framework_Computer_logo.svg"
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Framework_Computer_logo.svg"
     },
     {
       "name": "Dell Laptops",
@@ -86,19 +86,19 @@
       "name": "Lenovo Laptops",
       "url": "https://www.lenovo.com/us/en/laptops/",
       "description": "Laptops from Lenovo, including the ThinkPad and Yoga series.",
-      "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/03/Lenovo_Logo.svg"
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Lenovo_%282015%29.svg"
     },
     {
       "name": "ASUS Laptops",
       "url": "https://www.asus.com/us/laptops/for-home/all-series/",
       "description": "A variety of laptops from ASUS for different needs.",
-      "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Corporate_Logo.svg"
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg"
     },
     {
       "name": "System76 Laptops",
       "url": "https://system76.com/",
       "description": "Laptops designed to run Linux out of the box.",
-      "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/23/System76_logo.svg"
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c2/System76_logo.svg"
     },
     {
       "name": "Microsoft Surface Laptop",
