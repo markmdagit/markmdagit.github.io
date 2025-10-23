@@ -504,3 +504,44 @@ footer {
     font-size: 1.2rem;
     color: #a0a0a0;
 }
+
+/* --- Laptop Spec and Copy Button --- */
+.spec {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #3a3f44;
+}
+
+.spec-key {
+    font-weight: 600;
+    color: #e0e0e0;
+    flex-basis: 40%;
+}
+
+.spec-value {
+    color: #c0c0c0;
+    flex-basis: 60%;
+    text-align: right;
+}
+
+.copy-button {
+    background: none;
+    border: none;
+    color: #00aaff;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-left: 1rem;
+    padding: 0.2rem;
+    transition: color 0.3s ease;
+}
+
+.copy-button:hover {
+    color: #33bbff;
+}
+
+.copy-button .fa-check {
+    color: #28a745;
+}
