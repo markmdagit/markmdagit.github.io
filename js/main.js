@@ -276,8 +276,10 @@ function loadAccessories() {
 }
 
 function createW10Card(item) {
+    const imageHTML = item.image_url ? `<img src="${item.image_url}" alt="${item.name}" class="card-logo">` : '';
     return `
         <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="laptop-card">
+            ${imageHTML}
             <h3>${item.name}</h3>
             <p>${item.description}</p>
         </a>
