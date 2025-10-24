@@ -105,12 +105,19 @@ function loadW10Incompatible() {
 
     loadingIndicator.style.display = 'block';
     container.innerHTML = '';
+    console.log("Attempting to load W10 incompatible data...");
 
     fetchData('/data/w10_incompatible.json')
         .then(data => {
+            console.log("Successfully fetched W10 data:", data);
             loadingIndicator.style.display = 'none';
             if (container) {
+                if (typeof data !== 'object' || data === null) {
+                    console.error("Fetched data is not an object:", data);
+                    throw new Error("Invalid data format");
+                }
                 for (const category in data) {
+                    console.log("Processing category:", category);
                     const categoryContainer = document.createElement('div');
 
                     const categoryTitle = document.createElement('h3');
@@ -120,19 +127,28 @@ function loadW10Incompatible() {
 
                     const cardGrid = document.createElement('div');
                     cardGrid.className = 'card-grid';
-                    data[category].forEach(item => {
-                        cardGrid.appendChild(createW10Card(item));
-                    });
+                    if (Array.isArray(data[category])) {
+                        data[category].forEach(item => {
+                            cardGrid.appendChild(createW10Card(item));
+                        });
+                    } else {
+                        console.error(`Data for category "${category}" is not an array.`);
+                    }
                     categoryContainer.appendChild(cardGrid);
 
                     container.appendChild(categoryContainer);
                 }
+                console.log("Finished rendering W10 incompatible data.");
+            } else {
+                console.error("Container #w10-incompatible-cards not found.");
             }
         })
         .catch(error => {
+            console.error('Error in loadW10Incompatible function:', error);
             loadingIndicator.style.display = 'none';
-            container.textContent = 'Error loading data.';
-            console.error('Error loading W10 incompatible solutions data:', error);
+            if (container) {
+                container.textContent = 'Error loading data.';
+            }
         });
 }
 
