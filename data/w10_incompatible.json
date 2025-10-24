@@ -82,20 +82,6 @@
       "url": "https://system76.com/laptops",
       "description": "A powerful laptop from a company that specializes in Linux-based hardware."
     },
-    {
-      "name": "TUXEDO Laptop",
-      "url": "https://www.tuxedocomputers.com/en",
-      "description": "A German manufacturer of custom-built laptops and PCs with Linux pre-installed."
-    },
-    {
-      "name": "Slimbook Laptop",
-      "url": "https://slimbook.es/en/",
-      "description": "A Spanish brand offering a range of lightweight and powerful Linux laptops."
-    },
-    {
-      "name": "Star Labs Laptop",
-      "url": "https://starlabs.systems/",
-      "description": "A UK-based company that designs and sells laptops specifically for Linux."
     }
   ]
 }
