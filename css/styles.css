@@ -496,3 +496,46 @@ footer {
     background-color: #212529;
     border-radius: 0 0 12px 12px;
 }
+
+/* --- Spec and Copy Button Styles --- */
+.spec {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    background-color: #343a40;
+    border-radius: 5px;
+}
+
+.spec-key {
+    font-weight: 600;
+    color: #e0e0e0;
+    flex-shrink: 0;
+    margin-right: 1rem;
+}
+
+.spec-value {
+    color: #c0c0c0;
+    text-align: right;
+    word-break: break-all;
+}
+
+.copy-button {
+    background: none;
+    border: none;
+    color: #00aaff;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-left: 0.75rem;
+    padding: 0.25rem;
+    transition: color 0.3s ease;
+}
+
+.copy-button:hover {
+    color: #33bbff;
+}
+
+.copy-button .fa-check {
+    color: #28a745;
+}

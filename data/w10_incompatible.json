@@ -61,6 +61,41 @@
       "name": "HP EliteBook (Renewed)",
       "url": "https://www.amazon.com/s?k=elitebook+g9+amd+renewed",
       "description": "A renewed HP EliteBook, offering a business-class experience with potential cost savings."
+    },
+    {
+      "name": "Dell Latitude (Renewed)",
+      "url": "https://www.amazon.com/s?k=dell+latitude+renewed",
+      "description": "A renewed Dell Latitude, a business-focused laptop known for its reliability and performance."
+    },
+    {
+      "name": "Lenovo ThinkPad (Renewed)",
+      "url": "https://www.amazon.com/s?k=lenovo+thinkpad+renewed",
+      "description": "A renewed Lenovo ThinkPad, praised for its robust build quality and excellent keyboard."
+    },
+    {
+      "name": "Framework Laptop",
+      "url": "https://frame.work/",
+      "description": "A modular and repairable laptop designed for sustainability and customization."
+    },
+    {
+      "name": "System76 Laptop",
+      "url": "https://system76.com/laptops",
+      "description": "A powerful laptop from a company that specializes in Linux-based hardware."
+    },
+    {
+      "name": "TUXEDO Laptop",
+      "url": "https://www.tuxedocomputers.com/en",
+      "description": "A German manufacturer of custom-built laptops and PCs with Linux pre-installed."
+    },
+    {
+      "name": "Slimbook Laptop",
+      "url": "https://slimbook.es/en/",
+      "description": "A Spanish brand offering a range of lightweight and powerful Linux laptops."
+    },
+    {
+      "name": "Star Labs Laptop",
+      "url": "https://starlabs.systems/",
+      "description": "A UK-based company that designs and sells laptops specifically for Linux."
     }
   ]
 }
