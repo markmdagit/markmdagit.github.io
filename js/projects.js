@@ -75,7 +75,17 @@ function createW10Card(item) {
     const cardLink = document.createElement('a');
     cardLink.href = item.url;
     cardLink.target = '_blank';
+    cardLink.rel = 'noopener noreferrer';
     cardLink.className = 'laptop-card';
+
+    if (item.image_url) {
+        const image = document.createElement('img');
+        image.src = item.image_url;
+        image.alt = `${item.name} logo`;
+        image.className = 'card-image';
+        image.loading = 'lazy';
+        cardLink.appendChild(image);
+    }
 
     const title = document.createElement('h3');
     title.textContent = item.name;

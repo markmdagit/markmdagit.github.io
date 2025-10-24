@@ -83,5 +83,61 @@
       "description": "A powerful laptop from a company that specializes in Linux-based hardware."
     },
     }
+  ],
+  "New Laptops to Consider": [
+    {
+      "name": "MacBook Pro 14-inch",
+      "url": "https://www.apple.com/shop/buy-mac/macbook-pro/14-inch",
+      "description": "The latest 14-inch MacBook Pro from Apple, offering high performance and a premium design.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+    },
+    {
+      "name": "HP Laptops (Ready to Ship)",
+      "url": "https://www.hp.com/us-en/shop/slp/readytoship-special/laptops",
+      "description": "A selection of HP laptops that are in stock and ready to ship.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg"
+    },
+    {
+      "name": "Google Chromebook",
+      "url": "https://www.google.com/chromebook/",
+      "description": "A series of laptops running ChromeOS, designed for web-based tasks.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Chromebook-logo.svg"
+    },
+    {
+      "name": "Framework Laptop",
+      "url": "https://frame.work/",
+      "description": "A modular and repairable laptop designed for longevity and customization.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/98/Framework_Computer_logo.svg"
+    },
+    {
+      "name": "Dell Laptops",
+      "url": "https://www.dell.com/en-us/shop/dell-laptops/scr/laptops",
+      "description": "A wide range of laptops from Dell for home and business.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/48/Dell_Logo.svg"
+    },
+    {
+      "name": "Lenovo Laptops",
+      "url": "https://www.lenovo.com/us/en/laptops/",
+      "description": "Laptops from Lenovo, including the ThinkPad and Yoga series.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/03/Lenovo_Logo.svg"
+    },
+    {
+      "name": "ASUS Laptops",
+      "url": "https://www.asus.com/us/laptops/for-home/all-series/",
+      "description": "A variety of laptops from ASUS for different needs.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Corporate_Logo.svg"
+    },
+    {
+      "name": "System76 Laptops",
+      "url": "https://system76.com/",
+      "description": "Laptops designed to run Linux out of the box.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/23/System76_logo.svg"
+    },
+    {
+      "name": "Microsoft Surface Laptop",
+      "url": "https://www.microsoft.com/en-us/surface/devices/surface-laptop",
+      "description": "Premium laptops from Microsoft with a focus on design and portability.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"
+    }
   ]
 }
