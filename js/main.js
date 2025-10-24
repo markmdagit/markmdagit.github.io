@@ -56,7 +56,9 @@ function setActiveNav() {
 
 document.addEventListener("DOMContentLoaded", () => {
     setActiveNav();
-    loadAccessories();
+    if (document.getElementById("accessories")) {
+        loadAccessories();
+    }
 });
 
 function createAccessoryCard(container, item) {
