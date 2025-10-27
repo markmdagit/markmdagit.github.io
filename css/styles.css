@@ -432,6 +432,11 @@ table.table tbody tr:hover {
     color: #ffffff;
 }
 
+.calendar-day.in-range {
+    background-color: rgba(0, 170, 255, 0.3); /* A lighter, transparent blue */
+    border-color: rgba(0, 170, 255, 0.5);
+}
+
 .calendar-day.selected .day-number {
     color: #ffffff;
 }

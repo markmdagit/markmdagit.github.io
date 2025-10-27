@@ -227,6 +227,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         const allDays = calendarBody.querySelectorAll('.calendar-day:not(.empty)');
         let daysInRange = 0;
 
+        // First, clear all existing selections and ranges
+        allDays.forEach(day => {
+            day.classList.remove('selected', 'in-range');
+        });
+
+        // Now, apply the correct classes to the new range
         allDays.forEach(day => {
             const [year, month, dayOfMonth] = day.dataset.date.split('-').map(Number);
             const dayDate = new Date(Date.UTC(year, month - 1, dayOfMonth));
@@ -234,16 +240,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (dayDate >= startDate && dayDate <= endDate) {
                 day.classList.add('in-range');
                 daysInRange++;
-            } else {
-                day.classList.remove('in-range');
+
+                // Also add 'selected' to the start and end dates of the range
+                if (dayDate.getTime() === startDate.getTime() || dayDate.getTime() === endDate.getTime()) {
+                    day.classList.add('selected');
+                }
             }
         });
-
-        const startDay = calendarBody.querySelector(`.calendar-day[data-date='${startDate.toISOString().split('T')[0]}']`);
-        const endDay = calendarBody.querySelector(`.calendar-day[data-date='${endDate.toISOString().split('T')[0]}']`);
-
-        if (startDay) startDay.classList.add('selected');
-        if (endDay) endDay.classList.add('selected');
 
         document.getElementById('cal-start-date').value = startDate.toISOString().split('T')[0];
         document.getElementById('cal-end-date').value = endDate.toISOString().split('T')[0];
