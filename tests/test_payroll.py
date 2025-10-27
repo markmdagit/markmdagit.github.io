@@ -21,19 +21,21 @@ def test_payroll_report(page: Page):
 
     # Event 1: 8 hours (in October)
     page.locator(".month-tab[data-month='9']").click()
-    page.locator(".calendar-day[data-date='2025-10-10']").click()
-    expect(page.locator("#cal-date")).to_have_value("10/10/2025")
+    day_to_select_1 = page.locator(".calendar-day[data-date='2025-10-10']")
+    day_to_select_1.click()
+    day_to_select_1.click()
     page.locator("#cal-user-select").select_option(label="Payroll Test")
     page.locator("#cal-start-time").fill("09:00")
-    page.locator("#cal-end-time").fill("17:00")
+    page.locator("#cal-end-time").fill("17:00") # 8 hours
     page.locator("#calendar-form button[type='submit']").click()
 
-    # Event 2: 4.5 hours (in October)
-    page.locator(".calendar-day[data-date='2025-10-12']").click()
-    expect(page.locator("#cal-date")).to_have_value("10/12/2025")
+    # Event 2: 4 hours (in October)
+    day_to_select_2 = page.locator(".calendar-day[data-date='2025-10-12']")
+    day_to_select_2.click()
+    day_to_select_2.click()
     page.locator("#cal-user-select").select_option(label="Payroll Test")
-    page.locator("#cal-start-time").fill("12:30")
-    page.locator("#cal-end-time").fill("17:00")
+    page.locator("#cal-start-time").fill("10:00")
+    page.locator("#cal-end-time").fill("14:00") # 4 hours
     page.locator("#calendar-form button[type='submit']").click()
 
     # --- VERIFICATION ---

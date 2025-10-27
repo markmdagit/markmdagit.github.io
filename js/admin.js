@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const today = new Date();
     let currentYear = today.getFullYear();
     let currentMonth = today.getMonth();
+    let startDate = null;
+    let endDate = null;
 
     async function initDb() {
         try {
@@ -194,37 +196,86 @@ document.addEventListener('DOMContentLoaded', async () => {
     calendarBody.addEventListener('click', (e) => {
         const target = e.target.closest('.calendar-day');
         if (target && !target.classList.contains('empty')) {
-            const allDays = calendarBody.querySelectorAll('.calendar-day');
-            allDays.forEach(day => day.classList.remove('selected'));
-            target.classList.add('selected');
+            const selectedDate = new Date(target.dataset.date);
+            selectedDate.setHours(0, 0, 0, 0);
 
-            const date = new Date(target.dataset.date);
-            const formattedDate = `${String(date.getMonth() + 1).padStart(2, '0')}/${String(date.getDate()).padStart(2, '0')}/${date.getFullYear()}`;
-            document.getElementById('cal-date').value = formattedDate;
+            if (!startDate || (startDate && endDate)) {
+                startDate = selectedDate;
+                endDate = null;
+                const allDays = calendarBody.querySelectorAll('.calendar-day');
+                allDays.forEach(day => day.classList.remove('selected', 'in-range'));
+                target.classList.add('selected');
+                document.getElementById('cal-date').value = '';
+                document.getElementById('total-days').textContent = '';
+            } else {
+                endDate = selectedDate;
+                if (endDate < startDate) {
+                    [startDate, endDate] = [endDate, startDate];
+                }
+                highlightDateRange();
+            }
         }
     });
+
+    function highlightDateRange() {
+        if (!startDate || !endDate) return;
+
+        const allDays = calendarBody.querySelectorAll('.calendar-day:not(.empty)');
+        let daysInRange = 0;
+
+        allDays.forEach(day => {
+            const dayDate = new Date(day.dataset.date);
+            dayDate.setHours(0, 0, 0, 0);
+
+            if (dayDate >= startDate && dayDate <= endDate) {
+                day.classList.add('in-range');
+                daysInRange++;
+            } else {
+                day.classList.remove('in-range');
+            }
+        });
+
+        const startDay = calendarBody.querySelector(`.calendar-day[data-date='${startDate.toISOString().split('T')[0]}']`);
+        const endDay = calendarBody.querySelector(`.calendar-day[data-date='${endDate.toISOString().split('T')[0]}']`);
+
+        if (startDay) startDay.classList.add('selected');
+        if (endDay) endDay.classList.add('selected');
+
+        const totalDaysElement = document.getElementById('total-days');
+        if (daysInRange > 0) {
+            totalDaysElement.textContent = `Total Days Selected: ${daysInRange}`;
+        } else {
+            totalDaysElement.textContent = '';
+        }
+    }
 
     calendarForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const userId = document.getElementById('cal-user-select').value;
-        const dateStr = document.getElementById('cal-date').value;
         const startTime = document.getElementById('cal-start-time').value;
         const endTime = document.getElementById('cal-end-time').value;
 
-        if (!dateStr || !userId) {
-            alert('Please select a user and a date.');
+        if (!startDate || !endDate || !userId) {
+            alert('Please select a user and a date range.');
             return;
         }
 
-        const [month, day, year] = dateStr.split('/');
-        const isoDate = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+        let currentDate = new Date(startDate);
+        while (currentDate <= endDate) {
+            const isoDate = currentDate.toISOString().split('T')[0];
+            db.run('INSERT INTO calendar_events (user_id, date, start_time, end_time) VALUES (?, ?, ?, ?)', [userId, isoDate, startTime, endTime]);
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
 
-        db.run('INSERT INTO calendar_events (user_id, date, start_time, end_time) VALUES (?, ?, ?, ?)', [userId, isoDate, startTime, endTime]);
+        const eventEndDate = new Date(endDate);
+
         calendarForm.reset();
+        startDate = null;
+        endDate = null;
+        document.getElementById('total-days').textContent = '';
 
-        const newEventDate = new Date(isoDate);
-        currentYear = newEventDate.getFullYear();
-        currentMonth = newEventDate.getMonth();
+        currentYear = eventEndDate.getFullYear();
+        currentMonth = eventEndDate.getMonth();
 
         monthTabs.forEach(tab => {
             tab.classList.toggle('active', parseInt(tab.dataset.month) === currentMonth);
