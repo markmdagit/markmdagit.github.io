@@ -19,6 +19,7 @@ def test_income_manager_crud(page: Page):
     page.locator("#user-form button[type='submit']").click()
 
     # --- READ ---
+    expect(page.locator("#user-table-body")).to_contain_text("John")
     user_row = page.locator("#user-table-body tr[data-user-id='1']")
     expect(user_row.locator("td").nth(0)).to_have_text("John")
     expect(user_row.locator("td").nth(1)).to_have_text("Doe")
@@ -41,8 +42,8 @@ def test_income_manager_crud(page: Page):
     day_to_select.click()
     day_to_select.click()
     page.locator("#cal-user-select").select_option(label="John Doe")
-    page.locator("#cal-start-time").fill("08:00")
-    page.locator("#cal-end-time").fill("12:00")
+    page.locator("#cal-start-time").fill("09:00")
+    page.locator("#cal-end-time").fill("17:00")
     page.locator("#calendar-form button[type='submit']").click()
 
     # Verify the event is on the calendar
