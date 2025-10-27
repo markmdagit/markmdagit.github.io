@@ -108,11 +108,13 @@
                         </div>
                         <div class="calendar-body" id="calendar-body"></div>
                     </div>
+                    <div id="total-days"></div>
                     <form id="calendar-form">
                         <select id="cal-user-select" required>
                             <option value="">Select User</option>
                         </select>
-                        <input type="text" id="cal-date" required placeholder="mm/dd/yyyy">
+                        <input type="text" id="cal-start-date" placeholder="Start Date" readonly>
+                        <input type="text" id="cal-end-date" placeholder="End Date" readonly>
                         <input type="time" id="cal-start-time" required>
                         <input type="time" id="cal-end-time" required>
                         <button type="submit">Add to Calendar</button>
