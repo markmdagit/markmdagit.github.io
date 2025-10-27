@@ -22,7 +22,8 @@ def test_payroll_report(page: Page):
     # Event 1: 8 hours (in October)
     page.locator(".month-tab[data-month='9']").click()
     page.locator(".calendar-day[data-date='2025-10-10']").click()
-    expect(page.locator("#cal-date")).to_have_value("10/10/2025")
+    page.locator(".calendar-day[data-date='2025-10-10']").click() # Click twice to select a single day
+    expect(page.locator("#cal-start-date")).to_have_value("2025-10-10")
     page.locator("#cal-user-select").select_option(label="Payroll Test")
     page.locator("#cal-start-time").fill("09:00")
     page.locator("#cal-end-time").fill("17:00")
@@ -30,7 +31,8 @@ def test_payroll_report(page: Page):
 
     # Event 2: 4.5 hours (in October)
     page.locator(".calendar-day[data-date='2025-10-12']").click()
-    expect(page.locator("#cal-date")).to_have_value("10/12/2025")
+    page.locator(".calendar-day[data-date='2025-10-12']").click() # Click twice to select a single day
+    expect(page.locator("#cal-start-date")).to_have_value("2025-10-12")
     page.locator("#cal-user-select").select_option(label="Payroll Test")
     page.locator("#cal-start-time").fill("12:30")
     page.locator("#cal-end-time").fill("17:00")

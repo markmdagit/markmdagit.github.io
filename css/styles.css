@@ -418,6 +418,10 @@ table.table tbody tr:hover {
     border-right: none;
 }
 
+.calendar-day.other-month .day-number {
+    color: #6c757d; /* A muted gray color */
+}
+
 .calendar-day.empty {
     background-color: #2c3034;
 }

@@ -153,24 +153,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    async function renderCalendar(year, month, events = null) {
-        calendarBody.innerHTML = '';
-        const firstDay = new Date(year, month, 1).getDay();
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
+    function createDayCell(day, year, month, isOtherMonth, events = []) {
+        const cell = document.createElement('div');
+        cell.className = 'calendar-day';
+        const dayNumberDiv = document.createElement('div');
+        dayNumberDiv.className = 'day-number';
+        dayNumberDiv.textContent = day;
+        cell.appendChild(dayNumberDiv);
 
-        if (events === null) {
-            events = await fetchEventsForMonth(year, month);
-        }
-
-        for (let i = 0; i < firstDay; i++) calendarBody.appendChild(Object.assign(document.createElement('div'), { className: 'calendar-day empty' }));
-
-        for (let day = 1; day <= daysInMonth; day++) {
-            const cell = document.createElement('div');
-            cell.className = 'calendar-day';
+        if (isOtherMonth) {
+            cell.classList.add('other-month');
+        } else {
             const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
             cell.dataset.date = dateStr;
-            cell.innerHTML = `<div class="day-number">${day}</div>`;
-
             const dayEvents = events.filter(e => e.date === dateStr);
             dayEvents.forEach(event => {
                 const eventDiv = document.createElement('div');
@@ -178,6 +173,42 @@ document.addEventListener('DOMContentLoaded', async () => {
                 eventDiv.innerHTML = `<strong>${event.first_name} ${event.last_name}</strong><br>${event.start_time} - ${event.end_time}`;
                 cell.appendChild(eventDiv);
             });
+        }
+        return cell;
+    }
+
+    async function renderCalendar(year, month, events = null) {
+        calendarBody.innerHTML = '';
+        const firstDayOfMonth = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const daysInPrevMonth = new Date(year, month, 0).getDate();
+
+        if (events === null) {
+            events = await fetchEventsForMonth(year, month);
+        }
+
+        // Previous month's days
+        const prevMonth = month === 0 ? 11 : month - 1;
+        const prevYear = month === 0 ? year - 1 : year;
+        for (let i = firstDayOfMonth; i > 0; i--) {
+            const day = daysInPrevMonth - i + 1;
+            const cell = createDayCell(day, prevYear, prevMonth, true);
+            calendarBody.appendChild(cell);
+        }
+
+        // Current month's days
+        for (let day = 1; day <= daysInMonth; day++) {
+            const cell = createDayCell(day, year, month, false, events);
+            calendarBody.appendChild(cell);
+        }
+
+        // Next month's days
+        const totalRenderedDays = firstDayOfMonth + daysInMonth;
+        const remainingCells = 35 - totalRenderedDays; // Fixed 5-week grid
+        const nextMonth = month === 11 ? 0 : month + 1;
+        const nextYear = month === 11 ? year + 1 : year;
+        for (let day = 1; day <= remainingCells; day++) {
+            const cell = createDayCell(day, nextYear, nextMonth, true);
             calendarBody.appendChild(cell);
         }
     }
@@ -198,7 +229,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     calendarBody.addEventListener('click', (e) => {
         const target = e.target.closest('.calendar-day');
-        if (target && !target.classList.contains('empty')) {
+        if (target && !target.classList.contains('other-month')) {
             const [year, month, day] = target.dataset.date.split('-').map(Number);
             const selectedDate = new Date(Date.UTC(year, month - 1, day));
 
@@ -224,11 +255,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     function highlightDateRange() {
         if (!startDate || !endDate) return;
 
-        const allDays = calendarBody.querySelectorAll('.calendar-day:not(.empty)');
+        const allDays = calendarBody.querySelectorAll('.calendar-day[data-date]');
         let daysInRange = 0;
 
         // First, clear all existing selections and ranges
-        allDays.forEach(day => {
+        calendarBody.querySelectorAll('.calendar-day').forEach(day => {
             day.classList.remove('selected', 'in-range');
         });
 
