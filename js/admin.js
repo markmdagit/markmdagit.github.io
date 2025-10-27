@@ -153,11 +153,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    async function renderCalendar(year, month) {
+    async function renderCalendar(year, month, events = null) {
         calendarBody.innerHTML = '';
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
-        const events = await fetchEventsForMonth(year, month);
+
+        if (events === null) {
+            events = await fetchEventsForMonth(year, month);
+        }
 
         for (let i = 0; i < firstDay; i++) calendarBody.appendChild(Object.assign(document.createElement('div'), { className: 'calendar-day empty' }));
 
@@ -196,8 +199,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     calendarBody.addEventListener('click', (e) => {
         const target = e.target.closest('.calendar-day');
         if (target && !target.classList.contains('empty')) {
-            const selectedDate = new Date(target.dataset.date);
-            selectedDate.setHours(0, 0, 0, 0);
+            const [year, month, day] = target.dataset.date.split('-').map(Number);
+            const selectedDate = new Date(Date.UTC(year, month - 1, day));
 
             if (!startDate || (startDate && endDate)) {
                 startDate = selectedDate;
@@ -205,7 +208,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const allDays = calendarBody.querySelectorAll('.calendar-day');
                 allDays.forEach(day => day.classList.remove('selected', 'in-range'));
                 target.classList.add('selected');
-                document.getElementById('cal-date').value = '';
+                document.getElementById('cal-date').value = target.dataset.date;
                 document.getElementById('total-days').textContent = '';
             } else {
                 endDate = selectedDate;
@@ -224,8 +227,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         let daysInRange = 0;
 
         allDays.forEach(day => {
-            const dayDate = new Date(day.dataset.date);
-            dayDate.setHours(0, 0, 0, 0);
+            const [year, month, dayOfMonth] = day.dataset.date.split('-').map(Number);
+            const dayDate = new Date(Date.UTC(year, month - 1, dayOfMonth));
 
             if (dayDate >= startDate && dayDate <= endDate) {
                 day.classList.add('in-range');
@@ -260,12 +263,19 @@ document.addEventListener('DOMContentLoaded', async () => {
             return;
         }
 
+        const promises = [];
         let currentDate = new Date(startDate);
         while (currentDate <= endDate) {
             const isoDate = currentDate.toISOString().split('T')[0];
-            db.run('INSERT INTO calendar_events (user_id, date, start_time, end_time) VALUES (?, ?, ?, ?)', [userId, isoDate, startTime, endTime]);
-            currentDate.setDate(currentDate.getDate() + 1);
+            // Although db.run is synchronous, wrapping it helps manage flow
+            promises.push(new Promise((resolve) => {
+                db.run('INSERT INTO calendar_events (user_id, date, start_time, end_time) VALUES (?, ?, ?, ?)', [userId, isoDate, startTime, endTime]);
+                resolve();
+            }));
+            currentDate.setUTCDate(currentDate.getUTCDate() + 1);
         }
+
+        await Promise.all(promises);
 
         const eventEndDate = new Date(endDate);
 
@@ -274,15 +284,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         endDate = null;
         document.getElementById('total-days').textContent = '';
 
-        currentYear = eventEndDate.getFullYear();
-        currentMonth = eventEndDate.getMonth();
+        const newYear = eventEndDate.getUTCFullYear();
+        const newMonth = eventEndDate.getUTCMonth();
 
         monthTabs.forEach(tab => {
-            tab.classList.toggle('active', parseInt(tab.dataset.month) === currentMonth);
+            tab.classList.toggle('active', parseInt(tab.dataset.month) === newMonth);
         });
 
-        await renderCalendar(currentYear, currentMonth);
-        await calculateAndDisplayPayroll(currentYear, currentMonth);
+        const updatedEvents = await fetchEventsForMonth(newYear, newMonth);
+        await renderCalendar(newYear, newMonth, updatedEvents);
+        await calculateAndDisplayPayroll(newYear, newMonth);
     });
 
     monthTabs.forEach(tab => {
