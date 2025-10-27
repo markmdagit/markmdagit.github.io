@@ -208,7 +208,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const allDays = calendarBody.querySelectorAll('.calendar-day');
                 allDays.forEach(day => day.classList.remove('selected', 'in-range'));
                 target.classList.add('selected');
-                document.getElementById('cal-date').value = target.dataset.date;
+                document.getElementById('cal-start-date').value = target.dataset.date;
+                document.getElementById('cal-end-date').value = '';
                 document.getElementById('total-days').textContent = '';
             } else {
                 endDate = selectedDate;
@@ -243,6 +244,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         if (startDay) startDay.classList.add('selected');
         if (endDay) endDay.classList.add('selected');
+
+        document.getElementById('cal-start-date').value = startDate.toISOString().split('T')[0];
+        document.getElementById('cal-end-date').value = endDate.toISOString().split('T')[0];
 
         const totalDaysElement = document.getElementById('total-days');
         if (daysInRange > 0) {
@@ -282,6 +286,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         calendarForm.reset();
         startDate = null;
         endDate = null;
+        document.getElementById('cal-start-date').value = '';
+        document.getElementById('cal-end-date').value = '';
         document.getElementById('total-days').textContent = '';
 
         const newYear = eventEndDate.getUTCFullYear();

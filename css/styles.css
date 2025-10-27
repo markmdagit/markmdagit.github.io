@@ -286,6 +286,18 @@ form button:hover {
     background-color: #007acc;
 }
 
+#calendar-form input[type="text"] {
+    flex-basis: 150px;
+}
+
+#total-days {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #00aaff;
+    margin-bottom: 1rem;
+}
+
 /* --- Table Styles --- */
 table.table {
     width: 100%;
