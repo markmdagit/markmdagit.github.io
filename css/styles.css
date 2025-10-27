@@ -420,8 +420,23 @@ table.table tbody tr:hover {
     color: #ffffff;
 }
 
-.calendar-day.selected .day-number {
+.calendar-day.selected .day-number,
+.calendar-day.in-range .day-number {
     color: #ffffff;
+}
+
+.calendar-day.in-range {
+    background-color: #007acc;
+    color: #ffffff;
+}
+
+.total-days-display {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background-color: #343a40;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
 }
 
 .day-number {
