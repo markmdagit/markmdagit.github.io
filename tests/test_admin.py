@@ -25,9 +25,9 @@ def test_admin_monthly_calendar(page: Page):
     test_year = 2025
     test_date = f"{test_year}-11-15"
 
-    # Switch to November tab
-    nov_tab = page.locator(".month-tab[data-month='10']")
-    nov_tab.click()
+    # Navigate to November
+    next_month_btn = page.locator("#next-month-btn")
+    next_month_btn.click() # To November
 
     # Select the newly created user and fill out the rest of the form
     day_to_select = page.locator(".calendar-day[data-date='2025-11-15']")
@@ -48,11 +48,12 @@ def test_admin_monthly_calendar(page: Page):
     expect(event_cell.locator(".calendar-event")).to_have_count(1)
     expect(event_cell.locator(".calendar-event strong")).to_have_text("Calendar TestUser")
 
-    # --- Test tab switching ---
-    dec_tab = page.locator(".month-tab[data-month='11']")
-    dec_tab.click()
+    # --- Test month navigation ---
+    next_month_btn = page.locator("#next-month-btn")
+    prev_month_btn = page.locator("#prev-month-btn")
 
+    next_month_btn.click() # To December
     expect(page.locator(f".calendar-day[data-date='{test_date}'] .calendar-event")).to_have_count(0)
 
-    nov_tab.click()
+    prev_month_btn.click() # Back to November
     expect(event_cell.locator(".calendar-event")).to_have_count(1)

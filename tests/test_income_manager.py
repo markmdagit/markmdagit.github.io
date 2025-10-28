@@ -37,7 +37,7 @@ def test_income_manager_crud(page: Page):
     # Add a calendar event for the user
     admin_btn.click()
     page.locator("#calendar-btn").click()
-    page.locator(".month-tab[data-month='10']").click()
+    page.locator("#next-month-btn").click() # To November
     day_to_select = page.locator(".calendar-day[data-date='2025-11-15']")
     day_to_select.click()
     day_to_select.click()
@@ -47,7 +47,6 @@ def test_income_manager_crud(page: Page):
     page.locator("#calendar-form button[type='submit']").click()
 
     # Verify the event is on the calendar
-    page.locator(".month-tab[data-month='10']").click()
     event_cell = page.locator(".calendar-day[data-date='2025-11-15']")
     expect(event_cell.locator(".calendar-event")).to_have_count(1)
 
@@ -66,5 +65,4 @@ def test_income_manager_crud(page: Page):
     # Verify the user's event is also removed from the calendar
     admin_btn.click()
     page.locator("#calendar-btn").click()
-    page.locator(".month-tab[data-month='10']").click()
     expect(page.locator(".calendar-day[data-date='2025-11-15'] .calendar-event")).to_have_count(0)
