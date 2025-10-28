@@ -25,11 +25,22 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('payroll-report')
     ];
 
-    function setupDropdown(btn, options, otherOptions) {
+    const funStuffBtn = document.getElementById('fun-stuff-btn');
+    const funStuffOptions = document.getElementById('fun-stuff-options');
+    const funStuffButtons = [
+        document.getElementById('game-btn'),
+        document.getElementById('youtube-playlist-btn')
+    ];
+    const funStuffSections = [
+        document.getElementById('game'),
+        document.getElementById('youtube-playlist')
+    ];
+
+    function setupDropdown(btn, options, ...otherOptions) {
         btn.addEventListener('click', (event) => {
             event.stopPropagation();
             const isDisplayed = options.style.display !== 'none';
-            otherOptions.style.display = 'none';
+            otherOptions.forEach(opt => opt.style.display = 'none');
             options.style.display = isDisplayed ? 'none' : 'block';
         });
     }
@@ -54,12 +65,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    const allSections = [...computerSections, ...adminSections];
+    const allSections = [...computerSections, ...adminSections, ...funStuffSections];
 
-    setupDropdown(computersBtn, computerOptions, adminOptions);
-    setupDropdown(adminBtn, adminOptions, computerOptions);
+    setupDropdown(computersBtn, computerOptions, adminOptions, funStuffOptions);
+    setupDropdown(adminBtn, adminOptions, computerOptions, funStuffOptions);
+    setupDropdown(funStuffBtn, funStuffOptions, computerOptions, adminOptions);
     setupMenu(computerButtons, computerSections, allSections);
     setupMenu(adminButtons, adminSections, allSections);
+    setupMenu(funStuffButtons, funStuffSections, allSections);
 
     window.addEventListener('click', function(event) {
         if (!computersBtn.contains(event.target)) {
@@ -67,6 +80,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         if (!adminBtn.contains(event.target)) {
             adminOptions.style.display = 'none';
+        }
+        if (!funStuffBtn.contains(event.target)) {
+            funStuffOptions.style.display = 'none';
         }
     });
 });
