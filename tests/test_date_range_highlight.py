@@ -10,9 +10,6 @@ def test_date_range_highlighting(page: Page):
     page.click("button#admin-btn")
     page.click("button#calendar-btn")
 
-    # Switch to October
-    page.click("button[data-month='9']")
-
     # Select the date range
     page.click(".calendar-day[data-date='2025-10-26']")
     page.click(".calendar-day[data-date='2025-10-30']")

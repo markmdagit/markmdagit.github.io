@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Calendar elements
     const calendarForm = document.getElementById('calendar-form');
     const calendarBody = document.getElementById('calendar-body');
-    const monthTabs = document.querySelectorAll('.month-tab');
+    const monthYearHeader = document.getElementById('month-year-header');
+    const prevMonthBtn = document.getElementById('prev-month-btn');
+    const nextMonthBtn = document.getElementById('next-month-btn');
 
     // Income Manager elements
     const userForm = document.getElementById('user-form');
@@ -179,6 +181,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     async function renderCalendar(year, month, events = null) {
         calendarBody.innerHTML = '';
+        monthYearHeader.textContent = `${new Date(year, month).toLocaleString('default', { month: 'long' })} ${year}`;
         const firstDayOfMonth = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
         const daysInPrevMonth = new Date(year, month, 0).getDate();
@@ -327,23 +330,32 @@ document.addEventListener('DOMContentLoaded', async () => {
         const newYear = eventEndDate.getUTCFullYear();
         const newMonth = eventEndDate.getUTCMonth();
 
-        monthTabs.forEach(tab => {
-            tab.classList.toggle('active', parseInt(tab.dataset.month) === newMonth);
-        });
+        currentYear = newYear;
+        currentMonth = newMonth;
 
-        const updatedEvents = await fetchEventsForMonth(newYear, newMonth);
-        await renderCalendar(newYear, newMonth, updatedEvents);
-        await calculateAndDisplayPayroll(newYear, newMonth);
+        const updatedEvents = await fetchEventsForMonth(currentYear, currentMonth);
+        await renderCalendar(currentYear, currentMonth, updatedEvents);
+        await calculateAndDisplayPayroll(currentYear, currentMonth);
     });
 
-    monthTabs.forEach(tab => {
-        tab.addEventListener('click', async () => {
-            currentMonth = parseInt(tab.dataset.month);
-            monthTabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            await renderCalendar(currentYear, currentMonth);
-            await calculateAndDisplayPayroll(currentYear, currentMonth);
-        });
+    prevMonthBtn.addEventListener('click', async () => {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        await renderCalendar(currentYear, currentMonth);
+        await calculateAndDisplayPayroll(currentYear, currentMonth);
+    });
+
+    nextMonthBtn.addEventListener('click', async () => {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        await renderCalendar(currentYear, currentMonth);
+        await calculateAndDisplayPayroll(currentYear, currentMonth);
     });
 
     // --- Payroll Calculation ---

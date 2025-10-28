@@ -351,34 +351,30 @@ table.table tbody tr:hover {
 }
 
 /* --- Calendar Styles --- */
-.month-tabs {
+.calendar-navigation {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-    gap: 0.5rem;
 }
 
-.month-tab {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
+#month-year-header {
+    font-size: 1.5rem;
     font-weight: 600;
-    cursor: pointer;
-    border: 1px solid #4a4a4a;
-    background-color: #343a40;
     color: #f0f0f0;
-    border-radius: 20px;
-    transition: all 0.3s ease;
 }
 
-.month-tab:hover {
-    background-color: #495057;
+.calendar-nav-btn {
+    background: none;
+    border: none;
+    color: #00aaff;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
 }
 
-.month-tab.active {
-    background-color: #00aaff;
-    color: #ffffff;
-    border-color: #00aaff;
+.calendar-nav-btn:hover {
+    color: #33bbff;
 }
 
 .calendar-grid {

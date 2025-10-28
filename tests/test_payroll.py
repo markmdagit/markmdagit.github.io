@@ -20,7 +20,6 @@ def test_payroll_report(page: Page):
     page.locator("#calendar-btn").click()
 
     # Event 1: 8 hours (in October)
-    page.locator(".month-tab[data-month='9']").click()
     page.locator(".calendar-day[data-date='2025-10-10']").click()
     page.locator(".calendar-day[data-date='2025-10-10']").click() # Click twice to select a single day
     expect(page.locator("#cal-start-date")).to_have_value("2025-10-10")
@@ -39,10 +38,7 @@ def test_payroll_report(page: Page):
     page.locator("#calendar-form button[type='submit']").click()
 
     # --- VERIFICATION ---
-    # 3. Select the correct month in the CALENDAR view first
-    page.locator(".month-tab[data-month='9']").click() # October
-
-    # 4. Navigate to the Payroll Report
+    # 3. Navigate to the Payroll Report
     admin_btn.click()
     page.locator("#payroll-report-btn").click()
 
@@ -66,7 +62,7 @@ def test_payroll_report(page: Page):
     # 6. Go back to calendar and check a month with no events
     admin_btn.click()
     page.locator("#calendar-btn").click()
-    page.locator(".month-tab[data-month='8']").click() # September
+    page.locator("#prev-month-btn").click() # To September
 
     # 7. Go back to payroll and verify it's empty
     admin_btn.click()
