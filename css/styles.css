@@ -52,6 +52,9 @@ a:hover {
     border: 4px solid #ffffff;
     object-fit: cover;
     margin-bottom: 1rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .resume-header h1 {
