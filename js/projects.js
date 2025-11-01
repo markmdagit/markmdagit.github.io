@@ -29,11 +29,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const funStuffOptions = document.getElementById('fun-stuff-options');
     const funStuffButtons = [
         document.getElementById('game-btn'),
-        document.getElementById('youtube-playlist-btn')
+        document.getElementById('youtube-playlist-btn'),
+        document.getElementById('vst-search-btn')
     ];
     const funStuffSections = [
         document.getElementById('game'),
-        document.getElementById('youtube-playlist')
+        document.getElementById('youtube-playlist'),
+        document.getElementById('vst-search')
     ];
 
     function setupDropdown(btn, options, ...otherOptions) {
