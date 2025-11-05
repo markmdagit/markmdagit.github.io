@@ -11,14 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const adminBtn = document.getElementById('admin-btn');
     const adminOptions = document.getElementById('admin-options');
     const adminButtons = [
-        document.getElementById('calendar-btn'),
-        document.getElementById('income-manager-btn'),
-        document.getElementById('payroll-report-btn')
+        document.getElementById('admin-dashboard-btn'),
     ];
     const adminSections = [
-        document.getElementById('calendar-view'),
-        document.getElementById('income-manager'),
-        document.getElementById('payroll-report')
+        document.getElementById('admin-dashboard'),
     ];
 
     const funStuffBtn = document.getElementById('fun-stuff-btn');
