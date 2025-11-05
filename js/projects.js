@@ -2,14 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const computersBtn = document.getElementById('computers-btn');
     const computerOptions = document.getElementById('computer-options');
     const computerButtons = [
-        document.getElementById('laptops-btn'),
-        document.getElementById('supply-chain-btn'),
-        document.getElementById('w10-incompatible-btn')
+        document.getElementById('hardware-details-btn'),
     ];
     const computerSections = [
-        document.getElementById('laptops'),
-        document.getElementById('supply-chain'),
-        document.getElementById('w10-incompatible')
+        document.getElementById('hardware-details'),
     ];
 
     const adminBtn = document.getElementById('admin-btn');
@@ -56,11 +52,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 button.classList.add('active');
                 button.closest('.dropdown-menu').style.display = 'none';
 
-                if (button.id === 'laptops-btn') {
+                if (button.id === 'hardware-details-btn') {
                     loadAccessories();
-                } else if (button.id === 'supply-chain-btn') {
                     loadSupplyChainData();
-                } else if (button.id === 'w10-incompatible-btn') {
                     loadW10Incompatible();
                 }
             });
@@ -117,7 +111,7 @@ function createW10Card(item) {
 }
 
 function loadW10Incompatible() {
-    const section = document.getElementById('w10-incompatible');
+    const section = document.getElementById('hardware-details');
     const loadingIndicator = section.querySelector('.loading-indicator');
     const container = document.getElementById('w10-incompatible-cards');
 
@@ -171,7 +165,7 @@ function loadW10Incompatible() {
 }
 
 function loadSupplyChainData() {
-    const section = document.getElementById('supply-chain');
+    const section = document.getElementById('hardware-details');
     const loadingIndicator = section.querySelector('.loading-indicator');
     const elitebookContainer = document.getElementById("elitebook-supply-chain-cards");
     const zbookContainer = document.getElementById("zbook-supply-chain-cards");
