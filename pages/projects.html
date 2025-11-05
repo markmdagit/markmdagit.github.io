@@ -45,9 +45,7 @@
                     <div class="dropdown">
                         <button id="computers-btn" class="dropdown-toggle">Computers <i class="fas fa-caret-down"></i></button>
                         <div id="computer-options" class="dropdown-menu" style="display: none;">
-                            <button id="laptops-btn" class="active">Laptops</button>
-                            <button id="supply-chain-btn">Supply Chain</button>
-                            <button id="w10-incompatible-btn">W10 Incompatible Solution</button>
+                            <button id="hardware-details-btn" class="active">Hardware Details</button>
                         </div>
                     </div>
                     <div class="dropdown">
@@ -68,23 +66,20 @@
                     </div>
                 </div>
 
-                <section id="laptops">
+                <section id="hardware-details">
+                    <h2 class="section-title">Laptops</h2>
                     <div class="search-container">
                         <input type="search" id="laptop-search" class="search-bar" placeholder="Search by model, part number, or component...">
                     </div>
                     <div id="root"></div>
-                </section>
 
-                <section id="supply-chain" style="display: none;">
                     <h2 class="section-title">Supply Chain Analysis</h2>
                     <div class="loading-indicator">Loading...</div>
                     <h3 class="section-title">HP EliteBook</h3>
                     <div id="elitebook-supply-chain-cards" class="card-grid"></div>
                     <h3 class="section-title">HP ZBook Studio</h3>
                     <div id="zbook-supply-chain-cards" class="card-grid"></div>
-                </section>
 
-                <section id="w10-incompatible" style="display: none;">
                     <h2 class="section-title">W10 Incompatible Solutions</h2>
                     <div class="loading-indicator">Loading...</div>
                     <div id="w10-incompatible-cards" class="card-grid"></div>
