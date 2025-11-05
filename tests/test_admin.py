@@ -8,29 +8,19 @@ def test_admin_monthly_calendar(page: Page):
     # First, create a user to assign the event to
     admin_btn = page.locator("#admin-btn")
     admin_btn.click()
-    page.locator("#income-manager-btn").click()
+    page.locator("#admin-dashboard-btn").click()
 
     page.locator("#user-first-name").fill("Calendar")
     page.locator("#user-last-name").fill("TestUser")
     page.locator("#user-wage").fill("50")
     page.locator("#user-form button[type='submit']").click()
 
-    # Now, navigate back to the calendar
-    admin_btn.click()
-    page.locator("#calendar-btn").click()
-    calendar_section = page.locator("#calendar-view")
-    expect(calendar_section).to_be_visible()
-
     # --- Test adding an event ---
-    test_year = 2025
-    test_date = f"{test_year}-11-15"
-
-    # Navigate to November
-    next_month_btn = page.locator("#next-month-btn")
-    next_month_btn.click() # To November
+    today = datetime.date.today()
+    test_date = today.strftime("%Y-%m-%d")
 
     # Select the newly created user and fill out the rest of the form
-    day_to_select = page.locator(".calendar-day[data-date='2025-11-15']")
+    day_to_select = page.locator(f".calendar-day[data-date='{test_date}']")
     day_to_select.click()
     day_to_select.click() # Double click to select a single day range
     expect(page.locator("#cal-start-date")).to_have_value(test_date)

@@ -51,9 +51,7 @@
                     <div class="dropdown">
                         <button id="admin-btn" class="dropdown-toggle">Admin <i class="fas fa-caret-down"></i></button>
                         <div id="admin-options" class="dropdown-menu" style="display: none;">
-                            <button id="calendar-btn">Calendar</button>
-                            <button id="income-manager-btn">Income Manager</button>
-                            <button id="payroll-report-btn">Payroll Report</button>
+                            <button id="admin-dashboard-btn">Admin Dashboard</button>
                         </div>
                     </div>
                     <div class="dropdown">
@@ -85,7 +83,7 @@
                     <div id="w10-incompatible-cards" class="card-grid"></div>
                 </section>
 
-                <section id="calendar-view" style="display: none;">
+                <section id="admin-dashboard" style="display: none;">
                     <h2 class="section-title">Monthly Calendar</h2>
                     <div class="calendar-navigation">
                         <button id="prev-month-btn" class="calendar-nav-btn">&lt;</button>
@@ -115,9 +113,7 @@
                         <input type="time" id="cal-end-time" required>
                         <button type="submit">Add to Calendar</button>
                     </form>
-                </section>
 
-                <section id="income-manager" style="display: none;">
                     <h2 class="section-title">Income Manager</h2>
                     <form id="user-form">
                         <input type="text" id="user-first-name" placeholder="First Name" required>
@@ -136,9 +132,7 @@
                         </thead>
                         <tbody id="user-table-body"></tbody>
                     </table>
-                </section>
 
-                <section id="payroll-report" style="display: none;">
                     <h2 class="section-title">Payroll Report</h2>
                     <p>This report shows the calculated income for the currently selected month in the calendar.</p>
                     <table class="table">
