@@ -8,7 +8,19 @@ def test_date_range_highlighting(page: Page):
 
     # Open the admin dropdown and click the calendar button
     page.click("button#admin-btn")
-    page.click("button#calendar-btn")
+    page.click("button#admin-dashboard-btn")
+
+    # Ensure the calendar is visible
+    expect(page.locator("#admin-dashboard")).to_be_visible()
+
+    # Go to previous month
+    page.locator("#prev-month-btn").click()
+
+    # Wait for the calendar to be loaded
+    page.wait_for_selector(".calendar-day[data-date='2025-10-26']")
+
+    # Take a screenshot to visually confirm
+    page.screenshot(path="tests/screenshots/date_range_highlight_before.png")
 
     # Select the date range
     page.click(".calendar-day[data-date='2025-10-26']")

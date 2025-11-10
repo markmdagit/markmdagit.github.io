@@ -75,19 +75,54 @@ const AccessoryCard = ({ accessory }) => {
     );
 };
 
-const Accessories = () => {
-    const [accessories, setAccessories] = React.useState({});
+const Accessories = ({ searchQuery }) => {
+    const [allAccessories, setAllAccessories] = React.useState({});
 
     React.useEffect(() => {
         fetch('/data/accessories.json')
             .then(response => response.json())
-            .then(data => setAccessories(data));
+            .then(data => setAllAccessories(data));
     }, []);
+
+    const filteredAccessories = React.useMemo(() => {
+        if (!searchQuery) {
+            return allAccessories;
+        }
+        const query = searchQuery.toLowerCase();
+        const filtered = {};
+
+        for (const category in allAccessories) {
+            const items = allAccessories[category];
+            const filteredItems = {};
+
+            for (const subCategory in items) {
+                const subItems = items[subCategory];
+                const filteredSubItems = subItems.filter(item => {
+                    const modelMatch = item.model.toLowerCase().includes(query);
+                    const partNumberMatch = item.part_number && item.part_number.toLowerCase().includes(query);
+                    const descriptionMatch = item.description && item.description.toLowerCase().includes(query);
+                    return modelMatch || partNumberMatch || descriptionMatch;
+                });
+
+                if (filteredSubItems.length > 0) {
+                    filteredItems[subCategory] = filteredSubItems;
+                }
+            }
+
+            if (Object.keys(filteredItems).length > 0) {
+                filtered[category] = filteredItems;
+            }
+        }
+
+        return filtered;
+    }, [allAccessories, searchQuery]);
+
+    const hasResults = Object.keys(filteredAccessories).length > 0;
 
     return (
         <React.Fragment>
-            <h2 className="section-title">Laptop Accessories</h2>
-            {Object.entries(accessories).map(([category, items]) => (
+            {hasResults && <h2 className="section-title">Laptop Accessories</h2>}
+            {Object.entries(filteredAccessories).map(([category, items]) => (
                 <React.Fragment key={category}>
                     <h3 className="section-title">{category}</h3>
                     {Object.entries(items).map(([subCategory, subItems]) => (
@@ -154,20 +189,12 @@ const Laptops = () => {
         });
     }, [allLaptops, searchQuery]);
 
-    const elitebooks = filteredLaptops.filter(laptop => laptop.Model.includes('EliteBook'));
-    const zbooks = filteredLaptops.filter(laptop => laptop.Model.includes('ZBook'));
-
     return (
         <React.Fragment>
-            <h3 className="section-title">HP EliteBook</h3>
-            <div id="elitebook-cards" className="card-grid">
-                {elitebooks.map(laptop => <LaptopCard key={laptop.Model} laptop={laptop} />)}
+            <div className="card-grid">
+                {filteredLaptops.map(laptop => <LaptopCard key={laptop.Model} laptop={laptop} />)}
             </div>
-            <h3 className="section-title">HP ZBook Studio</h3>
-            <div id="zbook-cards" className="card-grid">
-                {zbooks.map(laptop => <LaptopCard key={laptop.Model} laptop={laptop} />)}
-            </div>
-            <Accessories />
+            <Accessories searchQuery={searchQuery} />
         </React.Fragment>
     );
 };

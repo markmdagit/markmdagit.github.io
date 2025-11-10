@@ -49,8 +49,41 @@ document.addEventListener('DOMContentLoaded', function() {
                 button.closest('.dropdown-menu').style.display = 'none';
 
                 if (button.id === 'hardware-details-btn') {
+                    setupTabs();
                     loadAccessories();
+                    // Load the content for the default active tab
                     loadSupplyChainData();
+                    loadW10Incompatible();
+                }
+            });
+        });
+    }
+
+    function setupTabs() {
+        const tabs = document.querySelectorAll('.tab-btn');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetPaneId = tab.dataset.tab;
+
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                tabPanes.forEach(pane => {
+                    if (pane.id === targetPaneId) {
+                        pane.classList.add('active');
+                    } else {
+                        pane.classList.remove('active');
+                    }
+                });
+
+                // Load content only when the tab is clicked
+                if (targetPaneId === 'laptops-content' && !document.getElementById('root').hasChildNodes()) {
+                    loadAccessories();
+                } else if (targetPaneId === 'supply-chain-content' && !document.getElementById('elitebook-supply-chain-cards').hasChildNodes()) {
+                    loadSupplyChainData();
+                } else if (targetPaneId === 'w10-incompatible-content' && !document.getElementById('w10-incompatible-cards').hasChildNodes()) {
                     loadW10Incompatible();
                 }
             });

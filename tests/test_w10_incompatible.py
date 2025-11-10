@@ -10,8 +10,11 @@ def test_w10_incompatible_loads_without_errors(page: Page):
     # Click the "Computers" dropdown
     page.locator("#computers-btn").click()
 
-    # Click the "W10 Incompatible Solution" button
-    page.locator("#w10-incompatible-btn").click()
+    # Click the "Hardware Details" button
+    page.locator("#hardware-details-btn").click()
+
+    # Click the "W10 Incompatible" tab
+    page.locator("button[data-tab='w10-incompatible-content']").click()
 
     # Check for the "Error loading data" message
     error_message = page.locator("#w10-incompatible-cards")

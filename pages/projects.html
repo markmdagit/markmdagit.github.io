@@ -65,22 +65,34 @@
                 </div>
 
                 <section id="hardware-details">
-                    <h2 class="section-title">Laptops</h2>
-                    <div class="search-container">
-                        <input type="search" id="laptop-search" class="search-bar" placeholder="Search by model, part number, or component...">
+                    <div class="tab-container">
+                        <div class="tab-header">
+                            <button class="tab-btn active" data-tab="laptops-content">Laptops</button>
+                            <button class="tab-btn" data-tab="supply-chain-content">Supply Chain</button>
+                            <button class="tab-btn" data-tab="w10-incompatible-content">W10 Incompatible</button>
+                        </div>
+                        <div class="tab-content-container">
+                            <div id="laptops-content" class="tab-pane active">
+                                <div class="search-container">
+                                    <input type="search" id="laptop-search" class="search-bar" placeholder="Search by model, part number, or component...">
+                                </div>
+                                <div id="root"></div>
+                            </div>
+                            <div id="supply-chain-content" class="tab-pane">
+                                <h2 class="section-title">Supply Chain Analysis</h2>
+                                <div class="loading-indicator">Loading...</div>
+                                <h3 class="section-title">HP EliteBook</h3>
+                                <div id="elitebook-supply-chain-cards" class="card-grid"></div>
+                                <h3 class="section-title">HP ZBook Studio</h3>
+                                <div id="zbook-supply-chain-cards" class="card-grid"></div>
+                            </div>
+                            <div id="w10-incompatible-content" class="tab-pane">
+                                <h2 class="section-title">W10 Incompatible Solutions</h2>
+                                <div class="loading-indicator">Loading...</div>
+                                <div id="w10-incompatible-cards" class="card-grid"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="root"></div>
-
-                    <h2 class="section-title">Supply Chain Analysis</h2>
-                    <div class="loading-indicator">Loading...</div>
-                    <h3 class="section-title">HP EliteBook</h3>
-                    <div id="elitebook-supply-chain-cards" class="card-grid"></div>
-                    <h3 class="section-title">HP ZBook Studio</h3>
-                    <div id="zbook-supply-chain-cards" class="card-grid"></div>
-
-                    <h2 class="section-title">W10 Incompatible Solutions</h2>
-                    <div class="loading-indicator">Loading...</div>
-                    <div id="w10-incompatible-cards" class="card-grid"></div>
                 </section>
 
                 <section id="admin-dashboard" style="display: none;">
