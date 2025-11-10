@@ -17,19 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('admin-dashboard'),
     ];
 
-    const funStuffBtn = document.getElementById('fun-stuff-btn');
-    const funStuffOptions = document.getElementById('fun-stuff-options');
-    const funStuffButtons = [
-        document.getElementById('game-btn'),
-        document.getElementById('youtube-playlist-btn'),
-        document.getElementById('vst-search-btn')
-    ];
-    const funStuffSections = [
-        document.getElementById('game'),
-        document.getElementById('youtube-playlist'),
-        document.getElementById('vst-search')
-    ];
-
     function setupDropdown(btn, options, ...otherOptions) {
         btn.addEventListener('click', (event) => {
             event.stopPropagation();
@@ -90,14 +77,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    const allSections = [...computerSections, ...adminSections, ...funStuffSections];
+    const allSections = [...computerSections, ...adminSections];
 
-    setupDropdown(computersBtn, computerOptions, adminOptions, funStuffOptions);
-    setupDropdown(adminBtn, adminOptions, computerOptions, funStuffOptions);
-    setupDropdown(funStuffBtn, funStuffOptions, computerOptions, adminOptions);
+    setupDropdown(computersBtn, computerOptions, adminOptions);
+    setupDropdown(adminBtn, adminOptions, computerOptions);
     setupMenu(computerButtons, computerSections, allSections);
     setupMenu(adminButtons, adminSections, allSections);
-    setupMenu(funStuffButtons, funStuffSections, allSections);
 
     window.addEventListener('click', function(event) {
         if (!computersBtn.contains(event.target)) {
@@ -105,9 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         if (!adminBtn.contains(event.target)) {
             adminOptions.style.display = 'none';
-        }
-        if (!funStuffBtn.contains(event.target)) {
-            funStuffOptions.style.display = 'none';
         }
     });
 });
