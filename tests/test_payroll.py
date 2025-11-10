@@ -8,7 +8,10 @@ def test_payroll_report(page: Page):
     # 1. Create a user with a known wage
     admin_btn = page.locator("#admin-btn")
     admin_btn.click()
-    page.locator("#income-manager-btn").click()
+    page.locator("#admin-dashboard-btn").click()
+
+    # Ensure the admin dashboard is visible
+    expect(page.locator("#admin-dashboard")).to_be_visible()
 
     page.locator("#user-first-name").fill("Payroll")
     page.locator("#user-last-name").fill("Test")
@@ -17,9 +20,12 @@ def test_payroll_report(page: Page):
 
     # 2. Add two calendar events for this user in the same month
     admin_btn.click()
-    page.locator("#calendar-btn").click()
+    page.locator("#admin-dashboard-btn").click()
 
     # Event 1: 8 hours (in October)
+    page.locator("#prev-month-btn").click()
+    page.wait_for_selector(".calendar-day[data-date='2025-10-10']")
+    page.screenshot(path="tests/screenshots/payroll_before.png")
     page.locator(".calendar-day[data-date='2025-10-10']").click()
     page.locator(".calendar-day[data-date='2025-10-10']").click() # Click twice to select a single day
     expect(page.locator("#cal-start-date")).to_have_value("2025-10-10")
@@ -40,7 +46,7 @@ def test_payroll_report(page: Page):
     # --- VERIFICATION ---
     # 3. Navigate to the Payroll Report
     admin_btn.click()
-    page.locator("#payroll-report-btn").click()
+    page.locator("#admin-dashboard-btn").click()
 
     # 5. Check the report calculations for October
     report_row = page.locator("#payroll-table-body tr")
@@ -61,10 +67,10 @@ def test_payroll_report(page: Page):
 
     # 6. Go back to calendar and check a month with no events
     admin_btn.click()
-    page.locator("#calendar-btn").click()
+    page.locator("#admin-dashboard-btn").click()
     page.locator("#prev-month-btn").click() # To September
 
     # 7. Go back to payroll and verify it's empty
     admin_btn.click()
-    page.locator("#payroll-report-btn").click()
+    page.locator("#admin-dashboard-btn").click()
     expect(page.locator("#payroll-table-body tr")).to_have_count(0)

@@ -7,10 +7,10 @@ def test_income_manager_crud(page: Page):
     # Navigate to the Income Manager
     admin_btn = page.locator("#admin-btn")
     admin_btn.click()
-    income_manager_btn = page.locator("#income-manager-btn")
-    income_manager_btn.click()
-    income_manager_section = page.locator("#income-manager")
-    expect(income_manager_section).to_be_visible()
+    page.locator("#admin-dashboard-btn").click()
+
+    # Ensure the admin dashboard is visible
+    expect(page.locator("#admin-dashboard")).to_be_visible()
 
     # --- CREATE ---
     page.locator("#user-first-name").fill("John")
@@ -36,9 +36,10 @@ def test_income_manager_crud(page: Page):
     # --- Test Cascading Delete ---
     # Add a calendar event for the user
     admin_btn.click()
-    page.locator("#calendar-btn").click()
-    page.locator("#next-month-btn").click() # To November
-    day_to_select = page.locator(".calendar-day[data-date='2025-11-15']")
+    page.locator("#admin-dashboard-btn").click()
+    page.locator("#prev-month-btn").click() # To October
+    page.wait_for_selector(".calendar-day[data-date='2025-10-15']")
+    day_to_select = page.locator(".calendar-day[data-date='2025-10-15']")
     day_to_select.click()
     day_to_select.click()
     page.locator("#cal-user-select").select_option(label="John Doe")
@@ -47,12 +48,12 @@ def test_income_manager_crud(page: Page):
     page.locator("#calendar-form button[type='submit']").click()
 
     # Verify the event is on the calendar
-    event_cell = page.locator(".calendar-day[data-date='2025-11-15']")
+    event_cell = page.locator(".calendar-day[data-date='2025-10-15']")
     expect(event_cell.locator(".calendar-event")).to_have_count(1)
 
     # --- DELETE ---
     admin_btn.click()
-    income_manager_btn.click()
+    page.locator("#admin-dashboard-btn").click()
 
     # Accept the confirmation dialog for deletion
     page.on("dialog", lambda dialog: dialog.accept())
@@ -64,5 +65,5 @@ def test_income_manager_crud(page: Page):
 
     # Verify the user's event is also removed from the calendar
     admin_btn.click()
-    page.locator("#calendar-btn").click()
-    expect(page.locator(".calendar-day[data-date='2025-11-15'] .calendar-event")).to_have_count(0)
+    page.locator("#admin-dashboard-btn").click()
+    expect(page.locator(".calendar-day[data-date='2025-10-15'] .calendar-event")).to_have_count(0)
