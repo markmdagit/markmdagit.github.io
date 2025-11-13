@@ -125,6 +125,32 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Form Submission ---
     ticketForm.addEventListener('submit', function(e) {
         e.preventDefault();
+
+        const ticketData = {
+            id: document.getElementById('ticket-id').value,
+            summary: document.getElementById('ticket-summary').value,
+            description: document.getElementById('ticket-description').value,
+            caller: document.getElementById('ticket-caller').value,
+            assigned_group: document.getElementById('ticket-group').value,
+            assignee: document.getElementById('ticket-assignee').value,
+            status: document.getElementById('ticket-status').value,
+            priority: document.getElementById('ticket-priority').value,
+            impact: document.getElementById('ticket-impact').value,
+            urgency: document.getElementById('ticket-urgency').value,
+            category: document.getElementById('ticket-category').value,
+            asset: document.getElementById('ticket-asset').value,
+            work_log: document.getElementById('ticket-work-log').value,
+            resolution: document.getElementById('ticket-resolution').value
+        };
+
+        const insertQuery = `
+            INSERT INTO tickets VALUES (
+                :id, :summary, :description, :caller, :assigned_group, :assignee, :status,
+                :priority, :impact, :urgency, :category, :asset, :work_log, :resolution
+            );
+        `;
+        db.run(insertQuery, ticketData);
+
         alert('Ticket submitted successfully!');
         ticketForm.reset();
         document.getElementById('ticket-id').value = `INC-${Date.now()}`;
@@ -133,8 +159,49 @@ document.addEventListener('DOMContentLoaded', function() {
         currentQuestionIndex = 0;
         chatWindow.innerHTML = '';
         askQuestion();
+
+        // Refresh the ticket queue
+        displayTickets();
     });
 
-    // Start the conversation
-    askQuestion();
+    function displayTickets() {
+        const results = db.exec("SELECT * FROM tickets");
+        if (results.length === 0) {
+            return;
+        }
+
+        const data = results[0].values.map(row => {
+            const ticket = {};
+            results[0].columns.forEach((col, i) => {
+                ticket[col] = row[i];
+            });
+            return ticket;
+        });
+
+        $("#ticket-queue").jsGrid({
+            width: "100%",
+            height: "400px",
+
+            inserting: false,
+            editing: false,
+            sorting: true,
+            paging: true,
+
+            data: data,
+
+            fields: [
+                { name: "id", type: "text", width: 150 },
+                { name: "summary", type: "text", width: 200 },
+                { name: "caller", type: "text", width: 150 },
+                { name: "status", type: "text", width: 100 },
+                { name: "priority", type: "text", width: 100 }
+            ]
+        });
+    }
+
+    // Start the conversation and display existing tickets
+    initDatabase().then(() => {
+        askQuestion();
+        displayTickets();
+    });
 });
