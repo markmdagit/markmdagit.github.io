@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     loadAccessories();
                     // Load the content for the default active tab
                     loadSupplyChainData();
-                    loadW10Incompatible();
                 }
             });
         });
@@ -70,8 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     loadAccessories();
                 } else if (targetPaneId === 'supply-chain-content' && !document.getElementById('elitebook-supply-chain-cards').hasChildNodes()) {
                     loadSupplyChainData();
-                } else if (targetPaneId === 'w10-incompatible-content' && !document.getElementById('w10-incompatible-cards').hasChildNodes()) {
-                    loadW10Incompatible();
                 }
             });
         });
@@ -93,87 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-
-function createW10Card(item) {
-    const cardLink = document.createElement('a');
-    cardLink.href = item.url;
-    cardLink.target = '_blank';
-    cardLink.rel = 'noopener noreferrer';
-    cardLink.className = 'laptop-card';
-
-    if (item.image_url) {
-        const image = document.createElement('img');
-        image.src = item.image_url;
-        image.alt = `${item.name} logo`;
-        image.className = 'card-image';
-        image.loading = 'lazy';
-        cardLink.appendChild(image);
-    }
-
-    const title = document.createElement('h3');
-    title.textContent = item.name;
-    cardLink.appendChild(title);
-
-    const description = document.createElement('p');
-    description.textContent = item.description;
-    cardLink.appendChild(description);
-
-    return cardLink;
-}
-
-function loadW10Incompatible() {
-    const section = document.getElementById('hardware-details');
-    const loadingIndicator = section.querySelector('.loading-indicator');
-    const container = document.getElementById('w10-incompatible-cards');
-
-    loadingIndicator.style.display = 'block';
-    container.innerHTML = '';
-    console.log("Attempting to load W10 incompatible data...");
-
-    fetchData('/data/w10_incompatible.json')
-        .then(data => {
-            console.log("Successfully fetched W10 data:", data);
-            loadingIndicator.style.display = 'none';
-            if (container) {
-                if (typeof data !== 'object' || data === null) {
-                    console.error("Fetched data is not an object:", data);
-                    throw new Error("Invalid data format");
-                }
-                for (const category in data) {
-                    console.log("Processing category:", category);
-                    const categoryContainer = document.createElement('div');
-
-                    const categoryTitle = document.createElement('h3');
-                    categoryTitle.className = 'section-title';
-                    categoryTitle.textContent = category;
-                    categoryContainer.appendChild(categoryTitle);
-
-                    const cardGrid = document.createElement('div');
-                    cardGrid.className = 'card-grid';
-                    if (Array.isArray(data[category])) {
-                        data[category].forEach(item => {
-                            cardGrid.appendChild(createW10Card(item));
-                        });
-                    } else {
-                        console.error(`Data for category "${category}" is not an array.`);
-                    }
-                    categoryContainer.appendChild(cardGrid);
-
-                    container.appendChild(categoryContainer);
-                }
-                console.log("Finished rendering W10 incompatible data.");
-            } else {
-                console.error("Container #w10-incompatible-cards not found.");
-            }
-        })
-        .catch(error => {
-            console.error('Error in loadW10Incompatible function:', error);
-            loadingIndicator.style.display = 'none';
-            if (container) {
-                container.textContent = 'Error loading data.';
-            }
-        });
-}
 
 function loadSupplyChainData() {
     const section = document.getElementById('hardware-details');
