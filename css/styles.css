@@ -626,3 +626,121 @@ footer {
 .tab-pane.active {
     display: block;
 }
+
+/* --- Chatbot and Ticketing System --- */
+.chatbot-container {
+    background-color: #2c3034;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+}
+
+.chat-window {
+    height: 300px;
+    overflow-y: auto;
+    border-bottom: 1px solid #4a4a4a;
+    margin-bottom: 1rem;
+    padding-right: 1rem;
+}
+
+.chat-message {
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    max-width: 80%;
+}
+
+.chat-message.bot {
+    background-color: #007acc;
+    color: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 0;
+}
+
+.chat-message.user {
+    background-color: #495057;
+    color: #f0f0f0;
+    align-self: flex-end;
+    margin-left: auto;
+    border-bottom-right-radius: 0;
+}
+
+.chat-input-container {
+    display: flex;
+}
+
+.chat-input {
+    flex-grow: 1;
+    border-radius: 8px 0 0 8px !important;
+}
+
+.chat-send-btn {
+    border-radius: 0 8px 8px 0 !important;
+    background-color: #00aaff !important;
+    color: white !important;
+    border: none !important;
+    padding: 0.75rem 1.5rem !important;
+    cursor: pointer !important;
+}
+
+.chat-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.chat-options button {
+    background-color: #495057;
+    border: 1px solid #6c757d;
+}
+
+.ticket-form-container {
+    background-color: #2c3034;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.ticket-form .form-section {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #4a4a4a;
+    padding-bottom: 1.5rem;
+}
+
+.ticket-form .form-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.ticket-form h3 {
+    font-size: 1.3rem;
+    color: #00aaff;
+    margin-bottom: 1.5rem;
+}
+
+.ticket-form .form-group {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.ticket-form label {
+    font-weight: 600;
+    text-align: right;
+}
+
+.ticket-form input,
+.ticket-form textarea,
+.ticket-form select {
+    width: 100%;
+}
+
+.submit-ticket-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
