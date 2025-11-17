@@ -117,8 +117,12 @@ nav ul li a:hover {
 
 /* --- Main Content Sections --- */
 section {
-    padding: 4rem 2rem;
-    border-bottom: 1px solid #6C757D;
+    padding: 5rem 2rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+section:nth-of-type(odd) {
+    background-color: #e9ecef;
 }
 
 section:last-of-type {
@@ -141,10 +145,11 @@ section:last-of-type {
 }
 
 .skill-card {
-    background-color: #F8F9FA;
-    padding: 1.5rem;
+    background-color: #fff;
+    padding: 2rem;
     border-radius: 8px;
-    border: 1px solid #6C757D;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
 .skill-card h3 {
@@ -182,10 +187,14 @@ section:last-of-type {
 }
 
 .timeline-item {
-    padding-left: 2rem;
+    background-color: #fff;
+    padding: 2rem;
     margin-bottom: 2rem;
-    border-left: 2px solid #6C757D;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     position: relative;
+    border-left: none;
 }
 
 .timeline-item::before {
@@ -348,7 +357,7 @@ footer {
 }
 
 .dropdown-toggle:hover {
-    background-color: #004A99;
+    opacity: 0.9;
 }
 
 .dropdown-menu {
@@ -527,7 +536,7 @@ footer {
 }
 
 #admin-dashboard button:hover {
-    background-color: #004A99;
+    opacity: 0.9;
 }
 
 .table {
@@ -703,7 +712,7 @@ footer {
 }
 
 .chat-send-btn:hover {
-    background-color: #28A745;
+    opacity: 0.9;
 }
 
 /* Ticket Form and Queue */

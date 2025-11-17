@@ -2,7 +2,7 @@ import re
 from playwright.sync_api import Page, expect
 
 def test_payroll_report(page: Page):
-    page.goto("http://localhost:8000/pages/projects.html")
+    page.goto("http://localhost:8000/pages/index.html")
 
     # --- SETUP ---
     # 1. Create a user with a known wage
