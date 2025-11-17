@@ -29,11 +29,11 @@
 
         <nav>
             <ul>
-                <li><a href="index.html"><i class="fas fa-user"></i> About Me</a></li>
-                <li><a href="skills.html"><i class="fas fa-cogs"></i> Skills</a></li>
-                <li><a href="experience.html"><i class="fas fa-briefcase"></i> Experience</a></li>
-                <li><a href="education.html"><i class="fas fa-user-graduate"></i> Education</a></li>
-                <li><a href="projects.html"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                <li><a href="#about"><i class="fas fa-user"></i> About Me</a></li>
+                <li><a href="#skills"><i class="fas fa-cogs"></i> Skills</a></li>
+                <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
+                <li><a href="#education"><i class="fas fa-user-graduate"></i> Education</a></li>
+                <li><a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
             </ul>
         </nav>
 
@@ -70,6 +70,322 @@
                     </div>
                 </section>
 
+                <section id="skills">
+                    <h2 class="section-title">Core Competencies</h2>
+                    <div class="skills-grid">
+
+                        <div class="skill-card">
+                            <h3><i class="fas fa-user-friends"></i> Soft Skills</h3>
+                            <ul>
+                                <li>Expert technical communication across various formats.</li>
+                                <li>Exceptional dedication with consistent track record.</li>
+                            </ul>
+                        </div>
+
+                        <div class="skill-card">
+                            <h3><i class="fas fa-tools"></i> Technical Expertise</h3>
+                            <ul>
+                                <li>8 years IT Customer Service and Troubleshooting</li>
+                                <li>CompTIA Trained: A+, Net+, Project+, Sec+</li>
+                            </ul>
+                        </div>
+
+                        <div class="skill-card languages">
+                            <h3><i class="fas fa-code"></i> Languages & Technologies</h3>
+                            <div class="tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">TypeScript</span>
+                                <span class="tag">Java</span>
+                                <span class="tag">SQL</span>
+                                <span class="tag">MySQL</span>
+                                <span class="tag">C</span>
+                                <span class="tag">C++</span>
+                                <span class="tag">C#</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">Assembly x86</span>
+                                <span class="tag">Jules</span>
+                                <span class="tag">Claude</span>
+                                <span class="tag">GitHub Copilot</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section id="experience">
+                    <h2 class="section-title">Professional Experience</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h3>IT Support Associate II</h3>
+                            <p class="item-meta">Amazon Robitics Center | 2020 - Present</p>
+                            <p class="item-description">Advanced technical assistance and troubleshooting for hardware, software, and network infrastructure. Ensure minimal downtime in fast-paced fulfillment environment.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>IT Support Technician</h3>
+                            <p class="item-meta">Amazon Fulfillment Center | 2019 - 2020</p>
+                            <p class="item-description">Diagnosed and resolved complex IT issues while performing routine maintenance. Provided comprehensive user support and technical guidance.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>Fulfillment Associate</h3>
+                            <p class="item-meta">Amazon Fulfillment Center | 2015 - 2019</p>
+                            <div class="item-description">
+                                Processed orders in the following departments:
+                                <ul>
+                                    <li>Picking</li>
+                                    <li>Packing</li>
+                                    <li>Ship Dock</li>
+                                    <li>ICQA</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="education">
+                    <h2 class="section-title">Education</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h3>Bachelor of Science - Computer Science</h3>
+                            <p class="item-meta">California State University San Bernardino | Status: In Progress</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>Associate of Science for Transfer - Computer Systems & Technology</h3>
+                            <p class="item-meta">Mt. San Jacinto College | Status: Completed</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>Associate of Science - Computer & Information Systems</h3>
+                            <p class="item-meta">Mt. San Jacinto College | Status: Completed</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="projects">
+                    <div class="project-toggle">
+                        <div class="dropdown">
+                            <button id="computers-btn" class="dropdown-toggle">Computers <i class="fas fa-caret-down"></i></button>
+                            <div id="computer-options" class="dropdown-menu" style="display: none;">
+                                <button id="hardware-details-btn" class="active">Hardware Details</button>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button id="admin-btn" class="dropdown-toggle">Admin <i class="fas fa-caret-down"></i></button>
+                            <div id="admin-options" class="dropdown-menu" style="display: none;">
+                                <button id="admin-dashboard-btn">Admin Dashboard</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="hardware-details">
+                        <div class="tab-container">
+                            <div class="tab-header">
+                                <button class="tab-btn active" data-tab="laptops-content">Laptops</button>
+                                <button class="tab-btn" data-tab="supply-chain-content">Supply Chain</button>
+                                <button class="tab-btn" data-tab="chatbot-content">Chatbot</button>
+                            </div>
+                            <div class="tab-content-container">
+                                <div id="laptops-content" class="tab-pane active">
+                                    <div class="search-container">
+                                        <input type="search" id="laptop-search" class="search-bar" placeholder="Search by model, part number, or component...">
+                                    </div>
+                                    <div id="root"></div>
+                                </div>
+                                <div id="supply-chain-content" class="tab-pane">
+                                    <h2 class="section-title">Supply Chain Analysis</h2>
+                                    <div class="loading-indicator">Loading...</div>
+                                    <h3 class="section-title">HP EliteBook</h3>
+                                    <div id="elitebook-supply-chain-cards" class="card-grid"></div>
+                                    <h3 class="section-title">HP ZBook Studio</h3>
+                                    <div id="zbook-supply-chain-cards" class="card-grid"></div>
+                                </div>
+                                <div id="chatbot-content" class="tab-pane">
+                                    <h2 class="section-title">AI Assistant</h2>
+                                    <div class="chatbot-container">
+                                        <div class="chat-window" id="chat-window">
+                                            <div class="chat-message bot">Hello! How can I help you today?</div>
+                                        </div>
+                                        <div class="chat-input-container">
+                                            <input type="text" id="chat-input" class="chat-input" placeholder="Type your message here...">
+                                            <button id="chat-send-btn" class="chat-send-btn">Send</button>
+                                        </div>
+                                    </div>
+                                    <div class="ticket-form-container">
+                                        <h2 class="section-title">IT Ticket Details</h2>
+                                        <form id="ticket-form" class="ticket-form">
+                                            <div class="form-section">
+                                                <h3>Ticket Information</h3>
+                                                <div class="form-group">
+                                                    <label for="ticket-id">ID</label>
+                                                    <input type="text" id="ticket-id" readonly>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="ticket-summary">Summary/Title</label>
+                                                    <input type="text" id="ticket-summary">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="ticket-description">Description</label>
+                                                    <textarea id="ticket-description" rows="3"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-section">
+                                                <h3>User & Assignment</h3>
+                                                <div class="form-group">
+                                                    <label for="ticket-caller">Caller</label>
+                                                    <input type="text" id="ticket-caller">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="ticket-group">Assigned Group</label>
+                                                    <input type="text" id="ticket-group">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="ticket-assignee">Assignee</label>
+                                                    <input type="text" id="ticket-assignee">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="ticket-status">Status</label>
+                                                    <select id="ticket-status">
+                                                        <option>New</option>
+                                                        <option>In-Progress</option>
+                                                        <option>On-Hold</option>
+                                                        <option>Resolved</option>
+                                                        <option>Closed</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-section">
+                                                <h3>Classification & Prioritization</h3>
+                                                 <div class="form-group">
+                                                    <label for="ticket-priority">Priority</label>
+                                                    <select id="ticket-priority" disabled>
+                                                        <option>Low</option>
+                                                        <option>Medium</option>
+                                                        <option>High</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="ticket-impact">Impact</label>
+                                                    <select id="ticket-impact">
+                                                        <option>Low</option>
+                                                        <option>Medium</option>
+                                                        <option>High</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="ticket-urgency">Urgency</label>
+                                                    <select id="ticket-urgency">
+                                                        <option>Low</option>
+                                                        <option>Medium</option>
+                                                        <option>High</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="ticket-category">Category</label>
+                                                    <select id="ticket-category">
+                                                        <option>Hardware</option>
+                                                        <option>Software</option>
+                                                        <option>Account</option>
+                                                        <option>Network</option>
+                                                        <option>Other</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-section">
+                                                <h3>Technical & Resolution Details</h3>
+                                                <div class="form-group">
+                                                    <label for="ticket-asset">Asset or Configuration Item</label>
+                                                    <input type="text" id="ticket-asset">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="ticket-work-log">Work Log / Notes</label>
+                                                    <textarea id="ticket-work-log" rows="5"></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="ticket-attachments">Attachments</label>
+                                                    <input type="file" id="ticket-attachments">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="ticket-resolution">Resolution Details</label>
+                                                    <textarea id="ticket-resolution" rows="3"></textarea>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="submit-ticket-btn">Create Ticket</button>
+                                        </form>
+                                    </div>
+                                    <div class="ticket-queue-container">
+                                        <h2 class="section-title">Ticket Queue</h2>
+                                        <div id="ticket-queue"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="admin-dashboard" style="display: none;">
+                        <h2 class="section-title">Monthly Calendar</h2>
+                        <div class="calendar-navigation">
+                            <button id="prev-month-btn" class="calendar-nav-btn">&lt;</button>
+                            <h3 id="month-year-header"></h3>
+                            <button id="next-month-btn" class="calendar-nav-btn">&gt;</button>
+                        </div>
+                        <div class="calendar-grid">
+                            <div class="calendar-header">
+                                <div>Sun</div>
+                                <div>Mon</div>
+                                <div>Tue</div>
+                                <div>Wed</div>
+                                <div>Thu</div>
+                                <div>Fri</div>
+                                <div>Sat</div>
+                            </div>
+                            <div class="calendar-body" id="calendar-body"></div>
+                        </div>
+                        <div id="total-days"></div>
+                        <form id="calendar-form">
+                            <select id="cal-user-select" required>
+                                <option value="">Select User</option>
+                            </select>
+                            <input type="text" id="cal-start-date" placeholder="Start Date" readonly>
+                            <input type="text" id="cal-end-date" placeholder="End Date" readonly>
+                            <input type="time" id="cal-start-time" required>
+                            <input type="time" id="cal-end-time" required>
+                            <button type="submit">Add to Calendar</button>
+                        </form>
+
+                        <h2 class="section-title">Income Manager</h2>
+                        <form id="user-form">
+                            <input type="text" id="user-first-name" placeholder="First Name" required>
+                            <input type="text" id="user-last-name" placeholder="Last Name" required>
+                            <input type="number" id="user-wage" placeholder="Hourly Wage" step="0.01" required>
+                            <button type="submit">Add User</button>
+                        </form>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Hourly Wage</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="user-table-body"></tbody>
+                        </table>
+
+                        <h2 class="section-title">Payroll Report</h2>
+                        <p>This report shows the calculated income for the currently selected month in the calendar.</p>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Scheduled Hours</th>
+                                    <th>Paid Hours (30min Lunch Excluded)</th>
+                                    <th>Total Income</th>
+                                </tr>
+                            </thead>
+                            <tbody id="payroll-table-body"></tbody>
+                        </table>
+                    </div>
+                </section>
             </main>
 
             <footer>
@@ -80,6 +396,21 @@
 
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sql.js@1.10.3/dist/sql-wasm.js"></script>
+    <script>
+      const SQL_CONFIG = {
+        locateFile: file => `https://cdn.jsdelivr.net/npm/sql.js@1.10.3/dist/${file}`
+      };
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sql.js@1.10.3/dist/sql-wasm.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/bundle.js"></script>
+    <script src="../js/projects.js"></script>
+    <script src="../js/db.js"></script>
+    <script src="../js/chatbot.js"></script>
 </body>
 </html>
