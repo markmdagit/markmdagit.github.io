@@ -56,78 +56,8 @@ function setActiveNav() {
 
 document.addEventListener("DOMContentLoaded", () => {
     setActiveNav();
-    if (document.getElementById("accessories")) {
-        loadAccessories();
-    }
     initInfographic();
 });
-
-function createAccessoryCard(container, item) {
-    const card = document.createElement('div');
-    card.className = 'laptop-card';
-
-    const title = document.createElement('h3');
-    title.textContent = item.model;
-    card.appendChild(title);
-
-    if (item.part_number) {
-        const specDiv = document.createElement('div');
-        specDiv.className = 'spec';
-        specDiv.innerHTML = `<span class="spec-key">Part Number:</span><span class="spec-value">${item.part_number}</span>`;
-        card.appendChild(specDiv);
-    }
-
-    if (item.description) {
-        const specDiv = document.createElement('div');
-        specDiv.className = 'spec';
-        specDiv.style.alignItems = 'flex-start';
-        specDiv.innerHTML = `<span class="spec-key">Description:</span><span class="spec-value">${item.description}</span>`;
-        card.appendChild(specDiv);
-    }
-
-    container.appendChild(card);
-}
-
-function loadAccessories() {
-    const accessoriesContainer = document.getElementById("accessories");
-    if (!accessoriesContainer) return;
-
-    fetchData("/data/accessories.json")
-        .then(data => {
-            // Clear container in case of re-population
-            accessoriesContainer.innerHTML = '';
-
-            const mainTitle = document.createElement('h2');
-            mainTitle.className = 'section-title';
-            mainTitle.textContent = 'Laptop Accessories';
-            accessoriesContainer.appendChild(mainTitle);
-
-            for (const productLine in data) {
-                const productLineTitle = document.createElement('h3');
-                productLineTitle.className = 'section-title';
-                productLineTitle.textContent = productLine;
-                accessoriesContainer.appendChild(productLineTitle);
-
-                const categories = data[productLine];
-                for (const category in categories) {
-                    const categoryTitle = document.createElement('h4');
-                    categoryTitle.className = 'section-title';
-                    categoryTitle.textContent = category;
-                    accessoriesContainer.appendChild(categoryTitle);
-
-                    const cardGrid = document.createElement('div');
-                    cardGrid.className = 'card-grid';
-
-                    categories[category].forEach(item => {
-                        createAccessoryCard(cardGrid, item);
-                    });
-
-                    accessoriesContainer.appendChild(cardGrid);
-                }
-            }
-        })
-        .catch(error => console.error("Error fetching or creating accessory cards:", error));
-}
 
 function initInfographic() {
     const timelineDots = document.querySelectorAll(".timeline-dot");
