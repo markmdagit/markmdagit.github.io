@@ -11,7 +11,7 @@ html {
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #F0F8FF;
+    background-color: #B0E0E6;
     color: #333;
     line-height: 1.6;
 }
@@ -80,7 +80,7 @@ a:hover {
 
 /* --- Navigation --- */
 nav {
-    background-color: #E6E6FA;
+    background-color: #F0F8FF;
     padding: 0.75rem 0;
     border-bottom: 1px solid #ddd;
     position: sticky;
@@ -139,7 +139,7 @@ section:last-of-type {
 }
 
 .skill-card {
-    background-color: #E6E6FA;
+    background-color: #F0F8FF;
     padding: 1.5rem;
     border-radius: 8px;
     border: 1px solid #eee;
@@ -262,7 +262,7 @@ section:last-of-type {
 
 .story {
     display: none;
-    background-color: #E6E6FA;
+    background-color: #F0F8FF;
     padding: 1.5rem;
     border-radius: 8px;
     border: 1px solid #eee;
@@ -285,7 +285,7 @@ footer {
     margin-top: 2rem;
     font-size: 0.9rem;
     color: #777;
-    background-color: #E6E6FA;
+    background-color: #F0F8FF;
     border-top: 1px solid #eee;
 }
 
