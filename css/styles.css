@@ -752,3 +752,64 @@ footer {
     padding: 2rem;
     border-radius: 8px;
 }
+/* --- Infographic --- */
+.infographic-container {
+    display: flex;
+    gap: 2rem;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    width: 20px;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background-color: #555;
+    transform: translateX(-50%);
+}
+
+.timeline-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #555;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.timeline-dot.active {
+    background-color: #00aaff;
+}
+
+.story-container {
+    flex: 1;
+}
+
+.story {
+    display: none;
+    background-color: #343a40;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.story.active {
+    display: block;
+}
+
+.story h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #e0e0e0;
+}

@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.getElementById("accessories")) {
         loadAccessories();
     }
+    initInfographic();
 });
 
 function createAccessoryCard(container, item) {
@@ -126,4 +127,28 @@ function loadAccessories() {
             }
         })
         .catch(error => console.error("Error fetching or creating accessory cards:", error));
+}
+
+function initInfographic() {
+    const timelineDots = document.querySelectorAll(".timeline-dot");
+    const stories = document.querySelectorAll(".story");
+
+    if (timelineDots.length === 0) return;
+
+    // Set the first dot and story as active by default
+    timelineDots[0].classList.add("active");
+    stories[0].classList.add("active");
+
+    timelineDots.forEach(dot => {
+        dot.addEventListener("click", () => {
+            const storyId = dot.dataset.story;
+            const story = document.getElementById(storyId);
+
+            timelineDots.forEach(d => d.classList.remove("active"));
+            stories.forEach(s => s.classList.remove("active"));
+
+            dot.classList.add("active");
+            story.classList.add("active");
+        });
+    });
 }
