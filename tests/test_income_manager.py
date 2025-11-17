@@ -2,7 +2,7 @@ import re
 from playwright.sync_api import Page, expect
 
 def test_income_manager_crud(page: Page):
-    page.goto("http://localhost:8000/pages/projects.html")
+    page.goto("http://localhost:8000/pages/index.html")
 
     # Navigate to the Income Manager
     admin_btn = page.locator("#admin-btn")

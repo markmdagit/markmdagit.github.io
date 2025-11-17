@@ -4,7 +4,7 @@ from playwright.sync_api import Page, expect
 import re
 
 def test_date_range_highlighting(page: Page):
-    page.goto("http://localhost:8000/pages/projects.html")
+    page.goto("http://localhost:8000/pages/index.html")
 
     # Open the admin dropdown and click the calendar button
     page.click("button#admin-btn")

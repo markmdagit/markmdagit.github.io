@@ -3,7 +3,7 @@ from playwright.sync_api import Page, expect
 import datetime
 
 def test_admin_monthly_calendar(page: Page):
-    page.goto("http://localhost:8000/pages/projects.html")
+    page.goto("http://localhost:8000/pages/index.html")
 
     # First, create a user to assign the event to
     admin_btn = page.locator("#admin-btn")

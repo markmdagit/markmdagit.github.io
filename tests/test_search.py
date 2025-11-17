@@ -2,7 +2,7 @@ import re
 from playwright.sync_api import Page, expect
 
 def test_laptop_search(page: Page):
-    page.goto("http://localhost:8000/pages/projects.html")
+    page.goto("http://localhost:8000/pages/index.html")
 
     # 1. Verify the title is removed
     title = page.locator("h2.section-title:has-text('HP Laptops Parts List Database')")
