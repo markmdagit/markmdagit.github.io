@@ -1,0 +1,74 @@
+{
+  "Laptops": [
+    {"Rank": 1, "Name": "Acer Aspire 5 A515-56-36UT, 15.6\" Full HD Display", "Price": 299.99, "Rating": 4.5, "ReviewCount": 35201},
+    {"Rank": 2, "Name": "HP 15-inch Laptop, 11th Gen Intel Core i5-1135G7", "Price": 548.00, "Rating": 4.4, "ReviewCount": 12450},
+    {"Rank": 3, "Name": "Lenovo IdeaPad 3, 14.0\" FHD Display", "Price": 425.00, "Rating": 4.6, "ReviewCount": 2300},
+    {"Rank": 4, "Name": "Apple MacBook Air with M1 Chip", "Price": 899.00, "Rating": 4.8, "ReviewCount": 15890},
+    {"Rank": 5, "Name": "Acer Nitro 5 AN515-55-53E5 Gaming Laptop", "Price": 729.99, "Rating": 4.6, "ReviewCount": 8500},
+    {"Rank": 6, "Name": "ASUS VivoBook 15 Thin and Light Laptop", "Price": 369.99, "Rating": 4.3, "ReviewCount": 18200},
+    {"Rank": 7, "Name": "HP Pavilion 15 Laptop", "Price": 745.00, "Rating": 4.5, "ReviewCount": 5600},
+    {"Rank": 8, "Name": "Dell Inspiron 15 3000", "Price": 399.00, "Rating": 4.2, "ReviewCount": 1200},
+    {"Rank": 9, "Name": "Samsung Galaxy Book Pro", "Price": 999.99, "Rating": 4.4, "ReviewCount": 900},
+    {"Rank": 10, "Name": "Lenovo Flex 5 14\" 2-in-1 Laptop", "Price": 629.00, "Rating": 4.5, "ReviewCount": 6700}
+  ],
+  "Desktops": [
+    {"Rank": 1, "Name": "HP Desktop PC, Intel Core i3-10100", "Price": 449.00, "Rating": 4.4, "ReviewCount": 3100},
+    {"Rank": 2, "Name": "Acer Aspire TC-895-UA91 Desktop", "Price": 429.99, "Rating": 4.5, "ReviewCount": 5400},
+    {"Rank": 3, "Name": "Dell Inspiron 3880 Desktop", "Price": 525.00, "Rating": 4.3, "ReviewCount": 2200},
+    {"Rank": 4, "Name": "HP Slim Desktop", "Price": 399.00, "Rating": 4.2, "ReviewCount": 1800},
+    {"Rank": 5, "Name": "CyberPowerPC Gamer Xtreme VR Gaming PC", "Price": 949.00, "Rating": 4.6, "ReviewCount": 9500},
+    {"Rank": 6, "Name": "Apple Mac Mini with Apple M1 Chip", "Price": 659.00, "Rating": 4.8, "ReviewCount": 8100},
+    {"Rank": 7, "Name": "Lenovo IdeaCentre 3 Desktop", "Price": 379.00, "Rating": 4.3, "ReviewCount": 1500},
+    {"Rank": 8, "Name": "Skytech Archangel Gaming Computer PC Desktop", "Price": 1199.00, "Rating": 4.5, "ReviewCount": 3400},
+    {"Rank": 9, "Name": "HP Pavilion Gaming Desktop", "Price": 699.00, "Rating": 4.5, "ReviewCount": 2900},
+    {"Rank": 10, "Name": "Dell OptiPlex 7020 Desktop Computer (Renewed)", "Price": 175.00, "Rating": 4.1, "ReviewCount": 4200}
+  ],
+  "Tablets": [
+    {"Rank": 1, "Name": "Apple iPad (9th generation)", "Price": 309.00, "Rating": 4.8, "ReviewCount": 25000},
+    {"Rank": 2, "Name": "Samsung Galaxy Tab A7 Lite", "Price": 119.00, "Rating": 4.3, "ReviewCount": 5600},
+    {"Rank": 3, "Name": "Amazon Fire HD 10 Tablet", "Price": 149.99, "Rating": 4.6, "ReviewCount": 85000},
+    {"Rank": 4, "Name": "Lenovo Tab M10 Plus", "Price": 169.00, "Rating": 4.4, "ReviewCount": 3200},
+    {"Rank": 5, "Name": "Samsung Galaxy Tab S7 FE", "Price": 429.00, "Rating": 4.7, "ReviewCount": 2100},
+    {"Rank": 6, "Name": "Apple iPad Air (5th generation)", "Price": 559.00, "Rating": 4.8, "ReviewCount": 4500},
+    {"Rank": 7, "Name": "Amazon Fire 7 Tablet", "Price": 49.99, "Rating": 4.4, "ReviewCount": 120000},
+    {"Rank": 8, "Name": "Microsoft Surface Go 2", "Price": 399.99, "Rating": 4.5, "ReviewCount": 3800},
+    {"Rank": 9, "Name": "Dragon Touch Notepad K10 Tablet", "Price": 109.99, "Rating": 4.2, "ReviewCount": 8900},
+    {"Rank": 10, "Name": "Samsung Galaxy Tab A8", "Price": 199.00, "Rating": 4.5, "ReviewCount": 1500}
+  ],
+  "Mice": [
+    {"Rank": 1, "Name": "Logitech M185 Wireless Mouse", "Price": 14.99, "Rating": 4.6, "ReviewCount": 45000},
+    {"Rank": 2, "Name": "Razer DeathAdder Essential Gaming Mouse", "Price": 24.99, "Rating": 4.7, "ReviewCount": 32000},
+    {"Rank": 3, "Name": "Logitech B100 Corded Mouse", "Price": 7.99, "Rating": 4.5, "ReviewCount": 15000},
+    {"Rank": 4, "Name": "HP X3000 G2 Wireless Mouse", "Price": 12.99, "Rating": 4.4, "ReviewCount": 8000},
+    {"Rank": 5, "Name": "Apple Magic Mouse", "Price": 74.00, "Rating": 4.5, "ReviewCount": 12500},
+    {"Rank": 6, "Name": "Logitech MX Master 3S", "Price": 99.99, "Rating": 4.8, "ReviewCount": 6000},
+    {"Rank": 7, "Name": "AmazonBasics Wireless Computer Mouse", "Price": 11.49, "Rating": 4.3, "ReviewCount": 55000},
+    {"Rank": 8, "Name": "Microsoft Wireless Mobile Mouse 1850", "Price": 14.95, "Rating": 4.5, "ReviewCount": 9200},
+    {"Rank": 9, "Name": "SteelSeries Rival 3 Gaming Mouse", "Price": 29.99, "Rating": 4.6, "ReviewCount": 4800},
+    {"Rank": 10, "Name": "Logitech Pebble M350", "Price": 29.99, "Rating": 4.7, "ReviewCount": 18000}
+  ],
+  "Keyboards": [
+    {"Rank": 1, "Name": "Logitech K120 Wired Keyboard", "Price": 12.99, "Rating": 4.5, "ReviewCount": 22000},
+    {"Rank": 2, "Name": "Razer Cynosa Chroma Gaming Keyboard", "Price": 49.99, "Rating": 4.7, "ReviewCount": 18500},
+    {"Rank": 3, "Name": "Redragon K552 Mechanical Gaming Keyboard", "Price": 32.99, "Rating": 4.4, "ReviewCount": 28000},
+    {"Rank": 4, "Name": "Apple Magic Keyboard", "Price": 99.00, "Rating": 4.7, "ReviewCount": 11000},
+    {"Rank": 5, "Name": "Logitech MK270 Wireless Keyboard and Mouse Combo", "Price": 24.99, "Rating": 4.5, "ReviewCount": 65000},
+    {"Rank": 6, "Name": "HP Wired Keyboard 100", "Price": 14.99, "Rating": 4.4, "ReviewCount": 3500},
+    {"Rank": 7, "Name": "Corsair K55 RGB Gaming Keyboard", "Price": 49.99, "Rating": 4.6, "ReviewCount": 14000},
+    {"Rank": 8, "Name": "Arteck 2.4G Wireless Keyboard", "Price": 27.99, "Rating": 4.5, "ReviewCount": 9800},
+    {"Rank": 9, "Name": "Microsoft Ergonomic Keyboard", "Price": 44.99, "Rating": 4.4, "ReviewCount": 5200},
+    {"Rank": 10, "Name": "Keychron K2 Mechanical Keyboard", "Price": 79.99, "Rating": 4.6, "ReviewCount": 4100}
+  ],
+  "Monitors": [
+    {"Rank": 1, "Name": "HP 24mh FHD Monitor", "Price": 174.99, "Rating": 4.7, "ReviewCount": 19000},
+    {"Rank": 2, "Name": "Sceptre 24\" Professional Thin 75Hz 1080p", "Price": 129.99, "Rating": 4.6, "ReviewCount": 14500},
+    {"Rank": 3, "Name": "Acer SB220Q bi 21.5 Inches Full HD", "Price": 93.99, "Rating": 4.6, "ReviewCount": 35000},
+    {"Rank": 4, "Name": "Dell S2721HGF 27 Inch Curved Gaming Monitor", "Price": 229.99, "Rating": 4.7, "ReviewCount": 6800},
+    {"Rank": 5, "Name": "ASUS VP28UQG 28\" 4K/UHD", "Price": 259.00, "Rating": 4.5, "ReviewCount": 4200},
+    {"Rank": 6, "Name": "LG 27UL500-W 27-Inch UHD (3840 x 2160) IPS Monitor", "Price": 296.99, "Rating": 4.5, "ReviewCount": 5100},
+    {"Rank": 7, "Name": "Samsung SF350 24-Inch FHD Monitor", "Price": 129.99, "Rating": 4.5, "ReviewCount": 8400},
+    {"Rank": 8, "Name": "BenQ GW2480 24 Inch 1080P IPS Monitor", "Price": 159.00, "Rating": 4.7, "ReviewCount": 11000},
+    {"Rank": 9, "Name": "Alienware AW2521HF 24.5 Inch Gaming Monitor", "Price": 349.99, "Rating": 4.8, "ReviewCount": 2300},
+    {"Rank": 10, "Name": "ViewSonic VA2447-MH 24 Inch Full HD 1080p", "Price": 119.99, "Rating": 4.4, "ReviewCount": 3000}
+  ]
+}
