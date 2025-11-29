@@ -814,6 +814,83 @@ footer {
     transform: translateY(-2px);
 }
 
+/* --- Scraper Tool Styles --- */
+#scraper-tool {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.scraper-categories {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.scraper-cat-btn {
+    padding: 10px 20px;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.scraper-cat-btn:hover {
+    background-color: #dde2e6;
+}
+
+.scraper-cat-btn.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+/* Reusing styles for Best Service Tool */
+.bestservice-cat-btn {
+    padding: 10px 20px;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.bestservice-cat-btn:hover {
+    background-color: #dde2e6;
+}
+
+.bestservice-cat-btn.active {
+    background-color: #28a745; /* Green for this tool to differentiate */
+    color: white;
+    border-color: #28a745;
+}
+
+#scraper-grid, #bestservice-grid {
+    font-family: 'Roboto', sans-serif;
+}
+
+.jsgrid-header-cell,
+.jsgrid-header-row > .jsgrid-header-cell {
+    background-color: #343a40 !important;
+    color: white !important;
+    font-weight: bold;
+    text-align: center;
+}
+
+.jsgrid-cell {
+    background-color: #fff;
+}
+
+.jsgrid-alt-row .jsgrid-cell {
+    background-color: #f8f9fa;
+}
+
+
 /* --- Grid Layouts for Sections --- */
 .chatbot-grid-container {
     display: grid;
