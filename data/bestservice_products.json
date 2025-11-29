@@ -1,0 +1,38 @@
+{
+  "Instruments": [
+    {"Year": 2024, "Name": "Orchestral Tools Metropolis Ark 5", "Category": "Instruments", "Price": 499.00, "Description": "Epic orchestral pads and swells."},
+    {"Year": 2023, "Name": "Spitfire Audio Albion Colossus", "Category": "Instruments", "Price": 449.00, "Description": "Action blockbuster scoring toolkit."},
+    {"Year": 2022, "Name": "Native Instruments Kontakt 7", "Category": "Instruments", "Price": 299.00, "Description": "The definitive sampling platform."},
+    {"Year": 2021, "Name": "Vienna Symphonic Library Synchron Strings Pro", "Category": "Instruments", "Price": 445.00, "Description": "Authentic string ensembles with multiple microphone positions."},
+    {"Year": 2020, "Name": "Heavyocity Damage 2", "Category": "Instruments", "Price": 399.00, "Description": "Cinematic percussion library."},
+    {"Year": 2019, "Name": "Spectrasonics Omnisphere 2.6", "Category": "Instruments", "Price": 499.00, "Description": "Flagship synthesizer with hardware integration."},
+    {"Year": 2018, "Name": "Output Analog Strings", "Category": "Instruments", "Price": 199.00, "Description": "Hybrid string engine for modern sound design."},
+    {"Year": 2017, "Name": "EastWest Hollywood Choirs", "Category": "Instruments", "Price": 399.00, "Description": "Detailed choir sample library with WordBuilder."},
+    {"Year": 2016, "Name": "Arturia V Collection 5", "Category": "Instruments", "Price": 499.00, "Description": "Classic synthesizer emulations."},
+    {"Year": 2015, "Name": "Native Instruments Komplete 10", "Category": "Instruments", "Price": 599.00, "Description": "Comprehensive production suite."}
+  ],
+  "Effects": [
+    {"Year": 2024, "Name": "FabFilter Pro-Q 3 Update", "Category": "Effects", "Price": 179.00, "Description": "High-quality EQ plug-in with dynamic EQ."},
+    {"Year": 2023, "Name": "Soundtoys SuperPlate", "Category": "Effects", "Price": 149.00, "Description": "EMT 140, EMT 240, Audicon, Stocktronics, and Echo Chamber plates."},
+    {"Year": 2022, "Name": "Valhalla DSP ValhallaDelay", "Category": "Effects", "Price": 50.00, "Description": "Classic and modern delay units."},
+    {"Year": 2021, "Name": "iZotope RX 9 Standard", "Category": "Effects", "Price": 399.00, "Description": "Industry standard audio repair toolkit."},
+    {"Year": 2020, "Name": "Slate Digital Fresh Air", "Category": "Effects", "Price": 0.00, "Description": "High frequency processor for vocals."},
+    {"Year": 2019, "Name": "Waves Abbey Road Studio 3", "Category": "Effects", "Price": 199.00, "Description": "Headphone mixing plugin simulating the control room."},
+    {"Year": 2018, "Name": "Oeksound Soothe", "Category": "Effects", "Price": 199.00, "Description": "Dynamic resonance suppressor."},
+    {"Year": 2017, "Name": "Soundtoys 5 Bundle", "Category": "Effects", "Price": 499.00, "Description": "Complete collection of audio effects."},
+    {"Year": 2016, "Name": "Eventide Blackhole", "Category": "Effects", "Price": 199.00, "Description": "Extraterrestrial reverb plugin."},
+    {"Year": 2015, "Name": "Celemony Melodyne 4", "Category": "Effects", "Price": 399.00, "Description": "Pitch and time correction software."}
+  ],
+  "Software": [
+    {"Year": 2024, "Name": "Steinberg Cubase 13 Pro", "Category": "Software", "Price": 579.00, "Description": "Advanced music production system."},
+    {"Year": 2023, "Name": "Ableton Live 11 Suite", "Category": "Software", "Price": 749.00, "Description": "Software for music creation and performance."},
+    {"Year": 2022, "Name": "PreSonus Studio One 6", "Category": "Software", "Price": 399.00, "Description": "DAW with drag-and-drop workflow."},
+    {"Year": 2021, "Name": "Logic Pro X 10.7", "Category": "Software", "Price": 199.00, "Description": "Professional music production for Mac."},
+    {"Year": 2020, "Name": "FL Studio 20.8", "Category": "Software", "Price": 299.00, "Description": "Complete software music production environment."},
+    {"Year": 2019, "Name": "Avid Pro Tools 2019", "Category": "Software", "Price": 599.00, "Description": "Industry standard recording software."},
+    {"Year": 2018, "Name": "Reason Studios Reason 10", "Category": "Software", "Price": 399.00, "Description": "Virtual rack based DAW."},
+    {"Year": 2017, "Name": "Bitwig Studio 2", "Category": "Software", "Price": 399.00, "Description": "Modern DAW for creation and performance."},
+    {"Year": 2016, "Name": "Cockos Reaper 5", "Category": "Software", "Price": 60.00, "Description": "Efficient and flexible DAW."},
+    {"Year": 2015, "Name": "Magix Samplitude Pro X2", "Category": "Software", "Price": 399.00, "Description": "Mastering and recording suite."}
+  ]
+}

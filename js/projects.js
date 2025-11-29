@@ -12,9 +12,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const toolsOptions = document.getElementById('tools-options');
     const toolsButtons = [
         document.getElementById('scraper-tool-btn'),
+        document.getElementById('bestservice-tool-btn'),
     ];
     const toolsSections = [
         document.getElementById('scraper-tool'),
+        document.getElementById('bestservice-tool'),
     ];
 
     const adminBtn = document.getElementById('admin-btn');
@@ -53,6 +55,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Initialize Scraper if needed (it will be handled by scraper.js listening for visibility or just load defaults)
                     if (typeof initScraper === 'function') {
                         initScraper();
+                    }
+                } else if (button.id === 'bestservice-tool-btn') {
+                     if (typeof initBestServiceScraper === 'function') {
+                        initBestServiceScraper();
                     }
                 }
             });

@@ -175,6 +175,7 @@
                             <button id="tools-btn" class="dropdown-toggle">Tools <i class="fas fa-caret-down"></i></button>
                             <div id="tools-options" class="dropdown-menu" style="display: none;">
                                 <button id="scraper-tool-btn">Amazon Best Sellers</button>
+                                <button id="bestservice-tool-btn">Best Service New Products</button>
                             </div>
                         </div>
                         <div class="dropdown">
@@ -199,6 +200,19 @@
                         </div>
 
                         <div id="scraper-grid"></div>
+                    </div>
+
+                    <div id="bestservice-tool" style="display: none;">
+                        <h2 class="section-title">Best Service New Products Scraper</h2>
+                        <p class="section-description">A tool to browse new product releases from 2015 to present for Instruments, Effects, and Software.</p>
+
+                        <div class="scraper-categories">
+                            <button class="bestservice-cat-btn active" data-category="Instruments">Instruments</button>
+                            <button class="bestservice-cat-btn" data-category="Effects">Effects</button>
+                            <button class="bestservice-cat-btn" data-category="Software">Software</button>
+                        </div>
+
+                        <div id="bestservice-grid"></div>
                     </div>
 
                     <div id="hardware-details" style="display: none;">
@@ -445,5 +459,6 @@
     <script src="../js/db.js"></script>
     <script src="../js/chatbot.js"></script>
     <script src="../js/scraper.js"></script>
+    <script src="../js/bestservice_scraper.js"></script>
 </body>
 </html>
