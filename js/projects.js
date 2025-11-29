@@ -8,6 +8,15 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('hardware-details'),
     ];
 
+    const toolsBtn = document.getElementById('tools-btn');
+    const toolsOptions = document.getElementById('tools-options');
+    const toolsButtons = [
+        document.getElementById('scraper-tool-btn'),
+    ];
+    const toolsSections = [
+        document.getElementById('scraper-tool'),
+    ];
+
     const adminBtn = document.getElementById('admin-btn');
     const adminOptions = document.getElementById('admin-options');
     const adminButtons = [
@@ -40,6 +49,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     loadAccessories();
                     // Load the content for the default active tab
                     loadSupplyChainData();
+                } else if (button.id === 'scraper-tool-btn') {
+                    // Initialize Scraper if needed (it will be handled by scraper.js listening for visibility or just load defaults)
+                    if (typeof initScraper === 'function') {
+                        initScraper();
+                    }
                 }
             });
         });
@@ -74,16 +88,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    const allSections = [...computerSections, ...adminSections];
+    const allSections = [...computerSections, ...toolsSections, ...adminSections];
 
-    setupDropdown(computersBtn, computerOptions, adminOptions);
-    setupDropdown(adminBtn, adminOptions, computerOptions);
+    setupDropdown(computersBtn, computerOptions, toolsOptions, adminOptions);
+    setupDropdown(toolsBtn, toolsOptions, computerOptions, adminOptions);
+    setupDropdown(adminBtn, adminOptions, computerOptions, toolsOptions);
+
     setupMenu(computerButtons, computerSections, allSections);
+    setupMenu(toolsButtons, toolsSections, allSections);
     setupMenu(adminButtons, adminSections, allSections);
 
     window.addEventListener('click', function(event) {
         if (!computersBtn.contains(event.target)) {
             computerOptions.style.display = 'none';
+        }
+        if (!toolsBtn.contains(event.target)) {
+            toolsOptions.style.display = 'none';
         }
         if (!adminBtn.contains(event.target)) {
             adminOptions.style.display = 'none';
