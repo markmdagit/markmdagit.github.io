@@ -30,7 +30,9 @@ function renderBestServiceGrid(data) {
         inserting: false,
         editing: false,
         sorting: true,
-        paging: false,
+        paging: true,
+        pageSize: 50,
+        pageButtonCount: 5,
 
         data: data,
 
