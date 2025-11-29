@@ -815,7 +815,7 @@ footer {
 }
 
 /* --- Scraper Tool Styles --- */
-#scraper-tool {
+#scraper-tool, #bestservice-tool {
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -829,7 +829,7 @@ footer {
     flex-wrap: wrap;
 }
 
-.scraper-cat-btn {
+.scraper-cat-btn, .bestservice-cat-btn {
     padding: 10px 20px;
     background-color: #e9ecef;
     border: 1px solid #ced4da;
@@ -839,35 +839,14 @@ footer {
     transition: all 0.2s;
 }
 
-.scraper-cat-btn:hover {
+.scraper-cat-btn:hover, .bestservice-cat-btn:hover {
     background-color: #dde2e6;
 }
 
-.scraper-cat-btn.active {
+.scraper-cat-btn.active, .bestservice-cat-btn.active {
     background-color: #007bff;
     color: white;
     border-color: #007bff;
-}
-
-/* Reusing styles for Best Service Tool */
-.bestservice-cat-btn {
-    padding: 10px 20px;
-    background-color: #e9ecef;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.2s;
-}
-
-.bestservice-cat-btn:hover {
-    background-color: #dde2e6;
-}
-
-.bestservice-cat-btn.active {
-    background-color: #28a745; /* Green for this tool to differentiate */
-    color: white;
-    border-color: #28a745;
 }
 
 #scraper-grid, #bestservice-grid {

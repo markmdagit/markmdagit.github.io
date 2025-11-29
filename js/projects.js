@@ -42,8 +42,11 @@ document.addEventListener('DOMContentLoaded', function() {
             button.addEventListener('click', () => {
                 allSections.forEach(section => section.style.display = 'none');
                 sections[index].style.display = 'block';
-                buttons.forEach(btn => btn.classList.remove('active'));
+
+                // Remove active class from all known buttons across all menus
+                [...computerButtons, ...toolsButtons, ...adminButtons].forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
+
                 button.closest('.dropdown-menu').style.display = 'none';
 
                 if (button.id === 'hardware-details-btn') {
