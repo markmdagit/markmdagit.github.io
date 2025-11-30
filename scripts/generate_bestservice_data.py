@@ -45,8 +45,9 @@ def generate_item(category, index):
         desc = f"Standard software for {year} production."
 
     full_name = f"{company} {name} v{random.randint(1,5)}.{random.randint(0,9)}"
-    encoded_name = urllib.parse.quote(full_name)
-    link = f"https://www.bestservice.com/en/search.html?search={encoded_name}"
+    # Create a slug for the product page URL
+    slug = full_name.lower().replace(" ", "_").replace(".", "_")
+    link = f"https://www.bestservice.com/en/{slug}.html"
 
     return {
         "Year": year,
