@@ -34,11 +34,13 @@ function renderBestServiceGrid(data) {
         pageSize: 50,
         pageButtonCount: 5,
         pageIndex: 1,
+        selecting: false,
 
         data: data,
 
         fields: [
             { name: "Year", type: "number", width: 50, align: "center" },
+            { name: "Company", type: "text", width: 150 },
             {
                 name: "Name",
                 type: "text",

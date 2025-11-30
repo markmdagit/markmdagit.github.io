@@ -21,8 +21,15 @@ effect_suffixes = ["Reverb", "Delay", "Compressor", "EQ", "Limiter", "Saturation
 software_prefixes = ["Pro", "Studio", "Live", "Creative", "Audio", "Music", "Beat", "Score", "Wave", "Sound"]
 software_suffixes = ["DAW", "Suite", "Lab", "Station", "Creator", "Editor", "Engine", "Tool", "Platform", "Hub"]
 
+companies = [
+    "Native Instruments", "Spitfire Audio", "Orchestral Tools", "Spectrasonics", "Output",
+    "EastWest", "Arturia", "FabFilter", "Soundtoys", "Valhalla DSP", "iZotope", "Slate Digital",
+    "Waves", "Steinberg", "Ableton", "PreSonus", "U-he", "Xfer Records", "Celemony", "Eventide"
+]
+
 def generate_item(category, index):
     year = random.choice(years)
+    company = random.choice(companies)
     price = round(random.uniform(49.0, 999.0), 2)
     if random.random() < 0.1:
         price = 0.0 # Some free items
@@ -37,12 +44,13 @@ def generate_item(category, index):
         name = f"{random.choice(software_prefixes)} {random.choice(software_suffixes)} {year - 2000}"
         desc = f"Standard software for {year} production."
 
-    full_name = f"{name} v{random.randint(1,5)}.{random.randint(0,9)}"
+    full_name = f"{company} {name} v{random.randint(1,5)}.{random.randint(0,9)}"
     encoded_name = urllib.parse.quote(full_name)
     link = f"https://www.bestservice.com/en/search.html?search={encoded_name}"
 
     return {
         "Year": year,
+        "Company": company,
         "Name": full_name,
         "Category": category,
         "Price": price,

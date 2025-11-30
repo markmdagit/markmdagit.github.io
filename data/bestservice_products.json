@@ -2,1687 +2,1897 @@
   "Instruments": [
     {
       "Year": 2024,
-      "Name": "Virtual World 8 v1.5",
+      "Company": "Eventide",
+      "Name": "Eventide Cinematic World 8 v2.2",
+      "Category": "Instruments",
+      "Price": 852.44,
+      "Description": "A cinematic world 8 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Eventide%20Cinematic%20World%208%20v2.2"
+    },
+    {
+      "Year": 2024,
+      "Company": "Native Instruments",
+      "Name": "Native Instruments Analog Keys 7 v3.7",
+      "Category": "Instruments",
+      "Price": 843.1,
+      "Description": "A analog keys 7 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Native%20Instruments%20Analog%20Keys%207%20v3.7"
+    },
+    {
+      "Year": 2024,
+      "Company": "U-he",
+      "Name": "U-he Virtual Strings 1 v3.7",
+      "Category": "Instruments",
+      "Price": 212.59,
+      "Description": "A virtual strings 1 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=U-he%20Virtual%20Strings%201%20v3.7"
+    },
+    {
+      "Year": 2024,
+      "Company": "Arturia",
+      "Name": "Arturia Classic Guitars 1 v2.5",
       "Category": "Instruments",
       "Price": 0.0,
-      "Description": "A virtual world 8 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Virtual%20World%208%20v1.5"
+      "Description": "A classic guitars 1 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Arturia%20Classic%20Guitars%201%20v2.5"
     },
     {
       "Year": 2024,
-      "Name": "Symphonic Guitars 6 v5.1",
+      "Company": "Ableton",
+      "Name": "Ableton Classic World 2 v3.1",
       "Category": "Instruments",
-      "Price": 838.45,
-      "Description": "A symphonic guitars 6 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Symphonic%20Guitars%206%20v5.1"
-    },
-    {
-      "Year": 2024,
-      "Name": "Organic Bass 7 v4.6",
-      "Category": "Instruments",
-      "Price": 115.56,
-      "Description": "A organic bass 7 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Organic%20Bass%207%20v4.6"
-    },
-    {
-      "Year": 2024,
-      "Name": "Digital World 2 v1.1",
-      "Category": "Instruments",
-      "Price": 437.82,
-      "Description": "A digital world 2 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Digital%20World%202%20v1.1"
-    },
-    {
-      "Year": 2024,
-      "Name": "Symphonic Choir 2 v5.1",
-      "Category": "Instruments",
-      "Price": 951.12,
-      "Description": "A symphonic choir 2 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Symphonic%20Choir%202%20v5.1"
-    },
-    {
-      "Year": 2024,
-      "Name": "Symphonic Bass 7 v3.3",
-      "Category": "Instruments",
-      "Price": 438.43,
-      "Description": "A symphonic bass 7 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Symphonic%20Bass%207%20v3.3"
-    },
-    {
-      "Year": 2024,
-      "Name": "Classic Choir 3 v2.5",
-      "Category": "Instruments",
-      "Price": 990.79,
-      "Description": "A classic choir 3 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Classic%20Choir%203%20v2.5"
-    },
-    {
-      "Year": 2023,
-      "Name": "Modular Guitars 9 v3.0",
-      "Category": "Instruments",
-      "Price": 906.51,
-      "Description": "A modular guitars 9 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Modular%20Guitars%209%20v3.0"
-    },
-    {
-      "Year": 2023,
-      "Name": "Hybrid World 5 v2.5",
-      "Category": "Instruments",
-      "Price": 330.9,
-      "Description": "A hybrid world 5 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Hybrid%20World%205%20v2.5"
-    },
-    {
-      "Year": 2023,
-      "Name": "Modular Bass 8 v4.6",
-      "Category": "Instruments",
-      "Price": 306.58,
-      "Description": "A modular bass 8 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Modular%20Bass%208%20v4.6"
-    },
-    {
-      "Year": 2022,
-      "Name": "Analog Orchestra 8 v2.4",
-      "Category": "Instruments",
-      "Price": 599.77,
-      "Description": "A analog orchestra 8 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Analog%20Orchestra%208%20v2.4"
-    },
-    {
-      "Year": 2022,
-      "Name": "Hybrid Keys 4 v5.0",
-      "Category": "Instruments",
-      "Price": 881.01,
-      "Description": "A hybrid keys 4 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Hybrid%20Keys%204%20v5.0"
-    },
-    {
-      "Year": 2022,
-      "Name": "Digital Choir 7 v2.4",
-      "Category": "Instruments",
-      "Price": 312.52,
-      "Description": "A digital choir 7 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Digital%20Choir%207%20v2.4"
-    },
-    {
-      "Year": 2022,
-      "Name": "Digital Strings 2 v4.0",
-      "Category": "Instruments",
-      "Price": 607.53,
-      "Description": "A digital strings 2 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Digital%20Strings%202%20v4.0"
-    },
-    {
-      "Year": 2022,
-      "Name": "Symphonic World 3 v3.2",
-      "Category": "Instruments",
-      "Price": 967.38,
-      "Description": "A symphonic world 3 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Symphonic%20World%203%20v3.2"
-    },
-    {
-      "Year": 2021,
-      "Name": "Classic Bass 7 v5.0",
-      "Category": "Instruments",
-      "Price": 562.69,
-      "Description": "A classic bass 7 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Classic%20Bass%207%20v5.0"
-    },
-    {
-      "Year": 2021,
-      "Name": "Cinematic Bass 6 v1.3",
-      "Category": "Instruments",
-      "Price": 0.0,
-      "Description": "A cinematic bass 6 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Cinematic%20Bass%206%20v1.3"
-    },
-    {
-      "Year": 2021,
-      "Name": "Organic Bass 8 v2.0",
-      "Category": "Instruments",
-      "Price": 0.0,
-      "Description": "A organic bass 8 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Organic%20Bass%208%20v2.0"
-    },
-    {
-      "Year": 2021,
-      "Name": "Epic Brass 7 v2.1",
-      "Category": "Instruments",
-      "Price": 730.45,
-      "Description": "A epic brass 7 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Epic%20Brass%207%20v2.1"
-    },
-    {
-      "Year": 2021,
-      "Name": "Cinematic Orchestra 9 v4.7",
-      "Category": "Instruments",
-      "Price": 108.38,
-      "Description": "A cinematic orchestra 9 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Cinematic%20Orchestra%209%20v4.7"
-    },
-    {
-      "Year": 2020,
-      "Name": "Digital World 3 v1.7",
-      "Category": "Instruments",
-      "Price": 593.85,
-      "Description": "A digital world 3 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Digital%20World%203%20v1.7"
-    },
-    {
-      "Year": 2020,
-      "Name": "Organic Synth 7 v4.2",
-      "Category": "Instruments",
-      "Price": 616.98,
-      "Description": "A organic synth 7 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Organic%20Synth%207%20v4.2"
-    },
-    {
-      "Year": 2020,
-      "Name": "Classic World 2 v2.4",
-      "Category": "Instruments",
-      "Price": 336.53,
+      "Price": 811.64,
       "Description": "A classic world 2 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Classic%20World%202%20v2.4"
+      "Link": "https://www.bestservice.com/en/search.html?search=Ableton%20Classic%20World%202%20v3.1"
     },
     {
-      "Year": 2020,
-      "Name": "Organic Guitars 4 v2.4",
+      "Year": 2024,
+      "Company": "Arturia",
+      "Name": "Arturia Digital Drums 2 v2.1",
       "Category": "Instruments",
-      "Price": 133.82,
-      "Description": "A organic guitars 4 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Organic%20Guitars%204%20v2.4"
+      "Price": 403.08,
+      "Description": "A digital drums 2 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Arturia%20Digital%20Drums%202%20v2.1"
     },
     {
-      "Year": 2020,
-      "Name": "Hybrid World 3 v3.6",
+      "Year": 2024,
+      "Company": "FabFilter",
+      "Name": "FabFilter Virtual Keys 3 v5.8",
       "Category": "Instruments",
-      "Price": 196.44,
-      "Description": "A hybrid world 3 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Hybrid%20World%203%20v3.6"
+      "Price": 90.97,
+      "Description": "A virtual keys 3 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=FabFilter%20Virtual%20Keys%203%20v5.8"
     },
     {
-      "Year": 2020,
-      "Name": "Epic Strings 1 v1.4",
+      "Year": 2024,
+      "Company": "Slate Digital",
+      "Name": "Slate Digital Cinematic Guitars 8 v4.7",
       "Category": "Instruments",
-      "Price": 662.75,
-      "Description": "A epic strings 1 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Epic%20Strings%201%20v1.4"
+      "Price": 525.97,
+      "Description": "A cinematic guitars 8 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Slate%20Digital%20Cinematic%20Guitars%208%20v4.7"
     },
     {
-      "Year": 2020,
-      "Name": "Virtual Guitars 6 v1.1",
+      "Year": 2024,
+      "Company": "Celemony",
+      "Name": "Celemony Cinematic Strings 3 v5.4",
       "Category": "Instruments",
-      "Price": 212.43,
-      "Description": "A virtual guitars 6 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Virtual%20Guitars%206%20v1.1"
+      "Price": 834.5,
+      "Description": "A cinematic strings 3 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Celemony%20Cinematic%20Strings%203%20v5.4"
     },
     {
-      "Year": 2020,
-      "Name": "Classic Bass 6 v2.8",
+      "Year": 2024,
+      "Company": "Spitfire Audio",
+      "Name": "Spitfire Audio Classic Bass 7 v4.0",
       "Category": "Instruments",
-      "Price": 77.62,
-      "Description": "A classic bass 6 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Classic%20Bass%206%20v2.8"
+      "Price": 264.31,
+      "Description": "A classic bass 7 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Spitfire%20Audio%20Classic%20Bass%207%20v4.0"
     },
     {
-      "Year": 2019,
-      "Name": "Organic Brass 7 v4.9",
+      "Year": 2023,
+      "Company": "Spectrasonics",
+      "Name": "Spectrasonics Modular Guitars 3 v1.0",
       "Category": "Instruments",
-      "Price": 367.45,
-      "Description": "A organic brass 7 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Organic%20Brass%207%20v4.9"
+      "Price": 78.34,
+      "Description": "A modular guitars 3 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Spectrasonics%20Modular%20Guitars%203%20v1.0"
     },
     {
-      "Year": 2019,
-      "Name": "Organic Strings 8 v3.2",
+      "Year": 2023,
+      "Company": "Eventide",
+      "Name": "Eventide Digital Orchestra 5 v4.6",
       "Category": "Instruments",
-      "Price": 635.23,
-      "Description": "A organic strings 8 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Organic%20Strings%208%20v3.2"
+      "Price": 577.39,
+      "Description": "A digital orchestra 5 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Eventide%20Digital%20Orchestra%205%20v4.6"
     },
     {
-      "Year": 2019,
-      "Name": "Organic World 7 v3.5",
+      "Year": 2023,
+      "Company": "EastWest",
+      "Name": "EastWest Hybrid Keys 4 v2.8",
       "Category": "Instruments",
-      "Price": 297.44,
-      "Description": "A organic world 7 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Organic%20World%207%20v3.5"
+      "Price": 76.59,
+      "Description": "A hybrid keys 4 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=EastWest%20Hybrid%20Keys%204%20v2.8"
     },
     {
-      "Year": 2019,
-      "Name": "Virtual Bass 4 v1.9",
+      "Year": 2023,
+      "Company": "Orchestral Tools",
+      "Name": "Orchestral Tools Symphonic Choir 3 v2.5",
       "Category": "Instruments",
-      "Price": 126.41,
-      "Description": "A virtual bass 4 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Virtual%20Bass%204%20v1.9"
+      "Price": 605.7,
+      "Description": "A symphonic choir 3 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Orchestral%20Tools%20Symphonic%20Choir%203%20v2.5"
     },
     {
-      "Year": 2019,
-      "Name": "Digital Keys 4 v2.8",
+      "Year": 2023,
+      "Company": "Orchestral Tools",
+      "Name": "Orchestral Tools Symphonic Choir 5 v2.4",
       "Category": "Instruments",
-      "Price": 0.0,
-      "Description": "A digital keys 4 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Digital%20Keys%204%20v2.8"
+      "Price": 361.25,
+      "Description": "A symphonic choir 5 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Orchestral%20Tools%20Symphonic%20Choir%205%20v2.4"
     },
     {
-      "Year": 2019,
-      "Name": "Virtual Choir 1 v4.5",
+      "Year": 2023,
+      "Company": "Xfer Records",
+      "Name": "Xfer Records Digital Brass 7 v1.5",
       "Category": "Instruments",
-      "Price": 194.36,
-      "Description": "A virtual choir 1 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Virtual%20Choir%201%20v4.5"
+      "Price": 922.87,
+      "Description": "A digital brass 7 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Xfer%20Records%20Digital%20Brass%207%20v1.5"
     },
     {
-      "Year": 2019,
-      "Name": "Classic Guitars 7 v2.2",
+      "Year": 2023,
+      "Company": "iZotope",
+      "Name": "iZotope Digital Drums 5 v5.3",
       "Category": "Instruments",
-      "Price": 0.0,
-      "Description": "A classic guitars 7 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Classic%20Guitars%207%20v2.2"
+      "Price": 826.2,
+      "Description": "A digital drums 5 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=iZotope%20Digital%20Drums%205%20v5.3"
     },
     {
-      "Year": 2018,
-      "Name": "Hybrid Synth 7 v3.8",
+      "Year": 2023,
+      "Company": "Spitfire Audio",
+      "Name": "Spitfire Audio Analog Orchestra 4 v1.8",
       "Category": "Instruments",
-      "Price": 0.0,
-      "Description": "A hybrid synth 7 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Hybrid%20Synth%207%20v3.8"
+      "Price": 663.33,
+      "Description": "A analog orchestra 4 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Spitfire%20Audio%20Analog%20Orchestra%204%20v1.8"
     },
     {
-      "Year": 2018,
-      "Name": "Modular Keys 8 v5.4",
+      "Year": 2023,
+      "Company": "Native Instruments",
+      "Name": "Native Instruments Modular World 7 v1.6",
       "Category": "Instruments",
-      "Price": 900.12,
-      "Description": "A modular keys 8 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Modular%20Keys%208%20v5.4"
+      "Price": 141.43,
+      "Description": "A modular world 7 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Native%20Instruments%20Modular%20World%207%20v1.6"
     },
     {
-      "Year": 2018,
-      "Name": "Organic Bass 8 v2.2",
+      "Year": 2022,
+      "Company": "Soundtoys",
+      "Name": "Soundtoys Organic Brass 1 v4.7",
       "Category": "Instruments",
-      "Price": 80.72,
-      "Description": "A organic bass 8 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Organic%20Bass%208%20v2.2"
+      "Price": 447.96,
+      "Description": "A organic brass 1 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Soundtoys%20Organic%20Brass%201%20v4.7"
     },
     {
-      "Year": 2018,
-      "Name": "Organic Synth 8 v3.2",
+      "Year": 2022,
+      "Company": "Celemony",
+      "Name": "Celemony Symphonic Bass 5 v1.2",
       "Category": "Instruments",
-      "Price": 924.22,
-      "Description": "A organic synth 8 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Organic%20Synth%208%20v3.2"
+      "Price": 831.15,
+      "Description": "A symphonic bass 5 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Celemony%20Symphonic%20Bass%205%20v1.2"
     },
     {
-      "Year": 2018,
-      "Name": "Symphonic Guitars 1 v4.1",
+      "Year": 2022,
+      "Company": "Soundtoys",
+      "Name": "Soundtoys Classic Orchestra 6 v3.0",
       "Category": "Instruments",
-      "Price": 560.53,
-      "Description": "A symphonic guitars 1 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Symphonic%20Guitars%201%20v4.1"
+      "Price": 811.02,
+      "Description": "A classic orchestra 6 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Soundtoys%20Classic%20Orchestra%206%20v3.0"
     },
     {
-      "Year": 2018,
-      "Name": "Hybrid Strings 4 v2.6",
+      "Year": 2022,
+      "Company": "Valhalla DSP",
+      "Name": "Valhalla DSP Modular Guitars 4 v4.6",
       "Category": "Instruments",
-      "Price": 435.15,
-      "Description": "A hybrid strings 4 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Hybrid%20Strings%204%20v2.6"
+      "Price": 985.82,
+      "Description": "A modular guitars 4 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Valhalla%20DSP%20Modular%20Guitars%204%20v4.6"
     },
     {
-      "Year": 2018,
-      "Name": "Organic World 8 v3.5",
-      "Category": "Instruments",
-      "Price": 162.02,
-      "Description": "A organic world 8 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Organic%20World%208%20v3.5"
-    },
-    {
-      "Year": 2018,
-      "Name": "Hybrid Brass 1 v3.8",
-      "Category": "Instruments",
-      "Price": 739.13,
-      "Description": "A hybrid brass 1 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Hybrid%20Brass%201%20v3.8"
-    },
-    {
-      "Year": 2018,
-      "Name": "Modular Drums 4 v1.4",
-      "Category": "Instruments",
-      "Price": 242.98,
-      "Description": "A modular drums 4 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Modular%20Drums%204%20v1.4"
-    },
-    {
-      "Year": 2017,
-      "Name": "Modular Choir 4 v5.4",
-      "Category": "Instruments",
-      "Price": 811.08,
-      "Description": "A modular choir 4 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Modular%20Choir%204%20v5.4"
-    },
-    {
-      "Year": 2017,
-      "Name": "Hybrid Orchestra 7 v3.9",
-      "Category": "Instruments",
-      "Price": 769.49,
-      "Description": "A hybrid orchestra 7 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Hybrid%20Orchestra%207%20v3.9"
-    },
-    {
-      "Year": 2017,
-      "Name": "Symphonic Orchestra 2 v4.6",
-      "Category": "Instruments",
-      "Price": 761.92,
-      "Description": "A symphonic orchestra 2 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Symphonic%20Orchestra%202%20v4.6"
-    },
-    {
-      "Year": 2017,
-      "Name": "Modular Strings 6 v2.6",
-      "Category": "Instruments",
-      "Price": 151.62,
-      "Description": "A modular strings 6 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Modular%20Strings%206%20v2.6"
-    },
-    {
-      "Year": 2017,
-      "Name": "Classic Strings 9 v3.3",
-      "Category": "Instruments",
-      "Price": 833.83,
-      "Description": "A classic strings 9 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Classic%20Strings%209%20v3.3"
-    },
-    {
-      "Year": 2017,
-      "Name": "Hybrid Guitars 5 v5.6",
-      "Category": "Instruments",
-      "Price": 542.09,
-      "Description": "A hybrid guitars 5 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Hybrid%20Guitars%205%20v5.6"
-    },
-    {
-      "Year": 2016,
-      "Name": "Symphonic Drums 8 v4.7",
-      "Category": "Instruments",
-      "Price": 711.5,
-      "Description": "A symphonic drums 8 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Symphonic%20Drums%208%20v4.7"
-    },
-    {
-      "Year": 2016,
-      "Name": "Digital World 4 v3.0",
-      "Category": "Instruments",
-      "Price": 241.53,
-      "Description": "A digital world 4 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Digital%20World%204%20v3.0"
-    },
-    {
-      "Year": 2016,
-      "Name": "Analog World 5 v4.0",
-      "Category": "Instruments",
-      "Price": 307.17,
-      "Description": "A analog world 5 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Analog%20World%205%20v4.0"
-    },
-    {
-      "Year": 2016,
-      "Name": "Modular Choir 4 v3.3",
-      "Category": "Instruments",
-      "Price": 545.57,
-      "Description": "A modular choir 4 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Modular%20Choir%204%20v3.3"
-    },
-    {
-      "Year": 2016,
-      "Name": "Epic Guitars 8 v3.0",
-      "Category": "Instruments",
-      "Price": 637.18,
-      "Description": "A epic guitars 8 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Epic%20Guitars%208%20v3.0"
-    },
-    {
-      "Year": 2016,
-      "Name": "Symphonic Brass 5 v2.2",
-      "Category": "Instruments",
-      "Price": 133.47,
-      "Description": "A symphonic brass 5 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Symphonic%20Brass%205%20v2.2"
-    },
-    {
-      "Year": 2016,
-      "Name": "Cinematic Orchestra 7 v2.2",
-      "Category": "Instruments",
-      "Price": 991.75,
-      "Description": "A cinematic orchestra 7 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Cinematic%20Orchestra%207%20v2.2"
-    },
-    {
-      "Year": 2016,
-      "Name": "Epic Drums 9 v5.1",
-      "Category": "Instruments",
-      "Price": 238.18,
-      "Description": "A epic drums 9 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Epic%20Drums%209%20v5.1"
-    },
-    {
-      "Year": 2015,
-      "Name": "Digital Guitars 4 v1.5",
-      "Category": "Instruments",
-      "Price": 851.99,
-      "Description": "A digital guitars 4 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Digital%20Guitars%204%20v1.5"
-    },
-    {
-      "Year": 2015,
-      "Name": "Organic World 9 v2.3",
-      "Category": "Instruments",
-      "Price": 395.38,
-      "Description": "A organic world 9 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Organic%20World%209%20v2.3"
-    },
-    {
-      "Year": 2015,
-      "Name": "Organic Drums 9 v4.9",
-      "Category": "Instruments",
-      "Price": 59.75,
-      "Description": "A organic drums 9 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Organic%20Drums%209%20v4.9"
-    },
-    {
-      "Year": 2015,
-      "Name": "Modular Bass 4 v1.9",
-      "Category": "Instruments",
-      "Price": 939.05,
-      "Description": "A modular bass 4 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Modular%20Bass%204%20v1.9"
-    },
-    {
-      "Year": 2015,
-      "Name": "Virtual World 7 v2.2",
-      "Category": "Instruments",
-      "Price": 303.57,
-      "Description": "A virtual world 7 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Virtual%20World%207%20v2.2"
-    },
-    {
-      "Year": 2015,
-      "Name": "Modular Orchestra 6 v5.8",
-      "Category": "Instruments",
-      "Price": 765.77,
-      "Description": "A modular orchestra 6 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Modular%20Orchestra%206%20v5.8"
-    },
-    {
-      "Year": 2015,
-      "Name": "Digital Brass 5 v2.5",
+      "Year": 2022,
+      "Company": "Steinberg",
+      "Name": "Steinberg Hybrid Guitars 9 v2.7",
       "Category": "Instruments",
       "Price": 0.0,
-      "Description": "A digital brass 5 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Digital%20Brass%205%20v2.5"
+      "Description": "A hybrid guitars 9 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Steinberg%20Hybrid%20Guitars%209%20v2.7"
     },
     {
-      "Year": 2015,
-      "Name": "Epic Choir 1 v1.8",
+      "Year": 2021,
+      "Company": "Celemony",
+      "Name": "Celemony Cinematic World 3 v1.1",
       "Category": "Instruments",
-      "Price": 145.26,
-      "Description": "A epic choir 1 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Epic%20Choir%201%20v1.8"
+      "Price": 0.0,
+      "Description": "A cinematic world 3 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Celemony%20Cinematic%20World%203%20v1.1"
     },
     {
-      "Year": 2015,
-      "Name": "Modular Choir 3 v1.1",
+      "Year": 2021,
+      "Company": "Soundtoys",
+      "Name": "Soundtoys Classic Guitars 8 v2.3",
       "Category": "Instruments",
-      "Price": 197.68,
+      "Price": 0.0,
+      "Description": "A classic guitars 8 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Soundtoys%20Classic%20Guitars%208%20v2.3"
+    },
+    {
+      "Year": 2021,
+      "Company": "Xfer Records",
+      "Name": "Xfer Records Virtual Drums 1 v3.5",
+      "Category": "Instruments",
+      "Price": 884.82,
+      "Description": "A virtual drums 1 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Xfer%20Records%20Virtual%20Drums%201%20v3.5"
+    },
+    {
+      "Year": 2021,
+      "Company": "Steinberg",
+      "Name": "Steinberg Symphonic Drums 7 v3.5",
+      "Category": "Instruments",
+      "Price": 391.96,
+      "Description": "A symphonic drums 7 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Steinberg%20Symphonic%20Drums%207%20v3.5"
+    },
+    {
+      "Year": 2021,
+      "Company": "Spectrasonics",
+      "Name": "Spectrasonics Analog Drums 9 v2.6",
+      "Category": "Instruments",
+      "Price": 334.03,
+      "Description": "A analog drums 9 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Spectrasonics%20Analog%20Drums%209%20v2.6"
+    },
+    {
+      "Year": 2021,
+      "Company": "Output",
+      "Name": "Output Digital Strings 5 v1.2",
+      "Category": "Instruments",
+      "Price": 402.89,
+      "Description": "A digital strings 5 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Output%20Digital%20Strings%205%20v1.2"
+    },
+    {
+      "Year": 2021,
+      "Company": "Eventide",
+      "Name": "Eventide Cinematic Orchestra 8 v5.9",
+      "Category": "Instruments",
+      "Price": 657.81,
+      "Description": "A cinematic orchestra 8 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Eventide%20Cinematic%20Orchestra%208%20v5.9"
+    },
+    {
+      "Year": 2021,
+      "Company": "Spectrasonics",
+      "Name": "Spectrasonics Cinematic Brass 4 v5.5",
+      "Category": "Instruments",
+      "Price": 102.23,
+      "Description": "A cinematic brass 4 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Spectrasonics%20Cinematic%20Brass%204%20v5.5"
+    },
+    {
+      "Year": 2020,
+      "Company": "Waves",
+      "Name": "Waves Cinematic Bass 7 v5.9",
+      "Category": "Instruments",
+      "Price": 825.23,
+      "Description": "A cinematic bass 7 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Waves%20Cinematic%20Bass%207%20v5.9"
+    },
+    {
+      "Year": 2020,
+      "Company": "Spectrasonics",
+      "Name": "Spectrasonics Organic World 3 v5.9",
+      "Category": "Instruments",
+      "Price": 374.36,
+      "Description": "A organic world 3 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Spectrasonics%20Organic%20World%203%20v5.9"
+    },
+    {
+      "Year": 2020,
+      "Company": "Output",
+      "Name": "Output Analog Choir 5 v4.5",
+      "Category": "Instruments",
+      "Price": 136.64,
+      "Description": "A analog choir 5 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Output%20Analog%20Choir%205%20v4.5"
+    },
+    {
+      "Year": 2020,
+      "Company": "FabFilter",
+      "Name": "FabFilter Classic Strings 5 v2.7",
+      "Category": "Instruments",
+      "Price": 127.53,
+      "Description": "A classic strings 5 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=FabFilter%20Classic%20Strings%205%20v2.7"
+    },
+    {
+      "Year": 2020,
+      "Company": "Ableton",
+      "Name": "Ableton Digital Drums 2 v2.0",
+      "Category": "Instruments",
+      "Price": 715.9,
+      "Description": "A digital drums 2 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Ableton%20Digital%20Drums%202%20v2.0"
+    },
+    {
+      "Year": 2020,
+      "Company": "FabFilter",
+      "Name": "FabFilter Analog Bass 1 v5.9",
+      "Category": "Instruments",
+      "Price": 779.98,
+      "Description": "A analog bass 1 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=FabFilter%20Analog%20Bass%201%20v5.9"
+    },
+    {
+      "Year": 2020,
+      "Company": "Arturia",
+      "Name": "Arturia Modular Strings 5 v5.5",
+      "Category": "Instruments",
+      "Price": 115.41,
+      "Description": "A modular strings 5 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Arturia%20Modular%20Strings%205%20v5.5"
+    },
+    {
+      "Year": 2020,
+      "Company": "Xfer Records",
+      "Name": "Xfer Records Modular Synth 6 v3.1",
+      "Category": "Instruments",
+      "Price": 0.0,
+      "Description": "A modular synth 6 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Xfer%20Records%20Modular%20Synth%206%20v3.1"
+    },
+    {
+      "Year": 2020,
+      "Company": "Eventide",
+      "Name": "Eventide Digital Drums 2 v3.4",
+      "Category": "Instruments",
+      "Price": 363.38,
+      "Description": "A digital drums 2 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Eventide%20Digital%20Drums%202%20v3.4"
+    },
+    {
+      "Year": 2019,
+      "Company": "Output",
+      "Name": "Output Classic Brass 9 v4.0",
+      "Category": "Instruments",
+      "Price": 461.76,
+      "Description": "A classic brass 9 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Output%20Classic%20Brass%209%20v4.0"
+    },
+    {
+      "Year": 2019,
+      "Company": "Orchestral Tools",
+      "Name": "Orchestral Tools Cinematic Synth 3 v1.3",
+      "Category": "Instruments",
+      "Price": 739.75,
+      "Description": "A cinematic synth 3 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Orchestral%20Tools%20Cinematic%20Synth%203%20v1.3"
+    },
+    {
+      "Year": 2018,
+      "Company": "FabFilter",
+      "Name": "FabFilter Symphonic World 4 v3.4",
+      "Category": "Instruments",
+      "Price": 762.24,
+      "Description": "A symphonic world 4 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=FabFilter%20Symphonic%20World%204%20v3.4"
+    },
+    {
+      "Year": 2017,
+      "Company": "EastWest",
+      "Name": "EastWest Symphonic World 5 v4.0",
+      "Category": "Instruments",
+      "Price": 761.05,
+      "Description": "A symphonic world 5 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=EastWest%20Symphonic%20World%205%20v4.0"
+    },
+    {
+      "Year": 2017,
+      "Company": "Native Instruments",
+      "Name": "Native Instruments Analog Brass 8 v5.0",
+      "Category": "Instruments",
+      "Price": 574.52,
+      "Description": "A analog brass 8 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Native%20Instruments%20Analog%20Brass%208%20v5.0"
+    },
+    {
+      "Year": 2017,
+      "Company": "Arturia",
+      "Name": "Arturia Modular Guitars 1 v4.7",
+      "Category": "Instruments",
+      "Price": 114.01,
+      "Description": "A modular guitars 1 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Arturia%20Modular%20Guitars%201%20v4.7"
+    },
+    {
+      "Year": 2017,
+      "Company": "Slate Digital",
+      "Name": "Slate Digital Modular Synth 7 v5.0",
+      "Category": "Instruments",
+      "Price": 456.64,
+      "Description": "A modular synth 7 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Slate%20Digital%20Modular%20Synth%207%20v5.0"
+    },
+    {
+      "Year": 2017,
+      "Company": "U-he",
+      "Name": "U-he Modular Choir 3 v2.9",
+      "Category": "Instruments",
+      "Price": 487.95,
       "Description": "A modular choir 3 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Modular%20Choir%203%20v1.1"
+      "Link": "https://www.bestservice.com/en/search.html?search=U-he%20Modular%20Choir%203%20v2.9"
+    },
+    {
+      "Year": 2017,
+      "Company": "iZotope",
+      "Name": "iZotope Epic Orchestra 6 v5.0",
+      "Category": "Instruments",
+      "Price": 806.63,
+      "Description": "A epic orchestra 6 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=iZotope%20Epic%20Orchestra%206%20v5.0"
+    },
+    {
+      "Year": 2017,
+      "Company": "EastWest",
+      "Name": "EastWest Virtual Orchestra 2 v3.6",
+      "Category": "Instruments",
+      "Price": 442.7,
+      "Description": "A virtual orchestra 2 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=EastWest%20Virtual%20Orchestra%202%20v3.6"
+    },
+    {
+      "Year": 2017,
+      "Company": "Orchestral Tools",
+      "Name": "Orchestral Tools Classic Bass 6 v4.7",
+      "Category": "Instruments",
+      "Price": 846.48,
+      "Description": "A classic bass 6 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Orchestral%20Tools%20Classic%20Bass%206%20v4.7"
+    },
+    {
+      "Year": 2017,
+      "Company": "Soundtoys",
+      "Name": "Soundtoys Hybrid Brass 5 v4.3",
+      "Category": "Instruments",
+      "Price": 97.96,
+      "Description": "A hybrid brass 5 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Soundtoys%20Hybrid%20Brass%205%20v4.3"
+    },
+    {
+      "Year": 2017,
+      "Company": "iZotope",
+      "Name": "iZotope Analog Brass 7 v2.2",
+      "Category": "Instruments",
+      "Price": 577.38,
+      "Description": "A analog brass 7 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=iZotope%20Analog%20Brass%207%20v2.2"
+    },
+    {
+      "Year": 2016,
+      "Company": "Slate Digital",
+      "Name": "Slate Digital Epic Choir 9 v3.4",
+      "Category": "Instruments",
+      "Price": 626.03,
+      "Description": "A epic choir 9 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Slate%20Digital%20Epic%20Choir%209%20v3.4"
+    },
+    {
+      "Year": 2016,
+      "Company": "Output",
+      "Name": "Output Hybrid Bass 4 v5.5",
+      "Category": "Instruments",
+      "Price": 642.6,
+      "Description": "A hybrid bass 4 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Output%20Hybrid%20Bass%204%20v5.5"
+    },
+    {
+      "Year": 2016,
+      "Company": "PreSonus",
+      "Name": "PreSonus Hybrid Bass 8 v3.5",
+      "Category": "Instruments",
+      "Price": 826.45,
+      "Description": "A hybrid bass 8 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=PreSonus%20Hybrid%20Bass%208%20v3.5"
+    },
+    {
+      "Year": 2016,
+      "Company": "Orchestral Tools",
+      "Name": "Orchestral Tools Organic Guitars 8 v4.0",
+      "Category": "Instruments",
+      "Price": 288.02,
+      "Description": "A organic guitars 8 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Orchestral%20Tools%20Organic%20Guitars%208%20v4.0"
+    },
+    {
+      "Year": 2016,
+      "Company": "Ableton",
+      "Name": "Ableton Organic Strings 8 v3.4",
+      "Category": "Instruments",
+      "Price": 297.84,
+      "Description": "A organic strings 8 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Ableton%20Organic%20Strings%208%20v3.4"
+    },
+    {
+      "Year": 2016,
+      "Company": "Soundtoys",
+      "Name": "Soundtoys Digital Bass 1 v3.9",
+      "Category": "Instruments",
+      "Price": 743.95,
+      "Description": "A digital bass 1 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Soundtoys%20Digital%20Bass%201%20v3.9"
+    },
+    {
+      "Year": 2016,
+      "Company": "FabFilter",
+      "Name": "FabFilter Digital World 9 v5.8",
+      "Category": "Instruments",
+      "Price": 0.0,
+      "Description": "A digital world 9 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=FabFilter%20Digital%20World%209%20v5.8"
+    },
+    {
+      "Year": 2016,
+      "Company": "U-he",
+      "Name": "U-he Analog World 3 v1.0",
+      "Category": "Instruments",
+      "Price": 328.27,
+      "Description": "A analog world 3 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=U-he%20Analog%20World%203%20v1.0"
+    },
+    {
+      "Year": 2016,
+      "Company": "EastWest",
+      "Name": "EastWest Cinematic Orchestra 8 v5.1",
+      "Category": "Instruments",
+      "Price": 64.52,
+      "Description": "A cinematic orchestra 8 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=EastWest%20Cinematic%20Orchestra%208%20v5.1"
+    },
+    {
+      "Year": 2016,
+      "Company": "Eventide",
+      "Name": "Eventide Classic Guitars 3 v4.9",
+      "Category": "Instruments",
+      "Price": 996.04,
+      "Description": "A classic guitars 3 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Eventide%20Classic%20Guitars%203%20v4.9"
     },
     {
       "Year": 2015,
-      "Name": "Symphonic Bass 6 v3.7",
+      "Company": "FabFilter",
+      "Name": "FabFilter Analog Orchestra 6 v3.2",
       "Category": "Instruments",
-      "Price": 978.08,
-      "Description": "A symphonic bass 6 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Symphonic%20Bass%206%20v3.7"
+      "Price": 469.78,
+      "Description": "A analog orchestra 6 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=FabFilter%20Analog%20Orchestra%206%20v3.2"
     },
     {
       "Year": 2015,
-      "Name": "Classic World 3 v2.5",
+      "Company": "Spectrasonics",
+      "Name": "Spectrasonics Symphonic Guitars 3 v4.9",
       "Category": "Instruments",
-      "Price": 472.26,
-      "Description": "A classic world 3 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Classic%20World%203%20v2.5"
+      "Price": 258.01,
+      "Description": "A symphonic guitars 3 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Spectrasonics%20Symphonic%20Guitars%203%20v4.9"
     },
     {
       "Year": 2015,
-      "Name": "Organic Strings 5 v1.0",
+      "Company": "PreSonus",
+      "Name": "PreSonus Analog Choir 1 v2.0",
       "Category": "Instruments",
-      "Price": 984.95,
-      "Description": "A organic strings 5 library for professional composers.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Organic%20Strings%205%20v1.0"
+      "Price": 984.14,
+      "Description": "A analog choir 1 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=PreSonus%20Analog%20Choir%201%20v2.0"
+    },
+    {
+      "Year": 2015,
+      "Company": "Steinberg",
+      "Name": "Steinberg Epic Keys 6 v2.9",
+      "Category": "Instruments",
+      "Price": 664.93,
+      "Description": "A epic keys 6 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Steinberg%20Epic%20Keys%206%20v2.9"
+    },
+    {
+      "Year": 2015,
+      "Company": "Ableton",
+      "Name": "Ableton Modular Drums 5 v2.7",
+      "Category": "Instruments",
+      "Price": 104.95,
+      "Description": "A modular drums 5 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Ableton%20Modular%20Drums%205%20v2.7"
+    },
+    {
+      "Year": 2015,
+      "Company": "Waves",
+      "Name": "Waves Virtual Brass 7 v1.9",
+      "Category": "Instruments",
+      "Price": 765.03,
+      "Description": "A virtual brass 7 library for professional composers.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Waves%20Virtual%20Brass%207%20v1.9"
     }
   ],
   "Effects": [
     {
       "Year": 2024,
-      "Name": "Spatial Compressor 5 v2.8",
-      "Category": "Effects",
-      "Price": 713.78,
-      "Description": "High-quality spatial compressor 5 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Spatial%20Compressor%205%20v2.8"
-    },
-    {
-      "Year": 2024,
-      "Name": "Modern Saturation 7 v1.1",
-      "Category": "Effects",
-      "Price": 814.79,
-      "Description": "High-quality modern saturation 7 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Modern%20Saturation%207%20v1.1"
-    },
-    {
-      "Year": 2024,
-      "Name": "Transient EQ 2 v5.3",
-      "Category": "Effects",
-      "Price": 274.24,
-      "Description": "High-quality transient eq 2 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Transient%20EQ%202%20v5.3"
-    },
-    {
-      "Year": 2024,
-      "Name": "Dynamic Strip 3 v2.3",
-      "Category": "Effects",
-      "Price": 457.26,
-      "Description": "High-quality dynamic strip 3 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Dynamic%20Strip%203%20v2.3"
-    },
-    {
-      "Year": 2024,
-      "Name": "Harmonic EQ 5 v4.5",
-      "Category": "Effects",
-      "Price": 591.88,
-      "Description": "High-quality harmonic eq 5 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Harmonic%20EQ%205%20v4.5"
-    },
-    {
-      "Year": 2024,
-      "Name": "Vocal Modulator 6 v3.0",
-      "Category": "Effects",
-      "Price": 69.7,
-      "Description": "High-quality vocal modulator 6 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Vocal%20Modulator%206%20v3.0"
-    },
-    {
-      "Year": 2023,
-      "Name": "Harmonic Modulator 9 v3.1",
-      "Category": "Effects",
-      "Price": 132.02,
-      "Description": "High-quality harmonic modulator 9 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Harmonic%20Modulator%209%20v3.1"
-    },
-    {
-      "Year": 2023,
-      "Name": "Dynamic Distortion 7 v2.3",
-      "Category": "Effects",
-      "Price": 586.78,
-      "Description": "High-quality dynamic distortion 7 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Dynamic%20Distortion%207%20v2.3"
-    },
-    {
-      "Year": 2023,
-      "Name": "Harmonic Compressor 5 v1.6",
-      "Category": "Effects",
-      "Price": 289.63,
-      "Description": "High-quality harmonic compressor 5 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Harmonic%20Compressor%205%20v1.6"
-    },
-    {
-      "Year": 2023,
-      "Name": "Vocal Limiter 4 v1.4",
-      "Category": "Effects",
-      "Price": 772.75,
-      "Description": "High-quality vocal limiter 4 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Vocal%20Limiter%204%20v1.4"
-    },
-    {
-      "Year": 2023,
-      "Name": "Mixing Distortion 6 v1.7",
-      "Category": "Effects",
-      "Price": 553.58,
-      "Description": "High-quality mixing distortion 6 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Mixing%20Distortion%206%20v1.7"
-    },
-    {
-      "Year": 2023,
-      "Name": "Mastering Delay 4 v4.0",
-      "Category": "Effects",
-      "Price": 990.92,
-      "Description": "High-quality mastering delay 4 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Mastering%20Delay%204%20v4.0"
-    },
-    {
-      "Year": 2023,
-      "Name": "Modern Saturation 1 v3.9",
-      "Category": "Effects",
-      "Price": 338.17,
-      "Description": "High-quality modern saturation 1 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Modern%20Saturation%201%20v3.9"
-    },
-    {
-      "Year": 2022,
-      "Name": "Transient EQ 4 v5.1",
-      "Category": "Effects",
-      "Price": 232.87,
-      "Description": "High-quality transient eq 4 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Transient%20EQ%204%20v5.1"
-    },
-    {
-      "Year": 2022,
-      "Name": "Transient Distortion 8 v5.3",
-      "Category": "Effects",
-      "Price": 705.82,
-      "Description": "High-quality transient distortion 8 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Transient%20Distortion%208%20v5.3"
-    },
-    {
-      "Year": 2022,
-      "Name": "Modern Saturation 6 v4.1",
-      "Category": "Effects",
-      "Price": 203.04,
-      "Description": "High-quality modern saturation 6 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Modern%20Saturation%206%20v4.1"
-    },
-    {
-      "Year": 2022,
-      "Name": "Mixing Distortion 3 v3.7",
-      "Category": "Effects",
-      "Price": 185.9,
-      "Description": "High-quality mixing distortion 3 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Mixing%20Distortion%203%20v3.7"
-    },
-    {
-      "Year": 2021,
-      "Name": "Vintage Limiter 3 v3.7",
-      "Category": "Effects",
-      "Price": 315.74,
-      "Description": "High-quality vintage limiter 3 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Vintage%20Limiter%203%20v3.7"
-    },
-    {
-      "Year": 2021,
-      "Name": "Modern Modulator 7 v1.6",
-      "Category": "Effects",
-      "Price": 299.66,
-      "Description": "High-quality modern modulator 7 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Modern%20Modulator%207%20v1.6"
-    },
-    {
-      "Year": 2021,
-      "Name": "Spatial Reverb 1 v2.6",
-      "Category": "Effects",
-      "Price": 734.72,
-      "Description": "High-quality spatial reverb 1 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Spatial%20Reverb%201%20v2.6"
-    },
-    {
-      "Year": 2021,
-      "Name": "Modern Delay 9 v5.2",
-      "Category": "Effects",
-      "Price": 351.23,
-      "Description": "High-quality modern delay 9 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Modern%20Delay%209%20v5.2"
-    },
-    {
-      "Year": 2021,
-      "Name": "Vintage Saturation 1 v1.9",
-      "Category": "Effects",
-      "Price": 468.74,
-      "Description": "High-quality vintage saturation 1 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Vintage%20Saturation%201%20v1.9"
-    },
-    {
-      "Year": 2020,
-      "Name": "Spatial Delay 5 v3.9",
+      "Company": "Valhalla DSP",
+      "Name": "Valhalla DSP Mixing Reverb 2 v4.3",
       "Category": "Effects",
       "Price": 0.0,
-      "Description": "High-quality spatial delay 5 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Spatial%20Delay%205%20v3.9"
+      "Description": "High-quality mixing reverb 2 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Valhalla%20DSP%20Mixing%20Reverb%202%20v4.3"
     },
     {
-      "Year": 2020,
-      "Name": "Guitar Filter 2 v3.8",
+      "Year": 2024,
+      "Company": "Orchestral Tools",
+      "Name": "Orchestral Tools Modern Distortion 7 v5.2",
       "Category": "Effects",
-      "Price": 0.0,
-      "Description": "High-quality guitar filter 2 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Guitar%20Filter%202%20v3.8"
+      "Price": 467.29,
+      "Description": "High-quality modern distortion 7 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Orchestral%20Tools%20Modern%20Distortion%207%20v5.2"
     },
     {
-      "Year": 2020,
-      "Name": "Vocal Modulator 6 v1.0",
+      "Year": 2024,
+      "Company": "Spitfire Audio",
+      "Name": "Spitfire Audio Vintage Saturation 4 v3.1",
       "Category": "Effects",
-      "Price": 465.17,
-      "Description": "High-quality vocal modulator 6 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Vocal%20Modulator%206%20v1.0"
+      "Price": 659.37,
+      "Description": "High-quality vintage saturation 4 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Spitfire%20Audio%20Vintage%20Saturation%204%20v3.1"
     },
     {
-      "Year": 2020,
-      "Name": "Mixing Saturation 6 v5.4",
+      "Year": 2024,
+      "Company": "Xfer Records",
+      "Name": "Xfer Records Vocal Delay 9 v3.3",
       "Category": "Effects",
-      "Price": 723.84,
-      "Description": "High-quality mixing saturation 6 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Mixing%20Saturation%206%20v5.4"
-    },
-    {
-      "Year": 2020,
-      "Name": "Modern Modulator 2 v5.4",
-      "Category": "Effects",
-      "Price": 0.0,
-      "Description": "High-quality modern modulator 2 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Modern%20Modulator%202%20v5.4"
-    },
-    {
-      "Year": 2020,
-      "Name": "Transient Limiter 8 v4.5",
-      "Category": "Effects",
-      "Price": 426.94,
-      "Description": "High-quality transient limiter 8 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Transient%20Limiter%208%20v4.5"
-    },
-    {
-      "Year": 2020,
-      "Name": "Dynamic Distortion 2 v4.4",
-      "Category": "Effects",
-      "Price": 286.55,
-      "Description": "High-quality dynamic distortion 2 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Dynamic%20Distortion%202%20v4.4"
-    },
-    {
-      "Year": 2020,
-      "Name": "Vocal Saturation 3 v1.3",
-      "Category": "Effects",
-      "Price": 477.31,
-      "Description": "High-quality vocal saturation 3 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Vocal%20Saturation%203%20v1.3"
-    },
-    {
-      "Year": 2020,
-      "Name": "Transient Compressor 3 v2.8",
-      "Category": "Effects",
-      "Price": 515.62,
-      "Description": "High-quality transient compressor 3 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Transient%20Compressor%203%20v2.8"
-    },
-    {
-      "Year": 2019,
-      "Name": "Mixing Delay 4 v1.3",
-      "Category": "Effects",
-      "Price": 662.63,
-      "Description": "High-quality mixing delay 4 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Mixing%20Delay%204%20v1.3"
-    },
-    {
-      "Year": 2019,
-      "Name": "Dynamic Saturation 1 v2.6",
-      "Category": "Effects",
-      "Price": 623.79,
-      "Description": "High-quality dynamic saturation 1 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Dynamic%20Saturation%201%20v2.6"
-    },
-    {
-      "Year": 2019,
-      "Name": "Vintage Limiter 2 v4.5",
-      "Category": "Effects",
-      "Price": 226.71,
-      "Description": "High-quality vintage limiter 2 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Vintage%20Limiter%202%20v4.5"
-    },
-    {
-      "Year": 2019,
-      "Name": "Mastering Modulator 6 v3.5",
-      "Category": "Effects",
-      "Price": 485.06,
-      "Description": "High-quality mastering modulator 6 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Mastering%20Modulator%206%20v3.5"
-    },
-    {
-      "Year": 2019,
-      "Name": "Vocal Delay 9 v4.2",
-      "Category": "Effects",
-      "Price": 123.51,
+      "Price": 52.23,
       "Description": "High-quality vocal delay 9 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Vocal%20Delay%209%20v4.2"
+      "Link": "https://www.bestservice.com/en/search.html?search=Xfer%20Records%20Vocal%20Delay%209%20v3.3"
     },
     {
-      "Year": 2018,
-      "Name": "Mastering Delay 8 v4.1",
+      "Year": 2023,
+      "Company": "Xfer Records",
+      "Name": "Xfer Records Guitar Delay 6 v3.0",
       "Category": "Effects",
-      "Price": 733.93,
-      "Description": "High-quality mastering delay 8 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Mastering%20Delay%208%20v4.1"
+      "Price": 618.57,
+      "Description": "High-quality guitar delay 6 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Xfer%20Records%20Guitar%20Delay%206%20v3.0"
     },
     {
-      "Year": 2018,
-      "Name": "Spatial Distortion 9 v3.1",
+      "Year": 2023,
+      "Company": "iZotope",
+      "Name": "iZotope Mastering Filter 6 v4.9",
       "Category": "Effects",
-      "Price": 450.22,
-      "Description": "High-quality spatial distortion 9 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Spatial%20Distortion%209%20v3.1"
+      "Price": 783.35,
+      "Description": "High-quality mastering filter 6 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=iZotope%20Mastering%20Filter%206%20v4.9"
     },
     {
-      "Year": 2018,
-      "Name": "Harmonic Modulator 9 v1.5",
+      "Year": 2023,
+      "Company": "Xfer Records",
+      "Name": "Xfer Records Vocal Distortion 4 v2.3",
       "Category": "Effects",
-      "Price": 765.4,
-      "Description": "High-quality harmonic modulator 9 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Harmonic%20Modulator%209%20v1.5"
+      "Price": 279.3,
+      "Description": "High-quality vocal distortion 4 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Xfer%20Records%20Vocal%20Distortion%204%20v2.3"
     },
     {
-      "Year": 2018,
-      "Name": "Harmonic Modulator 1 v5.7",
+      "Year": 2023,
+      "Company": "Output",
+      "Name": "Output Vintage Distortion 2 v1.8",
       "Category": "Effects",
-      "Price": 499.07,
-      "Description": "High-quality harmonic modulator 1 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Harmonic%20Modulator%201%20v5.7"
+      "Price": 728.3,
+      "Description": "High-quality vintage distortion 2 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Output%20Vintage%20Distortion%202%20v1.8"
     },
     {
-      "Year": 2018,
-      "Name": "Mastering Saturation 9 v3.1",
+      "Year": 2023,
+      "Company": "Steinberg",
+      "Name": "Steinberg Dynamic Reverb 5 v2.6",
       "Category": "Effects",
-      "Price": 796.21,
-      "Description": "High-quality mastering saturation 9 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Mastering%20Saturation%209%20v3.1"
+      "Price": 996.05,
+      "Description": "High-quality dynamic reverb 5 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Steinberg%20Dynamic%20Reverb%205%20v2.6"
     },
     {
-      "Year": 2017,
-      "Name": "Mastering Distortion 7 v2.2",
+      "Year": 2023,
+      "Company": "Waves",
+      "Name": "Waves Dynamic Limiter 7 v3.3",
       "Category": "Effects",
-      "Price": 868.85,
-      "Description": "High-quality mastering distortion 7 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Mastering%20Distortion%207%20v2.2"
+      "Price": 281.92,
+      "Description": "High-quality dynamic limiter 7 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Waves%20Dynamic%20Limiter%207%20v3.3"
     },
     {
-      "Year": 2017,
-      "Name": "Spatial Compressor 9 v1.9",
+      "Year": 2023,
+      "Company": "Waves",
+      "Name": "Waves Harmonic Distortion 4 v3.6",
       "Category": "Effects",
-      "Price": 585.38,
-      "Description": "High-quality spatial compressor 9 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Spatial%20Compressor%209%20v1.9"
+      "Price": 191.42,
+      "Description": "High-quality harmonic distortion 4 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Waves%20Harmonic%20Distortion%204%20v3.6"
     },
     {
-      "Year": 2017,
-      "Name": "Dynamic Saturation 9 v3.1",
+      "Year": 2023,
+      "Company": "Celemony",
+      "Name": "Celemony Harmonic Limiter 8 v4.9",
       "Category": "Effects",
-      "Price": 564.3,
-      "Description": "High-quality dynamic saturation 9 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Dynamic%20Saturation%209%20v3.1"
+      "Price": 296.08,
+      "Description": "High-quality harmonic limiter 8 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Celemony%20Harmonic%20Limiter%208%20v4.9"
     },
     {
-      "Year": 2017,
-      "Name": "Spatial Saturation 7 v5.2",
+      "Year": 2022,
+      "Company": "Celemony",
+      "Name": "Celemony Modern Limiter 7 v5.4",
       "Category": "Effects",
-      "Price": 720.53,
-      "Description": "High-quality spatial saturation 7 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Spatial%20Saturation%207%20v5.2"
+      "Price": 801.16,
+      "Description": "High-quality modern limiter 7 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Celemony%20Modern%20Limiter%207%20v5.4"
     },
     {
-      "Year": 2017,
-      "Name": "Vintage Strip 6 v1.1",
+      "Year": 2022,
+      "Company": "Waves",
+      "Name": "Waves Mixing Modulator 5 v3.6",
       "Category": "Effects",
-      "Price": 254.37,
-      "Description": "High-quality vintage strip 6 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Vintage%20Strip%206%20v1.1"
+      "Price": 460.51,
+      "Description": "High-quality mixing modulator 5 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Waves%20Mixing%20Modulator%205%20v3.6"
     },
     {
-      "Year": 2017,
-      "Name": "Mastering Filter 9 v1.9",
+      "Year": 2022,
+      "Company": "Eventide",
+      "Name": "Eventide Harmonic Limiter 2 v1.5",
       "Category": "Effects",
-      "Price": 609.19,
-      "Description": "High-quality mastering filter 9 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Mastering%20Filter%209%20v1.9"
+      "Price": 931.65,
+      "Description": "High-quality harmonic limiter 2 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Eventide%20Harmonic%20Limiter%202%20v1.5"
     },
     {
-      "Year": 2017,
-      "Name": "Transient EQ 7 v3.9",
+      "Year": 2022,
+      "Company": "EastWest",
+      "Name": "EastWest Vocal Filter 4 v4.4",
       "Category": "Effects",
-      "Price": 709.84,
-      "Description": "High-quality transient eq 7 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Transient%20EQ%207%20v3.9"
+      "Price": 865.22,
+      "Description": "High-quality vocal filter 4 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=EastWest%20Vocal%20Filter%204%20v4.4"
     },
     {
-      "Year": 2017,
-      "Name": "Vintage Delay 6 v1.8",
+      "Year": 2021,
+      "Company": "iZotope",
+      "Name": "iZotope Transient Limiter 5 v2.8",
       "Category": "Effects",
-      "Price": 324.98,
-      "Description": "High-quality vintage delay 6 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Vintage%20Delay%206%20v1.8"
+      "Price": 862.17,
+      "Description": "High-quality transient limiter 5 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=iZotope%20Transient%20Limiter%205%20v2.8"
     },
     {
-      "Year": 2017,
-      "Name": "Vintage Filter 8 v3.2",
+      "Year": 2021,
+      "Company": "iZotope",
+      "Name": "iZotope Harmonic EQ 7 v1.4",
       "Category": "Effects",
-      "Price": 517.51,
-      "Description": "High-quality vintage filter 8 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Vintage%20Filter%208%20v3.2"
+      "Price": 529.81,
+      "Description": "High-quality harmonic eq 7 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=iZotope%20Harmonic%20EQ%207%20v1.4"
     },
     {
-      "Year": 2017,
-      "Name": "Modern EQ 2 v5.0",
+      "Year": 2021,
+      "Company": "iZotope",
+      "Name": "iZotope Modern Strip 6 v4.4",
       "Category": "Effects",
-      "Price": 125.75,
-      "Description": "High-quality modern eq 2 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Modern%20EQ%202%20v5.0"
+      "Price": 788.69,
+      "Description": "High-quality modern strip 6 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=iZotope%20Modern%20Strip%206%20v4.4"
     },
     {
-      "Year": 2016,
-      "Name": "Dynamic Compressor 6 v4.2",
+      "Year": 2021,
+      "Company": "EastWest",
+      "Name": "EastWest Mastering Reverb 6 v1.5",
       "Category": "Effects",
-      "Price": 977.4,
-      "Description": "High-quality dynamic compressor 6 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Dynamic%20Compressor%206%20v4.2"
+      "Price": 583.72,
+      "Description": "High-quality mastering reverb 6 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=EastWest%20Mastering%20Reverb%206%20v1.5"
     },
     {
-      "Year": 2016,
-      "Name": "Harmonic Modulator 7 v4.2",
+      "Year": 2021,
+      "Company": "Soundtoys",
+      "Name": "Soundtoys Guitar Reverb 1 v1.6",
       "Category": "Effects",
-      "Price": 417.31,
-      "Description": "High-quality harmonic modulator 7 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Harmonic%20Modulator%207%20v4.2"
+      "Price": 771.27,
+      "Description": "High-quality guitar reverb 1 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Soundtoys%20Guitar%20Reverb%201%20v1.6"
     },
     {
-      "Year": 2016,
-      "Name": "Mixing EQ 2 v3.5",
+      "Year": 2021,
+      "Company": "Slate Digital",
+      "Name": "Slate Digital Guitar Compressor 8 v1.7",
       "Category": "Effects",
-      "Price": 131.64,
-      "Description": "High-quality mixing eq 2 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Mixing%20EQ%202%20v3.5"
+      "Price": 770.74,
+      "Description": "High-quality guitar compressor 8 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Slate%20Digital%20Guitar%20Compressor%208%20v1.7"
     },
     {
-      "Year": 2016,
-      "Name": "Harmonic Modulator 2 v5.2",
+      "Year": 2021,
+      "Company": "Orchestral Tools",
+      "Name": "Orchestral Tools Vintage Limiter 9 v2.6",
       "Category": "Effects",
-      "Price": 567.78,
-      "Description": "High-quality harmonic modulator 2 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Harmonic%20Modulator%202%20v5.2"
+      "Price": 436.2,
+      "Description": "High-quality vintage limiter 9 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Orchestral%20Tools%20Vintage%20Limiter%209%20v2.6"
     },
     {
-      "Year": 2016,
-      "Name": "Vocal Distortion 1 v5.6",
+      "Year": 2020,
+      "Company": "Native Instruments",
+      "Name": "Native Instruments Dynamic EQ 8 v5.0",
+      "Category": "Effects",
+      "Price": 949.48,
+      "Description": "High-quality dynamic eq 8 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Native%20Instruments%20Dynamic%20EQ%208%20v5.0"
+    },
+    {
+      "Year": 2020,
+      "Company": "Arturia",
+      "Name": "Arturia Vocal Modulator 5 v4.9",
+      "Category": "Effects",
+      "Price": 445.15,
+      "Description": "High-quality vocal modulator 5 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Arturia%20Vocal%20Modulator%205%20v4.9"
+    },
+    {
+      "Year": 2020,
+      "Company": "Arturia",
+      "Name": "Arturia Harmonic Compressor 9 v1.2",
+      "Category": "Effects",
+      "Price": 770.29,
+      "Description": "High-quality harmonic compressor 9 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Arturia%20Harmonic%20Compressor%209%20v1.2"
+    },
+    {
+      "Year": 2020,
+      "Company": "Native Instruments",
+      "Name": "Native Instruments Mastering EQ 9 v5.8",
+      "Category": "Effects",
+      "Price": 542.96,
+      "Description": "High-quality mastering eq 9 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Native%20Instruments%20Mastering%20EQ%209%20v5.8"
+    },
+    {
+      "Year": 2020,
+      "Company": "Eventide",
+      "Name": "Eventide Mastering Compressor 3 v2.4",
+      "Category": "Effects",
+      "Price": 547.5,
+      "Description": "High-quality mastering compressor 3 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Eventide%20Mastering%20Compressor%203%20v2.4"
+    },
+    {
+      "Year": 2020,
+      "Company": "PreSonus",
+      "Name": "PreSonus Vintage Limiter 4 v5.3",
       "Category": "Effects",
       "Price": 0.0,
-      "Description": "High-quality vocal distortion 1 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Vocal%20Distortion%201%20v5.6"
+      "Description": "High-quality vintage limiter 4 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=PreSonus%20Vintage%20Limiter%204%20v5.3"
+    },
+    {
+      "Year": 2020,
+      "Company": "Ableton",
+      "Name": "Ableton Spatial Strip 8 v2.7",
+      "Category": "Effects",
+      "Price": 0.0,
+      "Description": "High-quality spatial strip 8 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Ableton%20Spatial%20Strip%208%20v2.7"
+    },
+    {
+      "Year": 2019,
+      "Company": "Celemony",
+      "Name": "Celemony Modern Filter 1 v1.9",
+      "Category": "Effects",
+      "Price": 866.32,
+      "Description": "High-quality modern filter 1 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Celemony%20Modern%20Filter%201%20v1.9"
+    },
+    {
+      "Year": 2019,
+      "Company": "Slate Digital",
+      "Name": "Slate Digital Dynamic Filter 5 v1.5",
+      "Category": "Effects",
+      "Price": 254.99,
+      "Description": "High-quality dynamic filter 5 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Slate%20Digital%20Dynamic%20Filter%205%20v1.5"
+    },
+    {
+      "Year": 2019,
+      "Company": "Orchestral Tools",
+      "Name": "Orchestral Tools Modern Filter 9 v1.0",
+      "Category": "Effects",
+      "Price": 710.08,
+      "Description": "High-quality modern filter 9 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Orchestral%20Tools%20Modern%20Filter%209%20v1.0"
+    },
+    {
+      "Year": 2019,
+      "Company": "Steinberg",
+      "Name": "Steinberg Mixing Distortion 5 v3.2",
+      "Category": "Effects",
+      "Price": 571.1,
+      "Description": "High-quality mixing distortion 5 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Steinberg%20Mixing%20Distortion%205%20v3.2"
+    },
+    {
+      "Year": 2019,
+      "Company": "Steinberg",
+      "Name": "Steinberg Vocal Filter 8 v2.6",
+      "Category": "Effects",
+      "Price": 946.15,
+      "Description": "High-quality vocal filter 8 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Steinberg%20Vocal%20Filter%208%20v2.6"
+    },
+    {
+      "Year": 2019,
+      "Company": "Spectrasonics",
+      "Name": "Spectrasonics Harmonic Limiter 5 v3.3",
+      "Category": "Effects",
+      "Price": 142.7,
+      "Description": "High-quality harmonic limiter 5 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Spectrasonics%20Harmonic%20Limiter%205%20v3.3"
+    },
+    {
+      "Year": 2019,
+      "Company": "EastWest",
+      "Name": "EastWest Modern Limiter 7 v3.8",
+      "Category": "Effects",
+      "Price": 92.49,
+      "Description": "High-quality modern limiter 7 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=EastWest%20Modern%20Limiter%207%20v3.8"
+    },
+    {
+      "Year": 2019,
+      "Company": "Steinberg",
+      "Name": "Steinberg Dynamic Distortion 4 v5.5",
+      "Category": "Effects",
+      "Price": 531.65,
+      "Description": "High-quality dynamic distortion 4 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Steinberg%20Dynamic%20Distortion%204%20v5.5"
+    },
+    {
+      "Year": 2019,
+      "Company": "FabFilter",
+      "Name": "FabFilter Transient Modulator 7 v1.9",
+      "Category": "Effects",
+      "Price": 390.77,
+      "Description": "High-quality transient modulator 7 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=FabFilter%20Transient%20Modulator%207%20v1.9"
+    },
+    {
+      "Year": 2019,
+      "Company": "PreSonus",
+      "Name": "PreSonus Dynamic Modulator 6 v2.3",
+      "Category": "Effects",
+      "Price": 532.86,
+      "Description": "High-quality dynamic modulator 6 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=PreSonus%20Dynamic%20Modulator%206%20v2.3"
+    },
+    {
+      "Year": 2019,
+      "Company": "Valhalla DSP",
+      "Name": "Valhalla DSP Spatial Compressor 6 v5.4",
+      "Category": "Effects",
+      "Price": 583.22,
+      "Description": "High-quality spatial compressor 6 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Valhalla%20DSP%20Spatial%20Compressor%206%20v5.4"
+    },
+    {
+      "Year": 2019,
+      "Company": "Ableton",
+      "Name": "Ableton Vocal Distortion 3 v2.4",
+      "Category": "Effects",
+      "Price": 993.35,
+      "Description": "High-quality vocal distortion 3 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Ableton%20Vocal%20Distortion%203%20v2.4"
+    },
+    {
+      "Year": 2019,
+      "Company": "Arturia",
+      "Name": "Arturia Vocal Saturation 5 v3.0",
+      "Category": "Effects",
+      "Price": 0.0,
+      "Description": "High-quality vocal saturation 5 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Arturia%20Vocal%20Saturation%205%20v3.0"
+    },
+    {
+      "Year": 2018,
+      "Company": "U-he",
+      "Name": "U-he Guitar Delay 4 v3.6",
+      "Category": "Effects",
+      "Price": 226.11,
+      "Description": "High-quality guitar delay 4 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=U-he%20Guitar%20Delay%204%20v3.6"
+    },
+    {
+      "Year": 2018,
+      "Company": "Native Instruments",
+      "Name": "Native Instruments Mastering Saturation 8 v3.6",
+      "Category": "Effects",
+      "Price": 989.82,
+      "Description": "High-quality mastering saturation 8 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Native%20Instruments%20Mastering%20Saturation%208%20v3.6"
+    },
+    {
+      "Year": 2018,
+      "Company": "FabFilter",
+      "Name": "FabFilter Vintage Saturation 8 v2.2",
+      "Category": "Effects",
+      "Price": 721.21,
+      "Description": "High-quality vintage saturation 8 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=FabFilter%20Vintage%20Saturation%208%20v2.2"
+    },
+    {
+      "Year": 2018,
+      "Company": "Soundtoys",
+      "Name": "Soundtoys Mixing Reverb 1 v2.2",
+      "Category": "Effects",
+      "Price": 593.32,
+      "Description": "High-quality mixing reverb 1 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Soundtoys%20Mixing%20Reverb%201%20v2.2"
+    },
+    {
+      "Year": 2018,
+      "Company": "Arturia",
+      "Name": "Arturia Dynamic Limiter 3 v5.1",
+      "Category": "Effects",
+      "Price": 679.48,
+      "Description": "High-quality dynamic limiter 3 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Arturia%20Dynamic%20Limiter%203%20v5.1"
+    },
+    {
+      "Year": 2018,
+      "Company": "EastWest",
+      "Name": "EastWest Mastering EQ 9 v3.0",
+      "Category": "Effects",
+      "Price": 392.25,
+      "Description": "High-quality mastering eq 9 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=EastWest%20Mastering%20EQ%209%20v3.0"
+    },
+    {
+      "Year": 2018,
+      "Company": "Steinberg",
+      "Name": "Steinberg Guitar Compressor 9 v2.9",
+      "Category": "Effects",
+      "Price": 366.45,
+      "Description": "High-quality guitar compressor 9 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Steinberg%20Guitar%20Compressor%209%20v2.9"
+    },
+    {
+      "Year": 2017,
+      "Company": "PreSonus",
+      "Name": "PreSonus Mixing Distortion 1 v5.2",
+      "Category": "Effects",
+      "Price": 984.28,
+      "Description": "High-quality mixing distortion 1 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=PreSonus%20Mixing%20Distortion%201%20v5.2"
+    },
+    {
+      "Year": 2017,
+      "Company": "Soundtoys",
+      "Name": "Soundtoys Mastering Saturation 1 v1.0",
+      "Category": "Effects",
+      "Price": 108.82,
+      "Description": "High-quality mastering saturation 1 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Soundtoys%20Mastering%20Saturation%201%20v1.0"
+    },
+    {
+      "Year": 2017,
+      "Company": "Orchestral Tools",
+      "Name": "Orchestral Tools Mastering Strip 8 v4.9",
+      "Category": "Effects",
+      "Price": 450.95,
+      "Description": "High-quality mastering strip 8 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Orchestral%20Tools%20Mastering%20Strip%208%20v4.9"
+    },
+    {
+      "Year": 2017,
+      "Company": "Soundtoys",
+      "Name": "Soundtoys Mastering Saturation 2 v5.3",
+      "Category": "Effects",
+      "Price": 422.45,
+      "Description": "High-quality mastering saturation 2 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Soundtoys%20Mastering%20Saturation%202%20v5.3"
+    },
+    {
+      "Year": 2017,
+      "Company": "Steinberg",
+      "Name": "Steinberg Guitar Delay 8 v5.9",
+      "Category": "Effects",
+      "Price": 0.0,
+      "Description": "High-quality guitar delay 8 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Steinberg%20Guitar%20Delay%208%20v5.9"
+    },
+    {
+      "Year": 2017,
+      "Company": "Celemony",
+      "Name": "Celemony Harmonic Modulator 4 v2.4",
+      "Category": "Effects",
+      "Price": 616.59,
+      "Description": "High-quality harmonic modulator 4 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Celemony%20Harmonic%20Modulator%204%20v2.4"
+    },
+    {
+      "Year": 2017,
+      "Company": "Spitfire Audio",
+      "Name": "Spitfire Audio Transient Delay 5 v5.1",
+      "Category": "Effects",
+      "Price": 267.38,
+      "Description": "High-quality transient delay 5 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Spitfire%20Audio%20Transient%20Delay%205%20v5.1"
+    },
+    {
+      "Year": 2017,
+      "Company": "Arturia",
+      "Name": "Arturia Dynamic Strip 1 v4.4",
+      "Category": "Effects",
+      "Price": 812.6,
+      "Description": "High-quality dynamic strip 1 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Arturia%20Dynamic%20Strip%201%20v4.4"
     },
     {
       "Year": 2016,
-      "Name": "Spatial Saturation 2 v4.1",
+      "Company": "Soundtoys",
+      "Name": "Soundtoys Vocal Reverb 3 v3.3",
       "Category": "Effects",
-      "Price": 174.25,
-      "Description": "High-quality spatial saturation 2 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Spatial%20Saturation%202%20v4.1"
+      "Price": 122.81,
+      "Description": "High-quality vocal reverb 3 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Soundtoys%20Vocal%20Reverb%203%20v3.3"
     },
     {
       "Year": 2016,
-      "Name": "Guitar Filter 8 v5.6",
+      "Company": "Valhalla DSP",
+      "Name": "Valhalla DSP Vintage Delay 7 v2.0",
       "Category": "Effects",
-      "Price": 167.67,
-      "Description": "High-quality guitar filter 8 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Guitar%20Filter%208%20v5.6"
+      "Price": 827.88,
+      "Description": "High-quality vintage delay 7 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Valhalla%20DSP%20Vintage%20Delay%207%20v2.0"
     },
     {
       "Year": 2016,
-      "Name": "Mastering Limiter 7 v4.5",
+      "Company": "PreSonus",
+      "Name": "PreSonus Vintage Compressor 5 v3.2",
       "Category": "Effects",
-      "Price": 343.68,
-      "Description": "High-quality mastering limiter 7 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Mastering%20Limiter%207%20v4.5"
+      "Price": 0.0,
+      "Description": "High-quality vintage compressor 5 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=PreSonus%20Vintage%20Compressor%205%20v3.2"
     },
     {
       "Year": 2015,
-      "Name": "Mastering Distortion 9 v4.3",
+      "Company": "PreSonus",
+      "Name": "PreSonus Vocal Reverb 8 v4.9",
       "Category": "Effects",
-      "Price": 775.45,
-      "Description": "High-quality mastering distortion 9 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Mastering%20Distortion%209%20v4.3"
+      "Price": 419.28,
+      "Description": "High-quality vocal reverb 8 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=PreSonus%20Vocal%20Reverb%208%20v4.9"
     },
     {
       "Year": 2015,
-      "Name": "Transient EQ 5 v1.9",
+      "Company": "Ableton",
+      "Name": "Ableton Mixing Reverb 6 v3.8",
       "Category": "Effects",
-      "Price": 908.15,
-      "Description": "High-quality transient eq 5 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Transient%20EQ%205%20v1.9"
+      "Price": 0.0,
+      "Description": "High-quality mixing reverb 6 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Ableton%20Mixing%20Reverb%206%20v3.8"
     },
     {
       "Year": 2015,
-      "Name": "Transient EQ 4 v5.2",
+      "Company": "Spectrasonics",
+      "Name": "Spectrasonics Mastering Strip 9 v1.4",
       "Category": "Effects",
-      "Price": 330.55,
-      "Description": "High-quality transient eq 4 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Transient%20EQ%204%20v5.2"
+      "Price": 0.0,
+      "Description": "High-quality mastering strip 9 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Spectrasonics%20Mastering%20Strip%209%20v1.4"
     },
     {
       "Year": 2015,
-      "Name": "Guitar Strip 3 v5.9",
+      "Company": "Waves",
+      "Name": "Waves Transient Distortion 4 v1.2",
       "Category": "Effects",
-      "Price": 610.44,
-      "Description": "High-quality guitar strip 3 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Guitar%20Strip%203%20v5.9"
+      "Price": 491.11,
+      "Description": "High-quality transient distortion 4 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Waves%20Transient%20Distortion%204%20v1.2"
     },
     {
       "Year": 2015,
-      "Name": "Vintage EQ 8 v2.2",
+      "Company": "Spitfire Audio",
+      "Name": "Spitfire Audio Guitar Modulator 8 v1.4",
       "Category": "Effects",
-      "Price": 418.81,
-      "Description": "High-quality vintage eq 8 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Vintage%20EQ%208%20v2.2"
+      "Price": 774.88,
+      "Description": "High-quality guitar modulator 8 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Spitfire%20Audio%20Guitar%20Modulator%208%20v1.4"
     },
     {
       "Year": 2015,
-      "Name": "Dynamic Reverb 6 v2.8",
+      "Company": "Ableton",
+      "Name": "Ableton Transient Compressor 8 v3.8",
       "Category": "Effects",
-      "Price": 367.02,
-      "Description": "High-quality dynamic reverb 6 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Dynamic%20Reverb%206%20v2.8"
+      "Price": 925.12,
+      "Description": "High-quality transient compressor 8 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Ableton%20Transient%20Compressor%208%20v3.8"
     },
     {
       "Year": 2015,
-      "Name": "Harmonic Strip 3 v3.8",
+      "Company": "Ableton",
+      "Name": "Ableton Spatial Modulator 4 v2.6",
       "Category": "Effects",
-      "Price": 592.61,
-      "Description": "High-quality harmonic strip 3 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Harmonic%20Strip%203%20v3.8"
+      "Price": 991.29,
+      "Description": "High-quality spatial modulator 4 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Ableton%20Spatial%20Modulator%204%20v2.6"
     },
     {
       "Year": 2015,
-      "Name": "Transient Saturation 2 v4.3",
+      "Company": "Native Instruments",
+      "Name": "Native Instruments Spatial Compressor 9 v1.2",
       "Category": "Effects",
-      "Price": 74.52,
-      "Description": "High-quality transient saturation 2 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Transient%20Saturation%202%20v4.3"
+      "Price": 0.0,
+      "Description": "High-quality spatial compressor 9 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Native%20Instruments%20Spatial%20Compressor%209%20v1.2"
     },
     {
       "Year": 2015,
-      "Name": "Guitar Reverb 1 v1.6",
+      "Company": "FabFilter",
+      "Name": "FabFilter Dynamic EQ 6 v3.2",
       "Category": "Effects",
-      "Price": 864.18,
-      "Description": "High-quality guitar reverb 1 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Guitar%20Reverb%201%20v1.6"
-    },
-    {
-      "Year": 2015,
-      "Name": "Modern EQ 5 v3.9",
-      "Category": "Effects",
-      "Price": 718.78,
-      "Description": "High-quality modern eq 5 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Modern%20EQ%205%20v3.9"
-    },
-    {
-      "Year": 2015,
-      "Name": "Vocal Compressor 2 v1.3",
-      "Category": "Effects",
-      "Price": 117.79,
-      "Description": "High-quality vocal compressor 2 plugin.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Vocal%20Compressor%202%20v1.3"
+      "Price": 331.58,
+      "Description": "High-quality dynamic eq 6 plugin.",
+      "Link": "https://www.bestservice.com/en/search.html?search=FabFilter%20Dynamic%20EQ%206%20v3.2"
     }
   ],
   "Software": [
     {
       "Year": 2024,
-      "Name": "Beat Editor 24 v4.0",
+      "Company": "Waves",
+      "Name": "Waves Beat Hub 24 v5.8",
       "Category": "Software",
-      "Price": 272.56,
+      "Price": 740.45,
       "Description": "Standard software for 2024 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Beat%20Editor%2024%20v4.0"
+      "Link": "https://www.bestservice.com/en/search.html?search=Waves%20Beat%20Hub%2024%20v5.8"
     },
     {
       "Year": 2024,
-      "Name": "Creative Creator 24 v2.1",
+      "Company": "Soundtoys",
+      "Name": "Soundtoys Creative Lab 24 v5.2",
       "Category": "Software",
-      "Price": 498.11,
+      "Price": 904.44,
       "Description": "Standard software for 2024 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Creative%20Creator%2024%20v2.1"
+      "Link": "https://www.bestservice.com/en/search.html?search=Soundtoys%20Creative%20Lab%2024%20v5.2"
+    },
+    {
+      "Year": 2024,
+      "Company": "Valhalla DSP",
+      "Name": "Valhalla DSP Music Editor 24 v3.8",
+      "Category": "Software",
+      "Price": 310.55,
+      "Description": "Standard software for 2024 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Valhalla%20DSP%20Music%20Editor%2024%20v3.8"
+    },
+    {
+      "Year": 2024,
+      "Company": "Ableton",
+      "Name": "Ableton Wave Platform 24 v4.8",
+      "Category": "Software",
+      "Price": 478.04,
+      "Description": "Standard software for 2024 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Ableton%20Wave%20Platform%2024%20v4.8"
+    },
+    {
+      "Year": 2024,
+      "Company": "Ableton",
+      "Name": "Ableton Audio Editor 24 v4.8",
+      "Category": "Software",
+      "Price": 532.18,
+      "Description": "Standard software for 2024 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Ableton%20Audio%20Editor%2024%20v4.8"
+    },
+    {
+      "Year": 2024,
+      "Company": "U-he",
+      "Name": "U-he Live Editor 24 v4.7",
+      "Category": "Software",
+      "Price": 942.81,
+      "Description": "Standard software for 2024 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=U-he%20Live%20Editor%2024%20v4.7"
     },
     {
       "Year": 2023,
-      "Name": "Studio Platform 23 v3.8",
+      "Company": "Xfer Records",
+      "Name": "Xfer Records Audio Engine 23 v4.3",
       "Category": "Software",
-      "Price": 318.07,
+      "Price": 936.22,
       "Description": "Standard software for 2023 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Studio%20Platform%2023%20v3.8"
+      "Link": "https://www.bestservice.com/en/search.html?search=Xfer%20Records%20Audio%20Engine%2023%20v4.3"
     },
     {
       "Year": 2023,
-      "Name": "Audio Editor 23 v3.7",
+      "Company": "EastWest",
+      "Name": "EastWest Creative Station 23 v5.9",
       "Category": "Software",
-      "Price": 392.11,
+      "Price": 284.99,
       "Description": "Standard software for 2023 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Audio%20Editor%2023%20v3.7"
+      "Link": "https://www.bestservice.com/en/search.html?search=EastWest%20Creative%20Station%2023%20v5.9"
     },
     {
       "Year": 2023,
-      "Name": "Audio Engine 23 v3.3",
+      "Company": "Slate Digital",
+      "Name": "Slate Digital Live Lab 23 v4.0",
       "Category": "Software",
-      "Price": 860.31,
+      "Price": 192.07,
       "Description": "Standard software for 2023 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Audio%20Engine%2023%20v3.3"
+      "Link": "https://www.bestservice.com/en/search.html?search=Slate%20Digital%20Live%20Lab%2023%20v4.0"
     },
     {
       "Year": 2023,
-      "Name": "Score Lab 23 v4.4",
+      "Company": "Valhalla DSP",
+      "Name": "Valhalla DSP Audio Editor 23 v2.6",
       "Category": "Software",
-      "Price": 918.73,
+      "Price": 0.0,
       "Description": "Standard software for 2023 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Score%20Lab%2023%20v4.4"
+      "Link": "https://www.bestservice.com/en/search.html?search=Valhalla%20DSP%20Audio%20Editor%2023%20v2.6"
     },
     {
       "Year": 2023,
-      "Name": "Music Editor 23 v1.5",
+      "Company": "EastWest",
+      "Name": "EastWest Score Suite 23 v4.0",
       "Category": "Software",
-      "Price": 389.42,
+      "Price": 364.7,
       "Description": "Standard software for 2023 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Music%20Editor%2023%20v1.5"
+      "Link": "https://www.bestservice.com/en/search.html?search=EastWest%20Score%20Suite%2023%20v4.0"
     },
     {
       "Year": 2023,
-      "Name": "Beat Suite 23 v5.5",
+      "Company": "Steinberg",
+      "Name": "Steinberg Live DAW 23 v2.0",
       "Category": "Software",
-      "Price": 933.23,
+      "Price": 336.28,
       "Description": "Standard software for 2023 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Beat%20Suite%2023%20v5.5"
+      "Link": "https://www.bestservice.com/en/search.html?search=Steinberg%20Live%20DAW%2023%20v2.0"
     },
     {
       "Year": 2023,
-      "Name": "Studio Lab 23 v4.9",
+      "Company": "Native Instruments",
+      "Name": "Native Instruments Creative DAW 23 v2.0",
       "Category": "Software",
-      "Price": 194.41,
+      "Price": 566.01,
       "Description": "Standard software for 2023 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Studio%20Lab%2023%20v4.9"
+      "Link": "https://www.bestservice.com/en/search.html?search=Native%20Instruments%20Creative%20DAW%2023%20v2.0"
     },
     {
       "Year": 2023,
-      "Name": "Score Editor 23 v3.0",
+      "Company": "FabFilter",
+      "Name": "FabFilter Live Engine 23 v5.6",
       "Category": "Software",
-      "Price": 574.28,
+      "Price": 907.66,
       "Description": "Standard software for 2023 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Score%20Editor%2023%20v3.0"
+      "Link": "https://www.bestservice.com/en/search.html?search=FabFilter%20Live%20Engine%2023%20v5.6"
     },
     {
       "Year": 2023,
-      "Name": "Creative Lab 23 v3.2",
+      "Company": "Eventide",
+      "Name": "Eventide Audio Hub 23 v5.9",
       "Category": "Software",
-      "Price": 784.63,
+      "Price": 913.84,
       "Description": "Standard software for 2023 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Creative%20Lab%2023%20v3.2"
+      "Link": "https://www.bestservice.com/en/search.html?search=Eventide%20Audio%20Hub%2023%20v5.9"
     },
     {
       "Year": 2022,
-      "Name": "Studio Creator 22 v4.7",
-      "Category": "Software",
-      "Price": 251.01,
-      "Description": "Standard software for 2022 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Studio%20Creator%2022%20v4.7"
-    },
-    {
-      "Year": 2022,
-      "Name": "Creative DAW 22 v1.4",
-      "Category": "Software",
-      "Price": 594.82,
-      "Description": "Standard software for 2022 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Creative%20DAW%2022%20v1.4"
-    },
-    {
-      "Year": 2022,
-      "Name": "Music Platform 22 v5.1",
-      "Category": "Software",
-      "Price": 57.04,
-      "Description": "Standard software for 2022 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Music%20Platform%2022%20v5.1"
-    },
-    {
-      "Year": 2022,
-      "Name": "Beat Platform 22 v4.5",
-      "Category": "Software",
-      "Price": 470.26,
-      "Description": "Standard software for 2022 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Beat%20Platform%2022%20v4.5"
-    },
-    {
-      "Year": 2022,
-      "Name": "Wave Engine 22 v2.9",
-      "Category": "Software",
-      "Price": 592.44,
-      "Description": "Standard software for 2022 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Wave%20Engine%2022%20v2.9"
-    },
-    {
-      "Year": 2022,
-      "Name": "Audio Station 22 v3.1",
-      "Category": "Software",
-      "Price": 743.61,
-      "Description": "Standard software for 2022 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Audio%20Station%2022%20v3.1"
-    },
-    {
-      "Year": 2022,
-      "Name": "Pro Creator 22 v4.6",
+      "Company": "Soundtoys",
+      "Name": "Soundtoys Pro Hub 22 v2.6",
       "Category": "Software",
       "Price": 0.0,
       "Description": "Standard software for 2022 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Pro%20Creator%2022%20v4.6"
+      "Link": "https://www.bestservice.com/en/search.html?search=Soundtoys%20Pro%20Hub%2022%20v2.6"
     },
     {
-      "Year": 2021,
-      "Name": "Wave DAW 21 v3.1",
+      "Year": 2022,
+      "Company": "Xfer Records",
+      "Name": "Xfer Records Wave Platform 22 v2.4",
       "Category": "Software",
-      "Price": 895.14,
-      "Description": "Standard software for 2021 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Wave%20DAW%2021%20v3.1"
+      "Price": 526.45,
+      "Description": "Standard software for 2022 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Xfer%20Records%20Wave%20Platform%2022%20v2.4"
     },
     {
-      "Year": 2021,
-      "Name": "Live Creator 21 v3.5",
+      "Year": 2022,
+      "Company": "PreSonus",
+      "Name": "PreSonus Live Station 22 v5.4",
       "Category": "Software",
-      "Price": 558.53,
-      "Description": "Standard software for 2021 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Live%20Creator%2021%20v3.5"
+      "Price": 810.83,
+      "Description": "Standard software for 2022 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=PreSonus%20Live%20Station%2022%20v5.4"
     },
     {
-      "Year": 2021,
-      "Name": "Wave Lab 21 v4.0",
+      "Year": 2022,
+      "Company": "Native Instruments",
+      "Name": "Native Instruments Music Suite 22 v1.5",
       "Category": "Software",
-      "Price": 107.41,
-      "Description": "Standard software for 2021 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Wave%20Lab%2021%20v4.0"
+      "Price": 181.21,
+      "Description": "Standard software for 2022 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Native%20Instruments%20Music%20Suite%2022%20v1.5"
     },
     {
-      "Year": 2021,
-      "Name": "Wave Editor 21 v1.1",
+      "Year": 2022,
+      "Company": "Spectrasonics",
+      "Name": "Spectrasonics Audio Lab 22 v1.9",
       "Category": "Software",
-      "Price": 540.87,
-      "Description": "Standard software for 2021 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Wave%20Editor%2021%20v1.1"
+      "Price": 283.66,
+      "Description": "Standard software for 2022 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Spectrasonics%20Audio%20Lab%2022%20v1.9"
+    },
+    {
+      "Year": 2022,
+      "Company": "Slate Digital",
+      "Name": "Slate Digital Wave Tool 22 v1.1",
+      "Category": "Software",
+      "Price": 948.18,
+      "Description": "Standard software for 2022 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Slate%20Digital%20Wave%20Tool%2022%20v1.1"
+    },
+    {
+      "Year": 2022,
+      "Company": "Output",
+      "Name": "Output Score Engine 22 v1.2",
+      "Category": "Software",
+      "Price": 223.75,
+      "Description": "Standard software for 2022 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Output%20Score%20Engine%2022%20v1.2"
+    },
+    {
+      "Year": 2022,
+      "Company": "U-he",
+      "Name": "U-he Audio Editor 22 v4.2",
+      "Category": "Software",
+      "Price": 812.91,
+      "Description": "Standard software for 2022 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=U-he%20Audio%20Editor%2022%20v4.2"
+    },
+    {
+      "Year": 2022,
+      "Company": "Spectrasonics",
+      "Name": "Spectrasonics Sound Lab 22 v1.1",
+      "Category": "Software",
+      "Price": 424.68,
+      "Description": "Standard software for 2022 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Spectrasonics%20Sound%20Lab%2022%20v1.1"
     },
     {
       "Year": 2021,
-      "Name": "Score Engine 21 v4.4",
+      "Company": "Native Instruments",
+      "Name": "Native Instruments Score Editor 21 v3.1",
+      "Category": "Software",
+      "Price": 594.23,
+      "Description": "Standard software for 2021 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Native%20Instruments%20Score%20Editor%2021%20v3.1"
+    },
+    {
+      "Year": 2021,
+      "Company": "FabFilter",
+      "Name": "FabFilter Creative Hub 21 v3.6",
+      "Category": "Software",
+      "Price": 677.38,
+      "Description": "Standard software for 2021 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=FabFilter%20Creative%20Hub%2021%20v3.6"
+    },
+    {
+      "Year": 2021,
+      "Company": "Valhalla DSP",
+      "Name": "Valhalla DSP Live Tool 21 v2.7",
+      "Category": "Software",
+      "Price": 881.29,
+      "Description": "Standard software for 2021 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Valhalla%20DSP%20Live%20Tool%2021%20v2.7"
+    },
+    {
+      "Year": 2021,
+      "Company": "Spectrasonics",
+      "Name": "Spectrasonics Studio Hub 21 v2.7",
+      "Category": "Software",
+      "Price": 284.23,
+      "Description": "Standard software for 2021 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Spectrasonics%20Studio%20Hub%2021%20v2.7"
+    },
+    {
+      "Year": 2021,
+      "Company": "FabFilter",
+      "Name": "FabFilter Studio Station 21 v1.7",
+      "Category": "Software",
+      "Price": 909.65,
+      "Description": "Standard software for 2021 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=FabFilter%20Studio%20Station%2021%20v1.7"
+    },
+    {
+      "Year": 2021,
+      "Company": "Steinberg",
+      "Name": "Steinberg Creative Tool 21 v2.0",
+      "Category": "Software",
+      "Price": 440.69,
+      "Description": "Standard software for 2021 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Steinberg%20Creative%20Tool%2021%20v2.0"
+    },
+    {
+      "Year": 2021,
+      "Company": "Orchestral Tools",
+      "Name": "Orchestral Tools Creative DAW 21 v3.7",
+      "Category": "Software",
+      "Price": 307.41,
+      "Description": "Standard software for 2021 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Orchestral%20Tools%20Creative%20DAW%2021%20v3.7"
+    },
+    {
+      "Year": 2021,
+      "Company": "Valhalla DSP",
+      "Name": "Valhalla DSP Sound Lab 21 v3.1",
+      "Category": "Software",
+      "Price": 92.15,
+      "Description": "Standard software for 2021 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Valhalla%20DSP%20Sound%20Lab%2021%20v3.1"
+    },
+    {
+      "Year": 2021,
+      "Company": "Valhalla DSP",
+      "Name": "Valhalla DSP Studio Hub 21 v2.3",
+      "Category": "Software",
+      "Price": 252.72,
+      "Description": "Standard software for 2021 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Valhalla%20DSP%20Studio%20Hub%2021%20v2.3"
+    },
+    {
+      "Year": 2021,
+      "Company": "Valhalla DSP",
+      "Name": "Valhalla DSP Wave Lab 21 v2.1",
+      "Category": "Software",
+      "Price": 236.58,
+      "Description": "Standard software for 2021 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Valhalla%20DSP%20Wave%20Lab%2021%20v2.1"
+    },
+    {
+      "Year": 2021,
+      "Company": "Valhalla DSP",
+      "Name": "Valhalla DSP Music Suite 21 v1.2",
+      "Category": "Software",
+      "Price": 159.41,
+      "Description": "Standard software for 2021 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Valhalla%20DSP%20Music%20Suite%2021%20v1.2"
+    },
+    {
+      "Year": 2021,
+      "Company": "Waves",
+      "Name": "Waves Music Tool 21 v2.7",
+      "Category": "Software",
+      "Price": 338.13,
+      "Description": "Standard software for 2021 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Waves%20Music%20Tool%2021%20v2.7"
+    },
+    {
+      "Year": 2020,
+      "Company": "PreSonus",
+      "Name": "PreSonus Live Creator 20 v2.6",
+      "Category": "Software",
+      "Price": 936.42,
+      "Description": "Standard software for 2020 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=PreSonus%20Live%20Creator%2020%20v2.6"
+    },
+    {
+      "Year": 2020,
+      "Company": "PreSonus",
+      "Name": "PreSonus Sound DAW 20 v3.5",
+      "Category": "Software",
+      "Price": 784.81,
+      "Description": "Standard software for 2020 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=PreSonus%20Sound%20DAW%2020%20v3.5"
+    },
+    {
+      "Year": 2020,
+      "Company": "PreSonus",
+      "Name": "PreSonus Sound Tool 20 v4.7",
+      "Category": "Software",
+      "Price": 759.08,
+      "Description": "Standard software for 2020 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=PreSonus%20Sound%20Tool%2020%20v4.7"
+    },
+    {
+      "Year": 2020,
+      "Company": "Steinberg",
+      "Name": "Steinberg Music Suite 20 v4.3",
+      "Category": "Software",
+      "Price": 559.91,
+      "Description": "Standard software for 2020 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Steinberg%20Music%20Suite%2020%20v4.3"
+    },
+    {
+      "Year": 2020,
+      "Company": "Output",
+      "Name": "Output Beat Engine 20 v1.0",
+      "Category": "Software",
+      "Price": 773.88,
+      "Description": "Standard software for 2020 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Output%20Beat%20Engine%2020%20v1.0"
+    },
+    {
+      "Year": 2019,
+      "Company": "Spitfire Audio",
+      "Name": "Spitfire Audio Live Hub 19 v3.0",
+      "Category": "Software",
+      "Price": 167.03,
+      "Description": "Standard software for 2019 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Spitfire%20Audio%20Live%20Hub%2019%20v3.0"
+    },
+    {
+      "Year": 2019,
+      "Company": "Native Instruments",
+      "Name": "Native Instruments Music Suite 19 v1.0",
+      "Category": "Software",
+      "Price": 444.42,
+      "Description": "Standard software for 2019 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Native%20Instruments%20Music%20Suite%2019%20v1.0"
+    },
+    {
+      "Year": 2019,
+      "Company": "Waves",
+      "Name": "Waves Studio Hub 19 v3.0",
+      "Category": "Software",
+      "Price": 996.52,
+      "Description": "Standard software for 2019 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Waves%20Studio%20Hub%2019%20v3.0"
+    },
+    {
+      "Year": 2019,
+      "Company": "Celemony",
+      "Name": "Celemony Sound Station 19 v3.7",
+      "Category": "Software",
+      "Price": 712.55,
+      "Description": "Standard software for 2019 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Celemony%20Sound%20Station%2019%20v3.7"
+    },
+    {
+      "Year": 2019,
+      "Company": "Eventide",
+      "Name": "Eventide Pro Engine 19 v4.6",
       "Category": "Software",
       "Price": 0.0,
-      "Description": "Standard software for 2021 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Score%20Engine%2021%20v4.4"
+      "Description": "Standard software for 2019 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Eventide%20Pro%20Engine%2019%20v4.6"
     },
     {
-      "Year": 2021,
-      "Name": "Audio Station 21 v4.5",
+      "Year": 2019,
+      "Company": "Steinberg",
+      "Name": "Steinberg Music Tool 19 v5.8",
       "Category": "Software",
-      "Price": 443.65,
-      "Description": "Standard software for 2021 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Audio%20Station%2021%20v4.5"
+      "Price": 705.29,
+      "Description": "Standard software for 2019 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Steinberg%20Music%20Tool%2019%20v5.8"
     },
     {
-      "Year": 2021,
-      "Name": "Beat Station 21 v5.8",
+      "Year": 2018,
+      "Company": "Native Instruments",
+      "Name": "Native Instruments Studio Station 18 v5.4",
       "Category": "Software",
-      "Price": 857.76,
-      "Description": "Standard software for 2021 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Beat%20Station%2021%20v5.8"
+      "Price": 408.99,
+      "Description": "Standard software for 2018 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Native%20Instruments%20Studio%20Station%2018%20v5.4"
     },
     {
-      "Year": 2021,
-      "Name": "Music Station 21 v3.0",
+      "Year": 2018,
+      "Company": "FabFilter",
+      "Name": "FabFilter Live Creator 18 v3.9",
       "Category": "Software",
-      "Price": 376.4,
-      "Description": "Standard software for 2021 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Music%20Station%2021%20v3.0"
+      "Price": 925.54,
+      "Description": "Standard software for 2018 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=FabFilter%20Live%20Creator%2018%20v3.9"
     },
     {
-      "Year": 2020,
-      "Name": "Beat Platform 20 v5.6",
+      "Year": 2018,
+      "Company": "Steinberg",
+      "Name": "Steinberg Live Suite 18 v5.0",
       "Category": "Software",
-      "Price": 276.05,
-      "Description": "Standard software for 2020 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Beat%20Platform%2020%20v5.6"
+      "Price": 900.55,
+      "Description": "Standard software for 2018 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Steinberg%20Live%20Suite%2018%20v5.0"
     },
     {
-      "Year": 2020,
-      "Name": "Audio Creator 20 v4.7",
+      "Year": 2018,
+      "Company": "iZotope",
+      "Name": "iZotope Music Station 18 v1.2",
       "Category": "Software",
-      "Price": 737.89,
-      "Description": "Standard software for 2020 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Audio%20Creator%2020%20v4.7"
+      "Price": 725.14,
+      "Description": "Standard software for 2018 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=iZotope%20Music%20Station%2018%20v1.2"
     },
     {
-      "Year": 2020,
-      "Name": "Live Station 20 v3.7",
-      "Category": "Software",
-      "Price": 749.68,
-      "Description": "Standard software for 2020 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Live%20Station%2020%20v3.7"
-    },
-    {
-      "Year": 2020,
-      "Name": "Score Suite 20 v1.7",
+      "Year": 2018,
+      "Company": "iZotope",
+      "Name": "iZotope Sound Station 18 v5.5",
       "Category": "Software",
       "Price": 0.0,
-      "Description": "Standard software for 2020 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Score%20Suite%2020%20v1.7"
-    },
-    {
-      "Year": 2020,
-      "Name": "Live Platform 20 v2.2",
-      "Category": "Software",
-      "Price": 605.09,
-      "Description": "Standard software for 2020 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Live%20Platform%2020%20v2.2"
-    },
-    {
-      "Year": 2020,
-      "Name": "Creative Creator 20 v1.6",
-      "Category": "Software",
-      "Price": 627.41,
-      "Description": "Standard software for 2020 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Creative%20Creator%2020%20v1.6"
-    },
-    {
-      "Year": 2019,
-      "Name": "Pro Tool 19 v1.7",
-      "Category": "Software",
-      "Price": 934.95,
-      "Description": "Standard software for 2019 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Pro%20Tool%2019%20v1.7"
-    },
-    {
-      "Year": 2019,
-      "Name": "Creative Suite 19 v2.3",
-      "Category": "Software",
-      "Price": 686.68,
-      "Description": "Standard software for 2019 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Creative%20Suite%2019%20v2.3"
-    },
-    {
-      "Year": 2019,
-      "Name": "Wave Tool 19 v3.8",
-      "Category": "Software",
-      "Price": 825.81,
-      "Description": "Standard software for 2019 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Wave%20Tool%2019%20v3.8"
-    },
-    {
-      "Year": 2019,
-      "Name": "Studio Creator 19 v1.0",
-      "Category": "Software",
-      "Price": 730.12,
-      "Description": "Standard software for 2019 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Studio%20Creator%2019%20v1.0"
-    },
-    {
-      "Year": 2019,
-      "Name": "Audio Lab 19 v3.5",
-      "Category": "Software",
-      "Price": 230.46,
-      "Description": "Standard software for 2019 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Audio%20Lab%2019%20v3.5"
-    },
-    {
-      "Year": 2019,
-      "Name": "Live Creator 19 v5.6",
-      "Category": "Software",
-      "Price": 853.11,
-      "Description": "Standard software for 2019 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Live%20Creator%2019%20v5.6"
+      "Description": "Standard software for 2018 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=iZotope%20Sound%20Station%2018%20v5.5"
     },
     {
       "Year": 2018,
-      "Name": "Music Hub 18 v5.8",
+      "Company": "Steinberg",
+      "Name": "Steinberg Pro Engine 18 v3.4",
       "Category": "Software",
-      "Price": 508.07,
+      "Price": 640.86,
       "Description": "Standard software for 2018 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Music%20Hub%2018%20v5.8"
+      "Link": "https://www.bestservice.com/en/search.html?search=Steinberg%20Pro%20Engine%2018%20v3.4"
     },
     {
       "Year": 2018,
-      "Name": "Sound Hub 18 v3.7",
-      "Category": "Software",
-      "Price": 637.64,
-      "Description": "Standard software for 2018 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Sound%20Hub%2018%20v3.7"
-    },
-    {
-      "Year": 2018,
-      "Name": "Studio Lab 18 v2.2",
-      "Category": "Software",
-      "Price": 622.44,
-      "Description": "Standard software for 2018 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Studio%20Lab%2018%20v2.2"
-    },
-    {
-      "Year": 2018,
-      "Name": "Live Platform 18 v5.2",
-      "Category": "Software",
-      "Price": 673.95,
-      "Description": "Standard software for 2018 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Live%20Platform%2018%20v5.2"
-    },
-    {
-      "Year": 2018,
-      "Name": "Studio Engine 18 v1.1",
-      "Category": "Software",
-      "Price": 760.26,
-      "Description": "Standard software for 2018 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Studio%20Engine%2018%20v1.1"
-    },
-    {
-      "Year": 2018,
-      "Name": "Music Suite 18 v1.2",
-      "Category": "Software",
-      "Price": 661.66,
-      "Description": "Standard software for 2018 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Music%20Suite%2018%20v1.2"
-    },
-    {
-      "Year": 2018,
-      "Name": "Studio Engine 18 v3.6",
-      "Category": "Software",
-      "Price": 461.25,
-      "Description": "Standard software for 2018 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Studio%20Engine%2018%20v3.6"
-    },
-    {
-      "Year": 2018,
-      "Name": "Score Editor 18 v1.0",
-      "Category": "Software",
-      "Price": 957.01,
-      "Description": "Standard software for 2018 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Score%20Editor%2018%20v1.0"
-    },
-    {
-      "Year": 2017,
-      "Name": "Pro Tool 17 v2.2",
-      "Category": "Software",
-      "Price": 759.37,
-      "Description": "Standard software for 2017 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Pro%20Tool%2017%20v2.2"
-    },
-    {
-      "Year": 2017,
-      "Name": "Live DAW 17 v2.0",
-      "Category": "Software",
-      "Price": 795.75,
-      "Description": "Standard software for 2017 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Live%20DAW%2017%20v2.0"
-    },
-    {
-      "Year": 2017,
-      "Name": "Score Creator 17 v3.8",
-      "Category": "Software",
-      "Price": 84.33,
-      "Description": "Standard software for 2017 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Score%20Creator%2017%20v3.8"
-    },
-    {
-      "Year": 2017,
-      "Name": "Audio Station 17 v5.6",
-      "Category": "Software",
-      "Price": 299.91,
-      "Description": "Standard software for 2017 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Audio%20Station%2017%20v5.6"
-    },
-    {
-      "Year": 2017,
-      "Name": "Pro DAW 17 v5.5",
-      "Category": "Software",
-      "Price": 419.65,
-      "Description": "Standard software for 2017 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Pro%20DAW%2017%20v5.5"
-    },
-    {
-      "Year": 2017,
-      "Name": "Studio Editor 17 v1.5",
-      "Category": "Software",
-      "Price": 940.01,
-      "Description": "Standard software for 2017 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Studio%20Editor%2017%20v1.5"
-    },
-    {
-      "Year": 2016,
-      "Name": "Studio Lab 16 v5.2",
-      "Category": "Software",
-      "Price": 373.61,
-      "Description": "Standard software for 2016 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Studio%20Lab%2016%20v5.2"
-    },
-    {
-      "Year": 2016,
-      "Name": "Music Creator 16 v3.9",
-      "Category": "Software",
-      "Price": 218.98,
-      "Description": "Standard software for 2016 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Music%20Creator%2016%20v3.9"
-    },
-    {
-      "Year": 2016,
-      "Name": "Score Suite 16 v4.7",
-      "Category": "Software",
-      "Price": 957.08,
-      "Description": "Standard software for 2016 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Score%20Suite%2016%20v4.7"
-    },
-    {
-      "Year": 2016,
-      "Name": "Live Hub 16 v1.5",
-      "Category": "Software",
-      "Price": 417.58,
-      "Description": "Standard software for 2016 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Live%20Hub%2016%20v1.5"
-    },
-    {
-      "Year": 2016,
-      "Name": "Sound DAW 16 v2.2",
-      "Category": "Software",
-      "Price": 847.55,
-      "Description": "Standard software for 2016 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Sound%20DAW%2016%20v2.2"
-    },
-    {
-      "Year": 2016,
-      "Name": "Studio Creator 16 v3.8",
-      "Category": "Software",
-      "Price": 385.08,
-      "Description": "Standard software for 2016 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Studio%20Creator%2016%20v3.8"
-    },
-    {
-      "Year": 2016,
-      "Name": "Audio Creator 16 v3.2",
-      "Category": "Software",
-      "Price": 76.5,
-      "Description": "Standard software for 2016 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Audio%20Creator%2016%20v3.2"
-    },
-    {
-      "Year": 2016,
-      "Name": "Score Creator 16 v3.2",
-      "Category": "Software",
-      "Price": 251.13,
-      "Description": "Standard software for 2016 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Score%20Creator%2016%20v3.2"
-    },
-    {
-      "Year": 2016,
-      "Name": "Audio Creator 16 v3.0",
-      "Category": "Software",
-      "Price": 73.62,
-      "Description": "Standard software for 2016 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Audio%20Creator%2016%20v3.0"
-    },
-    {
-      "Year": 2016,
-      "Name": "Sound Platform 16 v1.2",
-      "Category": "Software",
-      "Price": 173.32,
-      "Description": "Standard software for 2016 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Sound%20Platform%2016%20v1.2"
-    },
-    {
-      "Year": 2016,
-      "Name": "Audio Tool 16 v3.8",
-      "Category": "Software",
-      "Price": 568.85,
-      "Description": "Standard software for 2016 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Audio%20Tool%2016%20v3.8"
-    },
-    {
-      "Year": 2016,
-      "Name": "Score Hub 16 v5.8",
-      "Category": "Software",
-      "Price": 471.3,
-      "Description": "Standard software for 2016 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Score%20Hub%2016%20v5.8"
-    },
-    {
-      "Year": 2016,
-      "Name": "Creative Hub 16 v1.9",
-      "Category": "Software",
-      "Price": 567.48,
-      "Description": "Standard software for 2016 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Creative%20Hub%2016%20v1.9"
-    },
-    {
-      "Year": 2015,
-      "Name": "Music Hub 15 v5.7",
+      "Company": "Celemony",
+      "Name": "Celemony Creative Lab 18 v1.1",
       "Category": "Software",
       "Price": 0.0,
-      "Description": "Standard software for 2015 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Music%20Hub%2015%20v5.7"
+      "Description": "Standard software for 2018 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Celemony%20Creative%20Lab%2018%20v1.1"
+    },
+    {
+      "Year": 2018,
+      "Company": "Celemony",
+      "Name": "Celemony Score Editor 18 v4.4",
+      "Category": "Software",
+      "Price": 0.0,
+      "Description": "Standard software for 2018 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Celemony%20Score%20Editor%2018%20v4.4"
+    },
+    {
+      "Year": 2017,
+      "Company": "Steinberg",
+      "Name": "Steinberg Pro Suite 17 v4.6",
+      "Category": "Software",
+      "Price": 300.63,
+      "Description": "Standard software for 2017 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Steinberg%20Pro%20Suite%2017%20v4.6"
+    },
+    {
+      "Year": 2017,
+      "Company": "PreSonus",
+      "Name": "PreSonus Creative Suite 17 v3.8",
+      "Category": "Software",
+      "Price": 49.38,
+      "Description": "Standard software for 2017 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=PreSonus%20Creative%20Suite%2017%20v3.8"
+    },
+    {
+      "Year": 2017,
+      "Company": "Celemony",
+      "Name": "Celemony Sound Creator 17 v4.1",
+      "Category": "Software",
+      "Price": 72.61,
+      "Description": "Standard software for 2017 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Celemony%20Sound%20Creator%2017%20v4.1"
+    },
+    {
+      "Year": 2017,
+      "Company": "Waves",
+      "Name": "Waves Music Hub 17 v4.1",
+      "Category": "Software",
+      "Price": 288.61,
+      "Description": "Standard software for 2017 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Waves%20Music%20Hub%2017%20v4.1"
+    },
+    {
+      "Year": 2017,
+      "Company": "Arturia",
+      "Name": "Arturia Studio Engine 17 v2.4",
+      "Category": "Software",
+      "Price": 100.33,
+      "Description": "Standard software for 2017 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Arturia%20Studio%20Engine%2017%20v2.4"
+    },
+    {
+      "Year": 2016,
+      "Company": "Slate Digital",
+      "Name": "Slate Digital Audio Engine 16 v1.7",
+      "Category": "Software",
+      "Price": 821.68,
+      "Description": "Standard software for 2016 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Slate%20Digital%20Audio%20Engine%2016%20v1.7"
+    },
+    {
+      "Year": 2016,
+      "Company": "PreSonus",
+      "Name": "PreSonus Studio Tool 16 v1.4",
+      "Category": "Software",
+      "Price": 831.94,
+      "Description": "Standard software for 2016 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=PreSonus%20Studio%20Tool%2016%20v1.4"
+    },
+    {
+      "Year": 2016,
+      "Company": "Orchestral Tools",
+      "Name": "Orchestral Tools Sound DAW 16 v5.6",
+      "Category": "Software",
+      "Price": 0.0,
+      "Description": "Standard software for 2016 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Orchestral%20Tools%20Sound%20DAW%2016%20v5.6"
+    },
+    {
+      "Year": 2016,
+      "Company": "iZotope",
+      "Name": "iZotope Sound Creator 16 v2.7",
+      "Category": "Software",
+      "Price": 434.43,
+      "Description": "Standard software for 2016 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=iZotope%20Sound%20Creator%2016%20v2.7"
+    },
+    {
+      "Year": 2016,
+      "Company": "Eventide",
+      "Name": "Eventide Pro Platform 16 v2.1",
+      "Category": "Software",
+      "Price": 834.6,
+      "Description": "Standard software for 2016 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Eventide%20Pro%20Platform%2016%20v2.1"
+    },
+    {
+      "Year": 2016,
+      "Company": "Valhalla DSP",
+      "Name": "Valhalla DSP Live Editor 16 v3.4",
+      "Category": "Software",
+      "Price": 872.99,
+      "Description": "Standard software for 2016 production.",
+      "Link": "https://www.bestservice.com/en/search.html?search=Valhalla%20DSP%20Live%20Editor%2016%20v3.4"
     },
     {
       "Year": 2015,
-      "Name": "Beat Station 15 v1.4",
+      "Company": "Waves",
+      "Name": "Waves Beat Editor 15 v4.2",
       "Category": "Software",
-      "Price": 269.37,
+      "Price": 389.15,
       "Description": "Standard software for 2015 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Beat%20Station%2015%20v1.4"
+      "Link": "https://www.bestservice.com/en/search.html?search=Waves%20Beat%20Editor%2015%20v4.2"
     },
     {
       "Year": 2015,
-      "Name": "Creative Engine 15 v2.0",
+      "Company": "Native Instruments",
+      "Name": "Native Instruments Audio Suite 15 v4.1",
       "Category": "Software",
-      "Price": 495.74,
+      "Price": 947.48,
       "Description": "Standard software for 2015 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Creative%20Engine%2015%20v2.0"
+      "Link": "https://www.bestservice.com/en/search.html?search=Native%20Instruments%20Audio%20Suite%2015%20v4.1"
     },
     {
       "Year": 2015,
-      "Name": "Creative Hub 15 v3.5",
+      "Company": "Arturia",
+      "Name": "Arturia Wave Engine 15 v5.0",
       "Category": "Software",
-      "Price": 806.84,
+      "Price": 665.51,
       "Description": "Standard software for 2015 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Creative%20Hub%2015%20v3.5"
+      "Link": "https://www.bestservice.com/en/search.html?search=Arturia%20Wave%20Engine%2015%20v5.0"
     },
     {
       "Year": 2015,
-      "Name": "Sound Suite 15 v2.9",
+      "Company": "Steinberg",
+      "Name": "Steinberg Beat Station 15 v1.7",
       "Category": "Software",
-      "Price": 318.03,
+      "Price": 251.26,
       "Description": "Standard software for 2015 production.",
-      "Link": "https://www.bestservice.com/en/search.html?search=Sound%20Suite%2015%20v2.9"
+      "Link": "https://www.bestservice.com/en/search.html?search=Steinberg%20Beat%20Station%2015%20v1.7"
     }
   ]
 }
