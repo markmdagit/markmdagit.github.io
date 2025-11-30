@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
 
     <link rel="stylesheet" href="../css/styles.css">
 </head>
@@ -170,11 +172,47 @@
                             </div>
                         </div>
                         <div class="dropdown">
+                            <button id="tools-btn" class="dropdown-toggle">Tools <i class="fas fa-caret-down"></i></button>
+                            <div id="tools-options" class="dropdown-menu" style="display: none;">
+                                <button id="scraper-tool-btn">Amazon Best Sellers</button>
+                                <button id="bestservice-tool-btn">Best Service New Products</button>
+                            </div>
+                        </div>
+                        <div class="dropdown">
                             <button id="admin-btn" class="dropdown-toggle">Admin <i class="fas fa-caret-down"></i></button>
                             <div id="admin-options" class="dropdown-menu" style="display: none;">
                                 <button id="admin-dashboard-btn">Admin Dashboard</button>
                             </div>
                         </div>
+                    </div>
+
+                    <div id="scraper-tool" style="display: none;">
+                        <h2 class="section-title">Amazon Best Sellers Scraper</h2>
+                        <p class="section-description">This tool simulates a web scraper that fetches the top 10 best-selling items from Amazon.com in various categories. Select a category below to view the data.</p>
+
+                        <div class="scraper-categories">
+                            <button class="scraper-cat-btn active" data-category="Laptops">Laptops</button>
+                            <button class="scraper-cat-btn" data-category="Desktops">Desktops</button>
+                            <button class="scraper-cat-btn" data-category="Tablets">Tablets</button>
+                            <button class="scraper-cat-btn" data-category="Mice">Mice</button>
+                            <button class="scraper-cat-btn" data-category="Keyboards">Keyboards</button>
+                            <button class="scraper-cat-btn" data-category="Monitors">Monitors</button>
+                        </div>
+
+                        <div id="scraper-grid"></div>
+                    </div>
+
+                    <div id="bestservice-tool" style="display: none;">
+                        <h2 class="section-title">Best Service New Products Scraper</h2>
+                        <p class="section-description">A tool to browse new product releases from 2015 to present for Instruments, Effects, and Software.</p>
+
+                        <div class="scraper-categories">
+                            <button class="bestservice-cat-btn active" data-category="Instruments">Instruments</button>
+                            <button class="bestservice-cat-btn" data-category="Effects">Effects</button>
+                            <button class="bestservice-cat-btn" data-category="Software">Software</button>
+                        </div>
+
+                        <div id="bestservice-grid"></div>
                     </div>
 
                     <div id="hardware-details" style="display: none;">
@@ -420,5 +458,7 @@
     <script src="../js/projects.js"></script>
     <script src="../js/db.js"></script>
     <script src="../js/chatbot.js"></script>
+    <script src="../js/scraper.js"></script>
+    <script src="../js/bestservice_scraper.js"></script>
 </body>
 </html>
