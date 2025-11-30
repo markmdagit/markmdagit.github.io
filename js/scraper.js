@@ -38,15 +38,6 @@ function renderGrid(data) {
         fields: [
             { name: "Rank", type: "number", width: 50, align: "center" },
             {
-                name: "Image",
-                type: "text",
-                width: 60,
-                align: "center",
-                itemTemplate: function(value) {
-                    return $("<img>").attr("src", value).css({ width: "50px", height: "50px", "object-fit": "cover" });
-                }
-            },
-            {
                 name: "Name",
                 type: "text",
                 width: 300,
