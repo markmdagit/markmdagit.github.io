@@ -814,6 +814,23 @@ footer {
     transform: translateY(-2px);
 }
 
+.jsgrid-header-cell,
+.jsgrid-header-row > .jsgrid-header-cell {
+    background-color: #343a40 !important;
+    color: white !important;
+    font-weight: bold;
+    text-align: center;
+}
+
+.jsgrid-cell {
+    background-color: #fff;
+}
+
+.jsgrid-alt-row .jsgrid-cell {
+    background-color: #f8f9fa;
+}
+
+
 /* --- Grid Layouts for Sections --- */
 .chatbot-grid-container {
     display: grid;
