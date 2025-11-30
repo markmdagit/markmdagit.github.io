@@ -31,6 +31,7 @@ function renderGrid(data) {
         editing: false,
         sorting: true,
         paging: false,
+        selecting: false,
 
         data: data,
 
