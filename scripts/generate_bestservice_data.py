@@ -1,5 +1,6 @@
 import json
 import random
+import urllib.parse
 
 categories = ["Instruments", "Effects", "Software"]
 years = range(2015, 2025)
@@ -36,12 +37,17 @@ def generate_item(category, index):
         name = f"{random.choice(software_prefixes)} {random.choice(software_suffixes)} {year - 2000}"
         desc = f"Standard software for {year} production."
 
+    full_name = f"{name} v{random.randint(1,5)}.{random.randint(0,9)}"
+    encoded_name = urllib.parse.quote(full_name)
+    link = f"https://www.bestservice.com/en/search.html?search={encoded_name}"
+
     return {
         "Year": year,
-        "Name": f"{name} v{random.randint(1,5)}.{random.randint(0,9)}",
+        "Name": full_name,
         "Category": category,
         "Price": price,
-        "Description": desc
+        "Description": desc,
+        "Link": link
     }
 
 # Generate ~70 items per category to get ~210 total

@@ -39,7 +39,14 @@ function renderBestServiceGrid(data) {
 
         fields: [
             { name: "Year", type: "number", width: 50, align: "center" },
-            { name: "Name", type: "text", width: 250 },
+            {
+                name: "Name",
+                type: "text",
+                width: 250,
+                itemTemplate: function(value, item) {
+                    return $("<a>").attr("href", item.Link).attr("target", "_blank").text(value);
+                }
+            },
             { name: "Category", type: "text", width: 100 },
             {
                 name: "Price",
