@@ -1,120 +1,112 @@
 document.addEventListener('DOMContentLoaded', function() {
     const computersBtn = document.getElementById('computers-btn');
     const computerOptions = document.getElementById('computer-options');
-    const computerButtons = [
-        document.getElementById('hardware-details-btn'),
-    ];
-    const computerSections = [
-        document.getElementById('hardware-details'),
-    ];
 
-    const toolsBtn = document.getElementById('tools-btn');
-    const toolsOptions = document.getElementById('tools-options');
-    const toolsButtons = [
-        document.getElementById('scraper-tool-btn'),
-        document.getElementById('bestservice-tool-btn'),
-    ];
-    const toolsSections = [
-        document.getElementById('scraper-tool'),
-        document.getElementById('bestservice-tool'),
-    ];
+    // Computers Sub-buttons
+    const laptopsBtn = document.getElementById('laptops-btn');
+    const supplyChainBtn = document.getElementById('supply-chain-btn');
+    const chatbotBtn = document.getElementById('chatbot-btn');
 
     const adminBtn = document.getElementById('admin-btn');
     const adminOptions = document.getElementById('admin-options');
-    const adminButtons = [
-        document.getElementById('admin-dashboard-btn'),
-    ];
-    const adminSections = [
-        document.getElementById('admin-dashboard'),
-    ];
+
+    // Admin Sub-buttons
+    const calendarBtn = document.getElementById('calendar-btn');
+    const incomeManagerBtn = document.getElementById('income-manager-btn');
+    const payrollBtn = document.getElementById('payroll-btn');
+
+    const hardwareSection = document.getElementById('hardware-details');
+    const adminSection = document.getElementById('admin-dashboard');
+
+    const allSections = [hardwareSection, adminSection].filter(s => s !== null);
+    const allButtons = [laptopsBtn, supplyChainBtn, chatbotBtn, calendarBtn, incomeManagerBtn, payrollBtn].filter(b => b !== null);
 
     function setupDropdown(btn, options, ...otherOptions) {
+        if (!btn || !options) return;
         btn.addEventListener('click', (event) => {
             event.stopPropagation();
             const isDisplayed = options.style.display !== 'none';
-            otherOptions.forEach(opt => opt.style.display = 'none');
+            otherOptions.forEach(opt => {
+                if (opt) opt.style.display = 'none';
+            });
             options.style.display = isDisplayed ? 'none' : 'block';
         });
     }
 
-    function setupMenu(buttons, sections, allSections) {
-        buttons.forEach((button, index) => {
-            button.addEventListener('click', () => {
-                allSections.forEach(section => section.style.display = 'none');
-                sections[index].style.display = 'block';
-
-                // Remove active class from all known buttons across all menus
-                [...computerButtons, ...adminButtons].forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                button.closest('.dropdown-menu').style.display = 'none';
-
-                if (button.id === 'hardware-details-btn') {
-                    setupTabs();
-                    // Load the content for the default active tab
-                    loadSupplyChainData();
-                } else if (button.id === 'scraper-tool-btn') {
-                    // Initialize Scraper if needed (it will be handled by scraper.js listening for visibility or just load defaults)
-                    if (typeof initScraper === 'function') {
-                        initScraper();
-                    }
-                } else if (button.id === 'bestservice-tool-btn') {
-                     if (typeof initBestServiceScraper === 'function') {
-                        initBestServiceScraper();
-                    }
-                }
-            });
+    function activateSection(sectionId) {
+        allSections.forEach(section => {
+            section.style.display = 'none';
         });
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.style.display = 'block';
+        }
     }
 
-    function setupTabs() {
+    function activateTab(tabId) {
         const tabs = document.querySelectorAll('.tab-btn');
         const tabPanes = document.querySelectorAll('.tab-pane');
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const targetPaneId = tab.dataset.tab;
+        tabs.forEach(t => t.classList.remove('active'));
+        tabPanes.forEach(p => p.classList.remove('active'));
 
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
+        const tabBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+        const tabPane = document.getElementById(tabId);
 
-                tabPanes.forEach(pane => {
-                    if (pane.id === targetPaneId) {
-                        pane.classList.add('active');
-                    } else {
-                        pane.classList.remove('active');
-                    }
-                });
+        if (tabBtn) tabBtn.classList.add('active');
+        if (tabPane) tabPane.classList.add('active');
 
-                // Load content only when the tab is clicked
-                if (targetPaneId === 'supply-chain-content' && !document.getElementById('elitebook-supply-chain-cards').hasChildNodes()) {
-                    loadSupplyChainData();
-                }
-            });
-        });
+        // Trigger data load if needed
+        if (tabId === 'supply-chain-content') {
+             loadSupplyChainData();
+        }
     }
 
-    const allSections = [...computerSections, ...toolsSections, ...adminSections];
+    function setupButton(btn, sectionId, tabId = null) {
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+            activateSection(sectionId);
 
-    setupDropdown(computersBtn, computerOptions, toolsOptions, adminOptions);
-    setupDropdown(toolsBtn, toolsOptions, computerOptions, adminOptions);
-    setupDropdown(adminBtn, adminOptions, computerOptions, toolsOptions);
+            if (tabId) {
+                activateTab(tabId);
+            }
+
+            // Manage active class on dropdown buttons
+            allButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Close dropdowns
+            if (computerOptions) computerOptions.style.display = 'none';
+            if (adminOptions) adminOptions.style.display = 'none';
+        });
+    }
 
     setupDropdown(computersBtn, computerOptions, adminOptions);
     setupDropdown(adminBtn, adminOptions, computerOptions);
 
-    setupMenu(computerButtons, computerSections, allSections);
-    setupMenu(toolsButtons, toolsSections, allSections);
-    setupMenu(adminButtons, adminSections, allSections);
+    // Computers Logic
+    setupButton(laptopsBtn, 'hardware-details', 'laptops-content');
+    setupButton(supplyChainBtn, 'hardware-details', 'supply-chain-content');
+    setupButton(chatbotBtn, 'hardware-details', 'chatbot-content');
+
+    // Admin Logic
+    setupButton(calendarBtn, 'admin-dashboard');
+    setupButton(incomeManagerBtn, 'admin-dashboard');
+    setupButton(payrollBtn, 'admin-dashboard');
+
+    // Initialize tabs click handlers (for internal navigation)
+    const tabs = document.querySelectorAll('.tab-btn');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            activateTab(tab.dataset.tab);
+        });
+    });
 
     window.addEventListener('click', function(event) {
-        if (!computersBtn.contains(event.target)) {
+        if (computersBtn && !computersBtn.contains(event.target) && computerOptions) {
             computerOptions.style.display = 'none';
         }
-        if (!toolsBtn.contains(event.target)) {
-            toolsOptions.style.display = 'none';
-        }
-        if (!adminBtn.contains(event.target)) {
+        if (adminBtn && !adminBtn.contains(event.target) && adminOptions) {
             adminOptions.style.display = 'none';
         }
     });
@@ -122,18 +114,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function loadSupplyChainData() {
     const section = document.getElementById('hardware-details');
+    if (!section) return;
+
     const loadingIndicator = section.querySelector('.loading-indicator');
     const elitebookContainer = document.getElementById("elitebook-supply-chain-cards");
     const zbookContainer = document.getElementById("zbook-supply-chain-cards");
 
-    loadingIndicator.style.display = 'block';
-    elitebookContainer.innerHTML = '';
-    zbookContainer.innerHTML = '';
+    // Only load if empty
+    if (elitebookContainer && elitebookContainer.hasChildNodes()) return;
+
+    if (loadingIndicator) loadingIndicator.style.display = 'block';
+    if (elitebookContainer) elitebookContainer.innerHTML = '';
+    if (zbookContainer) zbookContainer.innerHTML = '';
 
     if (elitebookContainer && zbookContainer) {
         fetchData("/data/supply_chain.json")
             .then(data => {
-                loadingIndicator.style.display = 'none';
+                if (loadingIndicator) loadingIndicator.style.display = 'none';
                 const elitebookSupplyData = data.filter(item => item["Model Series"] === "Elitebook");
                 const zbookSupplyData = data.filter(item => item["Model Series"] === "Zbook Studio");
 
@@ -141,7 +138,7 @@ function loadSupplyChainData() {
                 zbookSupplyData.forEach(item => createSupplyChainCard(zbookContainer, item));
             })
             .catch(error => {
-                loadingIndicator.style.display = 'none';
+                if (loadingIndicator) loadingIndicator.style.display = 'none';
                 elitebookContainer.textContent = 'Error loading data.';
                 zbookContainer.textContent = 'Error loading data.';
                 console.error("Error fetching or creating supply chain cards:", error);
