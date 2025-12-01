@@ -8,17 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('hardware-details'),
     ];
 
-    const toolsBtn = document.getElementById('tools-btn');
-    const toolsOptions = document.getElementById('tools-options');
-    const toolsButtons = [
-        document.getElementById('scraper-tool-btn'),
-        document.getElementById('bestservice-tool-btn'),
-    ];
-    const toolsSections = [
-        document.getElementById('scraper-tool'),
-        document.getElementById('bestservice-tool'),
-    ];
-
     const adminBtn = document.getElementById('admin-btn');
     const adminOptions = document.getElementById('admin-options');
     const adminButtons = [
@@ -54,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 // Remove active class from all known buttons across all menus
-                [...computerButtons, ...adminButtons, ...toolsButtons].forEach(btn => {
+                [...computerButtons, ...adminButtons].forEach(btn => {
                     if (btn) btn.classList.remove('active');
                 });
                 button.classList.add('active');
@@ -65,15 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (button.id === 'hardware-details-btn') {
                     // Load the content for the default active tab
                     loadSupplyChainData();
-                } else if (button.id === 'scraper-tool-btn') {
-                    // Initialize Scraper if needed
-                    if (typeof initScraper === 'function') {
-                        initScraper();
-                    }
-                } else if (button.id === 'bestservice-tool-btn') {
-                     if (typeof initBestServiceScraper === 'function') {
-                        initBestServiceScraper();
-                    }
                 }
             });
         });
@@ -106,15 +86,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Filter out null sections (e.g. if tools sections are missing in HTML)
-    const allSections = [...computerSections, ...toolsSections, ...adminSections].filter(s => s !== null);
-
-    setupDropdown(computersBtn, computerOptions, toolsOptions, adminOptions);
-    setupDropdown(toolsBtn, toolsOptions, computerOptions, adminOptions);
-    setupDropdown(adminBtn, adminOptions, computerOptions, toolsOptions);
+    // Filter out null sections
+    const allSections = [...computerSections, ...adminSections].filter(s => s !== null);
 
     setupMenu(computerButtons, computerSections, allSections);
-    setupMenu(toolsButtons, toolsSections, allSections);
     setupMenu(adminButtons, adminSections, allSections);
 
     // Initialize tabs once
@@ -123,9 +98,6 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('click', function(event) {
         if (computersBtn && !computersBtn.contains(event.target) && computerOptions) {
             computerOptions.style.display = 'none';
-        }
-        if (toolsBtn && !toolsBtn.contains(event.target) && toolsOptions) {
-            toolsOptions.style.display = 'none';
         }
         if (adminBtn && !adminBtn.contains(event.target) && adminOptions) {
             adminOptions.style.display = 'none';
