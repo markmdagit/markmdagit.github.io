@@ -10,17 +10,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const adminBtn = document.getElementById('admin-btn');
     const adminOptions = document.getElementById('admin-options');
-
-    // Admin Sub-buttons
-    const calendarBtn = document.getElementById('calendar-btn');
-    const incomeManagerBtn = document.getElementById('income-manager-btn');
-    const payrollBtn = document.getElementById('payroll-btn');
-
-    const hardwareSection = document.getElementById('hardware-details');
-    const adminSection = document.getElementById('admin-dashboard');
-
-    const allSections = [hardwareSection, adminSection].filter(s => s !== null);
-    const allButtons = [laptopsBtn, supplyChainBtn, chatbotBtn, calendarBtn, incomeManagerBtn, payrollBtn].filter(b => b !== null);
+    const adminButtons = [
+        document.getElementById('admin-dashboard-btn'),
+    ];
+    const adminSections = [
+        document.getElementById('admin-dashboard'),
+    ];
 
     function setupDropdown(btn, options, ...otherOptions) {
         if (!btn || !options) return;
@@ -62,29 +57,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
-        const section = document.getElementById(sectionId);
-        if (section) {
-            section.style.display = 'block';
-        }
     }
 
-    function activateTab(tabId) {
+    function setupTabs() {
         const tabs = document.querySelectorAll('.tab-btn');
         const tabPanes = document.querySelectorAll('.tab-pane');
 
-        tabs.forEach(t => t.classList.remove('active'));
-        tabPanes.forEach(p => p.classList.remove('active'));
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetPaneId = tab.dataset.tab;
 
-        const tabBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
-        const tabPane = document.getElementById(tabId);
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
 
-        if (tabBtn) tabBtn.classList.add('active');
-        if (tabPane) tabPane.classList.add('active');
+                tabPanes.forEach(pane => {
+                    if (pane.id === targetPaneId) {
+                        pane.classList.add('active');
+                    } else {
+                        pane.classList.remove('active');
+                    }
+                });
 
-        // Trigger data load if needed
-        if (tabId === 'supply-chain-content') {
-             loadSupplyChainData();
-        }
+                // Load content only when the tab is clicked
+                if (targetPaneId === 'supply-chain-content' && !document.getElementById('elitebook-supply-chain-cards').hasChildNodes()) {
+                    loadSupplyChainData();
+                }
+            });
+        });
     }
 
     // Filter out null sections
