@@ -8,7 +8,7 @@ def test_date_range_highlighting(page: Page):
 
     # Open the admin dropdown and click the calendar button
     page.click("button#admin-btn")
-    page.click("button#admin-dashboard-btn")
+    page.click("button#calendar-btn")
 
     # Ensure the calendar is visible
     expect(page.locator("#admin-dashboard")).to_be_visible()

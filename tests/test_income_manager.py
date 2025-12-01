@@ -8,7 +8,7 @@ def test_income_manager_crud(page: Page):
     # Navigate to the Income Manager
     admin_btn = page.locator("#admin-btn")
     admin_btn.click()
-    page.locator("#admin-dashboard-btn").click()
+    page.locator("#income-manager-btn").click()
 
     # Ensure the admin dashboard is visible
     expect(page.locator("#admin-dashboard")).to_be_visible()

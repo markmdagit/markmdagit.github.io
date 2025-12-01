@@ -9,7 +9,7 @@ def test_payroll_report(page: Page):
     # 1. Create a user with a known wage
     admin_btn = page.locator("#admin-btn")
     admin_btn.click()
-    page.locator("#admin-dashboard-btn").click()
+    page.locator("#income-manager-btn").click()
 
     # Ensure the admin dashboard is visible
     expect(page.locator("#admin-dashboard")).to_be_visible()

@@ -8,7 +8,7 @@ def test_admin_monthly_calendar(page: Page):
     # First, create a user to assign the event to
     admin_btn = page.locator("#admin-btn")
     admin_btn.click()
-    page.locator("#admin-dashboard-btn").click()
+    page.locator("#calendar-btn").click()
 
     page.locator("#user-first-name").fill("Calendar")
     page.locator("#user-last-name").fill("TestUser")
