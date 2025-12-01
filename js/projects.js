@@ -102,6 +102,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Initialize tabs once
+    setupTabs();
+
     window.addEventListener('click', function(event) {
         if (computersBtn && !computersBtn.contains(event.target) && computerOptions) {
             computerOptions.style.display = 'none';
