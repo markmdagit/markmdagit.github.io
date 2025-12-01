@@ -89,9 +89,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Filter out null sections
     const allSections = [...computerSections, ...adminSections].filter(s => s !== null);
 
-    setupDropdown(computersBtn, computerOptions, adminOptions);
-    setupDropdown(adminBtn, adminOptions, computerOptions);
-
     setupMenu(computerButtons, computerSections, allSections);
     setupMenu(adminButtons, adminSections, allSections);
 
