@@ -43,10 +43,6 @@ def test_income_manager_crud(page: Page):
     day = 15
     date_str = f"{year}-{month:02d}-{day:02d}"
 
-    # Click calendar button to ensure visibility (although already on dashboard)
-    admin_btn.click()
-    page.locator("#calendar-btn").click()
-
     # We are already on the dashboard, current month is loaded by default
     page.wait_for_selector(f".calendar-day[data-date='{date_str}']")
     day_to_select = page.locator(f".calendar-day[data-date='{date_str}']")
@@ -62,10 +58,6 @@ def test_income_manager_crud(page: Page):
     expect(event_cell.locator(".calendar-event")).to_have_count(1)
 
     # --- DELETE ---
-    # Navigate back to Income Manager just to be safe (though same dashboard)
-    admin_btn.click()
-    page.locator("#income-manager-btn").click()
-
     # Delete the user
     # Note: Dialog handling must be set up before the click
     page.on("dialog", lambda dialog: dialog.accept())

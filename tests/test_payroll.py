@@ -57,9 +57,6 @@ def test_payroll_report(page: Page):
     # Since we are already on the current month, the report should update automatically or be visible?
     # The report is part of the admin dashboard, visible below calendar.
 
-    admin_btn.click()
-    page.locator("#payroll-btn").click()
-
     report_row = page.locator("#payroll-table-body tr")
     expect(report_row).to_have_count(1)
 
@@ -77,11 +74,7 @@ def test_payroll_report(page: Page):
     expect(income_cell).to_have_text("$230.00")
 
     # 4. Go to previous month (should be empty if we just added to current)
-    admin_btn.click()
-    page.locator("#calendar-btn").click()
     page.locator("#prev-month-btn").click()
 
     # 5. Check payroll is empty for previous month
-    admin_btn.click()
-    page.locator("#payroll-btn").click()
     expect(page.locator("#payroll-table-body tr")).to_have_count(0)

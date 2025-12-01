@@ -6,7 +6,7 @@ def test_laptop_search(page: Page):
 
     # Navigate to Hardware Details
     page.locator("#computers-btn").click()
-    page.locator("#laptops-btn").click()
+    page.locator("#hardware-details-btn").click()
 
     # 1. Verify the title is removed
     title = page.locator("h2.section-title:has-text('HP Laptops Parts List Database')")
