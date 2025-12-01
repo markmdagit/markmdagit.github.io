@@ -44,14 +44,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 sections[index].style.display = 'block';
 
                 // Remove active class from all known buttons across all menus
-                [...computerButtons, ...toolsButtons, ...adminButtons].forEach(btn => btn.classList.remove('active'));
+                [...computerButtons, ...adminButtons].forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
 
                 button.closest('.dropdown-menu').style.display = 'none';
 
                 if (button.id === 'hardware-details-btn') {
                     setupTabs();
-                    loadAccessories();
                     // Load the content for the default active tab
                     loadSupplyChainData();
                 } else if (button.id === 'scraper-tool-btn') {
@@ -88,9 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 // Load content only when the tab is clicked
-                if (targetPaneId === 'laptops-content' && !document.getElementById('root').hasChildNodes()) {
-                    loadAccessories();
-                } else if (targetPaneId === 'supply-chain-content' && !document.getElementById('elitebook-supply-chain-cards').hasChildNodes()) {
+                if (targetPaneId === 'supply-chain-content' && !document.getElementById('elitebook-supply-chain-cards').hasChildNodes()) {
                     loadSupplyChainData();
                 }
             });
@@ -102,6 +99,9 @@ document.addEventListener('DOMContentLoaded', function() {
     setupDropdown(computersBtn, computerOptions, toolsOptions, adminOptions);
     setupDropdown(toolsBtn, toolsOptions, computerOptions, adminOptions);
     setupDropdown(adminBtn, adminOptions, computerOptions, toolsOptions);
+
+    setupDropdown(computersBtn, computerOptions, adminOptions);
+    setupDropdown(adminBtn, adminOptions, computerOptions);
 
     setupMenu(computerButtons, computerSections, allSections);
     setupMenu(toolsButtons, toolsSections, allSections);

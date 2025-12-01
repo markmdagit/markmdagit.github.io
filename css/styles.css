@@ -814,45 +814,6 @@ footer {
     transform: translateY(-2px);
 }
 
-/* --- Scraper Tool Styles --- */
-#scraper-tool, #bestservice-tool {
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.scraper-categories {
-    margin-bottom: 20px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.scraper-cat-btn, .bestservice-cat-btn {
-    padding: 10px 20px;
-    background-color: #e9ecef;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.2s;
-}
-
-.scraper-cat-btn:hover, .bestservice-cat-btn:hover {
-    background-color: #dde2e6;
-}
-
-.scraper-cat-btn.active, .bestservice-cat-btn.active {
-    background-color: #007bff;
-    color: white;
-    border-color: #007bff;
-}
-
-#scraper-grid, #bestservice-grid {
-    font-family: 'Roboto', sans-serif;
-}
-
 .jsgrid-header-cell,
 .jsgrid-header-row > .jsgrid-header-cell {
     background-color: #343a40 !important;
