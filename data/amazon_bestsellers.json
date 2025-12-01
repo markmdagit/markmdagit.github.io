@@ -1,0 +1,74 @@
+{
+  "Laptops": [
+    {"Rank": 1, "Name": "Apple MacBook Air 15-inch Laptop with M2 chip", "Price": 1299.00, "Rating": 4.8, "ReviewCount": 2500, "Link": "https://www.amazon.com/s?k=Apple+MacBook+Air+15-inch+M2"},
+    {"Rank": 2, "Name": "Lenovo ThinkPad X1 Carbon Gen 11", "Price": 1699.00, "Rating": 4.6, "ReviewCount": 850, "Link": "https://www.amazon.com/s?k=Lenovo+ThinkPad+X1+Carbon+Gen+11"},
+    {"Rank": 3, "Name": "Dell Latitude 7440", "Price": 1450.00, "Rating": 4.5, "ReviewCount": 420, "Link": "https://www.amazon.com/s?k=Dell+Latitude+7440"},
+    {"Rank": 4, "Name": "HP EliteBook 840 G10", "Price": 1399.00, "Rating": 4.4, "ReviewCount": 350, "Link": "https://www.amazon.com/s?k=HP+EliteBook+840+G10"},
+    {"Rank": 5, "Name": "Microsoft Surface Laptop 5", "Price": 999.99, "Rating": 4.7, "ReviewCount": 1200, "Link": "https://www.amazon.com/s?k=Microsoft+Surface+Laptop+5"},
+    {"Rank": 6, "Name": "LG Gram 17 Business Laptop", "Price": 1199.00, "Rating": 4.3, "ReviewCount": 600, "Link": "https://www.amazon.com/s?k=LG+Gram+17+Business+Laptop"},
+    {"Rank": 7, "Name": "Dell XPS 15", "Price": 1899.00, "Rating": 4.5, "ReviewCount": 1500, "Link": "https://www.amazon.com/s?k=Dell+XPS+15"},
+    {"Rank": 8, "Name": "Apple MacBook Pro 14-inch M3 Pro", "Price": 1999.00, "Rating": 4.9, "ReviewCount": 3000, "Link": "https://www.amazon.com/s?k=Apple+MacBook+Pro+14-inch+M3"},
+    {"Rank": 9, "Name": "HP Dragonfly G4", "Price": 1749.00, "Rating": 4.6, "ReviewCount": 200, "Link": "https://www.amazon.com/s?k=HP+Dragonfly+G4"},
+    {"Rank": 10, "Name": "Lenovo ThinkBook 15 Gen 4", "Price": 849.00, "Rating": 4.4, "ReviewCount": 900, "Link": "https://www.amazon.com/s?k=Lenovo+ThinkBook+15+Gen+4"}
+  ],
+  "Desktops": [
+    {"Rank": 1, "Name": "Dell OptiPlex 7000 Small Form Factor", "Price": 899.00, "Rating": 4.6, "ReviewCount": 500, "Link": "https://www.amazon.com/s?k=Dell+OptiPlex+7000"},
+    {"Rank": 2, "Name": "HP ProDesk 400 G9", "Price": 749.00, "Rating": 4.5, "ReviewCount": 400, "Link": "https://www.amazon.com/s?k=HP+ProDesk+400+G9"},
+    {"Rank": 3, "Name": "Apple Mac mini with M2 Chip", "Price": 599.00, "Rating": 4.8, "ReviewCount": 3500, "Link": "https://www.amazon.com/s?k=Apple+Mac+mini+M2"},
+    {"Rank": 4, "Name": "Lenovo ThinkCentre M70s Gen 3", "Price": 679.00, "Rating": 4.4, "ReviewCount": 300, "Link": "https://www.amazon.com/s?k=Lenovo+ThinkCentre+M70s"},
+    {"Rank": 5, "Name": "Dell Inspiron Desktop (Business Config)", "Price": 629.00, "Rating": 4.3, "ReviewCount": 1200, "Link": "https://www.amazon.com/s?k=Dell+Inspiron+Desktop+Business"},
+    {"Rank": 6, "Name": "Apple Mac Studio", "Price": 1999.00, "Rating": 4.9, "ReviewCount": 1500, "Link": "https://www.amazon.com/s?k=Apple+Mac+Studio"},
+    {"Rank": 7, "Name": "HP Z2 Mini G9 Workstation", "Price": 1299.00, "Rating": 4.7, "ReviewCount": 150, "Link": "https://www.amazon.com/s?k=HP+Z2+Mini+G9"},
+    {"Rank": 8, "Name": "Lenovo ThinkStation P3 Tiny", "Price": 1099.00, "Rating": 4.6, "ReviewCount": 200, "Link": "https://www.amazon.com/s?k=Lenovo+ThinkStation+P3"},
+    {"Rank": 9, "Name": "Intel NUC 13 Pro", "Price": 549.00, "Rating": 4.5, "ReviewCount": 800, "Link": "https://www.amazon.com/s?k=Intel+NUC+13+Pro"},
+    {"Rank": 10, "Name": "ASUS ExpertCenter D5", "Price": 499.00, "Rating": 4.2, "ReviewCount": 300, "Link": "https://www.amazon.com/s?k=ASUS+ExpertCenter+D5"}
+  ],
+  "Tablets": [
+    {"Rank": 1, "Name": "Apple iPad Pro 12.9-inch (6th Gen)", "Price": 1099.00, "Rating": 4.9, "ReviewCount": 4500, "Link": "https://www.amazon.com/s?k=iPad+Pro+12.9"},
+    {"Rank": 2, "Name": "Microsoft Surface Pro 9", "Price": 999.99, "Rating": 4.5, "ReviewCount": 2100, "Link": "https://www.amazon.com/s?k=Surface+Pro+9"},
+    {"Rank": 3, "Name": "Samsung Galaxy Tab S9 Ultra", "Price": 1199.00, "Rating": 4.7, "ReviewCount": 1200, "Link": "https://www.amazon.com/s?k=Samsung+Galaxy+Tab+S9+Ultra"},
+    {"Rank": 4, "Name": "Apple iPad Air (5th Gen)", "Price": 559.00, "Rating": 4.8, "ReviewCount": 10500, "Link": "https://www.amazon.com/s?k=iPad+Air+5th+Gen"},
+    {"Rank": 5, "Name": "Lenovo Tab P11 Pro Gen 2", "Price": 399.00, "Rating": 4.4, "ReviewCount": 600, "Link": "https://www.amazon.com/s?k=Lenovo+Tab+P11+Pro"},
+    {"Rank": 6, "Name": "Google Pixel Tablet", "Price": 499.00, "Rating": 4.3, "ReviewCount": 900, "Link": "https://www.amazon.com/s?k=Google+Pixel+Tablet"},
+    {"Rank": 7, "Name": "Samsung Galaxy Tab Active4 Pro (Rugged)", "Price": 649.00, "Rating": 4.5, "ReviewCount": 200, "Link": "https://www.amazon.com/s?k=Samsung+Galaxy+Tab+Active4+Pro"},
+    {"Rank": 8, "Name": "Remarkable 2 Paper Tablet", "Price": 299.00, "Rating": 4.4, "ReviewCount": 5000, "Link": "https://www.amazon.com/s?k=Remarkable+2"},
+    {"Rank": 9, "Name": "Microsoft Surface Go 3", "Price": 399.99, "Rating": 4.4, "ReviewCount": 3000, "Link": "https://www.amazon.com/s?k=Surface+Go+3"},
+    {"Rank": 10, "Name": "Wacom Cintiq 16 Drawing Tablet", "Price": 649.00, "Rating": 4.7, "ReviewCount": 4200, "Link": "https://www.amazon.com/s?k=Wacom+Cintiq+16"}
+  ],
+  "Mice": [
+    {"Rank": 1, "Name": "Logitech MX Master 3S", "Price": 99.99, "Rating": 4.8, "ReviewCount": 15000, "Link": "https://www.amazon.com/s?k=Logitech+MX+Master+3S"},
+    {"Rank": 2, "Name": "Logitech MX Anywhere 3S", "Price": 79.99, "Rating": 4.7, "ReviewCount": 4500, "Link": "https://www.amazon.com/s?k=Logitech+MX+Anywhere+3S"},
+    {"Rank": 3, "Name": "Microsoft Surface Arc Mouse", "Price": 79.99, "Rating": 4.4, "ReviewCount": 8000, "Link": "https://www.amazon.com/s?k=Microsoft+Surface+Arc+Mouse"},
+    {"Rank": 4, "Name": "Logitech Lift Vertical Ergonomic Mouse", "Price": 69.99, "Rating": 4.6, "ReviewCount": 3200, "Link": "https://www.amazon.com/s?k=Logitech+Lift+Vertical"},
+    {"Rank": 5, "Name": "HP 930 Creator Wireless Mouse", "Price": 89.00, "Rating": 4.5, "ReviewCount": 400, "Link": "https://www.amazon.com/s?k=HP+930+Creator+Mouse"},
+    {"Rank": 6, "Name": "Kensington Expert Wireless Trackball", "Price": 95.00, "Rating": 4.5, "ReviewCount": 6000, "Link": "https://www.amazon.com/s?k=Kensington+Expert+Wireless+Trackball"},
+    {"Rank": 7, "Name": "3Dconnexion SpaceMouse Compact", "Price": 165.00, "Rating": 4.7, "ReviewCount": 1800, "Link": "https://www.amazon.com/s?k=3Dconnexion+SpaceMouse"},
+    {"Rank": 8, "Name": "Apple Magic Mouse", "Price": 79.00, "Rating": 4.5, "ReviewCount": 35000, "Link": "https://www.amazon.com/s?k=Apple+Magic+Mouse"},
+    {"Rank": 9, "Name": "Logitech M720 Triathlon", "Price": 49.99, "Rating": 4.6, "ReviewCount": 22000, "Link": "https://www.amazon.com/s?k=Logitech+M720+Triathlon"},
+    {"Rank": 10, "Name": "Dell Premier Rechargeable Mouse MS7421W", "Price": 69.99, "Rating": 4.3, "ReviewCount": 300, "Link": "https://www.amazon.com/s?k=Dell+Premier+Mouse+MS7421W"}
+  ],
+  "Keyboards": [
+    {"Rank": 1, "Name": "Logitech MX Keys S", "Price": 109.99, "Rating": 4.8, "ReviewCount": 12000, "Link": "https://www.amazon.com/s?k=Logitech+MX+Keys+S"},
+    {"Rank": 2, "Name": "Microsoft Sculpt Ergonomic Keyboard", "Price": 75.00, "Rating": 4.4, "ReviewCount": 18000, "Link": "https://www.amazon.com/s?k=Microsoft+Sculpt+Ergonomic"},
+    {"Rank": 3, "Name": "Apple Magic Keyboard with Touch ID", "Price": 149.00, "Rating": 4.7, "ReviewCount": 6000, "Link": "https://www.amazon.com/s?k=Apple+Magic+Keyboard+Touch+ID"},
+    {"Rank": 4, "Name": "Logitech Ergo K860", "Price": 129.99, "Rating": 4.6, "ReviewCount": 9500, "Link": "https://www.amazon.com/s?k=Logitech+Ergo+K860"},
+    {"Rank": 5, "Name": "Keychron K2 Pro (Business)", "Price": 99.00, "Rating": 4.6, "ReviewCount": 1500, "Link": "https://www.amazon.com/s?k=Keychron+K2+Pro"},
+    {"Rank": 6, "Name": "Dell Premier Multi-Device Wireless Keyboard KB700", "Price": 89.99, "Rating": 4.3, "ReviewCount": 400, "Link": "https://www.amazon.com/s?k=Dell+Premier+Keyboard+KB700"},
+    {"Rank": 7, "Name": "HP 970 Programmable Wireless Keyboard", "Price": 119.00, "Rating": 4.5, "ReviewCount": 250, "Link": "https://www.amazon.com/s?k=HP+970+Keyboard"},
+    {"Rank": 8, "Name": "Das Keyboard 4 Professional", "Price": 169.00, "Rating": 4.5, "ReviewCount": 3200, "Link": "https://www.amazon.com/s?k=Das+Keyboard+4+Professional"},
+    {"Rank": 9, "Name": "Lenovo ThinkPad TrackPoint Keyboard II", "Price": 99.00, "Rating": 4.4, "ReviewCount": 1100, "Link": "https://www.amazon.com/s?k=Lenovo+TrackPoint+Keyboard+II"},
+    {"Rank": 10, "Name": "Kensington Pro Fit Ergo Wireless Keyboard", "Price": 59.99, "Rating": 4.2, "ReviewCount": 2800, "Link": "https://www.amazon.com/s?k=Kensington+Pro+Fit+Ergo"}
+  ],
+  "Monitors": [
+    {"Rank": 1, "Name": "Dell UltraSharp U2723QE 27\" 4K USB-C Hub Monitor", "Price": 619.00, "Rating": 4.6, "ReviewCount": 2100, "Link": "https://www.amazon.com/s?k=Dell+UltraSharp+U2723QE"},
+    {"Rank": 2, "Name": "HP Z27k G3 4K USB-C Display", "Price": 549.00, "Rating": 4.5, "ReviewCount": 500, "Link": "https://www.amazon.com/s?k=HP+Z27k+G3"},
+    {"Rank": 3, "Name": "LG 34BK95U-W UltraFine 34\" 5K Nano IPS", "Price": 1299.00, "Rating": 4.4, "ReviewCount": 1200, "Link": "https://www.amazon.com/s?k=LG+34BK95U-W"},
+    {"Rank": 4, "Name": "ASUS ProArt Display PA278QV 27\"", "Price": 289.00, "Rating": 4.8, "ReviewCount": 5400, "Link": "https://www.amazon.com/s?k=ASUS+ProArt+PA278QV"},
+    {"Rank": 5, "Name": "BenQ PD2700U DesignVue 27\" 4K", "Price": 499.00, "Rating": 4.6, "ReviewCount": 3000, "Link": "https://www.amazon.com/s?k=BenQ+PD2700U"},
+    {"Rank": 6, "Name": "Samsung ViewFinity S8 32\"", "Price": 499.00, "Rating": 4.4, "ReviewCount": 800, "Link": "https://www.amazon.com/s?k=Samsung+ViewFinity+S8"},
+    {"Rank": 7, "Name": "Dell P2422H 24\" FHD Monitor", "Price": 199.00, "Rating": 4.7, "ReviewCount": 4200, "Link": "https://www.amazon.com/s?k=Dell+P2422H"},
+    {"Rank": 8, "Name": "Apple Studio Display", "Price": 1599.00, "Rating": 4.6, "ReviewCount": 1800, "Link": "https://www.amazon.com/s?k=Apple+Studio+Display"},
+    {"Rank": 9, "Name": "ViewSonic VP2768a-4K ColorPro", "Price": 529.00, "Rating": 4.5, "ReviewCount": 900, "Link": "https://www.amazon.com/s?k=ViewSonic+VP2768a"},
+    {"Rank": 10, "Name": "Lenovo ThinkVision P27u-20", "Price": 669.00, "Rating": 4.3, "ReviewCount": 150, "Link": "https://www.amazon.com/s?k=Lenovo+ThinkVision+P27u-20"}
+  ]
+}
