@@ -1,5 +1,6 @@
 import re
 from playwright.sync_api import Page, expect
+from datetime import datetime
 
 def test_income_manager_crud(page: Page):
     page.goto("http://localhost:8000/pages/index.html")
@@ -35,11 +36,16 @@ def test_income_manager_crud(page: Page):
 
     # --- Test Cascading Delete ---
     # Add a calendar event for the user
-    admin_btn.click()
-    page.locator("#admin-dashboard-btn").click()
-    page.locator("#prev-month-btn").click() # To October
-    page.wait_for_selector(".calendar-day[data-date='2025-10-15']")
-    day_to_select = page.locator(".calendar-day[data-date='2025-10-15']")
+    # Use current month day 15
+    now = datetime.now()
+    year = now.year
+    month = now.month
+    day = 15
+    date_str = f"{year}-{month:02d}-{day:02d}"
+
+    # We are already on the dashboard, current month is loaded by default
+    page.wait_for_selector(f".calendar-day[data-date='{date_str}']")
+    day_to_select = page.locator(f".calendar-day[data-date='{date_str}']")
     day_to_select.click()
     day_to_select.click()
     page.locator("#cal-user-select").select_option(label="John Doe")
@@ -48,22 +54,18 @@ def test_income_manager_crud(page: Page):
     page.locator("#calendar-form button[type='submit']").click()
 
     # Verify the event is on the calendar
-    event_cell = page.locator(".calendar-day[data-date='2025-10-15']")
+    event_cell = page.locator(f".calendar-day[data-date='{date_str}']")
     expect(event_cell.locator(".calendar-event")).to_have_count(1)
 
     # --- DELETE ---
-    admin_btn.click()
-    page.locator("#admin-dashboard-btn").click()
-
-    # Accept the confirmation dialog for deletion
+    # Delete the user
+    # Note: Dialog handling must be set up before the click
     page.on("dialog", lambda dialog: dialog.accept())
-
     page.locator("#user-table-body tr[data-user-id='1'] .delete-btn").click()
 
     # Verify the user is removed from the table
     expect(page.locator("#user-table-body tr")).to_have_count(0)
 
     # Verify the user's event is also removed from the calendar
-    admin_btn.click()
-    page.locator("#admin-dashboard-btn").click()
-    expect(page.locator(".calendar-day[data-date='2025-10-15'] .calendar-event")).to_have_count(0)
+    # We are still on the same month
+    expect(page.locator(f".calendar-day[data-date='{date_str}'] .calendar-event")).to_have_count(0)

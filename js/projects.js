@@ -29,32 +29,44 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     function setupDropdown(btn, options, ...otherOptions) {
+        if (!btn || !options) return;
         btn.addEventListener('click', (event) => {
             event.stopPropagation();
             const isDisplayed = options.style.display !== 'none';
-            otherOptions.forEach(opt => opt.style.display = 'none');
+            otherOptions.forEach(opt => {
+                if (opt) opt.style.display = 'none';
+            });
             options.style.display = isDisplayed ? 'none' : 'block';
         });
     }
 
     function setupMenu(buttons, sections, allSections) {
         buttons.forEach((button, index) => {
+            if (!button) return;
+
             button.addEventListener('click', () => {
-                allSections.forEach(section => section.style.display = 'none');
-                sections[index].style.display = 'block';
+                allSections.forEach(section => {
+                    if (section) section.style.display = 'none';
+                });
+
+                if (sections[index]) {
+                    sections[index].style.display = 'block';
+                }
 
                 // Remove active class from all known buttons across all menus
-                [...computerButtons, ...adminButtons].forEach(btn => btn.classList.remove('active'));
+                [...computerButtons, ...adminButtons, ...toolsButtons].forEach(btn => {
+                    if (btn) btn.classList.remove('active');
+                });
                 button.classList.add('active');
 
-                button.closest('.dropdown-menu').style.display = 'none';
+                const dropdown = button.closest('.dropdown-menu');
+                if (dropdown) dropdown.style.display = 'none';
 
                 if (button.id === 'hardware-details-btn') {
-                    setupTabs();
                     // Load the content for the default active tab
                     loadSupplyChainData();
                 } else if (button.id === 'scraper-tool-btn') {
-                    // Initialize Scraper if needed (it will be handled by scraper.js listening for visibility or just load defaults)
+                    // Initialize Scraper if needed
                     if (typeof initScraper === 'function') {
                         initScraper();
                     }
@@ -94,27 +106,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    const allSections = [...computerSections, ...toolsSections, ...adminSections];
+    // Filter out null sections (e.g. if tools sections are missing in HTML)
+    const allSections = [...computerSections, ...toolsSections, ...adminSections].filter(s => s !== null);
 
     setupDropdown(computersBtn, computerOptions, toolsOptions, adminOptions);
     setupDropdown(toolsBtn, toolsOptions, computerOptions, adminOptions);
     setupDropdown(adminBtn, adminOptions, computerOptions, toolsOptions);
 
-    setupDropdown(computersBtn, computerOptions, adminOptions);
-    setupDropdown(adminBtn, adminOptions, computerOptions);
-
     setupMenu(computerButtons, computerSections, allSections);
     setupMenu(toolsButtons, toolsSections, allSections);
     setupMenu(adminButtons, adminSections, allSections);
 
+    // Initialize tabs once
+    setupTabs();
+
     window.addEventListener('click', function(event) {
-        if (!computersBtn.contains(event.target)) {
+        if (computersBtn && !computersBtn.contains(event.target) && computerOptions) {
             computerOptions.style.display = 'none';
         }
-        if (!toolsBtn.contains(event.target)) {
+        if (toolsBtn && !toolsBtn.contains(event.target) && toolsOptions) {
             toolsOptions.style.display = 'none';
         }
-        if (!adminBtn.contains(event.target)) {
+        if (adminBtn && !adminBtn.contains(event.target) && adminOptions) {
             adminOptions.style.display = 'none';
         }
     });
@@ -122,18 +135,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function loadSupplyChainData() {
     const section = document.getElementById('hardware-details');
+    if (!section) return;
+
     const loadingIndicator = section.querySelector('.loading-indicator');
     const elitebookContainer = document.getElementById("elitebook-supply-chain-cards");
     const zbookContainer = document.getElementById("zbook-supply-chain-cards");
 
-    loadingIndicator.style.display = 'block';
-    elitebookContainer.innerHTML = '';
-    zbookContainer.innerHTML = '';
+    if (loadingIndicator) loadingIndicator.style.display = 'block';
+    if (elitebookContainer) elitebookContainer.innerHTML = '';
+    if (zbookContainer) zbookContainer.innerHTML = '';
 
     if (elitebookContainer && zbookContainer) {
         fetchData("/data/supply_chain.json")
             .then(data => {
-                loadingIndicator.style.display = 'none';
+                if (loadingIndicator) loadingIndicator.style.display = 'none';
                 const elitebookSupplyData = data.filter(item => item["Model Series"] === "Elitebook");
                 const zbookSupplyData = data.filter(item => item["Model Series"] === "Zbook Studio");
 
@@ -141,7 +156,7 @@ function loadSupplyChainData() {
                 zbookSupplyData.forEach(item => createSupplyChainCard(zbookContainer, item));
             })
             .catch(error => {
-                loadingIndicator.style.display = 'none';
+                if (loadingIndicator) loadingIndicator.style.display = 'none';
                 elitebookContainer.textContent = 'Error loading data.';
                 zbookContainer.textContent = 'Error loading data.';
                 console.error("Error fetching or creating supply chain cards:", error);
