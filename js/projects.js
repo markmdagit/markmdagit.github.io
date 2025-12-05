@@ -15,11 +15,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const incomeManagerBtn = document.getElementById('income-manager-btn');
     const payrollBtn = document.getElementById('payroll-btn');
 
+    const travelBtn = document.getElementById('travel-btn');
+    const travelOptions = document.getElementById('travel-options');
+    const oneHourDriveBtn = document.getElementById('one-hour-drive-btn');
+
     const hardwareSection = document.getElementById('hardware-details');
     const adminSection = document.getElementById('admin-dashboard');
+    const oneHourDriveSection = document.getElementById('one-hour-drive');
 
-    const allSections = [hardwareSection, adminSection].filter(s => s !== null);
-    const allButtons = [laptopsBtn, supplyChainBtn, chatbotBtn, calendarBtn, incomeManagerBtn, payrollBtn].filter(b => b !== null);
+    const allSections = [hardwareSection, adminSection, oneHourDriveSection].filter(s => s !== null);
+    const allButtons = [laptopsBtn, supplyChainBtn, chatbotBtn, calendarBtn, incomeManagerBtn, payrollBtn, oneHourDriveBtn].filter(b => b !== null);
 
     function setupDropdown(btn, options, ...otherOptions) {
         if (!btn || !options) return;
@@ -78,11 +83,13 @@ document.addEventListener('DOMContentLoaded', function() {
             // Close dropdowns
             if (computerOptions) computerOptions.style.display = 'none';
             if (adminOptions) adminOptions.style.display = 'none';
+            if (travelOptions) travelOptions.style.display = 'none';
         });
     }
 
-    setupDropdown(computersBtn, computerOptions, adminOptions);
-    setupDropdown(adminBtn, adminOptions, computerOptions);
+    setupDropdown(computersBtn, computerOptions, adminOptions, travelOptions);
+    setupDropdown(adminBtn, adminOptions, computerOptions, travelOptions);
+    setupDropdown(travelBtn, travelOptions, computerOptions, adminOptions);
 
     // Computers Logic
     setupButton(laptopsBtn, 'hardware-details', 'laptops-content');
@@ -94,6 +101,9 @@ document.addEventListener('DOMContentLoaded', function() {
     setupButton(incomeManagerBtn, 'admin-dashboard');
     setupButton(payrollBtn, 'admin-dashboard');
 
+    // Travel Logic
+    setupButton(oneHourDriveBtn, 'one-hour-drive');
+
     // Initialize tabs click handlers (for internal navigation)
     const tabs = document.querySelectorAll('.tab-btn');
     tabs.forEach(tab => {
@@ -102,15 +112,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Initialize tabs once
-    setupTabs();
-
     window.addEventListener('click', function(event) {
         if (computersBtn && !computersBtn.contains(event.target) && computerOptions) {
             computerOptions.style.display = 'none';
         }
         if (adminBtn && !adminBtn.contains(event.target) && adminOptions) {
             adminOptions.style.display = 'none';
+        }
+        if (travelBtn && !travelBtn.contains(event.target) && travelOptions) {
+            travelOptions.style.display = 'none';
         }
     });
 });
