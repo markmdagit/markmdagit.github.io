@@ -32,8 +32,8 @@ def test_laptop_search(page: Page):
     search_bar.fill("G5")
 
     # After searching, all G5 models should be visible
-    # page.screenshot(path="tests/screenshots/search_g5.png") # Screenshot dir might not exist
-    expect(page.locator("#root .laptop-card")).not_to_have_count(0)
+    # page.screenshot(path="tests/screenshots/search_g5.png")
+    assert page.locator(".card-grid .laptop-card").count() > 0
 
     # 4. Test searching for a specific component
     search_bar.fill("i7-8650U")
@@ -49,4 +49,4 @@ def test_laptop_search(page: Page):
 
     # 6. Test searching for a ZBook
     search_bar.fill("Studio G8")
-    expect(page.locator("#root .laptop-card")).not_to_have_count(0)
+    assert page.locator(".card-grid .laptop-card").count() > 0
