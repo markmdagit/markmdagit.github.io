@@ -2,12 +2,12 @@
   "name": "app",
   "version": "1.0.0",
   "description": "Experimental Web Development Project =",
-  "main": "computers_project/webpack.config.js",
+  "main": "webpack.config.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "build": "webpack --config computers_project/webpack.config.js",
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

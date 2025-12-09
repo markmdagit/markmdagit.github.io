@@ -70,11 +70,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div id="one-hour-drive" style="display: none;">
-                        <h2 class="section-title">1 Hour Drive From...</h2>
-                        <p>Work in progress</p>
-                    </div>
                 </section>
 
                 <section id="skills">
@@ -171,6 +166,14 @@
                 <section id="projects">
                     <div class="project-toggle">
                         <div class="dropdown">
+                            <button id="computers-btn" class="dropdown-toggle">Computers <i class="fas fa-caret-down"></i></button>
+                            <div id="computer-options" class="dropdown-menu" style="display: none;">
+                                <button id="laptops-btn">Laptops</button>
+                                <button id="supply-chain-btn">Supply Chain</button>
+                                <button id="chatbot-btn">Chatbot</button>
+                            </div>
+                        </div>
+                        <div class="dropdown">
                             <button id="admin-btn" class="dropdown-toggle">Admin <i class="fas fa-caret-down"></i></button>
                             <div id="admin-options" class="dropdown-menu" style="display: none;">
                                 <button id="calendar-btn">Monthly Calendar</button>
@@ -187,6 +190,151 @@
                     </div>
 
 
+                    <div id="hardware-details" style="display: none;">
+                        <div class="tab-container">
+                            <div class="tab-header">
+                                <button class="tab-btn active" data-tab="laptops-content">Laptops</button>
+                                <button class="tab-btn" data-tab="supply-chain-content">Supply Chain</button>
+                                <button class="tab-btn" data-tab="chatbot-content">Chatbot</button>
+                            </div>
+                            <div class="tab-content-container">
+                                <div id="laptops-content" class="tab-pane active">
+                                    <div class="search-container">
+                                        <input type="search" id="laptop-search" class="search-bar" placeholder="Search by model, part number, or component...">
+                                    </div>
+                                    <div id="root"></div>
+                                </div>
+                                <div id="supply-chain-content" class="tab-pane">
+                                    <h2 class="section-title">Supply Chain Analysis</h2>
+                                    <div class="loading-indicator">Loading...</div>
+                                    <h3 class="section-title">HP EliteBook</h3>
+                                    <div id="elitebook-supply-chain-cards" class="card-grid"></div>
+                                    <h3 class="section-title">HP ZBook Studio</h3>
+                                    <div id="zbook-supply-chain-cards" class="card-grid"></div>
+                                </div>
+                                <div id="chatbot-content" class="tab-pane">
+                                    <div class="chatbot-grid-container">
+                                        <div class="chatbot-container">
+                                            <h2 class="section-title">AI Assistant</h2>
+                                            <div class="chat-window" id="chat-window">
+                                                <div class="chat-message bot">Hello! How can I help you today?</div>
+                                            </div>
+                                            <div class="chat-input-container">
+                                                <input type="text" id="chat-input" class="chat-input" placeholder="Type your message here...">
+                                                <button id="chat-send-btn" class="chat-send-btn">Send</button>
+                                            </div>
+                                        </div>
+                                        <div class="ticket-form-container">
+                                            <h2 class="section-title">IT Ticket Details</h2>
+                                            <form id="ticket-form" class="ticket-form">
+                                                <div class="form-section">
+                                                    <h3>Ticket Information</h3>
+                                                    <div class="form-group">
+                                                        <label for="ticket-id">ID</label>
+                                                        <input type="text" id="ticket-id" readonly>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="ticket-summary">Summary/Title</label>
+                                                        <input type="text" id="ticket-summary">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="ticket-description">Description</label>
+                                                        <textarea id="ticket-description" rows="3"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-section">
+                                                    <h3>User & Assignment</h3>
+                                                    <div class="form-group">
+                                                        <label for="ticket-caller">Caller</label>
+                                                        <input type="text" id="ticket-caller">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="ticket-group">Assigned Group</label>
+                                                        <input type="text" id="ticket-group">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="ticket-assignee">Assignee</label>
+                                                        <input type="text" id="ticket-assignee">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="ticket-status">Status</label>
+                                                        <select id="ticket-status">
+                                                            <option>New</option>
+                                                            <option>In-Progress</option>
+                                                            <option>On-Hold</option>
+                                                            <option>Resolved</option>
+                                                            <option>Closed</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-section">
+                                                    <h3>Classification & Prioritization</h3>
+                                                    <div class="form-group">
+                                                        <label for="ticket-priority">Priority</label>
+                                                        <select id="ticket-priority" disabled>
+                                                            <option>Low</option>
+                                                            <option>Medium</option>
+                                                            <option>High</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="ticket-impact">Impact</label>
+                                                        <select id="ticket-impact">
+                                                            <option>Low</option>
+                                                            <option>Medium</option>
+                                                            <option>High</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="ticket-urgency">Urgency</label>
+                                                        <select id="ticket-urgency">
+                                                            <option>Low</option>
+                                                            <option>Medium</option>
+                                                            <option>High</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="ticket-category">Category</label>
+                                                        <select id="ticket-category">
+                                                            <option>Hardware</option>
+                                                            <option>Software</option>
+                                                            <option>Account</option>
+                                                            <option>Network</option>
+                                                            <option>Other</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-section">
+                                                    <h3>Technical & Resolution Details</h3>
+                                                    <div class="form-group">
+                                                        <label for="ticket-asset">Asset or Configuration Item</label>
+                                                        <input type="text" id="ticket-asset">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="ticket-work-log">Work Log / Notes</label>
+                                                        <textarea id="ticket-work-log" rows="5"></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="ticket-attachments">Attachments</label>
+                                                        <input type="file" id="ticket-attachments">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="ticket-resolution">Resolution Details</label>
+                                                        <textarea id="ticket-resolution" rows="3"></textarea>
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="submit-ticket-btn">Create Ticket</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="ticket-queue-container">
+                                        <h2 class="section-title">Ticket Queue</h2>
+                                        <div id="ticket-queue"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div id="admin-dashboard" style="display: none;">
                         <div class="calendar-container">
@@ -258,6 +406,11 @@
                             </div>
                         </div>
                     </div>
+
+                    <div id="one-hour-drive" style="display: none;">
+                        <h2 class="section-title">1 Hour Drive From...</h2>
+                        <p>Work in progress</p>
+                    </div>
                 </section>
             </main>
 
@@ -280,6 +433,10 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/admin.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/bundle.js"></script>
     <script src="../js/projects.js"></script>
+    <script src="../js/db.js"></script>
+    <script src="../js/chatbot.js"></script>
 </body>
 </html>
