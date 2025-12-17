@@ -22,19 +22,11 @@ Computers
 
 Tools
 -
-  > Amazon Best Sellers Scraper = Scrapes Amazon.com for best selling tech equipment.
-  > 
-  > Best Service New Products Scraper = Scrapes bestservice.com for the past 10 years of music software.
-  > 
+
 
 Admin
 -
-  > Calendar = Shows a monthly calendar where a manager can add users to and set their start and end time.
-  > 
-  > Income Manager = Create a list of employeers with their hourly wage.
-  > 
-  > Payroll Report = List out the employees by name, their scheduled hours, a 30min deduction for their unpaid lunch, and total income based on hours worked.
-  >
+
 
 Technology to use to make this site: 
 
