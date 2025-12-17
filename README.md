@@ -13,12 +13,6 @@ Using information from my resume to build a simple website outlining the followi
 
 Computers
 -
-  > Laptops = List of Laptops supported with specs and replacement part numbers
-  > 
-  > Supply Chain = List of Laptops with their related supply chains
-  > 
-  > Laptop Accessories = List of Laptop accessories that work with the laptops listed in the "Laptops" section.
-  >
 
 Tools
 -
