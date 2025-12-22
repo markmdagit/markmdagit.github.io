@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Network Rack Overhaul",
+    "description": "Redesigned and organized network cabling for 50+ racks, improving airflow and reducing troubleshooting time by 30%.",
+    "technologies": ["Cable Management", "Hardware Installation", "Fluke Testing"]
+  },
+  {
+    "title": "Automated Asset Tracking",
+    "description": "Implemented a barcode-based system to track IT assets across the warehouse, reducing equipment loss by 15%.",
+    "technologies": ["Python", "SQL", "Barcode Scanners"]
+  },
+  {
+    "title": "Deployment Pipeline",
+    "description": "Created a streamlined process for imaging and configuring 500+ end-user devices using MECM/SCCM.",
+    "technologies": ["MECM/SCCM", "PowerShell", "Windows 10/11"]
+  },
+  {
+    "title": "IT Knowledge Base",
+    "description": "Developed a centralized documentation repository for common IT issues, reducing ticket resolution time for Tier 1 support.",
+    "technologies": ["Wiki", "Technical Writing", "HTML"]
+  }
+]
