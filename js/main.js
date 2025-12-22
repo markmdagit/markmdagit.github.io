@@ -70,6 +70,11 @@ async function loadProjects() {
         // Clear any existing content
         carousel.innerHTML = '';
 
+        if (projects.length === 0) {
+            carousel.innerHTML = '<li class="no-projects">Projects content coming soon.</li>';
+            return;
+        }
+
         projects.forEach(project => {
             const li = document.createElement('li');
             li.className = 'project-card';

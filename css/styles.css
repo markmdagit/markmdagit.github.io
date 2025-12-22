@@ -919,3 +919,15 @@ footer {
     padding: 0.2rem 0.6rem;
     border-radius: 12px;
 }
+
+.no-projects {
+    width: 100%;
+    text-align: center;
+    padding: 2rem;
+    color: #6C757D;
+    font-style: italic;
+    background: none;
+    border: none;
+    box-shadow: none;
+    scroll-snap-align: none;
+}
