@@ -54,6 +54,8 @@ function setActiveNav() {
     });
 }
 
+let projectsCache = null;
+
 document.addEventListener("DOMContentLoaded", () => {
     setActiveNav();
     initInfographic();
@@ -65,7 +67,10 @@ async function loadProjects() {
     if (!carousel) return;
 
     try {
-        const projects = await fetchData('../data/projects.json');
+        if (!projectsCache) {
+            projectsCache = fetchData('../data/projects.json');
+        }
+        const projects = await projectsCache;
 
         // Clear any existing content
         carousel.innerHTML = '';
@@ -91,6 +96,7 @@ async function loadProjects() {
         });
 
     } catch (error) {
+        projectsCache = null;
         console.error('Error loading projects:', error);
         carousel.innerHTML = '<p>Error loading projects. Please try again later.</p>';
     }
