@@ -54,6 +54,8 @@ function setActiveNav() {
     });
 }
 
+let projectsCache = null;
+
 document.addEventListener("DOMContentLoaded", () => {
     setActiveNav();
     initInfographic();
