@@ -65,10 +65,12 @@ function setActiveNav() {
 }
 
 let projectsCache = null;
+let projectsFetchPromise = null;
 
 document.addEventListener("DOMContentLoaded", () => {
     setActiveNav();
     initInfographic();
+    loadProjects();
 });
 
 function initInfographic() {
@@ -92,5 +94,62 @@ function initInfographic() {
             dot.classList.add("active");
             story.classList.add("active");
         });
+    });
+}
+
+async function loadProjects() {
+    const carousel = document.getElementById('projects-carousel');
+    if (!carousel) return;
+
+    if (projectsCache) {
+        renderProjects(carousel, projectsCache);
+        return;
+    }
+
+    if (projectsFetchPromise) {
+        try {
+            const projects = await projectsFetchPromise;
+            renderProjects(carousel, projects);
+        } catch (error) {
+            console.error("Error waiting for projects:", error);
+        }
+        return;
+    }
+
+    try {
+        projectsFetchPromise = fetchData('../data/projects.json');
+        const projects = await projectsFetchPromise;
+        projectsCache = projects;
+        renderProjects(carousel, projects);
+    } catch (error) {
+        console.error("Error loading projects:", error);
+        projectsFetchPromise = null;
+    }
+}
+
+function renderProjects(container, projects) {
+    container.innerHTML = '';
+    if (!projects || projects.length === 0) return;
+
+    // Use a grid layout if possible, similar to other sections
+    if (!container.classList.contains('card-grid')) {
+        container.classList.add('card-grid');
+    }
+
+    projects.forEach(p => {
+        const card = document.createElement('div');
+        card.classList.add('skill-card'); // Reusing skill-card for consistent styling
+
+        const title = document.createElement('h3');
+        title.textContent = p.name || 'Project';
+        card.appendChild(title);
+
+        if (p.description) {
+            const desc = document.createElement('p');
+            desc.textContent = p.description;
+            card.appendChild(desc);
+        }
+
+        container.appendChild(card);
     });
 }
