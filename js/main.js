@@ -11,33 +11,43 @@ function createTable(container, data, headers) {
         return;
     }
 
-    const table = document.createElement("table");
-    table.classList.add("table", "table-striped", "table-bordered");
+    let table = container.querySelector('table');
+    if (!table) {
+        table = document.createElement("table");
+        table.classList.add("table", "table-striped", "table-bordered");
+    }
 
-    const thead = document.createElement("thead");
+    let thead = table.querySelector('thead');
+    if (!thead) {
+        thead = document.createElement("thead");
+    }
+
     const headerRow = document.createElement("tr");
     headers.forEach(headerText => {
         const th = document.createElement("th");
         th.textContent = headerText;
         headerRow.appendChild(th);
     });
-    thead.appendChild(headerRow);
-    table.appendChild(thead);
+    thead.replaceChildren(headerRow);
 
-    const tbody = document.createElement("tbody");
-    data.forEach(item => {
+    let tbody = table.querySelector('tbody');
+    if (!tbody) {
+        tbody = document.createElement("tbody");
+    }
+
+    const rows = data.map(item => {
         const row = document.createElement("tr");
         headers.forEach(header => {
             const cell = document.createElement("td");
             cell.textContent = String(item[header] || '');
             row.appendChild(cell);
         });
-        tbody.appendChild(row);
+        return row;
     });
-    table.appendChild(tbody);
+    tbody.replaceChildren(...rows);
 
-    container.innerHTML = ''; // Clear any previous content
-    container.appendChild(table);
+    table.replaceChildren(thead, tbody);
+    container.replaceChildren(table);
 }
 
 function setActiveNav() {
