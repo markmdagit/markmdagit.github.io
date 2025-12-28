@@ -59,48 +59,7 @@ let projectsCache = null;
 document.addEventListener("DOMContentLoaded", () => {
     setActiveNav();
     initInfographic();
-    loadProjects();
 });
-
-async function loadProjects() {
-    const carousel = document.getElementById('projects-carousel');
-    if (!carousel) return;
-
-    try {
-        if (!projectsCache) {
-            projectsCache = fetchData('../data/projects.json');
-        }
-        const projects = await projectsCache;
-
-        // Clear any existing content
-        carousel.innerHTML = '';
-
-        projects.forEach(project => {
-            const li = document.createElement('li');
-            li.className = 'project-card';
-
-            // Create technologies HTML
-            const technologiesHtml = project.technologies
-                .map(tech => `<span class="tag">${tech}</span>`)
-                .join('');
-
-            li.innerHTML = `
-                <h3>${project.title}</h3>
-                <p>${project.description}</p>
-                <div class="project-technologies">
-                    ${technologiesHtml}
-                </div>
-            `;
-
-            carousel.appendChild(li);
-        });
-
-    } catch (error) {
-        projectsCache = null;
-        console.error('Error loading projects:', error);
-        carousel.innerHTML = '<p>Error loading projects. Please try again later.</p>';
-    }
-}
 
 function initInfographic() {
     const timelineDots = document.querySelectorAll(".timeline-dot");
