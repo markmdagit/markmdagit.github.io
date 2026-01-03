@@ -1211,3 +1211,82 @@ footer {
     background-color: #004182;
     color: #fff;
 }
+
+/* --- GitHub Profile API --- */
+.github-profile-card {
+    background-color: #0d1117;
+    color: #c9d1d9;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 24px;
+    max-width: 600px;
+    margin: 1rem auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.github-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid #30363d;
+}
+
+.github-info {
+    flex: 1;
+}
+
+.github-name {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: #e6edf3;
+}
+
+.github-username {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 24px;
+    color: #8b949e;
+}
+
+.github-stats {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    font-size: 14px;
+}
+
+.github-stat {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.github-stat strong {
+    color: #e6edf3;
+    font-weight: 600;
+}
+
+.github-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #58a6ff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.github-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+    .github-profile-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
