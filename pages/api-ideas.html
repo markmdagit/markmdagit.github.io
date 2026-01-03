@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Ideas | Marcos Alvarez</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <header class="resume-header">
+            <img src="../images/headshot.png" alt="Marcos Alvarez" class="profile-pic">
+            <h1>Marcos Alvarez</h1>
+            <p class="job-title">IT Support Professional</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/marcos-alvarez-ab2ba5109/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/markmdagit" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="index.html#about"><i class="fas fa-user"></i> About Me</a></li>
+                <li><a href="index.html#skills"><i class="fas fa-cogs"></i> Skills</a></li>
+                <li><a href="index.html#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
+                <li><a href="index.html#education"><i class="fas fa-user-graduate"></i> Education</a></li>
+                <li><a href="index.html#projects"><i class="fas fa-user-graduate"></i> Projects</a></li>
+            </ul>
+        </nav>
+
+        <div class="content-wrapper">
+            <main>
+                <section>
+                    <h2 class="section-title">API Ideas</h2>
+                    <div class="api-project">
+                        <h3>Meme Generator API</h3>
+                        <p>Generate memes instantly using our client-side API. Select a template, add your text, and create!</p>
+
+                        <div class="meme-generator-container">
+                            <div class="meme-controls">
+                                <div class="form-group">
+                                    <label for="meme-template">Select Template:</label>
+                                    <select id="meme-template" class="form-control">
+                                        <option value="" disabled selected>Loading templates...</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="top-text">Top Text:</label>
+                                    <input type="text" id="top-text" class="form-control" placeholder="Top Text">
+                                </div>
+                                <div class="form-group">
+                                    <label for="bottom-text">Bottom Text:</label>
+                                    <input type="text" id="bottom-text" class="form-control" placeholder="Bottom Text">
+                                </div>
+                                <button id="generate-btn" class="submit-ticket-btn">Generate Meme</button>
+                                <button id="download-btn" class="action-btn save-btn" style="margin-top: 1rem; display: none;">Download Meme</button>
+                            </div>
+
+                            <div class="meme-preview">
+                                <canvas id="meme-canvas"></canvas>
+                                <p id="preview-text" style="color: #6C757D; margin-top: 1rem;">Preview will appear here</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <footer>
+                <p>&lt;/&gt; Built with Jules by Google</p>
+                <p><a href="disclaimer.html">Disclaimer</a></p>
+            </footer>
+        </div>
+
+    </div>
+
+    <script src="../js/meme.js"></script>
+</body>
+</html>
