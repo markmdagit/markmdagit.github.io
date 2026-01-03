@@ -858,3 +858,71 @@ footer {
     font-style: italic;
     color: #212529;
 }
+
+
+/* --- Meme Generator Styles --- */
+.meme-generator-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.meme-controls {
+    flex: 1;
+    min-width: 300px;
+}
+
+.meme-preview {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #F8F9FA;
+    border: 1px solid #dee2e6;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+#meme-canvas {
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #6C757D;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-control:focus {
+    border-color: #004A99;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0,74,153,0.25);
+}
+
+/* Fix for download button */
+#download-btn {
+    color: #fff;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: none; /* Controlled by JS */
+}
