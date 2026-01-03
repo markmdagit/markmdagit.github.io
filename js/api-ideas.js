@@ -142,6 +142,47 @@ document.addEventListener('DOMContentLoaded', () => {
     new MemeGenerator();
 });
 
+/* --- LinkedIn Profile API --- */
+class LinkedInProfileAPI {
+    constructor() {
+        this.container = document.getElementById('linkedin-profile-container');
+        this.profileUrl = "https://www.linkedin.com/in/marcos-alvarez-ab2ba5109/";
+        this.data = {
+            name: "Marcos Alvarez",
+            headline: "IT Support Associate II at Amazon Robotics Sort Center",
+            location: "United States",
+            about: "IT Support Associate II with over 8 years of experience at Amazon. Currently pursuing a Bachelor of Science in Computer Science at CSUSB.",
+            connections: 500,
+            avatar: "../images/headshot.png"
+        };
+
+        this.init();
+    }
+
+    async init() {
+        // Simulate network delay
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        this.render();
+    }
+
+    render() {
+        this.container.innerHTML = `
+            <div class="linkedin-profile-card">
+                <div class="linkedin-banner"></div>
+                <div class="linkedin-content">
+                    <img src="${this.data.avatar}" alt="${this.data.name}" class="linkedin-avatar">
+                    <div class="linkedin-name">${this.data.name}</div>
+                    <div class="linkedin-headline">${this.data.headline}</div>
+                    <div class="linkedin-location">${this.data.location}</div>
+                    <div class="linkedin-about">${this.data.about}</div>
+                    <div class="linkedin-stats">${this.data.connections}+ connections</div>
+                    <a href="${this.profileUrl}" target="_blank" rel="noopener noreferrer" class="linkedin-btn">View Profile</a>
+                </div>
+            </div>
+        `;
+    }
+}
+
 /* --- YouTube Trending Tracker --- */
 class YouTubeTracker {
     constructor() {
@@ -313,6 +354,7 @@ class CommodityTracker {
 
 // Initialize new trackers
 document.addEventListener('DOMContentLoaded', () => {
+    new LinkedInProfileAPI();
     new YouTubeTracker();
     new StockTracker();
     new CommodityTracker();

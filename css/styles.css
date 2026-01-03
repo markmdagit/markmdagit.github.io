@@ -1127,3 +1127,87 @@ footer {
     opacity: 0.9;
     color: inherit; /* Prevent link color change on hover */
 }
+
+/* --- LinkedIn Profile API --- */
+.linkedin-profile-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 600px;
+    margin: 1rem auto;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.linkedin-banner {
+    background-color: #004182;
+    height: 80px;
+    width: 100%;
+}
+
+.linkedin-content {
+    padding: 0 1.5rem 1.5rem;
+    position: relative;
+    text-align: left;
+}
+
+.linkedin-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    margin-top: -50px;
+    object-fit: cover;
+    background-color: #fff;
+}
+
+.linkedin-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000000e6;
+    margin-top: 0.5rem;
+}
+
+.linkedin-headline {
+    font-size: 1rem;
+    color: #00000099;
+    margin-bottom: 0.5rem;
+}
+
+.linkedin-location {
+    font-size: 0.9rem;
+    color: #00000099;
+    margin-bottom: 1rem;
+}
+
+.linkedin-about {
+    font-size: 0.9rem;
+    color: #000000e6;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.linkedin-stats {
+    font-size: 0.8rem;
+    color: #004182;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.linkedin-btn {
+    display: inline-block;
+    background-color: #0a66c2;
+    color: #fff;
+    padding: 0.4rem 1rem;
+    border-radius: 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.linkedin-btn:hover {
+    background-color: #004182;
+    color: #fff;
+}
