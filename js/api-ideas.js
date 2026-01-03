@@ -185,7 +185,7 @@ class YouTubeTracker {
             const card = document.createElement('div');
             card.className = 'video-card';
             // Use placeholder image
-            const thumbUrl = `https://via.placeholder.com/250x140/333/FFF?text=Video+${index + 1}`;
+            const thumbUrl = `https://placehold.co/250x140?text=Video+${index + 1}`;
 
             card.innerHTML = `
                 <img src="${thumbUrl}" class="video-thumbnail" alt="${video.title}">
