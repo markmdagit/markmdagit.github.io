@@ -183,6 +183,60 @@ class LinkedInProfileAPI {
     }
 }
 
+/* --- GitHub Profile API --- */
+class GitHubProfileAPI {
+    constructor() {
+        this.container = document.getElementById('github-profile-container');
+        this.username = 'markmdagit';
+        this.apiUrl = `https://api.github.com/users/${this.username}`;
+
+        this.init();
+    }
+
+    async init() {
+        try {
+            const response = await fetch(this.apiUrl);
+            if (!response.ok) {
+                if (response.status === 403) {
+                    throw new Error('Rate limit exceeded');
+                }
+                throw new Error('Failed to fetch GitHub profile');
+            }
+            const data = await response.json();
+            this.render(data);
+        } catch (error) {
+            console.error('Error fetching GitHub profile:', error);
+            this.container.innerHTML = `<p style="color: #d73a49; text-align: center;">Failed to load GitHub profile. Please try again later.</p>`;
+        }
+    }
+
+    render(data) {
+        this.container.innerHTML = `
+            <div class="github-profile-card">
+                <img src="${data.avatar_url}" alt="${data.login}" class="github-avatar">
+                <div class="github-info">
+                    <div class="github-name">${data.name || data.login}</div>
+                    <div class="github-username">${data.login}</div>
+
+                    <div class="github-stats">
+                        <div class="github-stat">
+                            <strong>${data.public_repos}</strong> repos
+                        </div>
+                        <div class="github-stat">
+                            <strong>${data.followers}</strong> followers
+                        </div>
+                        <div class="github-stat">
+                            <strong>${data.following}</strong> following
+                        </div>
+                    </div>
+
+                    <a href="${data.html_url}" target="_blank" rel="noopener noreferrer" class="github-link">View GitHub Profile</a>
+                </div>
+            </div>
+        `;
+    }
+}
+
 /* --- YouTube Trending Tracker --- */
 class YouTubeTracker {
     constructor() {
@@ -355,6 +409,7 @@ class CommodityTracker {
 // Initialize new trackers
 document.addEventListener('DOMContentLoaded', () => {
     new LinkedInProfileAPI();
+    new GitHubProfileAPI();
     new YouTubeTracker();
     new StockTracker();
     new CommodityTracker();
