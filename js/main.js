@@ -117,7 +117,7 @@ async function loadProjects() {
     }
 
     try {
-        projectsFetchPromise = fetchData('../data/projects.json');
+        projectsFetchPromise = fetchData('data/projects.json');
         const projects = await projectsFetchPromise;
         projectsCache = projects;
         renderProjects(carousel, projects);
