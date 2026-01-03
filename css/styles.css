@@ -1113,3 +1113,17 @@ footer {
     font-size: 0.8rem;
     color: #6C757D;
 }
+
+/* --- Video Link Styles --- */
+.video-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+    transition: opacity 0.3s;
+}
+
+.video-link:hover {
+    opacity: 0.9;
+    color: inherit; /* Prevent link color change on hover */
+}
