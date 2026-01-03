@@ -153,16 +153,16 @@ class YouTubeTracker {
         this.cardWidth = 270; // 250px width + 20px gap
 
         this.videos = [
-            { title: "Top 10 Tech Trends 2025", views: "1.2M", channel: "TechDaily" },
-            { title: "Building a House in the Woods", views: "850K", channel: "NatureBuilds" },
-            { title: "Ultimate Guide to Sourdough", views: "2.5M", channel: "BakeIt" },
-            { title: "Highlights: Championship Final", views: "5.1M", channel: "SportsCentral" },
-            { title: "New Space Telescope Images", views: "3.2M", channel: "Cosmos" },
-            { title: "Review: The Latest EV Truck", views: "900K", channel: "AutoReview" },
-            { title: "10 Minute HIIT Workout", views: "4.5M", channel: "FitLife" },
-            { title: "How to Code in Python", views: "1.1M", channel: "CodeAcademy" },
-            { title: "Travel Vlog: Tokyo Hidden Gems", views: "750K", channel: "Wanderlust" },
-            { title: "Understanding Quantum Physics", views: "2.2M", channel: "ScienceExplained" }
+            { id: "YmwskGLycHo", title: "iPhone 15 Pro: 3 Months Later!", views: "6.6M", channel: "Marques Brownlee" },
+            { id: "305YfKMyqVw", title: "iPhone 15 Event Reactions!", views: "3.2M", channel: "Marques Brownlee" },
+            { id: "c5aouiBgmUM", title: "Lion vs. Cape Buffalo: Battle Zone", views: "10M", channel: "Nat Geo Animals" },
+            { id: "VCMPWI0iDQU", title: "Lions vs Buffalo - BBC Wildlife", views: "50M", channel: "BBC Earth" },
+            { id: "l0TJCVQmDbE", title: "Making Pasta Aglio e Olio", views: "600K", channel: "Nick Janaskie" },
+            { id: "k3GKcSs7g2s", title: "Pasta Aglio e Olio from Chef", views: "200K", channel: "Cook Master Tips" },
+            { id: "-EqBmIJq8uM", title: "10 Interesting Scientific Discoveries", views: "1.2M", channel: "John Michael Godier" },
+            { id: "lJ8NLGIsXwA", title: "25 Most Exciting Scientific Discoveries", views: "2.1M", channel: "List25" },
+            { id: "jfKfPfyJRdk", title: "lofi hip hop radio - beats to study/relax to", views: "Live", channel: "Lofi Girl" },
+            { id: "xX2y-2VhfZY", title: "iPhone 15 Pro Camera First Impressions", views: "1M", channel: "Marques Brownlee" }
         ];
 
         this.init();
@@ -181,18 +181,22 @@ class YouTubeTracker {
 
     render() {
         this.track.innerHTML = '';
-        this.videos.forEach((video, index) => {
+        this.videos.forEach((video) => {
             const card = document.createElement('div');
             card.className = 'video-card';
-            // Use placeholder image
-            const thumbUrl = `https://placehold.co/250x140?text=Video+${index + 1}`;
+
+            // Use standard YouTube max quality thumbnail
+            const thumbUrl = `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`;
+            const videoUrl = `https://www.youtube.com/watch?v=${video.id}`;
 
             card.innerHTML = `
-                <img src="${thumbUrl}" class="video-thumbnail" alt="${video.title}">
-                <div class="video-info">
-                    <div class="video-title">${video.title}</div>
-                    <div class="video-stats">${video.channel} • ${video.views} views</div>
-                </div>
+                <a href="${videoUrl}" target="_blank" rel="noopener noreferrer" class="video-link">
+                    <img src="${thumbUrl}" class="video-thumbnail" alt="${video.title}">
+                    <div class="video-info">
+                        <div class="video-title">${video.title}</div>
+                        <div class="video-stats">${video.channel} • ${video.views} views</div>
+                    </div>
+                </a>
             `;
             this.track.appendChild(card);
         });
