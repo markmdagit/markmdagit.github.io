@@ -316,4 +316,5 @@ document.addEventListener('DOMContentLoaded', () => {
     new YouTubeTracker();
     new StockTracker();
     new CommodityTracker();
+    new MemeGenerator(); // Ensure this is also initialized if it wasn't already in the list
 });
