@@ -183,6 +183,82 @@ class LinkedInProfileAPI {
     }
 }
 
+/* --- Location Tracker (IP-API) --- */
+class LocationTracker {
+    constructor() {
+        this.detailsContainer = document.getElementById('location-details');
+        this.mapContainer = document.getElementById('location-map');
+        this.apiUrl = 'http://ip-api.com/json/'; // Note: HTTP only for free tier
+
+        this.init();
+    }
+
+    async init() {
+        try {
+            // Check if we are on HTTPS, if so, we can't call HTTP API directly without mixed content error.
+            if (window.location.protocol === 'https:') {
+                throw new Error('Mixed Content: Cannot call http://ip-api.com from https. Please visit via http for this demo.');
+            }
+
+            const response = await fetch(this.apiUrl);
+            if (!response.ok) {
+                throw new Error('Failed to fetch location data');
+            }
+            const data = await response.json();
+
+            if (data.status === 'fail') {
+                throw new Error(data.message);
+            }
+
+            this.render(data);
+
+        } catch (error) {
+            console.error('Location API Error:', error);
+            this.renderError(error.message);
+        }
+    }
+
+    render(data) {
+        // Render Details
+        this.detailsContainer.innerHTML = `
+            <ul class="location-list" style="list-style: none; padding: 0;">
+                <li><strong>IP Address:</strong> ${data.query}</li>
+                <li><strong>Location:</strong> ${data.city}, ${data.regionName}, ${data.country}</li>
+                <li><strong>ISP:</strong> ${data.isp}</li>
+                <li><strong>Timezone:</strong> ${data.timezone}</li>
+                <li><strong>Coordinates:</strong> ${data.lat}, ${data.lon}</li>
+            </ul>
+        `;
+
+        // Render Map
+        // Using Google Maps Embed (No API key needed for basic query)
+        const mapUrl = `https://maps.google.com/maps?q=${data.lat},${data.lon}&z=14&output=embed`;
+
+        this.mapContainer.innerHTML = `
+            <iframe
+                width="100%"
+                height="300"
+                frameborder="0"
+                style="border:0; border-radius: 8px;"
+                src="${mapUrl}"
+                allowfullscreen>
+            </iframe>
+        `;
+    }
+
+    renderError(message) {
+        this.detailsContainer.innerHTML = `
+            <div class="error-message" style="color: #721c24; background-color: #f8d7da; border-color: #f5c6cb; padding: 1rem; border-radius: 8px;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>Error:</strong> ${message}
+                <br><br>
+                <small>Note: The free ip-api.com endpoint does not support HTTPS. If you are viewing this via HTTPS, the browser blocked the request.</small>
+            </div>
+        `;
+        this.mapContainer.innerHTML = '';
+    }
+}
+
 /* --- Weather Tracker --- */
 class WeatherTracker {
     constructor() {
@@ -710,4 +786,5 @@ document.addEventListener('DOMContentLoaded', () => {
     new MemeGenerator();
     new ESPNGameTracker();
     new WeatherTracker();
+    new LocationTracker();
 });
