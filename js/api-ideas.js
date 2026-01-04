@@ -183,6 +183,164 @@ class LinkedInProfileAPI {
     }
 }
 
+/* --- Weather Tracker --- */
+class WeatherTracker {
+    constructor() {
+        this.apiKey = 'YOUR_OPENWEATHER_API_KEY'; // Placeholder for security
+        this.locationInput = document.getElementById('weather-location');
+        this.getWeatherBtn = document.getElementById('get-weather-btn');
+        this.displayContainer = document.getElementById('weather-display');
+
+        this.init();
+    }
+
+    init() {
+        if (this.getWeatherBtn) {
+            this.getWeatherBtn.addEventListener('click', () => {
+                const location = this.locationInput.value.trim();
+                if (location) {
+                    this.fetchForecast(location);
+                } else {
+                    alert('Please enter a location.');
+                }
+            });
+
+            // Also allow Enter key
+            this.locationInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    const location = this.locationInput.value.trim();
+                    if (location) {
+                        this.fetchForecast(location);
+                    }
+                }
+            });
+        }
+    }
+
+    async fetchForecast(location) {
+        this.displayContainer.innerHTML = '<div class="loading-indicator"><i class="fas fa-spinner fa-spin"></i> Fetching forecast...</div>';
+
+        // Check for real API key vs placeholder
+        if (this.apiKey === 'YOUR_OPENWEATHER_API_KEY') {
+            // Simulate API delay
+            await new Promise(resolve => setTimeout(resolve, 800));
+            this.mockForecast(location);
+        } else {
+            // Real API implementation (Conceptual - would require valid key)
+            try {
+                // 1. Geocoding API to get Lat/Lon
+                const geoResponse = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(location)}&limit=1&appid=${this.apiKey}`);
+                if (!geoResponse.ok) throw new Error('Location not found');
+                const geoData = await geoResponse.json();
+
+                if (geoData.length === 0) throw new Error('Location not found');
+
+                const { lat, lon, name } = geoData[0];
+
+                // 2. One Call API for 7-day forecast
+                const weatherResponse = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=imperial&appid=${this.apiKey}`);
+                if (!weatherResponse.ok) throw new Error('Failed to fetch weather');
+                const weatherData = await weatherResponse.json();
+
+                this.render(weatherData.daily, name);
+
+            } catch (error) {
+                console.warn('Weather API Error (falling back to mock):', error);
+                this.mockForecast(location);
+            }
+        }
+    }
+
+    mockForecast(location) {
+        // Generate dates for the next 7 days
+        const days = [];
+        const today = new Date();
+        const conditions = ['Sunny', 'Cloudy', 'Rain', 'Partly Cloudy', 'Thunderstorm', 'Snow', 'Clear'];
+        const icons = ['fa-sun', 'fa-cloud', 'fa-cloud-rain', 'fa-cloud-sun', 'fa-bolt', 'fa-snowflake', 'fa-moon'];
+
+        // Normalize input for display
+        const displayLocation = location.charAt(0).toUpperCase() + location.slice(1);
+
+        for (let i = 0; i < 7; i++) {
+            const date = new Date(today);
+            date.setDate(today.getDate() + i);
+
+            // Random realistic temperatures
+            const maxTemp = Math.floor(Math.random() * (85 - 60 + 1)) + 60;
+            const minTemp = maxTemp - Math.floor(Math.random() * 15 + 10);
+
+            // Random condition
+            const randIdx = Math.floor(Math.random() * conditions.length);
+
+            days.push({
+                dt: Math.floor(date.getTime() / 1000),
+                temp: { max: maxTemp, min: minTemp },
+                weather: [{ main: conditions[randIdx], description: conditions[randIdx], iconClass: icons[randIdx] }]
+            });
+        }
+
+        this.render(days, displayLocation, true);
+    }
+
+    render(dailyData, locationName, isSimulated = false) {
+        this.displayContainer.innerHTML = '';
+
+        const header = document.createElement('div');
+        header.className = 'weather-header';
+        header.innerHTML = `<h4>7-Day Forecast for ${locationName} ${isSimulated ? '<span style="font-size: 0.8rem; color: #6c757d; font-weight: normal;">(Simulated Data)</span>' : ''}</h4>`;
+        this.displayContainer.appendChild(header);
+
+        const grid = document.createElement('div');
+        grid.className = 'weather-grid';
+        grid.style.display = 'grid';
+        grid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(120px, 1fr))';
+        grid.style.gap = '1rem';
+        grid.style.marginTop = '1rem';
+
+        dailyData.slice(0, 7).forEach(day => {
+            const date = new Date(day.dt * 1000);
+            const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+            const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+            // Determine icon (mock uses FontAwesome classes, real API uses icon codes)
+            let iconHtml;
+            if (day.weather[0].iconClass) {
+                 iconHtml = `<i class="fas ${day.weather[0].iconClass} weather-icon"></i>`;
+            } else {
+                 // Map OpenWeather icons to FontAwesome or use image
+                 const iconCode = day.weather[0].icon;
+                 iconHtml = `<img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="${day.weather[0].main}" style="width: 50px; height: 50px;">`;
+            }
+
+            const card = document.createElement('div');
+            card.className = 'weather-card';
+            card.style.background = '#f8f9fa';
+            card.style.padding = '1rem';
+            card.style.borderRadius = '8px';
+            card.style.textAlign = 'center';
+            card.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
+
+            card.innerHTML = `
+                <div class="weather-day" style="font-weight: bold; margin-bottom: 0.5rem;">${dayName}</div>
+                <div class="weather-date" style="font-size: 0.9rem; color: #6c757d; margin-bottom: 0.5rem;">${dateStr}</div>
+                <div class="weather-icon-container" style="font-size: 2rem; color: #004A99; margin-bottom: 0.5rem;">
+                    ${iconHtml}
+                </div>
+                <div class="weather-temps" style="font-size: 1.1rem;">
+                    <span class="high-temp" style="font-weight: bold;">${Math.round(day.temp.max)}°</span> /
+                    <span class="low-temp" style="color: #6c757d;">${Math.round(day.temp.min)}°</span>
+                </div>
+                <div class="weather-desc" style="font-size: 0.9rem; margin-top: 0.5rem; text-transform: capitalize;">
+                    ${day.weather[0].description}
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        this.displayContainer.appendChild(grid);
+    }
+}
+
 /* --- GitHub Profile API --- */
 class GitHubProfileAPI {
     constructor() {
@@ -551,4 +709,5 @@ document.addEventListener('DOMContentLoaded', () => {
     new CommodityTracker();
     new MemeGenerator();
     new ESPNGameTracker();
+    new WeatherTracker();
 });
