@@ -406,6 +406,70 @@ class CommodityTracker {
     }
 }
 
+/* --- ESPN Game Tracker --- */
+class ESPNGameTracker {
+    constructor() {
+        this.container = document.getElementById('espn-games-container');
+        this.apiUrl = 'https://site.web.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard';
+        this.init();
+    }
+
+    async init() {
+        try {
+            const response = await fetch(this.apiUrl);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            this.render(data.events);
+        } catch (error) {
+            console.error('Error fetching ESPN data:', error);
+            this.container.innerHTML = '<p>Failed to load games. Please try again later.</p>';
+        }
+    }
+
+    render(events) {
+        this.container.innerHTML = '';
+        if (!events || events.length === 0) {
+            this.container.innerHTML = '<p>No games scheduled for today.</p>';
+            return;
+        }
+
+        events.forEach(event => {
+            const gameCard = document.createElement('div');
+            gameCard.className = 'game-card';
+
+            const competitors = event.competitions[0].competitors;
+            const homeTeam = competitors.find(c => c.homeAway === 'home');
+            const awayTeam = competitors.find(c => c.homeAway === 'away');
+
+            // Handle status description
+            let status = event.status.type.detail;
+            if (!status) {
+                 status = event.status.type.description;
+            }
+
+            gameCard.innerHTML = `
+                <div class="game-teams">
+                    <div class="team">
+                        <img src="${awayTeam.team.logo}" alt="${awayTeam.team.displayName}" class="team-logo">
+                        <span class="team-name">${awayTeam.team.shortDisplayName}</span>
+                        <span class="team-score">${awayTeam.score || '-'}</span>
+                    </div>
+                    <div class="vs">@</div>
+                    <div class="team">
+                        <img src="${homeTeam.team.logo}" alt="${homeTeam.team.displayName}" class="team-logo">
+                        <span class="team-name">${homeTeam.team.shortDisplayName}</span>
+                        <span class="team-score">${homeTeam.score || '-'}</span>
+                    </div>
+                </div>
+                <div class="game-status">${status}</div>
+            `;
+            this.container.appendChild(gameCard);
+        });
+    }
+}
+
 // Initialize new trackers
 document.addEventListener('DOMContentLoaded', () => {
     new LinkedInProfileAPI();
@@ -413,5 +477,6 @@ document.addEventListener('DOMContentLoaded', () => {
     new YouTubeTracker();
     new StockTracker();
     new CommodityTracker();
-    new MemeGenerator(); // Ensure this is also initialized if it wasn't already in the list
+    new MemeGenerator();
+    new ESPNGameTracker();
 });
