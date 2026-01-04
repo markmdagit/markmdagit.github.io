@@ -709,18 +709,49 @@ class ESPNGameTracker {
 
             const sectionDiv = document.createElement('div');
             sectionDiv.className = 'sport-section';
-            sectionDiv.style.marginBottom = '2rem';
+            sectionDiv.style.marginBottom = '1rem';
+            sectionDiv.style.border = '1px solid #dee2e6';
+            sectionDiv.style.borderRadius = '8px';
+            sectionDiv.style.overflow = 'hidden';
+
+            // Collapsible Header
+            const header = document.createElement('div');
+            header.className = 'section-header';
+            header.style.padding = '1rem';
+            header.style.background = '#f8f9fa';
+            header.style.cursor = 'pointer';
+            header.style.display = 'flex';
+            header.style.justifyContent = 'space-between';
+            header.style.alignItems = 'center';
+            header.style.userSelect = 'none';
 
             const title = document.createElement('h4');
             title.textContent = sectionTitle;
-            title.style.marginBottom = '1rem';
+            title.style.margin = '0';
             title.style.color = '#212529';
-            sectionDiv.appendChild(title);
+            title.style.fontSize = '1.1rem';
+
+            const icon = document.createElement('i');
+            icon.className = 'fas fa-chevron-down';
+            icon.style.transition = 'transform 0.3s ease';
+
+            header.appendChild(title);
+            header.appendChild(icon);
+            sectionDiv.appendChild(header);
+
+            // Collapsible Content
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'section-content';
+            contentDiv.style.display = 'none'; // Default to collapsed
+            contentDiv.style.padding = '1rem';
+            contentDiv.style.borderTop = '1px solid #dee2e6';
 
             if (events.length === 0) {
                 const p = document.createElement('p');
                 p.textContent = 'No active games scheduled today.';
-                sectionDiv.appendChild(p);
+                p.style.margin = '0';
+                p.style.color = '#6c757d';
+                contentDiv.appendChild(p);
             } else {
                 const grid = document.createElement('div');
                 grid.className = 'games-grid';
@@ -729,10 +760,18 @@ class ESPNGameTracker {
                     const card = this.createGameCard(event);
                     grid.appendChild(card);
                 });
-                sectionDiv.appendChild(grid);
+                contentDiv.appendChild(grid);
             }
 
+            sectionDiv.appendChild(contentDiv);
             this.container.appendChild(sectionDiv);
+
+            // Event Listener for Toggle
+            header.addEventListener('click', () => {
+                const isHidden = contentDiv.style.display === 'none';
+                contentDiv.style.display = isHidden ? 'block' : 'none';
+                icon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
         });
     }
 
