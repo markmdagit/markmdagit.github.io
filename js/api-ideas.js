@@ -183,6 +183,94 @@ class LinkedInProfileAPI {
     }
 }
 
+/* --- Google Calendar Tracker --- */
+class GoogleCalendarTracker {
+    constructor() {
+        this.container = document.getElementById('google-calendar-container');
+        this.isSignedIn = false;
+
+        this.init();
+    }
+
+    init() {
+        this.render();
+    }
+
+    render() {
+        if (!this.isSignedIn) {
+            this.container.innerHTML = `
+                <div class="calendar-auth" style="text-align: center; padding: 2rem;">
+                    <i class="fas fa-calendar-alt" style="font-size: 3rem; color: #4285F4; margin-bottom: 1rem;"></i>
+                    <p>Connect your Google Calendar to view upcoming events.</p>
+                    <button id="calendar-signin-btn" class="action-btn" style="background-color: #4285F4; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;">
+                        <i class="fab fa-google"></i> Sign In with Google
+                    </button>
+                </div>
+            `;
+
+            document.getElementById('calendar-signin-btn').addEventListener('click', () => {
+                this.signIn();
+            });
+        } else {
+            this.renderEvents();
+        }
+    }
+
+    signIn() {
+        // Simulate auth flow
+        this.container.innerHTML = `
+            <div class="loading-indicator">
+                <i class="fas fa-spinner fa-spin"></i> Connecting to Google...
+            </div>
+        `;
+
+        setTimeout(() => {
+            this.isSignedIn = true;
+            this.render();
+        }, 1500);
+    }
+
+    renderEvents() {
+        // Mock Data
+        const events = [
+            { title: "Team Standup", time: "10:00 AM - 10:30 AM", location: "Google Meet", color: "#4285F4" },
+            { title: "Project Review with Client", time: "11:30 AM - 12:30 PM", location: "Zoom", color: "#DB4437" },
+            { title: "Lunch with Sarah", time: "1:00 PM - 2:00 PM", location: "Cafeteria", color: "#F4B400" },
+            { title: "Code Deployment", time: "3:30 PM - 4:30 PM", location: "Server Room", color: "#0F9D58" },
+            { title: "Wrap-up Meeting", time: "5:00 PM - 5:15 PM", location: "Office", color: "#4285F4" }
+        ];
+
+        let eventsHtml = events.map(event => `
+            <div class="calendar-event" style="display: flex; align-items: center; padding: 0.75rem; border-bottom: 1px solid #eee; transition: background 0.2s;">
+                <div class="event-color" style="width: 4px; height: 40px; background-color: ${event.color}; border-radius: 2px; margin-right: 1rem;"></div>
+                <div class="event-details">
+                    <div class="event-title" style="font-weight: bold; font-size: 1rem;">${event.title}</div>
+                    <div class="event-meta" style="font-size: 0.85rem; color: #6c757d;">
+                        <i class="far fa-clock"></i> ${event.time} &nbsp;&nbsp; <i class="fas fa-map-marker-alt"></i> ${event.location}
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+        this.container.innerHTML = `
+            <div class="calendar-view">
+                <div class="calendar-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #f8f9fa;">
+                    <h4 style="margin: 0;">Today's Schedule</h4>
+                    <button id="calendar-signout-btn" style="background: none; border: none; color: #6c757d; cursor: pointer; font-size: 0.9rem;">Sign Out</button>
+                </div>
+                <div class="events-list">
+                    ${eventsHtml}
+                </div>
+            </div>
+        `;
+
+        document.getElementById('calendar-signout-btn').addEventListener('click', () => {
+            this.isSignedIn = false;
+            this.render();
+        });
+    }
+}
+
 /* --- Location Tracker (ipinfo.io) --- */
 class LocationTracker {
     constructor() {
@@ -823,4 +911,5 @@ document.addEventListener('DOMContentLoaded', () => {
     new ESPNGameTracker();
     new WeatherTracker();
     new LocationTracker();
+    new GoogleCalendarTracker();
 });
