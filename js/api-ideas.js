@@ -410,63 +410,135 @@ class CommodityTracker {
 class ESPNGameTracker {
     constructor() {
         this.container = document.getElementById('espn-games-container');
-        this.apiUrl = 'https://site.web.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard';
+        this.baseApiUrl = 'https://site.web.api.espn.com/apis/site/v2/sports';
+        this.leagues = [
+            { sport: 'football', league: 'nfl', name: 'NFL', section: 'Football (NFL & NCAA)' },
+            { sport: 'football', league: 'college-football', name: 'NCAA Football', section: 'Football (NFL & NCAA)' },
+            { sport: 'baseball', league: 'mlb', name: 'MLB', section: 'Baseball (MLB & NCAA)' },
+            { sport: 'baseball', league: 'college-baseball', name: 'NCAA Baseball', section: 'Baseball (MLB & NCAA)' },
+            { sport: 'basketball', league: 'nba', name: 'NBA', section: 'Basketball (NBA & NCAA)' },
+            { sport: 'basketball', league: 'mens-college-basketball', name: 'NCAA Basketball', section: 'Basketball (NBA & NCAA)' },
+            { sport: 'hockey', league: 'nhl', name: 'NHL', section: 'Hockey (NHL & NCAA)' },
+            { sport: 'hockey', league: 'mens-college-hockey', name: 'NCAA Hockey', section: 'Hockey (NHL & NCAA)' }
+        ];
         this.init();
     }
 
     async init() {
         try {
-            const response = await fetch(this.apiUrl);
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const data = await response.json();
-            this.render(data.events);
+            const promises = this.leagues.map(l => this.fetchLeagueData(l));
+            const results = await Promise.all(promises);
+            this.renderAll(results);
         } catch (error) {
             console.error('Error fetching ESPN data:', error);
             this.container.innerHTML = '<p>Failed to load games. Please try again later.</p>';
         }
     }
 
-    render(events) {
-        this.container.innerHTML = '';
-        if (!events || events.length === 0) {
-            this.container.innerHTML = '<p>No games scheduled for today.</p>';
-            return;
+    async fetchLeagueData(leagueInfo) {
+        const url = `${this.baseApiUrl}/${leagueInfo.sport}/${leagueInfo.league}/scoreboard`;
+        try {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`Failed to fetch ${leagueInfo.name}`);
+            const data = await response.json();
+            return {
+                ...leagueInfo,
+                events: data.events || []
+            };
+        } catch (error) {
+            console.warn(`Error fetching ${leagueInfo.name}:`, error);
+            return {
+                ...leagueInfo,
+                events: []
+            };
         }
+    }
 
-        events.forEach(event => {
-            const gameCard = document.createElement('div');
-            gameCard.className = 'game-card';
+    renderAll(results) {
+        this.container.innerHTML = '';
+        const sections = {};
 
-            const competitors = event.competitions[0].competitors;
-            const homeTeam = competitors.find(c => c.homeAway === 'home');
-            const awayTeam = competitors.find(c => c.homeAway === 'away');
+        // Group by section
+        results.forEach(result => {
+            if (!sections[result.section]) {
+                sections[result.section] = [];
+            }
+            sections[result.section].push(...result.events);
+        });
 
-            // Handle status description
-            let status = event.status.type.detail;
-            if (!status) {
-                 status = event.status.type.description;
+        const sectionOrder = [
+            'Football (NFL & NCAA)',
+            'Baseball (MLB & NCAA)',
+            'Basketball (NBA & NCAA)',
+            'Hockey (NHL & NCAA)'
+        ];
+
+        sectionOrder.forEach(sectionTitle => {
+            const events = sections[sectionTitle] || [];
+
+            const sectionDiv = document.createElement('div');
+            sectionDiv.className = 'sport-section';
+            sectionDiv.style.marginBottom = '2rem';
+
+            const title = document.createElement('h4');
+            title.textContent = sectionTitle;
+            title.style.marginBottom = '1rem';
+            title.style.color = '#212529';
+            sectionDiv.appendChild(title);
+
+            if (events.length === 0) {
+                const p = document.createElement('p');
+                p.textContent = 'No active games scheduled today.';
+                sectionDiv.appendChild(p);
+            } else {
+                const grid = document.createElement('div');
+                grid.className = 'games-grid';
+
+                events.forEach(event => {
+                    const card = this.createGameCard(event);
+                    grid.appendChild(card);
+                });
+                sectionDiv.appendChild(grid);
             }
 
-            gameCard.innerHTML = `
-                <div class="game-teams">
-                    <div class="team">
-                        <img src="${awayTeam.team.logo}" alt="${awayTeam.team.displayName}" class="team-logo">
-                        <span class="team-name">${awayTeam.team.shortDisplayName}</span>
-                        <span class="team-score">${awayTeam.score || '-'}</span>
-                    </div>
-                    <div class="vs">@</div>
-                    <div class="team">
-                        <img src="${homeTeam.team.logo}" alt="${homeTeam.team.displayName}" class="team-logo">
-                        <span class="team-name">${homeTeam.team.shortDisplayName}</span>
-                        <span class="team-score">${homeTeam.score || '-'}</span>
-                    </div>
-                </div>
-                <div class="game-status">${status}</div>
-            `;
-            this.container.appendChild(gameCard);
+            this.container.appendChild(sectionDiv);
         });
+    }
+
+    createGameCard(event) {
+        const gameCard = document.createElement('div');
+        gameCard.className = 'game-card';
+
+        const competitors = event.competitions[0].competitors;
+        const homeTeam = competitors.find(c => c.homeAway === 'home');
+        const awayTeam = competitors.find(c => c.homeAway === 'away');
+
+        // Handle status description
+        let status = event.status.type.detail;
+        if (!status) {
+                status = event.status.type.description;
+        }
+
+        const awayLogo = awayTeam.team.logo || 'https://placehold.co/50x50?text=Logo';
+        const homeLogo = homeTeam.team.logo || 'https://placehold.co/50x50?text=Logo';
+
+        gameCard.innerHTML = `
+            <div class="game-teams">
+                <div class="team">
+                    <img src="${awayLogo}" alt="${awayTeam.team.displayName}" class="team-logo" onerror="this.src='https://placehold.co/50x50?text=Logo'">
+                    <span class="team-name">${awayTeam.team.shortDisplayName}</span>
+                    <span class="team-score">${awayTeam.score || '-'}</span>
+                </div>
+                <div class="vs">@</div>
+                <div class="team">
+                    <img src="${homeLogo}" alt="${homeTeam.team.displayName}" class="team-logo" onerror="this.src='https://placehold.co/50x50?text=Logo'">
+                    <span class="team-name">${homeTeam.team.shortDisplayName}</span>
+                    <span class="team-score">${homeTeam.score || '-'}</span>
+                </div>
+            </div>
+            <div class="game-status">${status}</div>
+        `;
+        return gameCard;
     }
 }
 
