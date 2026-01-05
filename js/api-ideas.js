@@ -1,4 +1,42 @@
 
+/* --- Techy Text Generator --- */
+class TechyTextGenerator {
+    constructor() {
+        this.output = document.getElementById('techy-text-output');
+        this.generateBtn = document.getElementById('generate-techy-text-btn');
+        this.apiUrl = 'https://techy-api.vercel.app/api/text';
+
+        this.init();
+    }
+
+    init() {
+        if (this.generateBtn) {
+            this.generateBtn.addEventListener('click', () => this.fetchText());
+        }
+        // Initial fetch
+        this.fetchText();
+    }
+
+    async fetchText() {
+        this.output.textContent = 'Loading...';
+        try {
+            const response = await fetch(this.apiUrl);
+            if (!response.ok) throw new Error('Failed to fetch text');
+            const text = await response.text();
+            this.render(text);
+        } catch (error) {
+            console.error('Error fetching techy text:', error);
+            this.output.textContent = 'Error: System Malfunction. Reboot Required.';
+            this.output.style.color = '#ff0000'; // Red for error
+        }
+    }
+
+    render(text) {
+        this.output.style.color = '#0f0'; // Reset to green in case of previous error
+        this.output.textContent = text;
+    }
+}
+
 class MemeAPI {
     constructor() {
         this.apiUrl = 'https://api.imgflip.com/get_memes';
@@ -912,4 +950,5 @@ document.addEventListener('DOMContentLoaded', () => {
     new WeatherTracker();
     new LocationTracker();
     new GoogleCalendarTracker();
+    new TechyTextGenerator();
 });
