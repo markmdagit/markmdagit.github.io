@@ -1360,3 +1360,34 @@ footer {
     border-top: 1px solid #dee2e6;
     padding-top: 0.75rem;
 }
+
+/* --- Dictionary API --- */
+.dictionary-results {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.dictionary-box {
+    background-color: #F8F9FA;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.dictionary-box strong {
+    display: block;
+    font-size: 1.1rem;
+    color: #004A99;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #6C757D;
+    padding-bottom: 0.25rem;
+}
+
+.dictionary-box p {
+    color: #212529;
+    margin: 0;
+    line-height: 1.5;
+}

@@ -1,4 +1,105 @@
 
+/* --- Dictionary API --- */
+class DictionaryAPI {
+    constructor() {
+        this.input = document.getElementById('dictionary-input');
+        this.btn = document.getElementById('dictionary-search-btn');
+        this.defBox = document.getElementById('dictionary-definition');
+        this.exBox = document.getElementById('dictionary-example');
+        this.synBox = document.getElementById('dictionary-synonym');
+        this.antBox = document.getElementById('dictionary-antonym');
+        this.apiUrl = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
+
+        this.init();
+    }
+
+    init() {
+        if (this.btn) {
+            this.btn.addEventListener('click', () => this.search());
+            this.input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') this.search();
+            });
+        }
+    }
+
+    async search() {
+        const word = this.input.value.trim();
+        if (!word) return;
+
+        this.clearResults();
+        this.setLoading(true);
+
+        try {
+            const response = await fetch(this.apiUrl + word);
+            if (!response.ok) throw new Error('Word not found');
+            const data = await response.json();
+            this.render(data);
+        } catch (error) {
+            console.error('Dictionary API Error:', error);
+            this.showError();
+        } finally {
+            this.setLoading(false);
+        }
+    }
+
+    render(data) {
+        if (!data || data.length === 0) {
+            this.showError();
+            return;
+        }
+
+        const entry = data[0];
+
+        // Find first occurrence of each
+        let definition = 'N/A';
+        let example = 'N/A';
+        let synonyms = [];
+        let antonyms = [];
+
+        // Loop through meanings to find data
+        for (const meaning of entry.meanings) {
+            for (const def of meaning.definitions) {
+                if (definition === 'N/A' && def.definition) definition = def.definition;
+                if (example === 'N/A' && def.example) example = def.example;
+                if (def.synonyms) synonyms.push(...def.synonyms);
+                if (def.antonyms) antonyms.push(...def.antonyms);
+            }
+            if (meaning.synonyms) synonyms.push(...meaning.synonyms);
+            if (meaning.antonyms) antonyms.push(...meaning.antonyms);
+        }
+
+        // Update UI
+        this.updateBox(this.defBox, 'Definition', definition);
+        this.updateBox(this.exBox, 'Example', example);
+        this.updateBox(this.synBox, 'Synonyms', synonyms.length > 0 ? synonyms.slice(0, 5).join(', ') : 'None found');
+        this.updateBox(this.antBox, 'Antonyms', antonyms.length > 0 ? antonyms.slice(0, 5).join(', ') : 'None found');
+    }
+
+    updateBox(element, title, content) {
+        element.innerHTML = `<strong>${title}:</strong> <p>${content}</p>`;
+        element.style.display = 'block';
+    }
+
+    clearResults() {
+        [this.defBox, this.exBox, this.synBox, this.antBox].forEach(el => {
+            if (el) {
+                el.innerHTML = '';
+                el.style.display = 'none';
+            }
+        });
+    }
+
+    setLoading(isLoading) {
+        const btnText = isLoading ? '<i class="fas fa-spinner fa-spin"></i>' : 'Search';
+        this.btn.innerHTML = btnText;
+    }
+
+    showError() {
+        this.defBox.innerHTML = '<p style="color: #721c24;">Word not found or API error.</p>';
+        this.defBox.style.display = 'block';
+    }
+}
+
 /* --- Techy Text Generator --- */
 class TechyTextGenerator {
     constructor() {
@@ -951,4 +1052,5 @@ document.addEventListener('DOMContentLoaded', () => {
     new LocationTracker();
     new GoogleCalendarTracker();
     new TechyTextGenerator();
+    new DictionaryAPI();
 });
