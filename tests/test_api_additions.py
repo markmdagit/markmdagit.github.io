@@ -55,3 +55,25 @@ def test_stock_ticker_updates(page: Page):
     # Since it renders every 2 seconds, the DOM element is replaced.
     # checking not equal is usually safe enough for random float + noise.
     assert initial_price != new_price
+
+def test_qr_code_generator(page: Page):
+    page.goto('http://localhost:8000/pages/api-ideas.html')
+
+    # Check section exists
+    expect(page.locator('h3', has_text='QR Code Generator')).to_be_visible()
+
+    # Fill input
+    page.fill('#qr-text', 'https://www.google.com')
+
+    # Click generate
+    page.click('#generate-qr-btn')
+
+    # Wait for image
+    img = page.locator('#qr-result img')
+    expect(img).to_be_visible(timeout=10000)
+
+    # Check src
+    expect(img).to_have_attribute('src', re.compile(r'https://api.qrserver.com/v1/create-qr-code/'))
+
+    # Verify the data param in src contains encoded URL
+    expect(img).to_have_attribute('src', re.compile(r'data=https%3A%2F%2Fwww\.google\.com'))

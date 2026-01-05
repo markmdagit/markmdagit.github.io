@@ -999,6 +999,55 @@ class GeminiImageGenerator {
     }
 }
 
+/* --- QR Code Generator --- */
+class QRCodeGenerator {
+    constructor() {
+        this.input = document.getElementById('qr-text');
+        this.generateBtn = document.getElementById('generate-qr-btn');
+        this.resultContainer = document.getElementById('qr-result');
+        this.init();
+    }
+
+    init() {
+        if (this.generateBtn) {
+            this.generateBtn.addEventListener('click', () => this.generate());
+        }
+    }
+
+    generate() {
+        const text = this.input.value.trim();
+        if (!text) {
+            alert('Please enter text or a URL.');
+            return;
+        }
+
+        this.resultContainer.innerHTML = `
+            <div class="loading-indicator">
+                <i class="fas fa-spinner fa-spin"></i> Generating QR Code...
+            </div>
+        `;
+
+        const size = '150x150';
+        const imageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${size}&data=${encodeURIComponent(text)}`;
+
+        const img = new Image();
+        img.onload = () => {
+             this.resultContainer.innerHTML = `
+                <div class="qr-card" style="border: 1px solid #ddd; padding: 10px; border-radius: 8px; background: #fff; display: inline-block;">
+                    <img src="${imageUrl}" alt="QR Code" style="width: 150px; height: 150px;">
+                    <p style="margin-top: 10px; color: #555; font-size: 0.9rem;">
+                        Scan to view content
+                    </p>
+                </div>
+            `;
+        };
+        img.onerror = () => {
+            this.resultContainer.innerHTML = '<p style="color: red;">Failed to generate QR Code.</p>';
+        };
+        img.src = imageUrl;
+    }
+}
+
 // Initialize new trackers
 document.addEventListener('DOMContentLoaded', () => {
     new LinkedInProfileAPI();
@@ -1013,4 +1062,5 @@ document.addEventListener('DOMContentLoaded', () => {
     new GoogleCalendarTracker();
     new TechyTextGenerator();
     new GeminiImageGenerator();
+    new QRCodeGenerator();
 });
