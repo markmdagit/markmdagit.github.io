@@ -1,4 +1,5 @@
 from playwright.sync_api import Page, expect
+import re
 
 def test_api_additions_exist(page: Page):
     page.goto('http://localhost:8000/pages/api-ideas.html')
@@ -18,6 +19,23 @@ def test_api_additions_exist(page: Page):
     expect(page.locator('.commodity-card')).to_have_count(4)
     expect(page.locator('.commodity-name', has_text='Eggs')).to_be_visible()
     expect(page.locator('.commodity-name', has_text='Gold')).to_be_visible()
+
+def test_gemini_image_generation(page: Page):
+    page.goto('http://localhost:8000/pages/api-ideas.html')
+
+    # Check Gemini Section exists
+    expect(page.locator('h3', has_text='Gemini 2.5 Flash Image API')).to_be_visible()
+
+    # Enter prompt
+    page.fill('#gemini-prompt', 'Test Image')
+    page.click('#generate-gemini-btn')
+
+    # Expect image to load
+    img = page.locator('#gemini-result img')
+    expect(img).to_be_visible(timeout=15000)
+
+    # Check src contains loremflickr
+    expect(img).to_have_attribute('src', re.compile(r'https://loremflickr\.com'))
 
 def test_stock_ticker_updates(page: Page):
     page.goto('http://localhost:8000/pages/api-ideas.html')
