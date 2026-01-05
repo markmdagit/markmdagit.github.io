@@ -110,6 +110,40 @@
                     </div>
 
                     <div class="api-project">
+                        <h3>Free Dictionary API</h3>
+                        <p>Get definitions, examples, synonyms, and antonyms.</p>
+                        <div class="dictionary-container">
+                            <div class="form-group">
+                                <label for="dictionary-word">Enter a Word:</label>
+                                <input type="text" id="dictionary-word" class="form-control" placeholder="e.g., hello">
+                            </div>
+                            <button id="search-dictionary-btn" class="submit-ticket-btn">Search Word</button>
+
+                            <div id="dictionary-result" class="dictionary-result" style="margin-top: 1rem; display: none;">
+                                <div class="result-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                    <div class="result-box" style="background: #f8f9fa; padding: 10px; border-radius: 4px; border: 1px solid #dee2e6;">
+                                        <strong>Definition:</strong>
+                                        <p id="dict-definition" style="margin-top: 5px;">-</p>
+                                    </div>
+                                    <div class="result-box" style="background: #f8f9fa; padding: 10px; border-radius: 4px; border: 1px solid #dee2e6;">
+                                        <strong>Example:</strong>
+                                        <p id="dict-example" style="margin-top: 5px;">-</p>
+                                    </div>
+                                    <div class="result-box" style="background: #f8f9fa; padding: 10px; border-radius: 4px; border: 1px solid #dee2e6;">
+                                        <strong>Synonyms:</strong>
+                                        <p id="dict-synonyms" style="margin-top: 5px;">-</p>
+                                    </div>
+                                    <div class="result-box" style="background: #f8f9fa; padding: 10px; border-radius: 4px; border: 1px solid #dee2e6;">
+                                        <strong>Antonyms:</strong>
+                                        <p id="dict-antonyms" style="margin-top: 5px;">-</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="dictionary-error" style="color: red; margin-top: 1rem; display: none;"></div>
+                        </div>
+                    </div>
+
+                    <div class="api-project">
                         <h3>Meme Generator API</h3>
                         <p>Generate memes instantly using our client-side API. Select a template, add your text, and create!</p>
 
