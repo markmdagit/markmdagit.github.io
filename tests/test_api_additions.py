@@ -77,3 +77,23 @@ def test_qr_code_generator(page: Page):
 
     # Verify the data param in src contains encoded URL
     expect(img).to_have_attribute('src', re.compile(r'data=https%3A%2F%2Fwww\.google\.com'))
+
+def test_dictionary_api(page: Page):
+    page.goto('http://localhost:8000/pages/api-ideas.html')
+
+    # Check section exists
+    expect(page.locator('h3', has_text='Free Dictionary API')).to_be_visible()
+
+    # Fill input
+    page.fill('#dictionary-word', 'hello')
+
+    # Click search
+    page.click('#search-dictionary-btn')
+
+    # Wait for result
+    def_el = page.locator('#dict-definition')
+    expect(def_el).not_to_have_text('-', timeout=10000)
+    expect(def_el).not_to_have_text('N/A')
+
+    # Check that the result container is visible
+    expect(page.locator('#dictionary-result')).to_be_visible()

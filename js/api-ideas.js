@@ -1048,6 +1048,91 @@ class QRCodeGenerator {
     }
 }
 
+/* --- Dictionary API --- */
+class DictionaryAPI {
+    constructor() {
+        this.input = document.getElementById('dictionary-word');
+        this.searchBtn = document.getElementById('search-dictionary-btn');
+        this.resultContainer = document.getElementById('dictionary-result');
+        this.errorContainer = document.getElementById('dictionary-error');
+
+        this.defEl = document.getElementById('dict-definition');
+        this.exEl = document.getElementById('dict-example');
+        this.synEl = document.getElementById('dict-synonyms');
+        this.antEl = document.getElementById('dict-antonyms');
+
+        this.init();
+    }
+
+    init() {
+        if (this.searchBtn) {
+            this.searchBtn.addEventListener('click', () => this.search());
+            this.input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') this.search();
+            });
+        }
+    }
+
+    async search() {
+        const word = this.input.value.trim();
+        if (!word) {
+            alert('Please enter a word.');
+            return;
+        }
+
+        this.resultContainer.style.display = 'none';
+        this.errorContainer.style.display = 'none';
+
+        // Show loading state by modifying button
+        const originalBtnText = this.searchBtn.textContent;
+        this.searchBtn.textContent = 'Searching...';
+        this.searchBtn.disabled = true;
+
+        try {
+            const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+
+            if (!response.ok) {
+                if (response.status === 404) throw new Error('Word not found.');
+                throw new Error('Failed to fetch definition.');
+            }
+
+            const data = await response.json();
+            this.render(data);
+        } catch (error) {
+            this.errorContainer.textContent = error.message;
+            this.errorContainer.style.display = 'block';
+        } finally {
+            this.searchBtn.textContent = originalBtnText;
+            this.searchBtn.disabled = false;
+        }
+    }
+
+    render(data) {
+        // Data is an array, we take the first entry
+        const entry = data[0];
+
+        // Find a meaning with definition (preferably first noun or verb)
+        // We'll just grab the first meaning's first definition
+        const meaning = entry.meanings[0];
+        const definitionData = meaning.definitions[0];
+
+        this.defEl.textContent = definitionData.definition || 'N/A';
+        this.exEl.textContent = definitionData.example || 'N/A';
+
+        // Collect synonyms and antonyms
+        let synonyms = meaning.synonyms || [];
+        let antonyms = meaning.antonyms || [];
+
+        if (synonyms.length === 0) synonyms = definitionData.synonyms || [];
+        if (antonyms.length === 0) antonyms = definitionData.antonyms || [];
+
+        this.synEl.textContent = synonyms.length > 0 ? synonyms.slice(0, 5).join(', ') : 'N/A';
+        this.antEl.textContent = antonyms.length > 0 ? antonyms.slice(0, 5).join(', ') : 'N/A';
+
+        this.resultContainer.style.display = 'block';
+    }
+}
+
 // Initialize new trackers
 document.addEventListener('DOMContentLoaded', () => {
     new LinkedInProfileAPI();
@@ -1063,4 +1148,5 @@ document.addEventListener('DOMContentLoaded', () => {
     new TechyTextGenerator();
     new GeminiImageGenerator();
     new QRCodeGenerator();
+    new DictionaryAPI();
 });
