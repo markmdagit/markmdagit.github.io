@@ -37,6 +37,61 @@ class TechyTextGenerator {
     }
 }
 
+/* --- QR Code Generator --- */
+class QRCodeGenerator {
+    constructor() {
+        this.input = document.getElementById('qr-text');
+        this.generateBtn = document.getElementById('generate-qr-btn');
+        this.resultContainer = document.getElementById('qr-result');
+        this.baseUrl = 'https://api.qrserver.com/v1/create-qr-code/';
+
+        this.init();
+    }
+
+    init() {
+        if (this.generateBtn) {
+            this.generateBtn.addEventListener('click', () => this.generate());
+        }
+        // Allow Enter key
+        if (this.input) {
+            this.input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') this.generate();
+            });
+        }
+    }
+
+    generate() {
+        const text = this.input.value.trim();
+        if (!text) {
+            alert('Please enter some text or a URL.');
+            return;
+        }
+
+        this.resultContainer.innerHTML = '<div class="loading-indicator"><i class="fas fa-spinner fa-spin"></i> Generating...</div>';
+
+        // Construct URL
+        const encodedText = encodeURIComponent(text);
+        const imageUrl = `${this.baseUrl}?size=150x150&data=${encodedText}`;
+
+        // Create image element
+        const img = new Image();
+        img.src = imageUrl;
+        img.alt = 'QR Code';
+        img.style.border = '1px solid #dee2e6';
+        img.style.padding = '0.5rem';
+        img.style.borderRadius = '4px';
+
+        img.onload = () => {
+            this.resultContainer.innerHTML = '';
+            this.resultContainer.appendChild(img);
+        };
+
+        img.onerror = () => {
+             this.resultContainer.innerHTML = '<p style="color: red;">Failed to generate QR Code.</p>';
+        };
+    }
+}
+
 class MemeAPI {
     constructor() {
         this.apiUrl = 'https://api.imgflip.com/get_memes';
@@ -951,4 +1006,5 @@ document.addEventListener('DOMContentLoaded', () => {
     new LocationTracker();
     new GoogleCalendarTracker();
     new TechyTextGenerator();
+    new QRCodeGenerator();
 });
