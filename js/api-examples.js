@@ -1,4 +1,44 @@
 
+/* --- Simple Caching Utility --- */
+class SimpleCache {
+    constructor() {
+        this.prefix = 'api_cache_';
+    }
+
+    get(key) {
+        const itemStr = localStorage.getItem(this.prefix + key);
+        if (!itemStr) return null;
+
+        try {
+            const item = JSON.parse(itemStr);
+            const now = new Date().getTime();
+            if (now > item.expiry) {
+                localStorage.removeItem(this.prefix + key);
+                return null;
+            }
+            return item.value;
+        } catch (e) {
+            console.warn('Cache parse error', e);
+            return null;
+        }
+    }
+
+    set(key, value, ttlInMinutes = 60) {
+        const now = new Date().getTime();
+        const item = {
+            value: value,
+            expiry: now + (ttlInMinutes * 60 * 1000)
+        };
+        try {
+            localStorage.setItem(this.prefix + key, JSON.stringify(item));
+        } catch (e) {
+            console.warn('Cache set error (quota exceeded?)', e);
+        }
+    }
+}
+
+const apiCache = new SimpleCache();
+
 /* --- Techy Text Generator --- */
 class TechyTextGenerator {
     constructor() {
@@ -11,18 +51,32 @@ class TechyTextGenerator {
 
     init() {
         if (this.generateBtn) {
-            this.generateBtn.addEventListener('click', () => this.fetchText());
+            this.generateBtn.addEventListener('click', () => this.fetchText(false));
         }
-        // Initial fetch
-        this.fetchText();
+        // Initial fetch (Sample)
+        this.fetchText(true);
     }
 
-    async fetchText() {
+    async fetchText(useCache = false) {
         this.output.textContent = 'Loading...';
+
+        if (useCache) {
+            const cached = apiCache.get('techy_sample');
+            if (cached) {
+                this.render(cached);
+                return;
+            }
+        }
+
         try {
             const response = await fetch(this.apiUrl);
             if (!response.ok) throw new Error('Failed to fetch text');
             const text = await response.text();
+
+            if (useCache) {
+                apiCache.set('techy_sample', text, 60); // Cache sample for 1 hour
+            }
+
             this.render(text);
         } catch (error) {
             console.error('Error fetching techy text:', error);
@@ -37,19 +91,23 @@ class TechyTextGenerator {
     }
 }
 
+/* --- Meme API & Generator --- */
 class MemeAPI {
     constructor() {
         this.apiUrl = 'https://api.imgflip.com/get_memes';
-        this.memes = [];
     }
 
     async fetchTemplates() {
+        const cached = apiCache.get('meme_templates');
+        if (cached) return cached;
+
         try {
             const response = await fetch(this.apiUrl);
             const data = await response.json();
             if (data.success) {
-                this.memes = data.data.memes;
-                return this.memes;
+                const memes = data.data.memes;
+                apiCache.set('meme_templates', memes, 1440); // Cache for 24 hours
+                return memes;
             } else {
                 console.error('Failed to load memes');
                 return [];
@@ -58,10 +116,6 @@ class MemeAPI {
             console.error('Error fetching memes:', error);
             return [];
         }
-    }
-
-    getMemeById(id) {
-        return this.memes.find(meme => meme.id === id);
     }
 }
 
@@ -78,23 +132,29 @@ class MemeGenerator {
         this.previewText = document.getElementById('preview-text');
 
         this.currentImage = null;
+        this.memes = [];
 
         this.init();
     }
 
     async init() {
-        const templates = await this.api.fetchTemplates();
-        this.populateDropdown(templates);
+        this.memes = await this.api.fetchTemplates();
+        if (this.memes.length === 0) {
+            this.previewText.textContent = "Error loading templates.";
+            return;
+        }
+
+        this.populateDropdown(this.memes);
 
         this.generateBtn.addEventListener('click', () => this.generate());
         this.templateSelect.addEventListener('change', () => this.loadTemplate());
         this.downloadBtn.addEventListener('click', () => this.download());
 
-        // Initial load
-        if (templates.length > 0) {
-             this.templateSelect.value = templates[0].id;
-             this.loadTemplate();
-        }
+        // Sample: Load first meme with text
+        this.templateSelect.value = this.memes[0].id;
+        this.topTextInput.value = "API Examples";
+        this.bottomTextInput.value = "Are Awesome";
+        this.loadTemplate(true);
     }
 
     populateDropdown(templates) {
@@ -107,26 +167,36 @@ class MemeGenerator {
         });
     }
 
-    loadTemplate() {
+    loadTemplate(autoGenerate = false) {
         const id = this.templateSelect.value;
-        const meme = this.api.getMemeById(id);
+        const meme = this.memes.find(m => m.id === id);
 
         if (meme) {
             this.previewText.style.display = 'none';
             this.currentImage = new Image();
-            this.currentImage.crossOrigin = "Anonymous"; // Crucial for canvas export
+            this.currentImage.crossOrigin = "Anonymous";
             this.currentImage.src = meme.url;
 
             this.currentImage.onload = () => {
-                // Resize canvas to fit image, but limit max width for display
                 const maxWidth = 500;
                 const scale = Math.min(1, maxWidth / this.currentImage.width);
 
                 this.canvas.width = this.currentImage.width * scale;
                 this.canvas.height = this.currentImage.height * scale;
 
-                this.generate(); // Render initial state
+                if (autoGenerate) {
+                    this.generate();
+                } else {
+                     // Just draw image if not auto-generating with text
+                     this.ctx.drawImage(this.currentImage, 0, 0, this.canvas.width, this.canvas.height);
+                }
             };
+
+            this.currentImage.onerror = () => {
+                console.error("Failed to load meme image");
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                this.ctx.fillText("Error loading image", 10, 50);
+            }
         }
     }
 
@@ -140,7 +210,7 @@ class MemeGenerator {
         this.ctx.drawImage(this.currentImage, 0, 0, this.canvas.width, this.canvas.height);
 
         // Text Settings
-        const fontSize = this.canvas.width * 0.1; // Dynamic font size
+        const fontSize = this.canvas.width * 0.1;
         this.ctx.font = `bold ${fontSize}px Oswald, sans-serif`;
         this.ctx.fillStyle = 'white';
         this.ctx.strokeStyle = 'black';
@@ -161,8 +231,6 @@ class MemeGenerator {
     }
 
     drawText(text, x, y, maxWidth) {
-        // Simple word wrap or shrinking could be added here,
-        // but for now standard stroke/fill
         this.ctx.strokeText(text, x, y, maxWidth);
         this.ctx.fillText(text, x, y, maxWidth);
     }
@@ -174,11 +242,6 @@ class MemeGenerator {
         link.click();
     }
 }
-
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', () => {
-    new MemeGenerator();
-});
 
 /* --- LinkedIn Profile API --- */
 class LinkedInProfileAPI {
@@ -193,12 +256,12 @@ class LinkedInProfileAPI {
             connections: 500,
             avatar: "../images/headshot.png"
         };
-
         this.init();
     }
 
     async init() {
-        // Simulate network delay
+        // Simulated, so caching isn't strictly necessary for data,
+        // but consistent with "simulate network delay"
         await new Promise(resolve => setTimeout(resolve, 1500));
         this.render();
     }
@@ -226,7 +289,6 @@ class GoogleCalendarTracker {
     constructor() {
         this.container = document.getElementById('google-calendar-container');
         this.isSignedIn = false;
-
         this.init();
     }
 
@@ -245,23 +307,19 @@ class GoogleCalendarTracker {
                     </button>
                 </div>
             `;
-
-            document.getElementById('calendar-signin-btn').addEventListener('click', () => {
-                this.signIn();
-            });
+            const btn = document.getElementById('calendar-signin-btn');
+            if(btn) btn.addEventListener('click', () => this.signIn());
         } else {
             this.renderEvents();
         }
     }
 
     signIn() {
-        // Simulate auth flow
         this.container.innerHTML = `
             <div class="loading-indicator">
                 <i class="fas fa-spinner fa-spin"></i> Connecting to Google...
             </div>
         `;
-
         setTimeout(() => {
             this.isSignedIn = true;
             this.render();
@@ -269,7 +327,6 @@ class GoogleCalendarTracker {
     }
 
     renderEvents() {
-        // Mock Data
         const events = [
             { title: "Team Standup", time: "10:00 AM - 10:30 AM", location: "Google Meet", color: "#4285F4" },
             { title: "Project Review with Client", time: "11:30 AM - 12:30 PM", location: "Zoom", color: "#DB4437" },
@@ -301,8 +358,8 @@ class GoogleCalendarTracker {
                 </div>
             </div>
         `;
-
-        document.getElementById('calendar-signout-btn').addEventListener('click', () => {
+        const btn = document.getElementById('calendar-signout-btn');
+        if(btn) btn.addEventListener('click', () => {
             this.isSignedIn = false;
             this.render();
         });
@@ -314,23 +371,23 @@ class LocationTracker {
     constructor() {
         this.detailsContainer = document.getElementById('location-details');
         this.mapContainer = document.getElementById('location-map');
-        this.apiUrl = 'https://ipinfo.io/json?token=YOUR_TOKEN_HERE'; // Free tier works without token for limited requests, but better with one.
-        // Note: For this demo, we'll try without a token first, or rely on limited free access.
-        // In a real app, you should proxy this or use a token.
-        // Since I don't have a token, I'll use the public endpoint which is rate limited but works for simple testing.
         this.apiUrl = 'https://ipinfo.io/json';
-
         this.init();
     }
 
     async init() {
+        const cached = apiCache.get('location_data');
+        if (cached) {
+            this.render(cached);
+            return;
+        }
+
         try {
             const response = await fetch(this.apiUrl);
-            if (!response.ok) {
-                throw new Error('Failed to fetch location data');
-            }
+            if (!response.ok) throw new Error('Failed to fetch location data');
             const data = await response.json();
 
+            apiCache.set('location_data', data, 1440); // Cache for 24 hours
             this.render(data);
 
         } catch (error) {
@@ -340,10 +397,7 @@ class LocationTracker {
     }
 
     render(data) {
-        // ipinfo returns loc as "lat,lon" string
         const [lat, lon] = (data.loc || '0,0').split(',');
-
-        // Render Details
         this.detailsContainer.innerHTML = `
             <ul class="location-list" style="list-style: none; padding: 0;">
                 <li><strong>IP Address:</strong> ${data.ip}</li>
@@ -353,29 +407,17 @@ class LocationTracker {
                 <li><strong>Coordinates:</strong> ${lat}, ${lon}</li>
             </ul>
         `;
-
-        // Render Map
         const mapUrl = `https://maps.google.com/maps?q=${lat},${lon}&z=14&output=embed`;
-
         this.mapContainer.innerHTML = `
-            <iframe
-                width="100%"
-                height="300"
-                frameborder="0"
-                style="border:0; border-radius: 8px;"
-                src="${mapUrl}"
-                allowfullscreen>
-            </iframe>
+            <iframe width="100%" height="300" frameborder="0" style="border:0; border-radius: 8px;" src="${mapUrl}" allowfullscreen></iframe>
         `;
     }
 
     renderError(message) {
         this.detailsContainer.innerHTML = `
             <div class="error-message" style="color: #721c24; background-color: #f8d7da; border-color: #f5c6cb; padding: 1rem; border-radius: 8px;">
-                <i class="fas fa-exclamation-triangle"></i>
-                <strong>Error:</strong> ${message}
-                <br><br>
-                <small>Unable to fetch location data. Valid API token may be required.</small>
+                <i class="fas fa-exclamation-triangle"></i> <strong>Error:</strong> ${message}
+                <br><br><small>Unable to fetch location data.</small>
             </div>
         `;
         this.mapContainer.innerHTML = '';
@@ -385,11 +427,10 @@ class LocationTracker {
 /* --- Weather Tracker --- */
 class WeatherTracker {
     constructor() {
-        this.apiKey = 'YOUR_OPENWEATHER_API_KEY'; // Placeholder for security
+        this.apiKey = 'YOUR_OPENWEATHER_API_KEY';
         this.locationInput = document.getElementById('weather-location');
         this.getWeatherBtn = document.getElementById('get-weather-btn');
         this.displayContainer = document.getElementById('weather-display');
-
         this.init();
     }
 
@@ -397,78 +438,75 @@ class WeatherTracker {
         if (this.getWeatherBtn) {
             this.getWeatherBtn.addEventListener('click', () => {
                 const location = this.locationInput.value.trim();
-                if (location) {
-                    this.fetchForecast(location);
-                } else {
-                    alert('Please enter a location.');
-                }
+                if (location) this.fetchForecast(location);
+                else alert('Please enter a location.');
             });
-
-            // Also allow Enter key
             this.locationInput.addEventListener('keypress', (e) => {
                 if (e.key === 'Enter') {
                     const location = this.locationInput.value.trim();
-                    if (location) {
-                        this.fetchForecast(location);
-                    }
+                    if (location) this.fetchForecast(location);
                 }
             });
         }
+        // Sample: Load default location
+        this.locationInput.value = "Seattle";
+        this.fetchForecast("Seattle");
     }
 
     async fetchForecast(location) {
+        // Normalize location for cache key
+        const cacheKey = `weather_${location.toLowerCase().replace(/\s/g, '_')}`;
+        const cached = apiCache.get(cacheKey);
+
+        if (cached) {
+            this.render(cached.daily, cached.name, cached.isSimulated);
+            return;
+        }
+
         this.displayContainer.innerHTML = '<div class="loading-indicator"><i class="fas fa-spinner fa-spin"></i> Fetching forecast...</div>';
 
-        // Check for real API key vs placeholder
         if (this.apiKey === 'YOUR_OPENWEATHER_API_KEY') {
-            // Simulate API delay
             await new Promise(resolve => setTimeout(resolve, 800));
-            this.mockForecast(location);
+            const mockData = this.generateMockData(location);
+
+            apiCache.set(cacheKey, mockData, 60);
+            this.render(mockData.daily, mockData.name, true);
         } else {
-            // Real API implementation (Conceptual - would require valid key)
             try {
-                // 1. Geocoding API to get Lat/Lon
                 const geoResponse = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(location)}&limit=1&appid=${this.apiKey}`);
                 if (!geoResponse.ok) throw new Error('Location not found');
                 const geoData = await geoResponse.json();
-
                 if (geoData.length === 0) throw new Error('Location not found');
 
                 const { lat, lon, name } = geoData[0];
-
-                // 2. One Call API for 7-day forecast
                 const weatherResponse = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=imperial&appid=${this.apiKey}`);
                 if (!weatherResponse.ok) throw new Error('Failed to fetch weather');
                 const weatherData = await weatherResponse.json();
 
-                this.render(weatherData.daily, name);
+                const dataToCache = { daily: weatherData.daily, name: name, isSimulated: false };
+                apiCache.set(cacheKey, dataToCache, 60);
+                this.render(weatherData.daily, name, false);
 
             } catch (error) {
                 console.warn('Weather API Error (falling back to mock):', error);
-                this.mockForecast(location);
+                const mockData = this.generateMockData(location);
+                this.render(mockData.daily, mockData.name, true);
             }
         }
     }
 
-    mockForecast(location) {
-        // Generate dates for the next 7 days
+    generateMockData(location) {
         const days = [];
         const today = new Date();
         const conditions = ['Sunny', 'Cloudy', 'Rain', 'Partly Cloudy', 'Thunderstorm', 'Snow', 'Clear'];
         const icons = ['fa-sun', 'fa-cloud', 'fa-cloud-rain', 'fa-cloud-sun', 'fa-bolt', 'fa-snowflake', 'fa-moon'];
-
-        // Normalize input for display
         const displayLocation = location.charAt(0).toUpperCase() + location.slice(1);
 
         for (let i = 0; i < 7; i++) {
             const date = new Date(today);
             date.setDate(today.getDate() + i);
-
-            // Random realistic temperatures
             const maxTemp = Math.floor(Math.random() * (85 - 60 + 1)) + 60;
             const minTemp = maxTemp - Math.floor(Math.random() * 15 + 10);
-
-            // Random condition
             const randIdx = Math.floor(Math.random() * conditions.length);
 
             days.push({
@@ -477,13 +515,11 @@ class WeatherTracker {
                 weather: [{ main: conditions[randIdx], description: conditions[randIdx], iconClass: icons[randIdx] }]
             });
         }
-
-        this.render(days, displayLocation, true);
+        return { daily: days, name: displayLocation, isSimulated: true };
     }
 
     render(dailyData, locationName, isSimulated = false) {
         this.displayContainer.innerHTML = '';
-
         const header = document.createElement('div');
         header.className = 'weather-header';
         header.innerHTML = `<h4>7-Day Forecast for ${locationName} ${isSimulated ? '<span style="font-size: 0.8rem; color: #6c757d; font-weight: normal;">(Simulated Data)</span>' : ''}</h4>`;
@@ -500,13 +536,10 @@ class WeatherTracker {
             const date = new Date(day.dt * 1000);
             const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
             const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-
-            // Determine icon (mock uses FontAwesome classes, real API uses icon codes)
             let iconHtml;
             if (day.weather[0].iconClass) {
                  iconHtml = `<i class="fas ${day.weather[0].iconClass} weather-icon"></i>`;
             } else {
-                 // Map OpenWeather icons to FontAwesome or use image
                  const iconCode = day.weather[0].icon;
                  iconHtml = `<img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="${day.weather[0].main}" style="width: 50px; height: 50px;">`;
             }
@@ -518,24 +551,18 @@ class WeatherTracker {
             card.style.borderRadius = '8px';
             card.style.textAlign = 'center';
             card.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
-
             card.innerHTML = `
                 <div class="weather-day" style="font-weight: bold; margin-bottom: 0.5rem;">${dayName}</div>
                 <div class="weather-date" style="font-size: 0.9rem; color: #6c757d; margin-bottom: 0.5rem;">${dateStr}</div>
-                <div class="weather-icon-container" style="font-size: 2rem; color: #004A99; margin-bottom: 0.5rem;">
-                    ${iconHtml}
-                </div>
+                <div class="weather-icon-container" style="font-size: 2rem; color: #004A99; margin-bottom: 0.5rem;">${iconHtml}</div>
                 <div class="weather-temps" style="font-size: 1.1rem;">
                     <span class="high-temp" style="font-weight: bold;">${Math.round(day.temp.max)}°</span> /
                     <span class="low-temp" style="color: #6c757d;">${Math.round(day.temp.min)}°</span>
                 </div>
-                <div class="weather-desc" style="font-size: 0.9rem; margin-top: 0.5rem; text-transform: capitalize;">
-                    ${day.weather[0].description}
-                </div>
+                <div class="weather-desc" style="font-size: 0.9rem; margin-top: 0.5rem; text-transform: capitalize;">${day.weather[0].description}</div>
             `;
             grid.appendChild(card);
         });
-
         this.displayContainer.appendChild(grid);
     }
 }
@@ -546,20 +573,24 @@ class GitHubProfileAPI {
         this.container = document.getElementById('github-profile-container');
         this.username = 'markmdagit';
         this.apiUrl = `https://api.github.com/users/${this.username}`;
-
         this.init();
     }
 
     async init() {
+        const cached = apiCache.get(`github_${this.username}`);
+        if (cached) {
+            this.render(cached);
+            return;
+        }
+
         try {
             const response = await fetch(this.apiUrl);
             if (!response.ok) {
-                if (response.status === 403) {
-                    throw new Error('Rate limit exceeded');
-                }
+                if (response.status === 403) throw new Error('Rate limit exceeded');
                 throw new Error('Failed to fetch GitHub profile');
             }
             const data = await response.json();
+            apiCache.set(`github_${this.username}`, data, 60);
             this.render(data);
         } catch (error) {
             console.error('Error fetching GitHub profile:', error);
@@ -574,19 +605,11 @@ class GitHubProfileAPI {
                 <div class="github-info">
                     <div class="github-name">${data.name || data.login}</div>
                     <div class="github-username">${data.login}</div>
-
                     <div class="github-stats">
-                        <div class="github-stat">
-                            <strong>${data.public_repos}</strong> repos
-                        </div>
-                        <div class="github-stat">
-                            <strong>${data.followers}</strong> followers
-                        </div>
-                        <div class="github-stat">
-                            <strong>${data.following}</strong> following
-                        </div>
+                        <div class="github-stat"><strong>${data.public_repos}</strong> repos</div>
+                        <div class="github-stat"><strong>${data.followers}</strong> followers</div>
+                        <div class="github-stat"><strong>${data.following}</strong> following</div>
                     </div>
-
                     <a href="${data.html_url}" target="_blank" rel="noopener noreferrer" class="github-link">View GitHub Profile</a>
                 </div>
             </div>
@@ -602,8 +625,7 @@ class YouTubeTracker {
         this.nextBtn = document.querySelector('.next-btn');
         this.scrollAmount = 0;
         this.maxScroll = 0;
-        this.cardWidth = 270; // 250px width + 20px gap
-
+        this.cardWidth = 270;
         this.videos = [
             { id: "YmwskGLycHo", title: "iPhone 15 Pro: 3 Months Later!", views: "6.6M", channel: "Marques Brownlee" },
             { id: "305YfKMyqVw", title: "iPhone 15 Event Reactions!", views: "3.2M", channel: "Marques Brownlee" },
@@ -616,19 +638,14 @@ class YouTubeTracker {
             { id: "jfKfPfyJRdk", title: "lofi hip hop radio - beats to study/relax to", views: "Live", channel: "Lofi Girl" },
             { id: "xX2y-2VhfZY", title: "iPhone 15 Pro Camera First Impressions", views: "1M", channel: "Marques Brownlee" }
         ];
-
         this.init();
     }
 
     init() {
         this.render();
-        this.prevBtn.addEventListener('click', () => this.scroll(-1));
-        this.nextBtn.addEventListener('click', () => this.scroll(1));
-
-        // Auto-scroll loop
-        setInterval(() => {
-            this.scroll(1);
-        }, 3000);
+        if(this.prevBtn) this.prevBtn.addEventListener('click', () => this.scroll(-1));
+        if(this.nextBtn) this.nextBtn.addEventListener('click', () => this.scroll(1));
+        setInterval(() => this.scroll(1), 3000);
     }
 
     render() {
@@ -636,11 +653,8 @@ class YouTubeTracker {
         this.videos.forEach((video) => {
             const card = document.createElement('div');
             card.className = 'video-card';
-
-            // Use standard YouTube max quality thumbnail
             const thumbUrl = `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`;
             const videoUrl = `https://www.youtube.com/watch?v=${video.id}`;
-
             card.innerHTML = `
                 <a href="${videoUrl}" target="_blank" rel="noopener noreferrer" class="video-link">
                     <img src="${thumbUrl}" class="video-thumbnail" alt="${video.title}">
@@ -652,8 +666,6 @@ class YouTubeTracker {
             `;
             this.track.appendChild(card);
         });
-
-        // Calculate max scroll
         const containerWidth = document.querySelector('.youtube-carousel').offsetWidth;
         this.maxScroll = (this.videos.length * this.cardWidth) - containerWidth;
     }
@@ -661,16 +673,9 @@ class YouTubeTracker {
     scroll(direction) {
         const containerWidth = document.querySelector('.youtube-carousel').offsetWidth;
         this.maxScroll = Math.max(0, (this.videos.length * this.cardWidth) - containerWidth);
-
         this.scrollAmount += direction * this.cardWidth;
-
-        // Loop handling
-        if (this.scrollAmount > this.maxScroll) {
-            this.scrollAmount = 0; // Reset to start
-        } else if (this.scrollAmount < 0) {
-            this.scrollAmount = this.maxScroll; // Go to end
-        }
-
+        if (this.scrollAmount > this.maxScroll) this.scrollAmount = 0;
+        else if (this.scrollAmount < 0) this.scrollAmount = this.maxScroll;
         this.track.style.transform = `translateX(-${this.scrollAmount}px)`;
     }
 }
@@ -686,16 +691,12 @@ class StockTracker {
             { symbol: "CVS", name: "CVS Health", price: 75.20, change: 0.8 },
             { symbol: "UNH", name: "UnitedHealth", price: 480.10, change: -2.5 }
         ];
-
         this.init();
     }
-
     init() {
         this.render();
-        // Simulate live updates
         setInterval(() => this.updatePrices(), 2000);
     }
-
     render() {
         this.list.innerHTML = '';
         this.stocks.forEach(stock => {
@@ -703,7 +704,6 @@ class StockTracker {
             item.className = 'stock-item';
             const changeClass = stock.change >= 0 ? 'positive' : 'negative';
             const sign = stock.change >= 0 ? '+' : '';
-
             item.innerHTML = `
                 <span class="stock-symbol">${stock.symbol}</span>
                 <span class="stock-name">${stock.name}</span>
@@ -713,18 +713,13 @@ class StockTracker {
             this.list.appendChild(item);
         });
     }
-
     updatePrices() {
         this.stocks = this.stocks.map(stock => {
-            // Random fluctuation between -0.5 and +0.5
             const fluctuation = (Math.random() - 0.5);
-            let newPrice = stock.price + fluctuation;
-            let newChange = stock.change + (fluctuation * 10); // Exaggerate change % for demo
-
             return {
                 ...stock,
-                price: newPrice,
-                change: newChange
+                price: stock.price + fluctuation,
+                change: stock.change + (fluctuation * 10)
             };
         });
         this.render();
@@ -743,11 +738,7 @@ class CommodityTracker {
         ];
         this.init();
     }
-
-    init() {
-        this.render();
-    }
-
+    init() { this.render(); }
     render() {
         this.grid.innerHTML = '';
         this.commodities.forEach(comm => {
@@ -782,9 +773,16 @@ class ESPNGameTracker {
     }
 
     async init() {
+        const cached = apiCache.get('espn_data');
+        if (cached) {
+            this.renderAll(cached);
+            return;
+        }
+
         try {
             const promises = this.leagues.map(l => this.fetchLeagueData(l));
             const results = await Promise.all(promises);
+            apiCache.set('espn_data', results, 60); // Cache for 1 hour
             this.renderAll(results);
         } catch (error) {
             console.error('Error fetching ESPN data:', error);
@@ -798,41 +796,25 @@ class ESPNGameTracker {
             const response = await fetch(url);
             if (!response.ok) throw new Error(`Failed to fetch ${leagueInfo.name}`);
             const data = await response.json();
-            return {
-                ...leagueInfo,
-                events: data.events || []
-            };
+            return { ...leagueInfo, events: data.events || [] };
         } catch (error) {
             console.warn(`Error fetching ${leagueInfo.name}:`, error);
-            return {
-                ...leagueInfo,
-                events: []
-            };
+            return { ...leagueInfo, events: [] };
         }
     }
 
     renderAll(results) {
         this.container.innerHTML = '';
         const sections = {};
-
-        // Group by section
         results.forEach(result => {
-            if (!sections[result.section]) {
-                sections[result.section] = [];
-            }
+            if (!sections[result.section]) sections[result.section] = [];
             sections[result.section].push(...result.events);
         });
 
-        const sectionOrder = [
-            'Football (NFL & NCAA)',
-            'Baseball (MLB & NCAA)',
-            'Basketball (NBA & NCAA)',
-            'Hockey (NHL & NCAA)'
-        ];
+        const sectionOrder = ['Football (NFL & NCAA)', 'Baseball (MLB & NCAA)', 'Basketball (NBA & NCAA)', 'Hockey (NHL & NCAA)'];
 
         sectionOrder.forEach(sectionTitle => {
             const events = sections[sectionTitle] || [];
-
             const sectionDiv = document.createElement('div');
             sectionDiv.className = 'sport-section';
             sectionDiv.style.marginBottom = '1rem';
@@ -840,7 +822,6 @@ class ESPNGameTracker {
             sectionDiv.style.borderRadius = '8px';
             sectionDiv.style.overflow = 'hidden';
 
-            // Collapsible Header
             const header = document.createElement('div');
             header.className = 'section-header';
             header.style.padding = '1rem';
@@ -850,50 +831,31 @@ class ESPNGameTracker {
             header.style.justifyContent = 'space-between';
             header.style.alignItems = 'center';
             header.style.userSelect = 'none';
-
-            const title = document.createElement('h4');
-            title.textContent = sectionTitle;
-            title.style.margin = '0';
-            title.style.color = '#212529';
-            title.style.fontSize = '1.1rem';
-
-            const icon = document.createElement('i');
-            icon.className = 'fas fa-chevron-down';
-            icon.style.transition = 'transform 0.3s ease';
-
-            header.appendChild(title);
-            header.appendChild(icon);
+            header.innerHTML = `
+                <h4 style="margin: 0; color: #212529; font-size: 1.1rem;">${sectionTitle}</h4>
+                <i class="fas fa-chevron-down" style="transition: transform 0.3s ease;"></i>
+            `;
             sectionDiv.appendChild(header);
 
-            // Collapsible Content
             const contentDiv = document.createElement('div');
             contentDiv.className = 'section-content';
-            contentDiv.style.display = 'none'; // Default to collapsed
+            contentDiv.style.display = 'none';
             contentDiv.style.padding = '1rem';
             contentDiv.style.borderTop = '1px solid #dee2e6';
 
             if (events.length === 0) {
-                const p = document.createElement('p');
-                p.textContent = 'No active games scheduled today.';
-                p.style.margin = '0';
-                p.style.color = '#6c757d';
-                contentDiv.appendChild(p);
+                contentDiv.innerHTML = '<p style="margin: 0; color: #6c757d;">No active games scheduled today.</p>';
             } else {
                 const grid = document.createElement('div');
                 grid.className = 'games-grid';
-
-                events.forEach(event => {
-                    const card = this.createGameCard(event);
-                    grid.appendChild(card);
-                });
+                events.forEach(event => grid.appendChild(this.createGameCard(event)));
                 contentDiv.appendChild(grid);
             }
-
             sectionDiv.appendChild(contentDiv);
             this.container.appendChild(sectionDiv);
 
-            // Event Listener for Toggle
             header.addEventListener('click', () => {
+                const icon = header.querySelector('i');
                 const isHidden = contentDiv.style.display === 'none';
                 contentDiv.style.display = isHidden ? 'block' : 'none';
                 icon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
@@ -904,16 +866,10 @@ class ESPNGameTracker {
     createGameCard(event) {
         const gameCard = document.createElement('div');
         gameCard.className = 'game-card';
-
         const competitors = event.competitions[0].competitors;
         const homeTeam = competitors.find(c => c.homeAway === 'home');
         const awayTeam = competitors.find(c => c.homeAway === 'away');
-
-        // Handle status description
-        let status = event.status.type.detail;
-        if (!status) {
-                status = event.status.type.description;
-        }
+        let status = event.status.type.detail || event.status.type.description;
 
         const awayLogo = awayTeam.team.logo || 'https://placehold.co/50x50?text=Logo';
         const homeLogo = homeTeam.team.logo || 'https://placehold.co/50x50?text=Logo';
@@ -944,7 +900,6 @@ class GeminiImageGenerator {
         this.promptInput = document.getElementById('gemini-prompt');
         this.generateBtn = document.getElementById('generate-gemini-btn');
         this.resultContainer = document.getElementById('gemini-result');
-
         this.init();
     }
 
@@ -952,12 +907,23 @@ class GeminiImageGenerator {
         if (this.generateBtn) {
             this.generateBtn.addEventListener('click', () => this.generate());
         }
+        // Sample: Auto-generate
+        this.promptInput.value = "Futuristic City";
+        this.generate("Futuristic City");
     }
 
-    async generate() {
-        const prompt = this.promptInput.value.trim();
+    async generate(inputPrompt = null) {
+        const prompt = inputPrompt || this.promptInput.value.trim();
         if (!prompt) {
             alert('Please enter a prompt.');
+            return;
+        }
+
+        const cacheKey = `gemini_${prompt.toLowerCase().replace(/\s/g, '_')}`;
+        const cached = apiCache.get(cacheKey);
+
+        if (cached) {
+            this.render(cached, prompt);
             return;
         }
 
@@ -967,28 +933,15 @@ class GeminiImageGenerator {
             </div>
         `;
 
-        // Use LoremFlickr to simulate image generation based on prompt keywords
         const keywords = prompt.trim().split(/\s+/).join(',');
         const imageUrl = `https://loremflickr.com/500/300/${encodeURIComponent(keywords)}/all`;
 
-        // Preload image to ensure spinner stays until loaded
         const img = new Image();
         img.onload = () => {
-            this.resultContainer.innerHTML = `
-                <div class="gemini-image-card" style="border: 1px solid #ddd; padding: 10px; border-radius: 8px; background: #f9f9f9; display: inline-block;">
-                    <img src="${imageUrl}" alt="Generated Image" style="max-width: 100%; height: auto; border-radius: 4px;">
-                    <p style="margin-top: 10px; color: #555; font-size: 0.9rem;">
-                        <strong>Prompt:</strong> <span class="gemini-prompt-text"></span>
-                    </p>
-                    <div style="font-size: 0.8rem; color: #888; margin-top: 5px;">
-                        <i class="fas fa-magic"></i> Generated by Gemini 2.5 Flash (Simulated)
-                    </div>
-                </div>
-            `;
-            // Safely insert text to prevent XSS
-            this.resultContainer.querySelector('.gemini-prompt-text').textContent = prompt;
+            const resultData = { imageUrl: imageUrl };
+            apiCache.set(cacheKey, resultData, 1440); // Cache image URL
+            this.render(resultData, prompt);
         };
-
         img.onerror = () => {
              this.resultContainer.innerHTML = `
                 <div class="error-message" style="color: #d73a49;">
@@ -996,8 +949,22 @@ class GeminiImageGenerator {
                 </div>
             `;
         };
-
         img.src = imageUrl;
+    }
+
+    render(data, prompt) {
+        this.resultContainer.innerHTML = `
+            <div class="gemini-image-card" style="border: 1px solid #ddd; padding: 10px; border-radius: 8px; background: #f9f9f9; display: inline-block;">
+                <img src="${data.imageUrl}" alt="Generated Image" style="max-width: 100%; height: auto; border-radius: 4px;">
+                <p style="margin-top: 10px; color: #555; font-size: 0.9rem;">
+                    <strong>Prompt:</strong> <span class="gemini-prompt-text"></span>
+                </p>
+                <div style="font-size: 0.8rem; color: #888; margin-top: 5px;">
+                    <i class="fas fa-magic"></i> Generated by Gemini 2.5 Flash (Simulated)
+                </div>
+            </div>
+        `;
+        this.resultContainer.querySelector('.gemini-prompt-text').textContent = prompt;
     }
 }
 
@@ -1014,12 +981,24 @@ class QRCodeGenerator {
         if (this.generateBtn) {
             this.generateBtn.addEventListener('click', () => this.generate());
         }
+        // Sample
+        const currentUrl = "https://markmdagit.github.io";
+        this.input.value = currentUrl;
+        this.generate(currentUrl);
     }
 
-    generate() {
-        const text = this.input.value.trim();
+    generate(inputText = null) {
+        const text = inputText || this.input.value.trim();
         if (!text) {
             alert('Please enter text or a URL.');
+            return;
+        }
+
+        const cacheKey = `qr_${text.replace(/[^a-zA-Z0-9]/g, '_')}`;
+        const cached = apiCache.get(cacheKey);
+
+        if (cached) {
+            this.render(cached);
             return;
         }
 
@@ -1034,19 +1013,23 @@ class QRCodeGenerator {
 
         const img = new Image();
         img.onload = () => {
-             this.resultContainer.innerHTML = `
-                <div class="qr-card" style="border: 1px solid #ddd; padding: 10px; border-radius: 8px; background: #fff; display: inline-block;">
-                    <img src="${imageUrl}" alt="QR Code" style="width: 150px; height: 150px;">
-                    <p style="margin-top: 10px; color: #555; font-size: 0.9rem;">
-                        Scan to view content
-                    </p>
-                </div>
-            `;
+            const data = { imageUrl: imageUrl };
+            apiCache.set(cacheKey, data, 1440);
+            this.render(data);
         };
         img.onerror = () => {
             this.resultContainer.innerHTML = '<p style="color: red;">Failed to generate QR Code.</p>';
         };
         img.src = imageUrl;
+    }
+
+    render(data) {
+        this.resultContainer.innerHTML = `
+            <div class="qr-card" style="border: 1px solid #ddd; padding: 10px; border-radius: 8px; background: #fff; display: inline-block;">
+                <img src="${data.imageUrl}" alt="QR Code" style="width: 150px; height: 150px;">
+                <p style="margin-top: 10px; color: #555; font-size: 0.9rem;">Scan to view content</p>
+            </div>
+        `;
     }
 }
 
@@ -1057,12 +1040,10 @@ class DictionaryAPI {
         this.searchBtn = document.getElementById('search-dictionary-btn');
         this.resultContainer = document.getElementById('dictionary-result');
         this.errorContainer = document.getElementById('dictionary-error');
-
         this.defEl = document.getElementById('dict-definition');
         this.exEl = document.getElementById('dict-example');
         this.synEl = document.getElementById('dict-synonyms');
         this.antEl = document.getElementById('dict-antonyms');
-
         this.init();
     }
 
@@ -1073,19 +1054,28 @@ class DictionaryAPI {
                 if (e.key === 'Enter') this.search();
             });
         }
+        // Sample
+        this.input.value = "Technology";
+        this.search("Technology");
     }
 
-    async search() {
-        const word = this.input.value.trim();
+    async search(inputWord = null) {
+        const word = (inputWord || this.input.value).trim();
         if (!word) {
             alert('Please enter a word.');
             return;
         }
 
+        const cacheKey = `dict_${word.toLowerCase()}`;
+        const cached = apiCache.get(cacheKey);
+
+        if (cached) {
+            this.render(cached);
+            return;
+        }
+
         this.resultContainer.style.display = 'none';
         this.errorContainer.style.display = 'none';
-
-        // Show loading state by modifying button
         const originalBtnText = this.searchBtn.textContent;
         this.searchBtn.textContent = 'Searching...';
         this.searchBtn.disabled = true;
@@ -1099,6 +1089,7 @@ class DictionaryAPI {
             }
 
             const data = await response.json();
+            apiCache.set(cacheKey, data, 1440); // Cache for 24 hours
             this.render(data);
         } catch (error) {
             this.errorContainer.textContent = error.message;
@@ -1110,28 +1101,18 @@ class DictionaryAPI {
     }
 
     render(data) {
-        // Data is an array, we take the first entry
         const entry = data[0];
-
         let definition = null;
         let example = null;
         let allSynonyms = new Set();
         let allAntonyms = new Set();
 
-        // Iterate through meanings to aggregate data
         for (const meaning of entry.meanings) {
-            // Collect meaning-level synonyms/antonyms
             if (meaning.synonyms) meaning.synonyms.forEach(s => allSynonyms.add(s));
             if (meaning.antonyms) meaning.antonyms.forEach(a => allAntonyms.add(a));
-
             for (const def of meaning.definitions) {
-                // Set first definition found
                 if (!definition) definition = def.definition;
-
-                // Set first example found
                 if (!example && def.example) example = def.example;
-
-                // Collect definition-level synonyms/antonyms
                 if (def.synonyms) def.synonyms.forEach(s => allSynonyms.add(s));
                 if (def.antonyms) def.antonyms.forEach(a => allAntonyms.add(a));
             }
@@ -1139,18 +1120,15 @@ class DictionaryAPI {
 
         this.defEl.textContent = definition || 'N/A';
         this.exEl.textContent = example || 'N/A';
-
         const synonymsArray = Array.from(allSynonyms);
         const antonymsArray = Array.from(allAntonyms);
-
         this.synEl.textContent = synonymsArray.length > 0 ? synonymsArray.slice(0, 5).join(', ') : 'N/A';
         this.antEl.textContent = antonymsArray.length > 0 ? antonymsArray.slice(0, 5).join(', ') : 'N/A';
-
         this.resultContainer.style.display = 'block';
     }
 }
 
-// Initialize new trackers
+// Initialize
 document.addEventListener('DOMContentLoaded', () => {
     new LinkedInProfileAPI();
     new GitHubProfileAPI();
