@@ -97,3 +97,21 @@ def test_dictionary_api(page: Page):
 
     # Check that the result container is visible
     expect(page.locator('#dictionary-result')).to_be_visible()
+
+def test_dictionary_api_budget(page: Page):
+    page.goto('http://localhost:8000/pages/api-ideas.html')
+
+    # Fill input
+    page.fill('#dictionary-word', 'budget')
+
+    # Click search
+    page.click('#search-dictionary-btn')
+
+    # Wait for result
+    expect(page.locator('#dict-definition')).not_to_have_text('N/A', timeout=10000)
+
+    # Verify synonyms are populated (expect "low-cost" or similar found in adjective meaning)
+    expect(page.locator('#dict-synonyms')).not_to_have_text('N/A')
+
+    # Verify example is populated (expect example from verb meaning)
+    expect(page.locator('#dict-example')).not_to_have_text('N/A')
