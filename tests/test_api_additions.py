@@ -2,7 +2,7 @@ from playwright.sync_api import Page, expect
 import re
 
 def test_api_additions_exist(page: Page):
-    page.goto('http://localhost:8000/pages/api-ideas.html')
+    page.goto('http://localhost:8000/pages/api-examples.html')
 
     # Check YouTube Section
     expect(page.locator('h3', has_text='YouTube Trending Tracker')).to_be_visible()
@@ -21,7 +21,7 @@ def test_api_additions_exist(page: Page):
     expect(page.locator('.commodity-name', has_text='Gold')).to_be_visible()
 
 def test_gemini_image_generation(page: Page):
-    page.goto('http://localhost:8000/pages/api-ideas.html')
+    page.goto('http://localhost:8000/pages/api-examples.html')
 
     # Check Gemini Section exists
     expect(page.locator('h3', has_text='Gemini 2.5 Flash Image API')).to_be_visible()
@@ -38,7 +38,7 @@ def test_gemini_image_generation(page: Page):
     expect(img).to_have_attribute('src', re.compile(r'https://loremflickr\.com'))
 
 def test_stock_ticker_updates(page: Page):
-    page.goto('http://localhost:8000/pages/api-ideas.html')
+    page.goto('http://localhost:8000/pages/api-examples.html')
 
     # Get initial price of first stock
     first_price_loc = page.locator('.stock-price').first
@@ -57,7 +57,7 @@ def test_stock_ticker_updates(page: Page):
     assert initial_price != new_price
 
 def test_qr_code_generator(page: Page):
-    page.goto('http://localhost:8000/pages/api-ideas.html')
+    page.goto('http://localhost:8000/pages/api-examples.html')
 
     # Check section exists
     expect(page.locator('h3', has_text='QR Code Generator')).to_be_visible()
@@ -79,7 +79,7 @@ def test_qr_code_generator(page: Page):
     expect(img).to_have_attribute('src', re.compile(r'data=https%3A%2F%2Fwww\.google\.com'))
 
 def test_dictionary_api(page: Page):
-    page.goto('http://localhost:8000/pages/api-ideas.html')
+    page.goto('http://localhost:8000/pages/api-examples.html')
 
     # Check section exists
     expect(page.locator('h3', has_text='Free Dictionary API')).to_be_visible()
@@ -99,7 +99,7 @@ def test_dictionary_api(page: Page):
     expect(page.locator('#dictionary-result')).to_be_visible()
 
 def test_dictionary_api_budget(page: Page):
-    page.goto('http://localhost:8000/pages/api-ideas.html')
+    page.goto('http://localhost:8000/pages/api-examples.html')
 
     # Fill input
     page.fill('#dictionary-word', 'budget')
