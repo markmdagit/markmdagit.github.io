@@ -134,6 +134,12 @@ class MemeGenerator {
         this.currentImage = null;
         this.memes = [];
 
+        // Corporate HR level speech enforcement
+        this.restrictedWords = [
+            "fuck", "shit", "bitch", "asshole", "damn", "cunt", "nigger", "faggot",
+            "retard", "whore", "slut", "bastard", "idiot", "stupid", "hate", "kill", "die"
+        ];
+
         this.init();
     }
 
@@ -155,6 +161,12 @@ class MemeGenerator {
         this.topTextInput.value = "API Examples";
         this.bottomTextInput.value = "Are Awesome";
         this.loadTemplate(true);
+    }
+
+    isContentAppropriate(text) {
+        if (!text) return true;
+        const lowerText = text.toLowerCase();
+        return !this.restrictedWords.some(word => lowerText.includes(word));
     }
 
     populateDropdown(templates) {
@@ -203,6 +215,31 @@ class MemeGenerator {
     generate() {
         if (!this.currentImage) return;
 
+        // Content Validation
+        const topTextRaw = this.topTextInput.value;
+        const bottomTextRaw = this.bottomTextInput.value;
+
+        if (!this.isContentAppropriate(topTextRaw) || !this.isContentAppropriate(bottomTextRaw)) {
+            // Clear canvas
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+            // Draw Warning Background
+            this.ctx.fillStyle = '#f8d7da';
+            this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+            // Draw Warning Text
+            this.ctx.font = 'bold 20px Arial';
+            this.ctx.fillStyle = '#721c24';
+            this.ctx.textAlign = 'center';
+            this.ctx.textBaseline = 'middle';
+            this.ctx.fillText("Content Restricted", this.canvas.width / 2, this.canvas.height / 2 - 15);
+            this.ctx.font = '16px Arial';
+            this.ctx.fillText("Please use professional language.", this.canvas.width / 2, this.canvas.height / 2 + 15);
+
+            this.downloadBtn.style.display = 'none';
+            return;
+        }
+
         // Clear canvas
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -218,12 +255,12 @@ class MemeGenerator {
         this.ctx.textAlign = 'center';
 
         // Draw Top Text
-        const topText = this.topTextInput.value.toUpperCase();
+        const topText = topTextRaw.toUpperCase();
         this.ctx.textBaseline = 'top';
         this.drawText(topText, this.canvas.width / 2, 10, this.canvas.width - 20);
 
         // Draw Bottom Text
-        const bottomText = this.bottomTextInput.value.toUpperCase();
+        const bottomText = bottomTextRaw.toUpperCase();
         this.ctx.textBaseline = 'bottom';
         this.drawText(bottomText, this.canvas.width / 2, this.canvas.height - 10, this.canvas.width - 20);
 
