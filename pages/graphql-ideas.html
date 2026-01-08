@@ -10,7 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.css">
     <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.standalone.js"></script>
 </head>
 <body>
 
@@ -46,6 +48,9 @@
                         <div class="timeline-item">
                             <h3>GraphQL Voyager</h3>
                             <p class="item-description">Represent any GraphQL API as an interactive graph. It provides a visual representation of the schema capabilities.</p>
+                            <div id="voyager" style="height: 600px; width: 100%; border: 1px solid #dee2e6; background: white; border-radius: 4px; margin-top: 1rem;">
+                                <div class="loading-indicator"><i class="fas fa-spinner fa-spin"></i> Loading GraphQL Voyager...</div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -60,5 +65,38 @@
     </div>
 
     <script src="../js/main.js"></script>
+    <script>
+        async function renderVoyager() {
+            const { voyagerIntrospectionQuery: query } = GraphQLVoyager;
+            try {
+                const response = await fetch(
+                    'https://rickandmortyapi.com/graphql',
+                    {
+                        method: 'post',
+                        headers: {
+                            Accept: 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ query }),
+                        credentials: 'omit',
+                    },
+                );
+                const introspection = await response.json();
+
+                // Render <Voyager />
+                GraphQLVoyager.renderVoyager(document.getElementById('voyager'), {
+                    introspection,
+                });
+            } catch (error) {
+                const voyagerEl = document.getElementById('voyager');
+                if (voyagerEl) {
+                    voyagerEl.innerHTML = `<p style="color: red; padding: 1rem;">Error loading GraphQL Voyager: ${error.message}</p>`;
+                }
+                console.error('Voyager load error:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', renderVoyager);
+    </script>
 </body>
 </html>
