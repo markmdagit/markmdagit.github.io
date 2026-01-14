@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setActiveNav();
     initInfographic();
     loadProjects();
+    initAudioLog();
 });
 
 function initInfographic() {
@@ -151,5 +152,40 @@ function renderProjects(container, projects) {
         }
 
         container.appendChild(card);
+    });
+}
+
+const AUDIO_LOG_SUMMARY = "Welcome to the portfolio of Marcos Alvarez, an IT Support Professional with over 8 years of experience at Amazon. Marcos specializes in troubleshooting, network infrastructure, and asset management. His core competencies include CompTIA certifications and proficiency in languages like Java, Python, and SQL. Currently pursuing a Bachelor's in Computer Engineering, Marcos has a strong track record in improving operational efficiency, such as reducing network troubleshooting time by 30%. Explore his projects including API integrations and GraphQL experiments.";
+
+function initAudioLog() {
+    const playButton = document.getElementById('play-audio-log');
+    if (!playButton) return;
+
+    if (!('speechSynthesis' in window)) {
+        playButton.style.display = 'none';
+        return;
+    }
+
+    let isPlaying = false;
+
+    playButton.addEventListener('click', () => {
+        if (isPlaying) {
+            window.speechSynthesis.cancel();
+            isPlaying = false;
+            playButton.innerHTML = '<i class="fas fa-volume-up"></i> Play Audio Log';
+        } else {
+            const utterance = new SpeechSynthesisUtterance(AUDIO_LOG_SUMMARY);
+            utterance.onend = () => {
+                isPlaying = false;
+                playButton.innerHTML = '<i class="fas fa-volume-up"></i> Play Audio Log';
+            };
+            utterance.onerror = () => {
+                 isPlaying = false;
+                 playButton.innerHTML = '<i class="fas fa-volume-up"></i> Play Audio Log';
+            }
+            window.speechSynthesis.speak(utterance);
+            isPlaying = true;
+            playButton.innerHTML = '<i class="fas fa-stop"></i> Stop Audio Log';
+        }
     });
 }
