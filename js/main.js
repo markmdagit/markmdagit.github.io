@@ -69,34 +69,9 @@ let projectsFetchPromise = null;
 
 document.addEventListener("DOMContentLoaded", () => {
     setActiveNav();
-    initInfographic();
     loadProjects();
     initAudioLog();
 });
-
-function initInfographic() {
-    const timelineDots = document.querySelectorAll(".timeline-dot");
-    const stories = document.querySelectorAll(".story");
-
-    if (timelineDots.length === 0) return;
-
-    // Set the first dot and story as active by default
-    timelineDots[0].classList.add("active");
-    stories[0].classList.add("active");
-
-    timelineDots.forEach(dot => {
-        dot.addEventListener("click", () => {
-            const storyId = dot.dataset.story;
-            const story = document.getElementById(storyId);
-
-            timelineDots.forEach(d => d.classList.remove("active"));
-            stories.forEach(s => s.classList.remove("active"));
-
-            dot.classList.add("active");
-            story.classList.add("active");
-        });
-    });
-}
 
 async function loadProjects() {
     const carousel = document.getElementById('projects-carousel');
