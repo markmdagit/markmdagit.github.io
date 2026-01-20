@@ -3417,7 +3417,7 @@ class YouTubeTracker {
             const videoUrl = `https://www.youtube.com/watch?v=${video.id}`;
             card.innerHTML = `
                 <a href="${videoUrl}" target="_blank" rel="noopener noreferrer" class="video-link">
-                    <img src="${thumbUrl}" class="video-thumbnail" alt="${video.title}">
+                    <img src="${thumbUrl}" class="video-thumbnail" alt="${video.title}" loading="lazy">
                     <div class="video-info">
                         <div class="video-title">${video.title}</div>
                         <div class="video-stats">${video.channel} • ${video.views} views</div>
