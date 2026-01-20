@@ -1,10 +1,12 @@
 [
     {
         "name": "API Examples",
-        "description": "Explore various API concepts, including a custom Meme Generator."
+        "description": "Explore various API concepts, including a custom Meme Generator.",
+        "url": "api-examples.html"
     },
     {
         "name": "GraphQL Ideas",
-        "description": "Exploring the power of GraphQL with various public APIs."
+        "description": "Exploring the power of GraphQL with various public APIs.",
+        "url": "graphql-ideas.html"
     }
 ]
