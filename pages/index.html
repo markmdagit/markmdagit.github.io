@@ -104,6 +104,8 @@
 
                 <section id="blogs">
                     <h2 class="section-title">Blogs</h2>
+                    <button id="add-blog-btn" style="display:none; margin-bottom: 1rem; padding: 0.5rem 1rem; cursor: pointer; background-color: #004A99; color: white; border: none; border-radius: 5px;">+ Add New Blog</button>
+                    <div id="dynamic-blogs-container" class="timeline"></div>
                     <div class="timeline">
                         <div class="timeline-item">
                             <a href="barrierstosuccess.html"><h3>Barriers to Success</h3></a>
@@ -124,11 +126,62 @@
             <footer>
                 <p>&lt;/&gt; Built with Jules by Google</p>
                 <p><a href="disclaimer.html">Disclaimer</a></p>
+                <p>
+                    <button id="login-btn" style="background:none; border:none; color:#004A99; text-decoration:underline; cursor:pointer;">Admin Login</button>
+                    <button id="logout-btn" style="display:none; background:none; border:none; color:#004A99; text-decoration:underline; cursor:pointer;">Logout</button>
+                </p>
             </footer>
         </div>
 
     </div>
 
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Admin Login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+                <button type="submit" style="padding: 0.5rem 1rem; background-color: #004A99; color: white; border: none; border-radius: 5px; cursor: pointer;">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Blog Modal -->
+    <div id="blog-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Add New Blog</h2>
+            <form id="blog-form">
+                <div class="form-group">
+                    <label for="blog-title">Title</label>
+                    <input type="text" id="blog-title" name="title" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="blog-date">Date</label>
+                    <input type="date" id="blog-date" name="date" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="blog-url">URL (Optional)</label>
+                    <input type="url" id="blog-url" name="url" class="form-control" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label for="blog-description">Content / Description</label>
+                    <textarea id="blog-description" name="description" class="form-control" rows="5" required></textarea>
+                </div>
+                <button type="submit" style="padding: 0.5rem 1rem; background-color: #004A99; color: white; border: none; border-radius: 5px; cursor: pointer;">Post Blog</button>
+            </form>
+        </div>
+    </div>
+
     <script src="../js/main.js"></script>
+    <script src="../js/blog.js"></script>
 </body>
 </html>
