@@ -61,7 +61,7 @@ function initBlogSystem() {
             const password = loginForm.password.value;
 
             // Simple hardcoded check
-            if (username === 'admin' && password === 'admin123') {
+            if (username === 'MarcResume2026' && password === '5A8BnZkYMTDCU"Y&;M|ipTh6c2su2}!]-;IJP\\hN£a.sZm"+e,') {
                 localStorage.setItem('isLoggedIn', 'true');
                 updateUI(true);
                 renderBlogs(); // Re-render to show delete buttons
