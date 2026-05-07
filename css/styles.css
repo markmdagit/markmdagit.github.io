@@ -770,3 +770,114 @@ footer {
     border-top: 1px solid #dee2e6;
     padding-top: 0.75rem;
 }
+/* --- Laptop Card Styles --- */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.laptop-card {
+    background-color: #2c3034;
+    border: 1px solid #4a4a4a;
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.laptop-card h3 {
+    font-size: 1.4rem;
+    color: #00aaff;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #00aaff;
+    padding-bottom: 0.5rem;
+}
+
+.laptop-card .spec {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.laptop-card .spec-key {
+    font-weight: 600;
+    color: #c0c0c0;
+    width: auto;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+}
+
+.laptop-card .spec-value {
+    color: #f0f0f0;
+    flex-grow: 1;
+    margin-right: 0.5rem;
+}
+
+.copy-button {
+    background-color: #007acc;
+    border: none;
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.copy-button:hover {
+    background-color: #005fa3;
+}
+
+.copy-button i {
+    font-size: 0.8rem;
+}
+
+.copy-button .fa-check {
+    color: #42f598;
+}
+
+/* --- Infographic and Supply Chain Styles --- */
+/* Restyle spec blocks that contain our new infographics */
+.spec:has(.spec-value-context) {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.spec:has(.spec-value-context) .spec-key {
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.spec-value-context {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #f0f0f0;
+    margin-top: 0.5rem;
+}
+
+.context-icon {
+    font-size: 1.5rem;
+    color: #00aaff;
+    flex-shrink: 0;
+}
+
+.map-container {
+    margin-top: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #4a4a4a;
+    padding: 1rem;
+    background-color: #343a40;
+
+.category-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #00aaff;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #4a4a4a;
+}
