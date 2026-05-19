@@ -3,5 +3,15 @@
         "name": "API Examples",
         "description": "Explore various API concepts, including a custom Meme Generator.",
         "url": "api-examples.html"
+    },
+    {
+        "name": "Laptops Database",
+        "description": "A comprehensive database exploring various laptops and their specifications.",
+        "url": "laptops.html"
+    },
+    {
+        "name": "Supply Chain",
+        "description": "An overview of supply chain analysis and global logistics operations.",
+        "url": "supply_chain.html"
     }
 ]
