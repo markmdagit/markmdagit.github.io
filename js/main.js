@@ -98,7 +98,7 @@ function renderProjects(container, projects) {
     });
 }
 
-const AUDIO_LOG_SUMMARY = "Welcome to the portfolio of Marcos Alvarez, specializing in Information Systems & Tech and Business Intelligence & Analytics. His core focus includes Data Modeling, IT Infrastructure Automation, and Analytical Pipelines. With over 8 years of experience at Amazon, Marcos specializes in troubleshooting, network infrastructure, and asset management. His core competencies include CompTIA certifications and proficiency in languages like Java, Python, and SQL. Currently pursuing a Bachelor of Science as a Business Analyst, Marcos has a strong track record in improving operational efficiency, such as reducing network troubleshooting time by 30%. Explore his projects including API integrations and GraphQL experiments.";
+const AUDIO_LOG_SUMMARY = "Welcome to the portfolio of Marcos Alvarez, specializing in Information Systems & Tech and Business Intelligence & Analytics. His core focus includes Data Modeling, IT Infrastructure Automation, and Analytical Pipelines. With over 8 years of experience at Amazon, Marcos specializes in troubleshooting, network infrastructure, and asset management. His core competencies include CompTIA certifications and proficiency in languages like Java, Python, and SQL. Currently pursuing a Bachelor of Science as a Business Analyst, Marcos has a strong track record in improving operational efficiency, such as reducing network troubleshooting time by 30%. Explore his projects including API integrations.";
 
 function initAudioLog() {
     const playButton = document.getElementById('play-audio-log');

@@ -14,7 +14,7 @@ The primary goal of this project is to showcase the transition from **IT Support
 2. **Technical Depth:** Favor Computer Engineering concepts. If suggesting a new project, prioritize systems-level work, API integrations, or hardware-interfacing code rather than generic templates.
 3. **Professional Voice:** - Experience should emphasize: *Asset visibility, infrastructure build-outs, and network lifecycles.*
    - Pivot should emphasize: *Automation, data pipelines, and full-stack development.*
-4. **API & Data Focus:** Since the site features GraphQL and REST API examples, ensure any new technical content demonstrates high data literacy and security best practices.
+4. **API & Data Focus:** Since the site features REST API examples, ensure any new technical content demonstrates high data literacy and security best practices.
 
 ## Execution Rules
 - **Environment:** Static site hosted on GitHub Pages. Use relative paths (`./images/`) only.
