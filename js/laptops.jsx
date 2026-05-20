@@ -191,6 +191,8 @@ const Laptops = () => {
 
     return (
         <React.Fragment>
+            <h2 className="section-title">Laptop Database</h2>
+            <p className="item-description" style={{ marginBottom: '2rem' }}>Created a database of EliteBooks, ZBooks, and their accessories for inventory analysis.</p>
             <div className="card-grid">
                 {filteredLaptops.map(laptop => <LaptopCard key={laptop.Model} laptop={laptop} />)}
             </div>
