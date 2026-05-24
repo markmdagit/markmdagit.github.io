@@ -31,6 +31,7 @@ In-Use:
 - JSON
 - SQL Lite
 - Python
+- Jules
 
 Pending: 
 - Supabase (Full Live Database - Large Scale Use)
