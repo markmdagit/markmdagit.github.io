@@ -1,3 +1,51 @@
+/* --- Theme Variables --- */
+:root {
+    --bg-color: #F8F9FA;
+    --text-color: #212529;
+    --primary-color: #004A99;
+    --secondary-color: #6C757D;
+    --card-bg: #fff;
+    --border-color: #dee2e6;
+    --hover-color: #003a75;
+    --timeline-bg: #e9ecef;
+    --meta-color: #212529;
+}
+
+body.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #f0f0f0;
+    --primary-color: #66b3ff;
+    --secondary-color: #a0a0a0;
+    --card-bg: #2d2d2d;
+    --border-color: #404040;
+    --hover-color: #99ccff;
+    --timeline-bg: #242424;
+    --meta-color: #d0d0d0;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 1001;
+}
+
+.theme-toggle-btn:hover {
+    color: var(--primary-color);
+}
+
+/* Make sure container is relative for absolute positioning of toggle btn */
+.container {
+    position: relative;
+}
+
 /* --- General & Body Styles --- */
 * {
     margin: 0;
@@ -11,8 +59,8 @@ html {
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #F8F9FA;
-    color: #212529;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     line-height: 1.6;
     font-size: 16px;
 }
@@ -25,31 +73,31 @@ body {
 
 h1, h2, h3 {
     font-weight: 700;
-    color: #004A99;
+    color: var(--primary-color);
 }
 
 a {
     text-decoration: none;
-    color: #004A99;
+    color: var(--primary-color);
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #004A99;
+    color: var(--primary-color);
 }
 
 /* --- Header Section --- */
 .resume-header {
     padding: 2rem;
     text-align: center;
-    border-bottom: 1px solid #6C757D;
+    border-bottom: 1px solid var(--secondary-color);
 }
 
 .profile-pic {
     width: 140px;
     height: 140px;
     border-radius: 50%;
-    border: 4px solid #004A99;
+    border: 4px solid var(--primary-color);
     object-fit: cover;
     margin-bottom: 1rem;
     display: block;
@@ -65,28 +113,28 @@ a:hover {
 
 .resume-header .job-title {
     font-size: 1.2rem;
-    color: #212529;
+    color: var(--text-color);
     font-weight: 300;
     margin-bottom: 1rem;
 }
 
 .social-links a {
-    color: #004A99;
+    color: var(--primary-color);
     margin: 0 0.75rem;
     font-size: 1.5rem;
     transition: transform 0.3s ease;
 }
 
 .social-links a:hover {
-    color: #003a75;
+    color: var(--hover-color);
     transform: translateY(-2px);
 }
 
 /* --- Navigation --- */
 nav {
-    background-color: #F8F9FA;
+    background-color: var(--bg-color);
     padding: 0.75rem 0;
-    border-bottom: 1px solid #6C757D;
+    border-bottom: 1px solid var(--secondary-color);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -102,7 +150,7 @@ nav ul {
 }
 
 nav ul li a {
-    color: #212529;
+    color: var(--text-color);
     font-weight: 400;
     padding: 0.5rem 1rem;
     border-bottom: 3px solid transparent;
@@ -113,18 +161,18 @@ nav ul li a {
 
 nav ul li a.active,
 nav ul li a:hover {
-    color: #004A99;
-    border-bottom-color: #004A99;
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
 }
 
 /* --- Main Content Sections --- */
 section {
     padding: 5rem 2rem;
-    border-bottom: 1px solid #dee2e6;
+    border-bottom: 1px solid var(--border-color);
 }
 
 section:nth-of-type(odd) {
-    background-color: #e9ecef;
+    background-color: var(--timeline-bg);
 }
 
 section:last-of-type {
@@ -133,10 +181,10 @@ section:last-of-type {
 
 .section-title {
     font-size: 2rem;
-    color: #004A99;
+    color: var(--primary-color);
     margin-bottom: 2rem;
     padding-left: 1rem;
-    border-left: 4px solid #004A99;
+    border-left: 4px solid var(--primary-color);
 }
 
 /* --- Skills Section --- */
@@ -147,10 +195,10 @@ section:last-of-type {
 }
 
 .skill-card {
-    background-color: #fff;
+    background-color: var(--card-bg);
     padding: 2rem;
     border-radius: 8px;
-    border: 1px solid #dee2e6;
+    border: 1px solid var(--border-color);
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
@@ -160,12 +208,12 @@ section:last-of-type {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    color: #212529;
+    color: var(--text-color);
 }
 
 .skill-card li, .skill-card p {
     margin-bottom: 0.5rem;
-    color: #212529;
+    color: var(--text-color);
 }
 
 .languages .tags {
@@ -175,7 +223,7 @@ section:last-of-type {
 }
 
 .tag {
-    background-color: #004A99;
+    background-color: var(--primary-color);
     color: #F8F9FA;
     padding: 0.3rem 0.8rem;
     border-radius: 15px;
@@ -189,11 +237,11 @@ section:last-of-type {
 }
 
 .timeline-item {
-    background-color: #fff;
+    background-color: var(--card-bg);
     padding: 2rem;
     margin-bottom: 2rem;
     border-radius: 8px;
-    border: 1px solid #dee2e6;
+    border: 1px solid var(--border-color);
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     position: relative;
     border-left: none;
@@ -213,23 +261,23 @@ section:last-of-type {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background-color: #004A99;
-    border: 3px solid #F8F9FA;
+    background-color: var(--primary-color);
+    border: 3px solid var(--bg-color);
 }
 
 .timeline-item h3 {
     font-size: 1.5rem;
-    color: #212529;
+    color: var(--text-color);
 }
 
 .item-meta {
-    color: #212529;
+    color: var(--text-color);
     font-style: italic;
     margin-bottom: 0.5rem;
 }
 
 .item-description {
-    color: #212529;
+    color: var(--text-color);
 }
 
 /* --- Footer --- */
@@ -238,9 +286,9 @@ footer {
     padding: 2rem;
     margin-top: 2rem;
     font-size: 0.9rem;
-    color: #212529;
-    background-color: #F8F9FA;
-    border-top: 1px solid #6C757D;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    border-top: 1px solid var(--secondary-color);
 }
 
 /* --- Responsive Design --- */
@@ -266,7 +314,7 @@ footer {
     text-align: center;
     padding: 2rem;
     font-style: italic;
-    color: #212529;
+    color: var(--text-color);
 }
 
 
@@ -276,10 +324,10 @@ footer {
     flex-wrap: wrap;
     gap: 2rem;
     margin-top: 2rem;
-    background-color: #fff;
+    background-color: var(--card-bg);
     padding: 2rem;
     border-radius: 8px;
-    border: 1px solid #dee2e6;
+    border: 1px solid var(--border-color);
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
@@ -295,8 +343,8 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #F8F9FA;
-    border: 1px solid #dee2e6;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
     padding: 1rem;
     border-radius: 8px;
 }
@@ -320,7 +368,7 @@ footer {
 }
 
 .form-control:focus {
-    border-color: #004A99;
+    border-color: var(--primary-color);
     outline: none;
     box-shadow: 0 0 0 2px rgba(0,74,153,0.25);
 }
@@ -339,17 +387,17 @@ footer {
 
 /* --- New API Projects Styles --- */
 .api-project {
-    background-color: #fff;
+    background-color: var(--card-bg);
     padding: 2rem;
     border-radius: 8px;
-    border: 1px solid #dee2e6;
+    border: 1px solid var(--border-color);
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     margin-bottom: 2rem;
 }
 
 .api-project h3 {
     margin-bottom: 0.5rem;
-    color: #004A99;
+    color: var(--primary-color);
 }
 
 .api-project-grid {
@@ -450,20 +498,20 @@ footer {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: #F8F9FA;
-    border: 1px solid #dee2e6;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
     border-radius: 4px;
 }
 
 .stock-symbol {
     font-weight: 700;
     font-size: 1.1rem;
-    color: #212529;
+    color: var(--text-color);
 }
 
 .stock-name {
     font-size: 0.9rem;
-    color: #6C757D;
+    color: var(--secondary-color);
     margin-right: auto;
     margin-left: 1rem;
 }
@@ -499,8 +547,8 @@ footer {
 }
 
 .commodity-card {
-    background-color: #F8F9FA;
-    border: 1px solid #dee2e6;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
     padding: 1rem;
     border-radius: 4px;
     text-align: center;
@@ -510,18 +558,18 @@ footer {
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    color: #004A99;
+    color: var(--primary-color);
 }
 
 .commodity-price {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #212529;
+    color: var(--text-color);
 }
 
 .commodity-unit {
     font-size: 0.8rem;
-    color: #6C757D;
+    color: var(--secondary-color);
 }
 
 /* --- Video Link Styles --- */
@@ -540,7 +588,7 @@ footer {
 
 /* --- LinkedIn Profile API --- */
 .linkedin-profile-card {
-    background-color: #fff;
+    background-color: var(--card-bg);
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     overflow: hidden;
@@ -569,7 +617,7 @@ footer {
     border: 3px solid #fff;
     margin-top: -50px;
     object-fit: cover;
-    background-color: #fff;
+    background-color: var(--card-bg);
 }
 
 .linkedin-name {
@@ -710,8 +758,8 @@ footer {
 }
 
 .game-card {
-    background-color: #F8F9FA;
-    border: 1px solid #dee2e6;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 1.5rem;
     display: flex;
@@ -752,22 +800,22 @@ footer {
 .team-score {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #212529;
+    color: var(--text-color);
 }
 
 .vs {
     font-weight: bold;
-    color: #6C757D;
+    color: var(--secondary-color);
     padding: 0 1rem;
 }
 
 .game-status {
     font-size: 0.85rem;
-    color: #6C757D;
+    color: var(--secondary-color);
     font-weight: 500;
     text-align: center;
     width: 100%;
-    border-top: 1px solid #dee2e6;
+    border-top: 1px solid var(--border-color);
     padding-top: 0.75rem;
 }
 /* --- Laptop Card Styles --- */
