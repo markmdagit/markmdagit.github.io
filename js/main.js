@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setActiveNav();
     loadProjects();
     initAudioLog();
+    initThemeToggle();
 });
 
 async function loadProjects() {
@@ -210,4 +211,32 @@ function createSupplyChainCard(container, item) {
         }
     }
     container.appendChild(card);
+}
+
+function initThemeToggle() {
+    const toggleBtn = document.getElementById('theme-toggle');
+    if (!toggleBtn) return;
+
+    const icon = toggleBtn.querySelector('i');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        let theme = 'light';
+        if (document.body.classList.contains('dark-mode')) {
+            theme = 'dark';
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+        localStorage.setItem('theme', theme);
+    });
 }
