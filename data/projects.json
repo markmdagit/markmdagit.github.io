@@ -13,5 +13,10 @@
         "name": "Laptop Supply Chain",
         "description": "An overview of supply chain analysis and global logistics operations.",
         "url": "supply_chain.html"
+    },
+    {
+        "name": "PLC Ghost Bit Catcher",
+        "description": "Visualizing and debugging intermittent conveyor stops using bit counters.",
+        "url": "plc_ghost_bit_catcher.html"
     }
 ]
