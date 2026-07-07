@@ -1,7 +1,7 @@
 # AGENTS.md - Career Pivot Context: IT Support to Software Engineering
 
 ## Core Mission
-The primary goal of this project is to showcase the transition from **IT Support Associate II (8 years at Amazon)** to **Software Engineer/Computer Engineer**. The AI should prioritize engineering-heavy solutions over basic IT or simple web fixes.
+The primary goal of this project is to showcase the transition from **IT Support (8 years at Amazon)** to **Software Engineer/Computer Engineer**. The AI should prioritize engineering-heavy solutions over basic IT or simple web fixes.
 
 ## Tech Stack & Academic Context
 - **Current Education:** BS in Computer Engineering at CSUSB (In Progress). 

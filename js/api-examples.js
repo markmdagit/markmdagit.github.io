@@ -3010,9 +3010,9 @@ class LinkedInProfileAPI {
         this.profileUrl = "https://www.linkedin.com/in/marcos-alvarez-ab2ba5109/";
         this.data = {
             name: "Marcos Alvarez",
-            headline: "IT Support Associate II at Amazon Robotics Sort Center",
+            headline: "IT Support at Amazon Robotics Sort Center",
             location: "United States",
-            about: "IT Support Associate II with over 8 years of experience at Amazon. Currently pursuing a Bachelor of Science in Computer Science at CSUSB.",
+            about: "IT Support with over 8 years of experience at Amazon. Currently pursuing a Bachelor of Science in Computer Science at CSUSB.",
             connections: 500,
             avatar: "../images/headshot.png"
         };
