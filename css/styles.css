@@ -930,3 +930,33 @@ footer {
     padding-bottom: 0.5rem;
     border-bottom: 1px solid #4a4a4a;
 }
+
+/* --- Print Styles (for Save as PDF) --- */
+@media print {
+    body {
+        background-color: #fff !important;
+        color: #000 !important;
+    }
+    .container {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    #theme-toggle, .audio-log-btn, nav, footer, .controls {
+        display: none !important;
+    }
+    .social-links a {
+        display: none !important;
+    }
+    a {
+        text-decoration: none !important;
+        color: #000 !important;
+    }
+    /* Expand collapsibles for printing */
+    .league-section {
+        display: block !important;
+    }
+}
