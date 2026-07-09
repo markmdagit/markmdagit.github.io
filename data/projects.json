@@ -18,5 +18,10 @@
         "name": "PLC Ghost Bit Catcher",
         "description": "Visualizing and debugging intermittent conveyor stops using bit counters.",
         "url": "plc_ghost_bit_catcher.html"
+    },
+    {
+        "name": "Physics Art",
+        "description": "A 2D physics simulation of colliding dots leaving continuous colorful traces on an HTML5 Canvas.",
+        "url": "physicsart.html"
     }
 ]
