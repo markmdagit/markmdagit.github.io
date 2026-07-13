@@ -229,39 +229,28 @@ function createSupplyChainCard(container, item) {
 }
 
 window.generateResumePDF = function() {
+    // Ensure we are on the main page where these sections exist.
+    if (!document.getElementById('experience')) {
+        window.location.href = 'index.html?printResume=true';
+        return;
+    }
+
     const printContent = document.createElement('div');
     printContent.id = 'resume-print-container';
 
     // Header
     const header = document.createElement('div');
-    header.style.textAlign = 'center';
-    header.style.marginBottom = '20px';
-    header.style.borderBottom = '2px solid #333';
-    header.style.paddingBottom = '10px';
+    header.className = 'resume-header-clean';
 
     const name = document.createElement('h1');
     name.textContent = 'Marcos Alvarez';
-    name.style.margin = '0';
-    name.style.fontSize = '24px';
 
-    const title = document.createElement('h2');
+    const title = document.createElement('p');
     title.textContent = 'Information Systems & Technology | Business Intelligence & Analytics';
-    title.style.margin = '5px 0 0 0';
-    title.style.fontSize = '16px';
-    title.style.fontWeight = 'normal';
-    title.style.color = '#555';
 
     header.appendChild(name);
     header.appendChild(title);
     printContent.appendChild(header);
-
-    // Ensure we are on the main page where these sections exist.
-    // If not, we could redirect or just tell the user, but for now, redirect to index.html and trigger print
-    if (!document.getElementById('experience')) {
-        // We aren't on index.html, redirect there and add a query parameter to print
-        window.location.href = 'index.html?printResume=true';
-        return;
-    }
 
     // Extract Sections
     const sectionsToExtract = ['experience', 'technologies', 'education'];
@@ -270,14 +259,22 @@ window.generateResumePDF = function() {
         const originalSection = document.getElementById(sectionId);
         if (originalSection) {
             const clonedSection = originalSection.cloneNode(true);
-            clonedSection.style.marginBottom = '20px';
 
-            // Adjust styles for print (e.g., ensure text is dark, spacing is tight)
-            const headings = clonedSection.querySelectorAll('h2, h3');
-            headings.forEach(h => {
-                h.style.color = '#000';
-                h.style.marginTop = '10px';
-                h.style.marginBottom = '5px';
+            // Strip attributes from the section itself
+            clonedSection.removeAttribute('id');
+            clonedSection.removeAttribute('class');
+            clonedSection.removeAttribute('style');
+
+            // Strip attributes and remove icons from all children
+            const allElements = clonedSection.querySelectorAll('*');
+            allElements.forEach(el => {
+                el.removeAttribute('id');
+                el.removeAttribute('class');
+                el.removeAttribute('style');
+
+                if (el.tagName.toLowerCase() === 'i' || el.tagName.toLowerCase() === 'svg') {
+                    el.remove();
+                }
             });
 
             printContent.appendChild(clonedSection);
