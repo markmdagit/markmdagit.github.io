@@ -959,4 +959,35 @@ footer {
     .league-section {
         display: block !important;
     }
+
+    /* Specific styles for Resume Print Mode */
+    body.resume-print-mode > *:not(#resume-print-container) {
+        display: none !important;
+    }
+
+    #resume-print-container {
+        display: block !important;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    #resume-print-container .timeline-item {
+        border-left: none;
+        padding-left: 0;
+        margin-bottom: 15px;
+    }
+
+    #resume-print-container .skills-grid {
+        display: block;
+    }
+
+    #resume-print-container .skill-card {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin-bottom: 10px;
+    }
 }

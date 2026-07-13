@@ -28,6 +28,21 @@ document.addEventListener("DOMContentLoaded", () => {
     loadProjects();
     initAudioLog();
     initThemeToggle();
+
+    // Check if we need to auto-trigger the resume print
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('printResume') === 'true') {
+        // Wait a small amount for DOM/fonts to be ready, then print
+        setTimeout(() => {
+            if (typeof window.generateResumePDF === 'function') {
+                window.generateResumePDF();
+
+                // Remove the query parameter so refreshing doesn't keep printing
+                const newUrl = window.location.pathname;
+                window.history.replaceState({}, document.title, newUrl);
+            }
+        }, 500);
+    }
 });
 
 async function loadProjects() {
@@ -211,6 +226,76 @@ function createSupplyChainCard(container, item) {
         }
     }
     container.appendChild(card);
+}
+
+window.generateResumePDF = function() {
+    const printContent = document.createElement('div');
+    printContent.id = 'resume-print-container';
+
+    // Header
+    const header = document.createElement('div');
+    header.style.textAlign = 'center';
+    header.style.marginBottom = '20px';
+    header.style.borderBottom = '2px solid #333';
+    header.style.paddingBottom = '10px';
+
+    const name = document.createElement('h1');
+    name.textContent = 'Marcos Alvarez';
+    name.style.margin = '0';
+    name.style.fontSize = '24px';
+
+    const title = document.createElement('h2');
+    title.textContent = 'Information Systems & Technology | Business Intelligence & Analytics';
+    title.style.margin = '5px 0 0 0';
+    title.style.fontSize = '16px';
+    title.style.fontWeight = 'normal';
+    title.style.color = '#555';
+
+    header.appendChild(name);
+    header.appendChild(title);
+    printContent.appendChild(header);
+
+    // Ensure we are on the main page where these sections exist.
+    // If not, we could redirect or just tell the user, but for now, redirect to index.html and trigger print
+    if (!document.getElementById('experience')) {
+        // We aren't on index.html, redirect there and add a query parameter to print
+        window.location.href = 'index.html?printResume=true';
+        return;
+    }
+
+    // Extract Sections
+    const sectionsToExtract = ['experience', 'technologies', 'education'];
+
+    sectionsToExtract.forEach(sectionId => {
+        const originalSection = document.getElementById(sectionId);
+        if (originalSection) {
+            const clonedSection = originalSection.cloneNode(true);
+            clonedSection.style.marginBottom = '20px';
+
+            // Adjust styles for print (e.g., ensure text is dark, spacing is tight)
+            const headings = clonedSection.querySelectorAll('h2, h3');
+            headings.forEach(h => {
+                h.style.color = '#000';
+                h.style.marginTop = '10px';
+                h.style.marginBottom = '5px';
+            });
+
+            printContent.appendChild(clonedSection);
+        }
+    });
+
+    // We append the container to body, call print, then remove it
+    // To only print this container, we'll use CSS @media print
+    document.body.appendChild(printContent);
+
+    // Add a temporary class to body to hide everything else
+    document.body.classList.add('resume-print-mode');
+
+    window.print();
+
+    // Cleanup
+    document.body.classList.remove('resume-print-mode');
+    document.body.removeChild(printContent);
 }
 
 function initThemeToggle() {
