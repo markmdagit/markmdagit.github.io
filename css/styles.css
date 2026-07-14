@@ -280,6 +280,28 @@ section:last-of-type {
     color: var(--text-color);
 }
 
+.item-description strong {
+    display: inline-block;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.item-description strong:first-child {
+    margin-top: 0.5rem;
+}
+
+.item-description ul {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.item-description li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
 /* --- Footer --- */
 footer {
     text-align: center;
