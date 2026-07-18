@@ -23,5 +23,10 @@
         "name": "Physics Art",
         "description": "A 2D physics simulation of colliding dots leaving continuous colorful traces on an HTML5 Canvas.",
         "url": "physicsart.html"
+    },
+    {
+        "name": "AWS Data Engineer Personal Project: Data Ingestion and Transformation Example",
+        "description": "A showcase of AWS data pipeline concepts.",
+        "url": "aws_data_engineer.html"
     }
 ]
