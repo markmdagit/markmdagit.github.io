@@ -35,3 +35,7 @@ In-Use:
 
 Pending: 
 - Supabase (Full Live Database - Large Scale Use)
+
+Projects:
+- https://livingwage.mit.edu/counties/06065 Go deeper to the city level with infographics = Pending
+- 
