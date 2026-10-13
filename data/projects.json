@@ -13,5 +13,10 @@
         "name": "Laptop Supply Chain",
         "description": "An overview of supply chain analysis and global logistics operations.",
         "url": "supply_chain.html"
+    },
+    {
+        "name": "Azure Data Pipeline Example",
+        "description": "An example of an Azure Data Pipeline utilizing Laptop Database and Laptop Supply Chain data.",
+        "url": "azure_pipeline.html"
     }
 ]
