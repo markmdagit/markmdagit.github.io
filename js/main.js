@@ -75,42 +75,75 @@ async function loadProjects() {
 }
 
 function renderProjects(container, projects) {
-    container.innerHTML = '';
-    if (!projects || projects.length === 0) return;
+    if (!projects || projects.length === 0) {
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        }
+        return;
+    }
 
     // Use a grid layout if possible, similar to other sections
     if (!container.classList.contains('card-grid')) {
         container.classList.add('card-grid');
     }
 
-    projects.forEach(p => {
-        const card = document.createElement('div');
-        card.classList.add('skill-card'); // Reusing skill-card for consistent styling
+    const existingCards = Array.from(container.children);
 
-        // Wrap content in link if URL exists
-        let contentWrapper = card;
+    projects.forEach((p, i) => {
+        let card;
+        if (i < existingCards.length) {
+            card = existingCards[i];
+        } else {
+            card = document.createElement('div');
+            card.classList.add('skill-card');
+            container.appendChild(card);
+        }
+
+        let contentWrapper;
+        let a = card.querySelector('a');
+
         if (p.url) {
-            const link = document.createElement('a');
-            link.href = p.url;
-            link.style.textDecoration = 'none';
-            link.style.color = 'inherit';
-            link.style.display = 'block';
-            card.appendChild(link);
-            contentWrapper = link;
+            if (!a) {
+                while(card.firstChild) card.removeChild(card.firstChild);
+                a = document.createElement('a');
+                a.style.textDecoration = 'none';
+                a.style.color = 'inherit';
+                a.style.display = 'block';
+                card.appendChild(a);
+            }
+            a.href = p.url;
+            contentWrapper = a;
+        } else {
+            if (a) {
+                while(card.firstChild) card.removeChild(card.firstChild);
+            }
+            contentWrapper = card;
         }
 
-        const title = document.createElement('h3');
+        let title = contentWrapper.querySelector('h3');
+        if (!title) {
+            title = document.createElement('h3');
+            contentWrapper.appendChild(title);
+        }
         title.textContent = p.name || 'Project';
-        contentWrapper.appendChild(title);
 
+        let desc = contentWrapper.querySelector('p');
         if (p.description) {
-            const desc = document.createElement('p');
+            if (!desc) {
+                desc = document.createElement('p');
+                contentWrapper.appendChild(desc);
+            }
             desc.textContent = p.description;
-            contentWrapper.appendChild(desc);
+        } else {
+            if (desc) {
+                contentWrapper.removeChild(desc);
+            }
         }
-
-        container.appendChild(card);
     });
+
+    for (let i = projects.length; i < existingCards.length; i++) {
+        container.removeChild(existingCards[i]);
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {

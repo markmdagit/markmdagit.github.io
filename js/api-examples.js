@@ -144,7 +144,9 @@ class WeatherTracker {
     }
 
     render(dailyData, locationName, isSimulated = false) {
-        this.displayContainer.innerHTML = '';
+        while (this.displayContainer.firstChild) {
+            this.displayContainer.removeChild(this.displayContainer.firstChild);
+        }
         const header = document.createElement('div');
         header.className = 'weather-header';
         header.innerHTML = `<h4>7-Day Forecast for ${locationName} ${isSimulated ? '<span style="font-size: 0.8rem; color: #6c757d; font-weight: normal;">(Simulated Data)</span>' : ''}</h4>`;
@@ -242,7 +244,9 @@ class ESPNGameTracker {
     }
 
     renderAll(results) {
-        this.container.innerHTML = '';
+        while (this.container.firstChild) {
+            this.container.removeChild(this.container.firstChild);
+        }
         const sections = {};
         results.forEach(result => {
             if (!sections[result.section]) sections[result.section] = [];
