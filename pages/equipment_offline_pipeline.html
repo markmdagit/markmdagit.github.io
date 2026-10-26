@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marcos Alvarez | Azure Data Pipeline</title>
+    <title>Marcos Alvarez | Why Does This Equipment Keep Dropping Offline? Pipeline Example</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,24 +41,9 @@
         <div class="content-wrapper">
             <main>
 
-                <section id="azure-pipeline">
-                    <h2 class="section-title">Azure Data Pipeline Example</h2>
+                <section id="equipment-offline-pipeline">
+                    <h2 class="section-title">Why Does This Equipment Keep Dropping Offline? Pipeline Example</h2>
 
-                    <p>This project demonstrates an end-to-end data pipeline built on Microsoft Azure, integrating our <strong>Laptop Database</strong> and <strong>Laptop Supply Chain</strong> datasets.</p>
-
-                    <h3>Architecture Overview</h3>
-                    <ul>
-                        <li><strong>Data Ingestion:</strong> Azure Data Factory (ADF) extracts the raw JSON data from both sources into Azure Data Lake Storage (ADLS).</li>
-                        <li><strong>Data Transformation:</strong> Azure Databricks processes the raw data, normalizing model specifications and joining them with supply chain ODM logistics.</li>
-                        <li><strong>Data Serving:</strong> The refined dataset is loaded into Azure Synapse Analytics for querying.</li>
-                        <li><strong>Visualization:</strong> Power BI connects to Synapse to build interactive dashboards on laptop manufacturing efficiency and component specs.</li>
-                    </ul>
-
-                    <h3>Example Data Flow</h3>
-                    <p>The pipeline successfully merges <code>laptops.json</code> with <code>supply_chain.json</code>, enabling queries like:</p>
-                    <pre><code>SELECT l.Model, l.Processor, s.Final_Assembly_Location
-FROM Laptops l
-JOIN SupplyChain s ON l.Series = s.Model_Series;</code></pre>
                 </section>
 
             </main>

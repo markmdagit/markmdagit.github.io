@@ -15,8 +15,8 @@
         "url": "supply_chain.html"
     },
     {
-        "name": "Azure Data Pipeline Example",
-        "description": "An example of an Azure Data Pipeline utilizing Laptop Database and Laptop Supply Chain data.",
-        "url": "azure_pipeline.html"
+        "name": "Why Does This Equipment Keep Dropping Offline? Pipeline Example",
+        "description": "",
+        "url": "equipment_offline_pipeline.html"
     }
 ]
