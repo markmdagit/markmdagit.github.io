@@ -6,13 +6,13 @@ class SimpleCache {
     }
 
     get(key) {
-        const itemStr = localStorage.getItem(this.prefix + key);
-        if (!itemStr) return null;
-
         try {
+            const itemStr = localStorage.getItem(this.prefix + key);
+            if (!itemStr) return null;
+
             const item = JSON.parse(itemStr);
-            const now = new Date().getTime();
-            if (now > item.expiry) {
+            const now = Date.now();
+            if (!item || typeof item.expiry !== 'number' || now > item.expiry) {
                 localStorage.removeItem(this.prefix + key);
                 return null;
             }
@@ -23,21 +23,56 @@ class SimpleCache {
         }
     }
 
+    pruneExpired() {
+        try {
+            const now = Date.now();
+            const keysToRemove = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const k = localStorage.key(i);
+                if (k && k.startsWith(this.prefix)) {
+                    try {
+                        const item = JSON.parse(localStorage.getItem(k));
+                        if (!item || typeof item.expiry !== 'number' || now > item.expiry) {
+                            keysToRemove.push(k);
+                        }
+                    } catch (_) {
+                        keysToRemove.push(k);
+                    }
+                }
+            }
+            keysToRemove.forEach(k => localStorage.removeItem(k));
+        } catch (e) {
+            console.warn('Cache prune error', e);
+        }
+    }
+
     set(key, value, ttlInMinutes = 60) {
-        const now = new Date().getTime();
+        const now = Date.now();
         const item = {
             value: value,
             expiry: now + (ttlInMinutes * 60 * 1000)
         };
+        const serialized = JSON.stringify(item);
         try {
-            localStorage.setItem(this.prefix + key, JSON.stringify(item));
+            localStorage.setItem(this.prefix + key, serialized);
         } catch (e) {
-            console.warn('Cache set error (quota exceeded?)', e);
+            this.pruneExpired();
+            try {
+                localStorage.setItem(this.prefix + key, serialized);
+            } catch (retryErr) {
+                console.warn('Cache set error (quota exceeded?)', retryErr);
+            }
         }
     }
 }
 
 const apiCache = new SimpleCache();
+
+function fetchWithTimeout(url, timeoutMs = 8000) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    return fetch(url, { signal: controller.signal }).finally(() => clearTimeout(timer));
+}
 
 /* --- Techy Text Generator --- */
 
@@ -60,6 +95,8 @@ class WeatherTracker {
     }
 
     init() {
+        if (!this.displayContainer || !this.locationInput) return;
+
         if (this.getWeatherBtn) {
             this.getWeatherBtn.addEventListener('click', () => {
                 const location = this.locationInput.value.trim();
@@ -78,9 +115,20 @@ class WeatherTracker {
         this.fetchForecast("Seattle");
     }
 
+    showLoading() {
+        this.displayContainer.replaceChildren();
+        const loadingDiv = document.createElement('div');
+        loadingDiv.className = 'loading-indicator';
+        const spinner = document.createElement('i');
+        spinner.className = 'fas fa-spinner fa-spin';
+        loadingDiv.appendChild(spinner);
+        loadingDiv.appendChild(document.createTextNode(' Fetching forecast...'));
+        this.displayContainer.appendChild(loadingDiv);
+    }
+
     async fetchForecast(location) {
         // Normalize location for cache key
-        const cacheKey = `weather_${location.toLowerCase().replace(/\s/g, '_')}`;
+        const cacheKey = `weather_${location.toLowerCase().replace(/\s+/g, '_')}`;
         const cached = apiCache.get(cacheKey);
 
         if (cached) {
@@ -88,7 +136,7 @@ class WeatherTracker {
             return;
         }
 
-        this.displayContainer.innerHTML = '<div class="loading-indicator"><i class="fas fa-spinner fa-spin"></i> Fetching forecast...</div>';
+        this.showLoading();
 
         if (this.apiKey === 'YOUR_OPENWEATHER_API_KEY') {
             await new Promise(resolve => setTimeout(resolve, 800));
@@ -98,13 +146,13 @@ class WeatherTracker {
             this.render(mockData.daily, mockData.name, true);
         } else {
             try {
-                const geoResponse = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(location)}&limit=1&appid=${this.apiKey}`);
+                const geoResponse = await fetchWithTimeout(`https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(location)}&limit=1&appid=${encodeURIComponent(this.apiKey)}`);
                 if (!geoResponse.ok) throw new Error('Location not found');
                 const geoData = await geoResponse.json();
-                if (geoData.length === 0) throw new Error('Location not found');
+                if (!Array.isArray(geoData) || geoData.length === 0) throw new Error('Location not found');
 
                 const { lat, lon, name } = geoData[0];
-                const weatherResponse = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=imperial&appid=${this.apiKey}`);
+                const weatherResponse = await fetchWithTimeout(`https://api.openweathermap.org/data/3.0/onecall?lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}&exclude=current,minutely,hourly,alerts&units=imperial&appid=${encodeURIComponent(this.apiKey)}`);
                 if (!weatherResponse.ok) throw new Error('Failed to fetch weather');
                 const weatherData = await weatherResponse.json();
 
@@ -144,13 +192,23 @@ class WeatherTracker {
     }
 
     render(dailyData, locationName, isSimulated = false) {
-        while (this.displayContainer.firstChild) {
-            this.displayContainer.removeChild(this.displayContainer.firstChild);
-        }
+        this.displayContainer.replaceChildren();
+        const fragment = document.createDocumentFragment();
+
         const header = document.createElement('div');
         header.className = 'weather-header';
-        header.innerHTML = `<h4>7-Day Forecast for ${locationName} ${isSimulated ? '<span style="font-size: 0.8rem; color: #6c757d; font-weight: normal;">(Simulated Data)</span>' : ''}</h4>`;
-        this.displayContainer.appendChild(header);
+        const h4 = document.createElement('h4');
+        h4.textContent = `7-Day Forecast for ${locationName} `;
+        if (isSimulated) {
+            const simSpan = document.createElement('span');
+            simSpan.style.fontSize = '0.8rem';
+            simSpan.style.color = '#6c757d';
+            simSpan.style.fontWeight = 'normal';
+            simSpan.textContent = '(Simulated Data)';
+            h4.appendChild(simSpan);
+        }
+        header.appendChild(h4);
+        fragment.appendChild(header);
 
         const grid = document.createElement('div');
         grid.className = 'weather-grid';
@@ -159,17 +217,11 @@ class WeatherTracker {
         grid.style.gap = '1rem';
         grid.style.marginTop = '1rem';
 
-        dailyData.slice(0, 7).forEach(day => {
+        (dailyData || []).slice(0, 7).forEach(day => {
             const date = new Date(day.dt * 1000);
             const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
             const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-            let iconHtml;
-            if (day.weather[0].iconClass) {
-                 iconHtml = `<i class="fas ${day.weather[0].iconClass} weather-icon"></i>`;
-            } else {
-                 const iconCode = day.weather[0].icon;
-                 iconHtml = `<img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="${day.weather[0].main}" style="width: 50px; height: 50px;">`;
-            }
+            const weatherInfo = (day.weather && day.weather[0]) ? day.weather[0] : {};
 
             const card = document.createElement('div');
             card.className = 'weather-card';
@@ -178,19 +230,78 @@ class WeatherTracker {
             card.style.borderRadius = '8px';
             card.style.textAlign = 'center';
             card.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
-            card.innerHTML = `
-                <div class="weather-day" style="font-weight: bold; margin-bottom: 0.5rem;">${dayName}</div>
-                <div class="weather-date" style="font-size: 0.9rem; color: #6c757d; margin-bottom: 0.5rem;">${dateStr}</div>
-                <div class="weather-icon-container" style="font-size: 2rem; color: #004A99; margin-bottom: 0.5rem;">${iconHtml}</div>
-                <div class="weather-temps" style="font-size: 1.1rem;">
-                    <span class="high-temp" style="font-weight: bold;">${Math.round(day.temp.max)}°</span> /
-                    <span class="low-temp" style="color: #6c757d;">${Math.round(day.temp.min)}°</span>
-                </div>
-                <div class="weather-desc" style="font-size: 0.9rem; margin-top: 0.5rem; text-transform: capitalize;">${day.weather[0].description}</div>
-            `;
+
+            const dayDiv = document.createElement('div');
+            dayDiv.className = 'weather-day';
+            dayDiv.style.fontWeight = 'bold';
+            dayDiv.style.marginBottom = '0.5rem';
+            dayDiv.textContent = dayName;
+
+            const dateDiv = document.createElement('div');
+            dateDiv.className = 'weather-date';
+            dateDiv.style.fontSize = '0.9rem';
+            dateDiv.style.color = '#6c757d';
+            dateDiv.style.marginBottom = '0.5rem';
+            dateDiv.textContent = dateStr;
+
+            const iconContainer = document.createElement('div');
+            iconContainer.className = 'weather-icon-container';
+            iconContainer.style.fontSize = '2rem';
+            iconContainer.style.color = '#004A99';
+            iconContainer.style.marginBottom = '0.5rem';
+
+            if (weatherInfo.iconClass && /^fa-[a-z0-9-]+$/i.test(weatherInfo.iconClass)) {
+                const iconEl = document.createElement('i');
+                iconEl.className = `fas ${weatherInfo.iconClass} weather-icon`;
+                iconContainer.appendChild(iconEl);
+            } else if (weatherInfo.icon && /^[a-z0-9]+$/i.test(weatherInfo.icon)) {
+                const imgEl = document.createElement('img');
+                imgEl.src = `https://openweathermap.org/img/wn/${encodeURIComponent(weatherInfo.icon)}@2x.png`;
+                imgEl.alt = weatherInfo.main || 'Weather icon';
+                imgEl.width = 50;
+                imgEl.height = 50;
+                imgEl.loading = 'lazy';
+                imgEl.decoding = 'async';
+                imgEl.style.width = '50px';
+                imgEl.style.height = '50px';
+                iconContainer.appendChild(imgEl);
+            }
+
+            const tempsDiv = document.createElement('div');
+            tempsDiv.className = 'weather-temps';
+            tempsDiv.style.fontSize = '1.1rem';
+
+            const highSpan = document.createElement('span');
+            highSpan.className = 'high-temp';
+            highSpan.style.fontWeight = 'bold';
+            highSpan.textContent = `${Math.round(day.temp?.max ?? 0)}°`;
+
+            const lowSpan = document.createElement('span');
+            lowSpan.className = 'low-temp';
+            lowSpan.style.color = '#6c757d';
+            lowSpan.textContent = `${Math.round(day.temp?.min ?? 0)}°`;
+
+            tempsDiv.appendChild(highSpan);
+            tempsDiv.appendChild(document.createTextNode(' / '));
+            tempsDiv.appendChild(lowSpan);
+
+            const descDiv = document.createElement('div');
+            descDiv.className = 'weather-desc';
+            descDiv.style.fontSize = '0.9rem';
+            descDiv.style.marginTop = '0.5rem';
+            descDiv.style.textTransform = 'capitalize';
+            descDiv.textContent = weatherInfo.description || '';
+
+            card.appendChild(dayDiv);
+            card.appendChild(dateDiv);
+            card.appendChild(iconContainer);
+            card.appendChild(tempsDiv);
+            card.appendChild(descDiv);
             grid.appendChild(card);
         });
-        this.displayContainer.appendChild(grid);
+
+        fragment.appendChild(grid);
+        this.displayContainer.appendChild(fragment);
     }
 }
 
@@ -213,6 +324,8 @@ class ESPNGameTracker {
     }
 
     async init() {
+        if (!this.container) return;
+
         const cached = apiCache.get('espn_data');
         if (cached) {
             this.renderAll(cached);
@@ -226,14 +339,17 @@ class ESPNGameTracker {
             this.renderAll(results);
         } catch (error) {
             console.error('Error fetching ESPN data:', error);
-            this.container.innerHTML = '<p>Failed to load games. Please try again later.</p>';
+            this.container.replaceChildren();
+            const errorMsg = document.createElement('p');
+            errorMsg.textContent = 'Failed to load games. Please try again later.';
+            this.container.appendChild(errorMsg);
         }
     }
 
     async fetchLeagueData(leagueInfo) {
         const url = `${this.baseApiUrl}/${leagueInfo.sport}/${leagueInfo.league}/scoreboard`;
         try {
-            const response = await fetch(url);
+            const response = await fetchWithTimeout(url);
             if (!response.ok) throw new Error(`Failed to fetch ${leagueInfo.name}`);
             const data = await response.json();
             return { ...leagueInfo, events: data.events || [] };
@@ -244,16 +360,17 @@ class ESPNGameTracker {
     }
 
     renderAll(results) {
-        while (this.container.firstChild) {
-            this.container.removeChild(this.container.firstChild);
-        }
+        this.container.replaceChildren();
         const sections = {};
         results.forEach(result => {
             if (!sections[result.section]) sections[result.section] = [];
-            sections[result.section].push(...result.events);
+            if (Array.isArray(result.events)) {
+                sections[result.section].push(...result.events);
+            }
         });
 
         const sectionOrder = ['Football (NFL & NCAA)', 'Baseball (MLB & NCAA)', 'Basketball (NBA & NCAA)', 'Hockey (NHL & NCAA)'];
+        const fragment = document.createDocumentFragment();
 
         sectionOrder.forEach(sectionTitle => {
             const events = sections[sectionTitle] || [];
@@ -273,10 +390,19 @@ class ESPNGameTracker {
             header.style.justifyContent = 'space-between';
             header.style.alignItems = 'center';
             header.style.userSelect = 'none';
-            header.innerHTML = `
-                <h4 style="margin: 0; color: #212529; font-size: 1.1rem;">${sectionTitle}</h4>
-                <i class="fas fa-chevron-down" style="transition: transform 0.3s ease;"></i>
-            `;
+
+            const h4 = document.createElement('h4');
+            h4.style.margin = '0';
+            h4.style.color = '#212529';
+            h4.style.fontSize = '1.1rem';
+            h4.textContent = sectionTitle;
+
+            const chevron = document.createElement('i');
+            chevron.className = 'fas fa-chevron-down';
+            chevron.style.transition = 'transform 0.3s ease';
+
+            header.appendChild(h4);
+            header.appendChild(chevron);
             sectionDiv.appendChild(header);
 
             const contentDiv = document.createElement('div');
@@ -286,52 +412,103 @@ class ESPNGameTracker {
             contentDiv.style.borderTop = '1px solid #dee2e6';
 
             if (events.length === 0) {
-                contentDiv.innerHTML = '<p style="margin: 0; color: #6c757d;">No active games scheduled today.</p>';
+                const emptyMsg = document.createElement('p');
+                emptyMsg.style.margin = '0';
+                emptyMsg.style.color = '#6c757d';
+                emptyMsg.textContent = 'No active games scheduled today.';
+                contentDiv.appendChild(emptyMsg);
             } else {
                 const grid = document.createElement('div');
                 grid.className = 'games-grid';
-                events.forEach(event => grid.appendChild(this.createGameCard(event)));
+                const cardsFragment = document.createDocumentFragment();
+                events.forEach(event => cardsFragment.appendChild(this.createGameCard(event)));
+                grid.appendChild(cardsFragment);
                 contentDiv.appendChild(grid);
             }
             sectionDiv.appendChild(contentDiv);
-            this.container.appendChild(sectionDiv);
+            fragment.appendChild(sectionDiv);
 
             header.addEventListener('click', () => {
-                const icon = header.querySelector('i');
                 const isHidden = contentDiv.style.display === 'none';
                 contentDiv.style.display = isHidden ? 'block' : 'none';
-                icon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+                chevron.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
             });
         });
+
+        this.container.appendChild(fragment);
+    }
+
+    getSafeLogoUrl(url) {
+        const fallback = 'https://placehold.co/50x50?text=Logo';
+        if (!url || typeof url !== 'string') return fallback;
+        try {
+            const parsed = new URL(url);
+            return (parsed.protocol === 'https:' || parsed.protocol === 'http:') ? parsed.href : fallback;
+        } catch (_) {
+            return fallback;
+        }
+    }
+
+    createTeamElement(competitor) {
+        const teamDiv = document.createElement('div');
+        teamDiv.className = 'team';
+
+        const teamData = competitor?.team || {};
+        const fallbackLogo = 'https://placehold.co/50x50?text=Logo';
+
+        const img = document.createElement('img');
+        img.src = this.getSafeLogoUrl(teamData.logo);
+        img.alt = teamData.displayName || 'Team';
+        img.className = 'team-logo';
+        img.width = 50;
+        img.height = 50;
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.addEventListener('error', () => {
+            if (img.src !== fallbackLogo) {
+                img.src = fallbackLogo;
+            }
+        }, { once: true });
+
+        const nameSpan = document.createElement('span');
+        nameSpan.className = 'team-name';
+        nameSpan.textContent = teamData.shortDisplayName || 'TBD';
+
+        const scoreSpan = document.createElement('span');
+        scoreSpan.className = 'team-score';
+        scoreSpan.textContent = competitor?.score || '-';
+
+        teamDiv.appendChild(img);
+        teamDiv.appendChild(nameSpan);
+        teamDiv.appendChild(scoreSpan);
+        return teamDiv;
     }
 
     createGameCard(event) {
         const gameCard = document.createElement('div');
         gameCard.className = 'game-card';
-        const competitors = event.competitions[0].competitors;
-        const homeTeam = competitors.find(c => c.homeAway === 'home');
-        const awayTeam = competitors.find(c => c.homeAway === 'away');
-        let status = event.status.type.detail || event.status.type.description;
+        const competitors = event?.competitions?.[0]?.competitors || [];
+        const homeTeam = competitors.find(c => c.homeAway === 'home') || {};
+        const awayTeam = competitors.find(c => c.homeAway === 'away') || {};
+        const status = event?.status?.type?.detail || event?.status?.type?.description || '';
 
-        const awayLogo = awayTeam.team.logo || 'https://placehold.co/50x50?text=Logo';
-        const homeLogo = homeTeam.team.logo || 'https://placehold.co/50x50?text=Logo';
+        const teamsDiv = document.createElement('div');
+        teamsDiv.className = 'game-teams';
 
-        gameCard.innerHTML = `
-            <div class="game-teams">
-                <div class="team">
-                    <img src="${awayLogo}" alt="${awayTeam.team.displayName}" class="team-logo" onerror="this.src='https://placehold.co/50x50?text=Logo'">
-                    <span class="team-name">${awayTeam.team.shortDisplayName}</span>
-                    <span class="team-score">${awayTeam.score || '-'}</span>
-                </div>
-                <div class="vs">@</div>
-                <div class="team">
-                    <img src="${homeLogo}" alt="${homeTeam.team.displayName}" class="team-logo" onerror="this.src='https://placehold.co/50x50?text=Logo'">
-                    <span class="team-name">${homeTeam.team.shortDisplayName}</span>
-                    <span class="team-score">${homeTeam.score || '-'}</span>
-                </div>
-            </div>
-            <div class="game-status">${status}</div>
-        `;
+        const vsDiv = document.createElement('div');
+        vsDiv.className = 'vs';
+        vsDiv.textContent = '@';
+
+        teamsDiv.appendChild(this.createTeamElement(awayTeam));
+        teamsDiv.appendChild(vsDiv);
+        teamsDiv.appendChild(this.createTeamElement(homeTeam));
+
+        const statusDiv = document.createElement('div');
+        statusDiv.className = 'game-status';
+        statusDiv.textContent = status;
+
+        gameCard.appendChild(teamsDiv);
+        gameCard.appendChild(statusDiv);
         return gameCard;
     }
 }

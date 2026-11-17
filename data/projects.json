@@ -5,14 +5,9 @@
         "url": "api-examples.html"
     },
     {
-        "name": "Laptops Database",
-        "description": "A comprehensive database exploring various laptops and their specifications.",
+        "name": "Laptops Database & Supply Chain",
+        "description": "A comprehensive database exploring enterprise laptop specifications, replacement parts, accessories, and global supply chain history.",
         "url": "laptops.html"
-    },
-    {
-        "name": "Laptop Supply Chain",
-        "description": "An overview of supply chain analysis and global logistics operations.",
-        "url": "supply_chain.html"
     },
     {
         "name": "Why Does This Equipment Keep Dropping Offline? Pipeline Example",

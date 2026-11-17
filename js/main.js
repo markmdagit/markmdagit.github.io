@@ -6,12 +6,32 @@ async function fetchData(url) {
     return response.json();
 }
 
+function isSafeUrl(url, allowRelative = true) {
+    if (!url || typeof url !== 'string') return false;
+    const trimmed = url.trim();
+    if (!trimmed) return false;
+    try {
+        const parsed = new URL(trimmed, window.location.href);
+        if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:') {
+            return false;
+        }
+        if (!allowRelative && !/^https?:\/\//i.test(trimmed)) {
+            return false;
+        }
+        return true;
+    } catch (_) {
+        return false;
+    }
+}
+
 function setActiveNav() {
     const navLinks = document.querySelectorAll('nav a');
     const currentPage = window.location.pathname.split('/').pop();
 
     navLinks.forEach(link => {
-        const linkPage = link.getAttribute('href').split('/').pop();
+        const href = link.getAttribute('href');
+        if (!href) return;
+        const linkPage = href.split('/').pop();
         if (linkPage === currentPage) {
             link.classList.add('active');
         } else {
@@ -88,21 +108,22 @@ function renderProjects(container, projects) {
     }
 
     const existingCards = Array.from(container.children);
+    const fragment = document.createDocumentFragment();
 
     projects.forEach((p, i) => {
         let card;
-        if (i < existingCards.length) {
+        const isExisting = i < existingCards.length;
+        if (isExisting) {
             card = existingCards[i];
         } else {
             card = document.createElement('div');
             card.classList.add('skill-card');
-            container.appendChild(card);
         }
 
         let contentWrapper;
         let a = card.querySelector('a');
 
-        if (p.url) {
+        if (p.url && isSafeUrl(p.url, true)) {
             if (!a) {
                 while(card.firstChild) card.removeChild(card.firstChild);
                 a = document.createElement('a');
@@ -139,90 +160,19 @@ function renderProjects(container, projects) {
                 contentWrapper.removeChild(desc);
             }
         }
+
+        if (!isExisting) {
+            fragment.appendChild(card);
+        }
     });
+
+    if (fragment.childNodes.length > 0) {
+        container.appendChild(fragment);
+    }
 
     for (let i = projects.length; i < existingCards.length; i++) {
         container.removeChild(existingCards[i]);
     }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    const elitebookSupplyChainContainer = document.getElementById("elitebook-supply-chain-cards");
-    const zbookSupplyChainContainer = document.getElementById("zbook-supply-chain-cards");
-    if (elitebookSupplyChainContainer && zbookSupplyChainContainer) {
-        fetchData("../data/supply_chain.json")
-            .then(data => {
-                const elitebookSupplyData = data.filter(item => item["Model Series"] === "Elitebook");
-                const zbookSupplyData = data.filter(item => item["Model Series"] === "Zbook Studio");
-
-                elitebookSupplyData.forEach(item => createSupplyChainCard(elitebookSupplyChainContainer, item));
-                zbookSupplyData.forEach(item => createSupplyChainCard(zbookSupplyChainContainer, item));
-            })
-            .catch(error => console.error("Error fetching or creating supply chain cards:", error));
-    }
-});
-
-function createSupplyChainCard(container, item) {
-    const card = document.createElement('div');
-    card.className = 'laptop-card'; // Re-use laptop-card styling
-
-    const title = document.createElement('h3');
-    title.textContent = `${item["Model Series"]} ${item["Generation"]}`;
-    card.appendChild(title);
-
-    const specsToShow = {
-        "Assembly Location(s)": item["Typical Final Assembly Location(s)"],
-        "Assembly Partners (ODMs)": item["Primary Assembly Partners (ODMs)"],
-        "Notes & Context": item["Notes & Context"]
-    };
-
-    for (const [key, value] of Object.entries(specsToShow)) {
-        if (value) {
-            const specDiv = document.createElement('div');
-            specDiv.className = 'spec';
-
-            const keySpan = document.createElement('span');
-            keySpan.className = 'spec-key';
-            keySpan.textContent = key + ':';
-            specDiv.appendChild(keySpan);
-
-            const valueSpan = document.createElement('span');
-            valueSpan.className = 'spec-value';
-
-            if (key === "Assembly Partners (ODMs)" && Array.isArray(value)) {
-                valueSpan.textContent = value.map(partner => partner.name).join(', ');
-            } else if (key === "Assembly Location(s)" && Array.isArray(value)) {
-                valueSpan.textContent = value.map(loc => loc.name).join(', ');
-            } else {
-                valueSpan.textContent = value;
-            }
-
-            specDiv.appendChild(valueSpan);
-            card.appendChild(specDiv);
-
-            if (key === "Assembly Partners (ODMs)" && Array.isArray(value)) {
-                value.forEach(partner => {
-                    if (partner.map_url) {
-                        const mapContainer = document.createElement('div');
-                        mapContainer.className = 'map-container';
-
-                        const iframe = document.createElement('iframe');
-                        iframe.src = partner.map_url;
-                        iframe.width = '100%';
-                        iframe.height = '250';
-                        iframe.style.border = 0;
-                        iframe.allowFullscreen = true;
-                        iframe.loading = 'lazy';
-                        iframe.title = `Map of ${partner.name} headquarters`;
-
-                        mapContainer.appendChild(iframe);
-                        card.appendChild(mapContainer);
-                    }
-                });
-            }
-        }
-    }
-    container.appendChild(card);
 }
 
 window.generateResumePDF = function() {
@@ -262,16 +212,14 @@ window.generateResumePDF = function() {
             clonedSection.removeAttribute('class');
             clonedSection.removeAttribute('style');
 
-            // Strip attributes and remove icons from all children
-            const allElements = clonedSection.querySelectorAll('*');
-            allElements.forEach(el => {
+            // Remove icons first to avoid iterating over removed subtrees
+            clonedSection.querySelectorAll('i, svg').forEach(el => el.remove());
+
+            // Strip attributes from remaining children
+            clonedSection.querySelectorAll('[id], [class], [style]').forEach(el => {
                 el.removeAttribute('id');
                 el.removeAttribute('class');
                 el.removeAttribute('style');
-
-                if (el.tagName.toLowerCase() === 'i' || el.tagName.toLowerCase() === 'svg') {
-                    el.remove();
-                }
             });
 
             printContent.appendChild(clonedSection);
@@ -297,12 +245,19 @@ function initThemeToggle() {
     if (!toggleBtn) return;
 
     const icon = toggleBtn.querySelector('i');
-    const currentTheme = localStorage.getItem('theme');
+    let currentTheme = null;
+    try {
+        currentTheme = localStorage.getItem('theme');
+    } catch (_) {
+        // Ignore storage errors in restricted environments
+    }
 
     if (currentTheme === 'dark') {
         document.body.classList.add('dark-mode');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
+        if (icon) {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
     }
 
     toggleBtn.addEventListener('click', () => {
@@ -310,12 +265,18 @@ function initThemeToggle() {
         let theme = 'light';
         if (document.body.classList.contains('dark-mode')) {
             theme = 'dark';
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        } else {
+            if (icon) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        } else if (icon) {
             icon.classList.remove('fa-sun');
             icon.classList.add('fa-moon');
         }
-        localStorage.setItem('theme', theme);
+        try {
+            localStorage.setItem('theme', theme);
+        } catch (_) {
+            // Ignore storage errors in restricted environments
+        }
     });
 }
