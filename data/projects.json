@@ -8,10 +8,5 @@
         "name": "Laptops Database & Supply Chain",
         "description": "A comprehensive database exploring enterprise laptop specifications, replacement parts, accessories, and global supply chain history.",
         "url": "laptops.html"
-    },
-    {
-        "name": "Why Does This Equipment Keep Dropping Offline? Pipeline Example",
-        "description": "",
-        "url": "equipment_offline_pipeline.html"
     }
 ]
