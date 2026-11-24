@@ -13,5 +13,10 @@
         "name": "Warning Flags",
         "description": "An interactive four-tier severity scale (White, Grey, Red, and Black flags) for measuring the real-world impact of an event.",
         "url": "warning_flags.html"
+    },
+    {
+        "name": "Distrust, Verify, Stay Suspicious, Be Persistent",
+        "description": "",
+        "url": "distrust_verify_stay_suspicious_be_persistent.html"
     }
 ]
