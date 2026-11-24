@@ -8,5 +8,10 @@
         "name": "Laptops Database & Supply Chain",
         "description": "A comprehensive database exploring enterprise laptop specifications, replacement parts, accessories, and global supply chain history.",
         "url": "laptops.html"
+    },
+    {
+        "name": "Warning Flags",
+        "description": "",
+        "url": "warning_flags.html"
     }
 ]
