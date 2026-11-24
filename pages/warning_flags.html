@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Warning Flags — an interactive four-tier event severity scale (White, Grey, Red, Black) for measuring real-world impact with objective thresholds.">
     <title>Marcos Alvarez | Warning Flags</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,6 +45,107 @@
                 <section id="warning-flags">
                     <h2 class="section-title">Warning Flags</h2>
 
+                    <p class="wf-intro">
+                        A structured four-tier severity scale for measuring how serious an event has become. Defining clear thresholds from <strong>White Flag</strong> to <strong>Black Flag</strong> turns uncertainty into an objective mental model — click any flag along the bar below to inspect or update the current level, or define your own event.
+                    </p>
+
+                    <div class="wf-toolbar">
+                        <div id="wf-event-tabs" class="wf-event-tabs" role="group" aria-label="Tracked events"></div>
+                        <div class="wf-toolbar-actions">
+                            <button type="button" id="wf-delete-event-btn" class="wf-btn wf-btn-danger" hidden>
+                                <i class="fas fa-trash-alt" aria-hidden="true"></i> Delete Event
+                            </button>
+                            <button type="button" id="wf-new-event-btn" class="wf-btn">
+                                <i class="fas fa-plus" aria-hidden="true"></i> New Event
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="wf-form-panel" class="wf-form-panel" hidden>
+                        <h3>Create Custom Event Scale</h3>
+                        <p class="wf-form-subtitle">Define your own four warning flag criteria for any situation or incident.</p>
+                        <form id="wf-event-form">
+                            <div class="wf-form-grid">
+                                <div class="wf-form-field full-width">
+                                    <label for="wf-input-title">Event Name</label>
+                                    <input type="text" id="wf-input-title" placeholder="e.g., Regional Power Outage, Wildfire Season, Production Incident" required>
+                                </div>
+                                <div class="wf-form-field full-width">
+                                    <label for="wf-input-context">Context / Why It Matters (optional)</label>
+                                    <textarea id="wf-input-context" rows="2" placeholder="Briefly describe what this severity scale is tracking."></textarea>
+                                </div>
+                                <div class="wf-form-field">
+                                    <label for="wf-input-white"><span class="wf-status-swatch" data-flag="white"></span> White Flag (Level 1)</label>
+                                    <input type="text" id="wf-input-white" placeholder="Baseline — no issues detected" required>
+                                </div>
+                                <div class="wf-form-field">
+                                    <label for="wf-input-grey"><span class="wf-status-swatch" data-flag="grey"></span> Grey Flag (Level 2)</label>
+                                    <input type="text" id="wf-input-grey" placeholder="Early signs or broader warning indicators" required>
+                                </div>
+                                <div class="wf-form-field">
+                                    <label for="wf-input-red"><span class="wf-status-swatch" data-flag="red"></span> Red Flag (Level 3)</label>
+                                    <input type="text" id="wf-input-red" placeholder="Close proximity or people you know affected" required>
+                                </div>
+                                <div class="wf-form-field">
+                                    <label for="wf-input-black"><span class="wf-status-swatch" data-flag="black"></span> Black Flag (Level 4)</label>
+                                    <input type="text" id="wf-input-black" placeholder="Direct personal or immediate family impact" required>
+                                </div>
+                            </div>
+                            <div class="wf-form-actions">
+                                <button type="button" id="wf-cancel-form-btn" class="wf-btn wf-btn-secondary">Cancel</button>
+                                <button type="submit" class="wf-btn">Save Event</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="wf-panel">
+                        <div class="wf-panel-header">
+                            <div>
+                                <h3 id="wf-event-title" class="wf-event-title">2019 COVID-19 Pandemic</h3>
+                                <p id="wf-event-context" class="wf-event-context"></p>
+                            </div>
+                            <div class="wf-status-readout" aria-live="polite">
+                                <span id="wf-status-swatch" class="wf-status-swatch" data-flag="grey"></span>
+                                <span id="wf-status-label">Grey Flag</span>
+                                <span id="wf-score-pill" class="wf-score-pill">Level 2 / 4</span>
+                            </div>
+                        </div>
+
+                        <div class="wf-bar-wrapper">
+                            <div id="wf-track-container" class="wf-track-container" role="meter" aria-label="Event severity level" aria-valuemin="1" aria-valuemax="4" aria-valuenow="2">
+                                <div class="wf-track-groove">
+                                    <div class="wf-track-spectrum"></div>
+                                    <div id="wf-track-fill-inner" class="wf-track-fill-inner"></div>
+                                </div>
+                                <div id="wf-nodes-layer" class="wf-nodes-layer"></div>
+                            </div>
+                            <div id="wf-labels-row" class="wf-labels-row"></div>
+                        </div>
+
+                        <div class="wf-active-detail" aria-live="polite">
+                            <div class="wf-active-detail-main">
+                                <div id="wf-detail-badge" class="wf-detail-badge" data-flag="grey">
+                                    <i class="fas fa-flag" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <h4 id="wf-detail-heading" class="wf-detail-heading">Grey Flag — Level 2</h4>
+                                    <p id="wf-detail-description" class="wf-detail-description"></p>
+                                </div>
+                            </div>
+                            <div class="wf-step-controls">
+                                <button type="button" id="wf-prev-flag-btn" class="wf-btn wf-btn-secondary" title="Decrease severity level">
+                                    <i class="fas fa-chevron-left" aria-hidden="true"></i> Lower
+                                </button>
+                                <button type="button" id="wf-next-flag-btn" class="wf-btn wf-btn-secondary" title="Increase severity level">
+                                    Escalate <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="wf-legend-heading">Flag Threshold Definitions</h3>
+                    <div id="wf-legend-grid" class="wf-legend-grid"></div>
+
                 </section>
 
             </main>
@@ -57,5 +159,6 @@
     </div>
 
     <script src="../js/main.js" defer></script>
+    <script src="../js/warning-flags.js" defer></script>
 </body>
 </html>

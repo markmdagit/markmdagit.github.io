@@ -11,7 +11,7 @@
     },
     {
         "name": "Warning Flags",
-        "description": "",
+        "description": "An interactive four-tier severity scale (White, Grey, Red, and Black flags) for measuring the real-world impact of an event.",
         "url": "warning_flags.html"
     }
 ]
